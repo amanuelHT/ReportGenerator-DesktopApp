@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Final_project.Components.ReportDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Final_project.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+
+    <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">
+        <Grid Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <TextBlock Grid.Row="0" FontSize="24" Text="{Binding Tittle}" />
+
+            <!-- The client -->
+            <Grid Grid.Row="2" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="Bold" />
+                <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Kunde}" />
+
+            </Grid>
+
+            <!-- Status of the report -->
+            <Grid Grid.Row="1" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" FontWeight="Bold" Text="Status" />
+                <TextBlock Grid.Column="1" Text="{Binding Status}" />
+            </Grid>
+        </Grid>
+    </Border>
+
+
+</UserControl>
