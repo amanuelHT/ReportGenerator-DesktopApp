@@ -8,42 +8,81 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
 
+    <Grid>
+        <!-- Outer border with styling -->
+        <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">
 
-    <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">
-        <Grid Grid.IsSharedSizeScope="True">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <!-- Main Grid -->
+            <Grid>
 
-            <!-- Title -->
-            <TextBlock Grid.Row="0" FontSize="24" Text="{Binding Tittle}" />
+                <!-- Grid for message when no report is selected -->
+                <Grid>
+                    <!-- Set visibility based on HasReportSelected property -->
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <!-- Show when HasReportSelected is false -->
+                                <DataTrigger Binding="{Binding HasReportSelected}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <!-- TextBlock for the message -->
+                    <TextBlock Grid.Row="0" FontSize="20" Text="Select a report to see the details"/>
+                </Grid>
 
-            <!-- The client -->
-            <Grid Grid.Row="2" Margin="0 20 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
-                </Grid.ColumnDefinitions>
+                <!-- Grid for report details -->
+                <Grid Grid.IsSharedSizeScope="True">
+                    <!-- Set visibility based on HasReportSelected property -->
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <!-- Show when HasReportSelected is true -->
+                                <DataTrigger Binding="{Binding HasReportSelected}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <!-- Row definitions -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="Bold" />
-                <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Kunde}" />
+                    <!-- Title -->
+                    <TextBlock Grid.Row="0" FontSize="24" Text="{Binding Tittle}" />
 
+                    <!-- The client -->
+                    <Grid Grid.Row="2" Margin="0 20 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="Bold" />
+                        <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Kunde}" />
+
+                    </Grid>
+
+                    <!-- Status of the report -->
+                    <Grid Grid.Row="1" Margin="0 20 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" FontWeight="Bold" Text="Status" />
+                        <TextBlock Grid.Column="1" Text="{Binding Status}" />
+                    </Grid>
+                </Grid>
             </Grid>
-
-            <!-- Status of the report -->
-            <Grid Grid.Row="1" Margin="0 20 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" FontWeight="Bold" Text="Status" />
-                <TextBlock Grid.Column="1" Text="{Binding Status}" />
-            </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 
 
 </UserControl>

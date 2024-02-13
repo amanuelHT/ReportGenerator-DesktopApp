@@ -9,7 +9,7 @@ namespace Final_project.ViewModels
         private ReportModel SelectedReport => _selectedReportStore.SelectedReport;
 
 
-        private bool HasReportSelected => SelectedReport != null;
+        public bool HasReportSelected => SelectedReport != null;
 
 
         public string Tittle => SelectedReport?.Tittle ?? "unkowm";
