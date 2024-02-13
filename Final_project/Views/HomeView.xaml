@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" FontSize="40"/>
+            <TextBlock Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0"  Style="{StaticResource PageHeader}"/>
             <Button Content="Add" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" DataContext="{Binding AddReportCommand}"/>
         </Grid>
 

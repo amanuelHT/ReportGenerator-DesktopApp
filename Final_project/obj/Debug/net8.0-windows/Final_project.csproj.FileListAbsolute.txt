@@ -30,3 +30,9 @@ C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\ne
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Final_project.genruntimeconfig.cache
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\ref\Final_project.dll
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Final_project.sourcelink.json
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Views\AddReportView.g.cs
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Views\EditReportView.g.cs
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Views\AddReportView.baml
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Views\EditReportView.baml
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportForm.baml
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportForm.g.cs

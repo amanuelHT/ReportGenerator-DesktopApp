@@ -10,7 +10,16 @@
     <Compile Update="Components\ReportDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\ReportForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\ReportListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddReportView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EditReportView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\HomeView.xaml.cs">
@@ -21,10 +30,19 @@
     <Page Update="Components\ReportDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Components\ReportForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\ReportListView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddReportView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EditReportView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\HomeView.xaml">

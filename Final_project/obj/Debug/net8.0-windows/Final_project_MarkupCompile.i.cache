@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\App.xaml
-4-133082311
+7738594036
 
-16373269958
+19-1058139209
 19989361365
-Components\ReportDetailsView.xaml;Components\ReportListView.xaml;MainWindow.xaml;Views\HomeView.xaml;
+Components\ReportDetailsView.xaml;Components\ReportForm.xaml;Components\ReportListView.xaml;MainWindow.xaml;Views\AddReportView.xaml;Views\EditReportView.xaml;Views\HomeView.xaml;
 
-False
+True
 
