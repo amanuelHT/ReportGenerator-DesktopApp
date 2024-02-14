@@ -3,7 +3,7 @@ using Final_project.Stores;
 
 namespace Final_project.ViewModels
 {
-    class ReportDetailsVM : ViewModelBase
+    public class ReportDetailsVM : ViewModelBase
     {
         private readonly SelectedReportStore _selectedReportStore;
         private ReportModel SelectedReport => _selectedReportStore.SelectedReport;

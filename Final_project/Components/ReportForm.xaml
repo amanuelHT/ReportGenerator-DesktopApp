@@ -17,6 +17,7 @@
             
             <!-- Row definitions -->
             <Grid.RowDefinitions>
+                
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -24,44 +25,44 @@
 
          
             <!-- The Tittle -->
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                    <ColumnDefinition Width="Auto"  SharedSizeGroup="lab" />
+                    <ColumnDefinition Width="*" MaxWidth="250"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0"  Text="Tittle" FontWeight="Bold" />
-                <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Tittle}" />
+                <TextBox Grid.Column="1" Margin="30 0 0 0" FontWeight="Bold" Text= "{Binding Tittle, UpdateSourceTrigger=PropertyChanged}" />
 
             </Grid>
 
 
             <!-- The client -->
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="1" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
+                    <ColumnDefinition Width="Auto"  SharedSizeGroup="lab" />
+                    <ColumnDefinition Width="*" MaxWidth="250"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0"  Text="Tittle" FontWeight="Bold" />
-                <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Kunde}" />
+                <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="Bold" />
+                <TextBox Grid.Column="1"  Margin="30 0 0 0"  FontWeight="Bold" Text= "{Binding Kunde}" />
 
             </Grid>
 
             <!-- Status of the report -->
-            <Grid Grid.Row="1" Margin="0 20 0 0">
+            <Grid Grid.Row="2" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" FontWeight="Bold" Text="Status" />
-                <CheckBox Grid.Column="1" IsChecked="{Binding Status}" />
+                <CheckBox Grid.Column="1"  Margin="30 4 0 0" IsChecked="{Binding Status}" />
             </Grid>
         </Grid>
 
-        <WrapPanel Grid.Row="1" Margin="0 20 0 0">
-            <Button Margin ="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit"/>
+        <WrapPanel Grid.Row="1" Margin="0 50 0 0">
+            <Button Margin ="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
             <Button Margin ="0 0 10 0" Command="{Binding CancelCommand}" Content="Cancel" Style="{StaticResource ButtonSecondary}"/>
         </WrapPanel>
 

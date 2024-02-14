@@ -12,19 +12,22 @@ namespace Final_project
 
 
         private readonly SelectedReportStore _selectedReportStore;
+        private readonly NavigationStore _navigationStore;
 
 
         public App()
         {
             _selectedReportStore = new SelectedReportStore();
+            _navigationStore = new NavigationStore();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            HomeVM homeVM = new HomeVM(_selectedReportStore, _navigationStore);
 
             MainWindow = new MainWindow()
             {
-                DataContext = new HomeVM(_selectedReportStore)
+                DataContext = new MainViewModel(_navigationStore, homeVM)
             };
 
             MainWindow.Show();

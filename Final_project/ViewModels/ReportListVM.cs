@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 namespace Final_project.ViewModels
 {
     // ViewModel responsible for managing a list of reports
-    class ReportListVM : ViewModelBase
+    public class ReportListVM : ViewModelBase
     {
 
         private readonly SelectedReportStore _selectedReportStore;

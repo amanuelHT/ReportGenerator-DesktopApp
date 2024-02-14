@@ -4,16 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final_project" 
-        xmlns:views="clr-namespace:Final_project.Views"
+        xmlns:views="clr-namespace:Final_project.Views"     
+        xmlns:vms="clr-namespace:Final_project.ViewModels" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
         Title="Report Generator" 
         Height="450" 
         Width="800"
         FontSize="16">
-    <StackPanel Margin="25">
 
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vms:AddReportVM}">
+            <views:AddReportView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EditReportVM}">
+            <views:EditReportView />
+        </DataTemplate>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}">
+                <ContentControl Margin="50 25" Content="{Binding CurrentVM}" />
+            </modalcontrol:Modal>
 
-        <views:AddReportView/>
-        <views:EditReportView/>
-    </StackPanel>
+            <views:HomeView
+                MaxWidth="1000"
+                Margin="25"
+                DataContext="{Binding HomeVM}" />
+        </Grid>
+    </ScrollViewer>
 </Window>

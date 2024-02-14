@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "30jtExNLlabXaAh0Us+82g0KGPCFX6bF8ESvKzfua3sMUTsC/Fo91gy15t3yyzZanSipHOG9nwF8PkE1k3AgVQ==",
+  "dgSpecHash": "Je/bQlnxu0a9B9FEQZw9AkGy9GjslnGTrUmNEvss6X3Ye0oHUBr22JzNpzF2yuhJVQLGQ3TWRtEj2q0JcqiygQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tMoon\\.nuget\\packages\\dropdownmenu.wpf\\1.0.0\\dropdownmenu.wpf.1.0.0.nupkg.sha512"
+    "C:\\Users\\tMoon\\.nuget\\packages\\dropdownmenu.wpf\\1.0.0\\dropdownmenu.wpf.1.0.0.nupkg.sha512",
+    "C:\\Users\\tMoon\\.nuget\\packages\\simplemodal.wpf\\1.0.0\\simplemodal.wpf.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

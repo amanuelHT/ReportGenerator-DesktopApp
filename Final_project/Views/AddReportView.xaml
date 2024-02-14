@@ -15,6 +15,6 @@
 
             <TextBlock Grid.Row="0" Text="Add Report"  Style="{StaticResource PageHeader}"/>
 
-        <components:ReportForm Grid.Row="1" Margin="0 20 0 0"/>
+        <components:ReportForm Grid.Row="1" Margin="0 20 0 0" DataContext="{Binding ReportFormVM}" />
     </Grid>
 </UserControl>

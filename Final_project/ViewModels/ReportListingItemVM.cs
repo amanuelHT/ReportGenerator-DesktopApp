@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    class ReportListingItemVM : ViewModelBase
+    public class ReportListingItemVM : ViewModelBase
     {
         public ReportModel ReportModel { get; }
 
