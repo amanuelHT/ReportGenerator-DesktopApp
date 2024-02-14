@@ -1,6 +1,8 @@
-﻿using Final_project.Models;
+﻿using Final_project.Commands;
+using Final_project.Models;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
@@ -13,6 +15,8 @@ namespace Final_project.ViewModels
         public IEnumerable<ReportListingItemVM> ReportListingItemVM => _reportListingItemVM;
 
         private ReportListingItemVM _selectedReportListingItemVM;
+        private readonly NavigationStore navigationStore;
+
         public ReportListingItemVM SelectedReportListingItemVM
         {
             get
@@ -31,21 +35,25 @@ namespace Final_project.ViewModels
         }
 
         // Constructor initializes the report list and adds sample reports
-
-        public ReportListVM(SelectedReportStore selectedReportStore)
+        public ReportListVM(SelectedReportStore selectedReportStore, NavigationStore navigationStore)
         {
-
             _selectedReportStore = selectedReportStore;
-
             // Initialize the collection of report ViewModels
             _reportListingItemVM = new ObservableCollection<ReportListingItemVM>();
 
-
-
             // Add sample reports to the collection
-            _reportListingItemVM.Add(new ReportListingItemVM(new ReportModel("report1", true, "teklit")));
-            _reportListingItemVM.Add(new ReportListingItemVM(new ReportModel("report2", false, "sirak")));
-            _reportListingItemVM.Add(new ReportListingItemVM(new ReportModel("report3", true, "sami")));
+            AddReport(new ReportModel("report1", true, "the ove"), navigationStore);
+            AddReport(new ReportModel("report2", true, "killer"), navigationStore);
+            AddReport(new ReportModel("report3", true, "none"), navigationStore);
+            AddReport(new ReportModel("report4", true, "jok"), navigationStore);
+            AddReport(new ReportModel("report5", true, "water"), navigationStore);
+            AddReport(new ReportModel("report6", true, "free"), navigationStore);
+        }
+
+        private void AddReport(ReportModel reportModel, NavigationStore navigationStore)
+        {
+            ICommand editCommand = new OpenEditCommand(reportModel, navigationStore);
+            _reportListingItemVM.Add(new ReportListingItemVM(reportModel, editCommand));
 
         }
     }

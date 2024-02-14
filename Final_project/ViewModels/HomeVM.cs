@@ -15,7 +15,8 @@ namespace Final_project.ViewModels
         public HomeVM(SelectedReportStore _selectedReportStore, NavigationStore navigationStore)
         {
             ReportDetailsVM = new ReportDetailsVM(_selectedReportStore);
-            ReportListVM = new ReportListVM(_selectedReportStore);
+            ReportListVM = new ReportListVM(_selectedReportStore, navigationStore);
+
 
             AddReportCommand = new OpenAddCommand(navigationStore);
 

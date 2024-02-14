@@ -37,3 +37,6 @@ C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\ne
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportForm.baml
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportForm.g.cs
 C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\bin\Debug\net8.0-windows\ModalControl.dll
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportListItemV.g.cs
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\obj\Debug\net8.0-windows\Components\ReportListItemV.baml
+C:\Users\tMoon\Desktop\Bachloar-project\Final_project\Final_project\bin\Debug\net8.0-windows\LoadingSpinner.dll

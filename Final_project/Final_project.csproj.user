@@ -13,6 +13,9 @@
     <Compile Update="Components\ReportForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\ReportListItemV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\ReportListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\ReportForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\ReportListItemV.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\ReportListView.xaml">

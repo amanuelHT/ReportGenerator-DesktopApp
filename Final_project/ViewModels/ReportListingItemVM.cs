@@ -14,9 +14,10 @@ namespace Final_project.ViewModels
 
 
 
-        public ReportListingItemVM(ReportModel reportModel)
+        public ReportListingItemVM(ReportModel reportModel, ICommand editCommand)
         {
             ReportModel = reportModel;
+            EditCommand = editCommand;
         }
     }
 }

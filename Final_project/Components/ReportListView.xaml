@@ -8,63 +8,39 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
 
-        <Grid>
-            <Border BorderBrush="{StaticResource BorderPrimary}"
-                BorderThickness="1"
-                CornerRadius="5"
-                SnapsToDevicePixels="True">
-                <Grid>
-                    <Grid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=border}" />
-                    </Grid.OpacityMask>
+    <Grid>
+        <Border
+            BorderBrush="{StaticResource BorderPrimary}"
+            BorderThickness="1"
+            CornerRadius="5"
+            SnapsToDevicePixels="True">
+            <Grid>
+                <Grid.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=border}" />
+                </Grid.OpacityMask>
+                <Border
+                    x:Name="border"
+                    Background="White"
+                    CornerRadius="5" />
 
-                    <Border x:Name="border"
-                        Background="White"
-                        CornerRadius="5" />
-
-               
-
-
-                <ListView BorderThickness="0" 
-                          ItemsSource="{Binding ReportListingItemVM}"
-                          SelectedItem="{Binding SelectedReportListingItemVM}">
-                          
+                <ListView
+                    BorderThickness="0"
+                    ItemsSource="{Binding ReportListingItemVM}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    SelectedItem="{Binding  SelectedReportListingItemVM}"
+                    SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Padding="10">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" Text="{Binding Tittle}" FontSize="16" />
-                                    <dropdownmenucontrol:DropdownMenu Grid.Column="1">
-                                        <Border Background="White" BorderBrush="Gray" BorderThickness="1" Margin="10 0 0 0">
-                                            <StackPanel>
-                                                <!-- Edit Button -->
-                                                <Button Content="Edit" FontSize="16" />
-
-                                                <!-- Delete Button -->
-                                                <Button Content="Delete" FontSize="16" Style="{StaticResource DeleteButtonStyle}" />
-                                            </StackPanel>
-                                        </Border>
-                                    </dropdownmenucontrol:DropdownMenu>
-
-
-
-                                </Grid>
-                            </Border>
+                            <local:ReportListItemV />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
             </Grid>
         </Border>
-        </Grid>
-    </UserControl>
+    </Grid>
+</UserControl>

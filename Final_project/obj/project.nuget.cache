@@ -1,11 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "Je/bQlnxu0a9B9FEQZw9AkGy9GjslnGTrUmNEvss6X3Ye0oHUBr22JzNpzF2yuhJVQLGQ3TWRtEj2q0JcqiygQ==",
+  "dgSpecHash": "veaBp6yFEIdaudtKMP26KCqR89MvGiSCqGn6Y2fLfJQbCHUg3pF4Oyrl3mwBPhCbcYOO5N1lpzxFXZg2V4ROUw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tMoon\\.nuget\\packages\\dropdownmenu.wpf\\1.0.0\\dropdownmenu.wpf.1.0.0.nupkg.sha512",
+    "C:\\Users\\tMoon\\.nuget\\packages\\loadingspinner\\1.0.0\\loadingspinner.1.0.0.nupkg.sha512",
     "C:\\Users\\tMoon\\.nuget\\packages\\simplemodal.wpf\\1.0.0\\simplemodal.wpf.1.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LoadingSpinner 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LoadingSpinner",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

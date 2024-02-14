@@ -14,6 +14,15 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "LoadingSpinner/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net48/LoadingSpinner.dll": {}
+        },
+        "runtime": {
+          "lib/net48/LoadingSpinner.dll": {}
+        }
+      },
       "SimpleModal.WPF/1.0.0": {
         "type": "package",
         "compile": {
@@ -41,6 +50,18 @@
         "lib/netcoreapp3.1/DropdownMenuControl.dll"
       ]
     },
+    "LoadingSpinner/1.0.0": {
+      "sha512": "HDoaxECoqwglH/OsjolL9tth+CA/eCI46ktiqObEXZCTxJbkZk8roWLW8UKWhaT0ti45Y/vWCnEFNSHFMsWEiQ==",
+      "type": "package",
+      "path": "loadingspinner/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net48/LoadingSpinner.dll",
+        "loadingspinner.1.0.0.nupkg.sha512",
+        "loadingspinner.nuspec"
+      ]
+    },
     "SimpleModal.WPF/1.0.0": {
       "sha512": "dtTvUl6O2peKZz2oCh5Y6mRjYL+q/Izxm6+z/Nzdpbcgxdo/qTD39stwegu/sY0uBTAYGJEy2P9X8mwpOMM+rw==",
       "type": "package",
@@ -57,6 +78,7 @@
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "DropdownMenu.WPF >= 1.0.0",
+      "LoadingSpinner >= 1.0.0",
       "SimpleModal.WPF >= 1.0.0"
     ]
   },
@@ -103,6 +125,10 @@
             "target": "Package",
             "version": "[1.0.0, )"
           },
+          "LoadingSpinner": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "SimpleModal.WPF": {
             "target": "Package",
             "version": "[1.0.0, )"
@@ -130,5 +156,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LoadingSpinner 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LoadingSpinner",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
