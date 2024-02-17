@@ -62,8 +62,10 @@
         </Grid>
 
         <WrapPanel Grid.Row="1" Margin="0 50 0 0">
-            <Button Margin ="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
             <Button Margin ="0 0 10 0" Command="{Binding CancelCommand}" Content="Cancel" Style="{StaticResource ButtonSecondary}"/>
+            <Button Margin ="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
+            <Button Margin ="0 0 10 0" Command="{Binding GenerateReport}" Content="Generate report" Style="{StaticResource ButtonSecondary}"/>
+     
         </WrapPanel>
 
      

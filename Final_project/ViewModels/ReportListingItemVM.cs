@@ -1,23 +1,34 @@
-﻿using Final_project.Models;
+﻿using Final_project.Commands;
+using Final_project.Models;
+using Final_project.Stores;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
     public class ReportListingItemVM : ViewModelBase
     {
-        public ReportModel ReportModel { get; }
+        public ReportModel ReportModel { get; private set; }
 
         public string Tittle => ReportModel.Tittle;
         public ICommand EditCommand { get; }
 
         public ICommand DeleteCommand { get; }
+        public ReportStore ReportStore { get; }
+        public NavigationStore NavigationStore { get; }
 
 
 
-        public ReportListingItemVM(ReportModel reportModel, ICommand editCommand)
+        public ReportListingItemVM(ReportModel reportModel, ReportStore reportStore, NavigationStore navigationStore)
         {
             ReportModel = reportModel;
-            EditCommand = editCommand;
+
+            EditCommand = new OpenEditCommand(this, reportStore, navigationStore);
+        }
+
+        internal void UpdateReport(ReportModel reportModel)
+        {
+            ReportModel = reportModel;
+            OnPropertyChanged(nameof(Tittle));
         }
     }
 }

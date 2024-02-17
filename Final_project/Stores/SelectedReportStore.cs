@@ -4,7 +4,28 @@ namespace Final_project.Stores
 {
     public class SelectedReportStore
     {
+
+        public ReportStore _reportStore;
         private ReportModel _selectedReport;
+
+        public SelectedReportStore(ReportStore reportStore)
+        {
+            _reportStore = reportStore;
+
+            _reportStore.ReportUpdated += _reportStore_ReportUpdated;
+        }
+
+        private void _reportStore_ReportUpdated(ReportModel reportModel)
+        {
+
+            if (reportModel != null)
+            {
+                SelectedReport = reportModel;
+            }
+        }
+
+
+
 
         public ReportModel SelectedReport
         {

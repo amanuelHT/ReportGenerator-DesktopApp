@@ -13,17 +13,20 @@ namespace Final_project
 
         private readonly SelectedReportStore _selectedReportStore;
         private readonly NavigationStore _navigationStore;
+        private readonly ReportStore _reportStore;
 
 
         public App()
         {
-            _selectedReportStore = new SelectedReportStore();
+            _reportStore = new ReportStore();
+            _selectedReportStore = new SelectedReportStore(_reportStore);
             _navigationStore = new NavigationStore();
+
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            HomeVM homeVM = new HomeVM(_selectedReportStore, _navigationStore);
+            HomeVM homeVM = new HomeVM(_reportStore, _selectedReportStore, _navigationStore);
 
             MainWindow = new MainWindow()
             {

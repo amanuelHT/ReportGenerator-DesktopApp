@@ -12,13 +12,13 @@ namespace Final_project.ViewModels
         public ReportListVM ReportListVM { get; }
         public ICommand AddReportCommand { get; }
 
-        public HomeVM(SelectedReportStore _selectedReportStore, NavigationStore navigationStore)
+        public HomeVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
         {
-            ReportDetailsVM = new ReportDetailsVM(_selectedReportStore);
-            ReportListVM = new ReportListVM(_selectedReportStore, navigationStore);
+            ReportDetailsVM = new ReportDetailsVM(selectedReportStore);
+            ReportListVM = new ReportListVM(reportStore, selectedReportStore, navigationStore);
 
 
-            AddReportCommand = new OpenAddCommand(navigationStore);
+            AddReportCommand = new OpenAddCommand(reportStore, navigationStore);
 
         }
 

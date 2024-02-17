@@ -1,8 +1,6 @@
-﻿using Final_project.Commands;
-using Final_project.Models;
+﻿using Final_project.Models;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
@@ -15,8 +13,8 @@ namespace Final_project.ViewModels
         public IEnumerable<ReportListingItemVM> ReportListingItemVM => _reportListingItemVM;
 
         private ReportListingItemVM _selectedReportListingItemVM;
-        private readonly NavigationStore navigationStore;
-
+        private readonly NavigationStore _navigationStore;
+        private readonly ReportStore _reportStore;
         public ReportListingItemVM SelectedReportListingItemVM
         {
             get
@@ -35,27 +33,62 @@ namespace Final_project.ViewModels
         }
 
         // Constructor initializes the report list and adds sample reports
-        public ReportListVM(SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        public ReportListVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
         {
+            _reportStore = reportStore;
             _selectedReportStore = selectedReportStore;
-            // Initialize the collection of report ViewModels
+            _navigationStore = navigationStore;
             _reportListingItemVM = new ObservableCollection<ReportListingItemVM>();
 
-            // Add sample reports to the collection
-            AddReport(new ReportModel("report1", true, "the ove"), navigationStore);
-            AddReport(new ReportModel("report2", true, "killer"), navigationStore);
-            AddReport(new ReportModel("report3", true, "none"), navigationStore);
-            AddReport(new ReportModel("report4", true, "jok"), navigationStore);
-            AddReport(new ReportModel("report5", true, "water"), navigationStore);
-            AddReport(new ReportModel("report6", true, "free"), navigationStore);
+            _reportStore.ReportAdded += ReportStore_ReportStoreAdded;
+            _reportStore.ReportUpdated += ReportStore_ReportStoreUpdated;
+
+
+
+
         }
 
-        private void AddReport(ReportModel reportModel, NavigationStore navigationStore)
+
+        private void ReportStore_ReportStoreAdded(ReportModel reportModlel)
         {
-            ICommand editCommand = new OpenEditCommand(reportModel, navigationStore);
-            _reportListingItemVM.Add(new ReportListingItemVM(reportModel, editCommand));
+            AddReport(reportModlel);
+        }
+
+
+        private void ReportStore_ReportStoreUpdated(ReportModel ReportModel)
+        {
+
+            ReportListingItemVM report = _reportListingItemVM.FirstOrDefault(y => y.ReportModel.Id == ReportModel.Id);
+            if (report != null)
+            {
+                report.UpdateReport(ReportModel);
+
+            }
 
         }
+
+
+
+        protected override void Dispose()
+        {
+            _reportStore.ReportAdded -= ReportStore_ReportStoreAdded;
+            _reportStore.ReportUpdated -= ReportStore_ReportStoreUpdated;
+
+            base.Dispose();
+        }
+
+
+
+
+        private void AddReport(ReportModel reportModel)
+        {
+            ReportListingItemVM itemVM = new ReportListingItemVM(reportModel, _reportStore, _navigationStore);
+            _reportListingItemVM.Add(itemVM);
+
+        }
+
+
+
     }
 }
 
