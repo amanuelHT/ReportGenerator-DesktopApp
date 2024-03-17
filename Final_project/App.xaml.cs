@@ -1,6 +1,9 @@
 ﻿using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.Views;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
 using Report_Generator_Domain.Queries;
 using Report_Generator_EntityFramework;
@@ -13,82 +16,103 @@ namespace Final_project
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : System.Windows.Application
+    public partial class App : Application
     {
 
-        private readonly ReportModelDbContextFactory _reportDbContextFactory;
+        public IServiceProvider ServiceProvider { get; private set; }
 
-        private readonly IGetAllReportsQuery _query;
-        private readonly ICreateReportCommand _createReportCommand;
-        private readonly IDeleteReportCommand _deleteReportCommand;
-        private readonly IUpdateReportCommand _updateReportCommand;
-
-
-        private readonly SelectedReportStore _selectedReportStore;
-        private readonly NavigationStore _navigationStore;
-        private readonly ReportStore _reportStore;
-
-        //this is for the report viewer the report instance 
-        public static ReportStore ReportStoreInstance { get; private set; }
-
+        private readonly IHost _host;
         public App()
         {
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, service) =>
+                {
+
+                    // Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
+                    string connectionString = "Data Source=Reports.db";
+                    service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
+                    service.AddSingleton<ReportModelDbContextFactory>();
+
+
+
+
+
+                    //Queries and commands for database services
+                    service.AddSingleton<IGetAllReportsQuery, GetAllReportsQuery>();
+                    service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
+                    service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
+                    service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
+
+
+                    //stores , Single source of truth, defnitly Singlton
+                    service.AddSingleton<ReportStore>();
+                    service.AddSingleton<SelectedReportStore>();
+                    service.AddSingleton<NavigationStore>();
+
+
+                    //viewmodels 
+
+                    service.AddSingleton<MainViewModel>();
+                    service.AddTransient<HomeVM>(CreateHomeViewModel);
+                    service.AddSingleton<ReportViewerVM>();
+                    service.AddSingleton<ReportViewerView>();
+
+
+                    service.AddSingleton<MainWindow>((services) => new MainWindow()
+                    {
+                        DataContext = services.GetRequiredService<MainViewModel>()
+                    });
+
+
+
+                })
+                .Build();
 
 
 
             Bold.Licensing.BoldLicenseProvider.RegisterLicense("rNO4kk3ljKWv4vBVFMMzZFi8W9yZY/VCNJZKWr/yqMk=");
 
-            string connectionString = "Data Source =Reports.db";
 
-            _reportDbContextFactory = new ReportModelDbContextFactory(
-                new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
+        }
 
-
-            _query = new GetAllReportsQuery(_reportDbContextFactory);
-            _createReportCommand = new CreateReportCommand(_reportDbContextFactory);
-            _deleteReportCommand = new DeleteReportCommand(_reportDbContextFactory);
-            _updateReportCommand = new UpdateReportCommand(_reportDbContextFactory);
-
-
-            _reportStore = new ReportStore(_query, _createReportCommand, _deleteReportCommand, _updateReportCommand);
-
-
-            _selectedReportStore = new SelectedReportStore(_reportStore);
-            _navigationStore = new NavigationStore();
-
-
-            // and this ,  
-            ReportStoreInstance = new ReportStore(_query, _createReportCommand, _deleteReportCommand, _updateReportCommand);
-
+        private HomeVM CreateHomeViewModel(IServiceProvider service)
+        {
+            return HomeVM.LoadHome(
+                 service.GetRequiredService<ReportStore>(),
+                 service.GetRequiredService<SelectedReportStore>(),
+                 service.GetRequiredService<NavigationStore>());
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            _host.Start();
+            ServiceProvider = _host.Services;
 
 
-            using (ReportModelDbContext context = _reportDbContextFactory.Create())
+            ReportModelDbContextFactory reportModelDbContextFactory =
+                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            using (ReportModelDbContext context = reportModelDbContextFactory.Create())
+
             {
                 context.Database.Migrate();
-
 
             }
 
 
-
-            HomeVM homeVM = new HomeVM(_reportStore, _selectedReportStore, _navigationStore);
-
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(_navigationStore, homeVM)
-            };
-
+            MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
+            // MainWindow.Show();
 
 
 
             base.OnStartup(e);
         }
 
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _host.StopAsync();
+            _host.Dispose();
+        }
     }
 }
 

@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[1.0.0, )"
             },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "SimpleModal.WPF": {
               "target": "Package",
               "version": "[1.0.0, )"

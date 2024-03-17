@@ -13,6 +13,7 @@
     <PackageReference Include="BoldReports.WPF" Version="5.4.33" />
     <PackageReference Include="DropdownMenu.WPF" Version="1.0.0" />
     <PackageReference Include="LoadingSpinner" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 

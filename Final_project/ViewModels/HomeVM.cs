@@ -21,6 +21,14 @@ namespace Final_project.ViewModels
             AddReportCommand = new OpenAddCommand(reportStore, navigationStore);
 
         }
+        public static HomeVM LoadHome(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        {
+            HomeVM viewModel = new HomeVM(reportStore, selectedReportStore, navigationStore);
+
+            //viewModel.HomeVMCommand.Execute(null);
+
+            return viewModel;
+        }
 
     }
 }
