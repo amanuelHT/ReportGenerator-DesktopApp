@@ -1,0 +1,32 @@
+# Binaries and intermediate files
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+
+# Visual Studio user-specific files
+*.suo
+*.user
+*.userosscache
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]ogs/
+
+# Temporary files
+*.tmp
+*.[Tt]mp
+*.log
+*.bak
+*.cache
+
+# Others
+.vs/
+*.opendb
+*.dbmdl

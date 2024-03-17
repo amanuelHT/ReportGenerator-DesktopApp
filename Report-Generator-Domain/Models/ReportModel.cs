@@ -1,12 +1,12 @@
-﻿namespace Final_project.Models
+﻿namespace Domain.Models
 {
     public class ReportModel
     {
 
-        public Guid Id { get; set; }
-        public string Tittle { get; set; }
-        public bool Status { get; set; }
-        public string Kunde { get; set; }
+        public Guid Id { get; }
+        public string Tittle { get; }
+        public bool Status { get; }
+        public string Kunde { get; }
 
         public ReportModel(Guid id, string tittle, bool status, string kunde)
         {

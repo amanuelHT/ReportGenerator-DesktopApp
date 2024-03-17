@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj": {}
+    "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj": {
+    "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj",
+        "projectUniqueName": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj",
         "projectName": "Final_project",
-        "projectPath": "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\Final_project.csproj",
+        "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj",
         "packagesPath": "C:\\Users\\tMoon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tMoon\\Desktop\\Bachloar-project\\Final_project\\Final_project\\obj\\",
+        "outputPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\tMoon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,24 +26,42 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WinUI\\24.1.41\\NuGetPackages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj": {
+                "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj"
+              },
+              "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj": {
+                "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "BoldReports.WPF": {
+              "target": "Package",
+              "version": "[5.4.33, )"
+            },
             "DropdownMenu.WPF": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -72,7 +94,159 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj",
+        "projectName": "Report-Generator-Domain",
+        "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj",
+        "packagesPath": "C:\\Users\\tMoon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tMoon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WinUI\\24.1.41\\NuGetPackages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj",
+        "projectName": "Report-Generator-EntityFramework",
+        "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj",
+        "packagesPath": "C:\\Users\\tMoon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tMoon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WinUI\\24.1.41\\NuGetPackages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj": {
+                "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

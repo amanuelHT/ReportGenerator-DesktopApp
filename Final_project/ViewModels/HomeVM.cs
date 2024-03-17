@@ -15,7 +15,7 @@ namespace Final_project.ViewModels
         public HomeVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
         {
             ReportDetailsVM = new ReportDetailsVM(selectedReportStore);
-            ReportListVM = new ReportListVM(reportStore, selectedReportStore, navigationStore);
+            ReportListVM = ReportListVM.loadViewModel(reportStore, selectedReportStore, navigationStore);
 
 
             AddReportCommand = new OpenAddCommand(reportStore, navigationStore);

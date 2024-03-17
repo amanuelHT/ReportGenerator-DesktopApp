@@ -6,12 +6,38 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+   
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BoldReports.WPF" Version="5.4.33" />
     <PackageReference Include="DropdownMenu.WPF" Version="1.0.0" />
     <PackageReference Include="LoadingSpinner" Version="1.0.0" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Report-Generator-Domain\Report-Generator-Domain.csproj" />
+    <ProjectReference Include="..\Report-Generator-EntityFramework\Report-Generator-EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ReportData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ReportData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReportData.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

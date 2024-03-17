@@ -1,4 +1,4 @@
-﻿using Final_project.Models;
+﻿using Domain.Models;
 using Final_project.Stores;
 using Final_project.ViewModels;
 

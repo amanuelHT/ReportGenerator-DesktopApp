@@ -1,6 +1,8 @@
-﻿using Final_project.Models;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
@@ -32,6 +34,9 @@ namespace Final_project.ViewModels
 
         }
 
+
+        ICommand LoadReportCommand { get; }
+
         // Constructor initializes the report list and adds sample reports
         public ReportListVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
         {
@@ -42,12 +47,30 @@ namespace Final_project.ViewModels
 
             _reportStore.ReportAdded += ReportStore_ReportStoreAdded;
             _reportStore.ReportUpdated += ReportStore_ReportStoreUpdated;
+            _reportStore.ReportModelLoaded += ReportStore_ReportModelLoaded;
 
 
-
+            LoadReportCommand = new LoadReportCommand(reportStore);
 
         }
 
+        private void ReportStore_ReportModelLoaded()
+        {
+            _reportListingItemVM.Clear();
+            foreach (ReportModel reportModel in _reportStore.ReportModels)
+            {
+                AddReport(reportModel);
+            }
+        }
+
+        public static ReportListVM loadViewModel(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+
+        {
+            ReportListVM viewmodel = new ReportListVM(reportStore, selectedReportStore, navigationStore);
+
+            viewmodel.LoadReportCommand.Execute(null);
+            return viewmodel;
+        }
 
         private void ReportStore_ReportStoreAdded(ReportModel reportModlel)
         {
@@ -73,6 +96,8 @@ namespace Final_project.ViewModels
         {
             _reportStore.ReportAdded -= ReportStore_ReportStoreAdded;
             _reportStore.ReportUpdated -= ReportStore_ReportStoreUpdated;
+
+            _reportStore.ReportModelLoaded -= ReportStore_ReportModelLoaded;
 
             base.Dispose();
         }

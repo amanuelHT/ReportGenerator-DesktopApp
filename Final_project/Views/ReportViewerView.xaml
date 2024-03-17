@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Final_project.Views.ReportViewerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:boldreports="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Content="Generate Report" Grid.Row="0" 
+                Command="{Binding LoadReportCommand}" 
+                Margin="5" Width="150"/>
+
+
+
+
+
+
+        <boldreports:ReportViewer x:Name="reportViewer" 
+                                  Loaded="ReportViewerView_Loaded"
+                                  Grid.Row="1" 
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Stretch" 
+                                  Margin="5"/>
+    </Grid>
+</UserControl>

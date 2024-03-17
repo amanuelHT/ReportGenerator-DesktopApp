@@ -1,5 +1,5 @@
-﻿using Final_project.Commands;
-using Final_project.Models;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using System.Windows.Input;
 

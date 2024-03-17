@@ -1,4 +1,4 @@
-﻿using Final_project.Models;
+﻿using Domain.Models;
 
 namespace Final_project.Stores
 {

@@ -1,12 +1,11 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace Final_project.Components
 {
     /// <summary>
     /// Interaction logic for ReportListItemV.xaml
     /// </summary>
-    public partial class ReportListItemV : UserControl
+    public partial class ReportListItemV : System.Windows.Controls.UserControl
     {
         public ReportListItemV()
         {
