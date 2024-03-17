@@ -1,47 +1,37 @@
-﻿using System.Windows;
+﻿using Final_project.ViewModels;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Final_project.Views
 {
-    public partial class ReportViewerView : System.Windows.Controls.UserControl
+    public partial class ReportViewerView : UserControl
     {
         public ReportViewerView()
         {
             InitializeComponent();
-
-            this.Loaded += ReportViewerView_Loaded;
+            var reportStore = App.ReportStoreInstance;
+            DataContext = new ReportViewerVM(reportStore);
+            this.Loaded += OnGenerateReportClick;
         }
 
-
-        public void ReportViewerView_Loaded(object sender, RoutedEventArgs e)
+        private void OnGenerateReportClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                var reportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\product-list.rdlc");
-                if (!System.IO.File.Exists(reportPath))
-                {
-                    MessageBox.Show("Report file not found.");
-                    return;
-                }
 
-                this.reportViewer.ReportPath = reportPath;
+                var viewModel = DataContext as ReportViewerVM;
+
+                // Assuming "ProductList.GetData()" is your data source method
+                this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
-
-                var reportData = ProductList.GetData();
-                if (reportData == null || reportData.Count == 0)
-                {
-                    MessageBox.Show("No data available to display in the report.");
-                    return;
-                }
-
-                this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "list", Value = reportData });
+                this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "DataSet1", Value = viewModel.Reports });
                 this.reportViewer.RefreshReport();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading report: {ex.Message}");
+                MessageBox.Show("Error loading report: " + ex.Message);
             }
-
         }
     }
 }

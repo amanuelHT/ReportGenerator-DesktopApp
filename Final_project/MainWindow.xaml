@@ -7,15 +7,41 @@
         xmlns:views="clr-namespace:Final_project.Views"     
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
         xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
-    
-         mc:Ignorable="d"
+        mc:Ignorable="d"
          Title="MainWindow" Height="450" Width="800">
 
-    <!--<Grid>
-        <views:ReportViewerView />
-    </Grid>-->
 
-   
+
+    <!--<Window.Resources>
+        <DataTemplate DataType="{x:Type vms:AddReportVM}">
+            <views:AddReportView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EditReportVM}">
+            <views:EditReportView />
+        </DataTemplate>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}">
+                <ContentControl Margin="50 25" Content="{Binding CurrentVM}" />
+            </modalcontrol:Modal>
+
+            <views:HomeView
+                MaxWidth="1000"
+                Margin="25"
+                DataContext="{Binding HomeVM}" />
+        </Grid>
+    </ScrollViewer>
+</Window>-->
+
+
+    <Grid>
+        <views:ReportViewerView />
+    </Grid>
+
+
+
+</Window>
 
 
 
@@ -38,36 +64,13 @@
 
 
 
-    <!--xmlns:views="clr-namespace:Final_project.Views"     
+<!--xmlns:views="clr-namespace:Final_project.Views"     
         xmlns:vms="clr-namespace:Final_project.ViewModels" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
         Title="Report Generator" 
         Height="450" 
         Width="800"
         FontSize="16">-->
-
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type vms:AddReportVM}">
-            <views:AddReportView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:EditReportVM}">
-            <views:EditReportView />
-        </DataTemplate>
-    </Window.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid>
-            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}">
-                <ContentControl Margin="50 25" Content="{Binding CurrentVM}" />
-            </modalcontrol:Modal>
-
-            <views:HomeView
-                MaxWidth="1000"
-                Margin="25"
-                DataContext="{Binding HomeVM}" />
-        </Grid>
-    </ScrollViewer>
-</Window>
-
 
 
 <!--xmlns:boldreports="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf"

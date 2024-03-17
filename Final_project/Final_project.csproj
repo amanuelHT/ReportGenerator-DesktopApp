@@ -22,9 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
     <None Update="ReportData.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Resources\Report1.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
@@ -33,6 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataSet1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Update="ReportData.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -10,17 +10,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Button Content="Generate Report" Grid.Row="0" 
-                Command="{Binding LoadReportCommand}" 
-                Margin="5" Width="150"/>
-
-
-
-
+        <Button Content="Generate Report" Grid.Row="0" Click="OnGenerateReportClick" Margin="5" Width="150"/>
 
 
         <boldreports:ReportViewer x:Name="reportViewer" 
-                                  Loaded="ReportViewerView_Loaded"
                                   Grid.Row="1" 
                                   HorizontalAlignment="Stretch" 
                                   VerticalAlignment="Stretch" 
