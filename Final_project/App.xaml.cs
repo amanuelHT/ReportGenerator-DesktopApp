@@ -2,6 +2,7 @@
 using Final_project.ViewModels;
 using Final_project.Views;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
@@ -29,7 +30,7 @@ namespace Final_project
                 {
 
                     // Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
-                    string connectionString = "Data Source=Reports.db";
+                    string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                     service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                     service.AddSingleton<ReportModelDbContextFactory>();
 

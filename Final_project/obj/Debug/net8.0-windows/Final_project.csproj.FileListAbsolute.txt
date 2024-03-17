@@ -211,3 +211,4 @@ C:\Users\tMoon\Desktop\Final--project\Final_project\bin\Debug\net8.0-windows\Mic
 C:\Users\tMoon\Desktop\Final--project\Final_project\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\tMoon\Desktop\Final--project\Final_project\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
 C:\Users\tMoon\Desktop\Final--project\Final_project\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\tMoon\Desktop\Final--project\Final_project\bin\Debug\net8.0-windows\appsettings.json
