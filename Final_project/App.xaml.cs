@@ -14,9 +14,6 @@ using System.Windows;
 
 namespace Final_project
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
 
@@ -66,12 +63,20 @@ namespace Final_project
 
 
 
+                    Bold.Licensing.BoldLicenseProvider.RegisterLicense
+                    (
+                         context.Configuration.GetValue<string>("Licensekey")
+                     );
+
+
+
                 })
                 .Build();
 
 
 
-            Bold.Licensing.BoldLicenseProvider.RegisterLicense("rNO4kk3ljKWv4vBVFMMzZFi8W9yZY/VCNJZKWr/yqMk=");
+
+
 
 
         }
