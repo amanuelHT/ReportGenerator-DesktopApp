@@ -3,6 +3,8 @@
 **/[Oo]bj/
 **/[Dd]ebug/
 **/[Rr]elease/
+[Oo]bj/
+[Bb]in/
 
 # Visual Studio user-specific files
 *.suo

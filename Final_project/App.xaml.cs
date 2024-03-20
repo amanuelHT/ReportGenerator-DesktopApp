@@ -3,6 +3,8 @@ using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,12 +37,14 @@ namespace Final_project
 
 
 
-                    service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type => (ViewModelBase)serviceProvider.GetRequiredService(type));
+                    service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
+                    (ViewModelBase)serviceProvider.GetRequiredService(type));
 
 
 
 
-
+                    //navigation service 
+                    service.AddSingleton<INavigation, Navigation>();
 
 
                     //Queries and commands for database services

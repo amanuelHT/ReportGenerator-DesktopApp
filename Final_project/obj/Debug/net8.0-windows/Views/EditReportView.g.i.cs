@@ -54,7 +54,7 @@ namespace Final_project.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Final_project;V1.0.0.0;component/views/editreportview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Final_project;component/views/editreportview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\EditReportView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
