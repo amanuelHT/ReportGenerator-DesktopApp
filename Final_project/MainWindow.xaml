@@ -8,10 +8,57 @@
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
         xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
-         Title="MainWindow" Height="450" Width="800">
+         Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized"
+        WindowStyle="None">
+
+    <Border Background="#272537">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Project"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="22"
+                       Margin="20,0,0,0"/>
 
 
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Reports"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource NavigationButtons}"/>
 
+                <RadioButton Content="New report"
+                 Height="50"
+                 Foreground="White"
+                 FontSize="14"
+                 Style="{StaticResource NavigationButtons}"/>
+
+                <RadioButton Content="Quit"
+                 Height="50"
+                 Foreground="White"
+                 FontSize="14"
+                 Style="{StaticResource NavigationButtons}"
+                 Click="Quit"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+
+    
+    
     <!--<Window.Resources>
         <DataTemplate DataType="{x:Type vms:AddReportVM}">
             <views:AddReportView />
@@ -32,13 +79,6 @@
                 DataContext="{Binding HomeVM}" />
         </Grid>
     </ScrollViewer>-->
-
-
-    <Grid>
-        <views:ReportViewerView />
-    </Grid>
-
-
 
 </Window>
 

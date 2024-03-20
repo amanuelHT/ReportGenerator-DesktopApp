@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/TextBlockStyles.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
+                <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 
@@ -16,4 +17,5 @@
 
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>

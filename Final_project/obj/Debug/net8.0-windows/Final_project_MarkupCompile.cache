@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\
+C:\Users\EricH\Bacheloroppgave\Final--project\Final_project\obj\Debug\net8.0-windows\
 Final_project
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\tMoon\Desktop\Final--project\Final_project\App.xaml
-11-2115417397
+C:\Users\EricH\Bacheloroppgave\Final--project\Final_project\App.xaml
+12285933500
 
 381509648514
-265-391361910
-Components\ReportDetailsView.xaml;Components\ReportForm.xaml;Components\ReportListItemV.xaml;Components\ReportListView.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextBlockStyles.xaml;Views\AddReportView.xaml;Views\EditReportView.xaml;Views\HomeView.xaml;Views\ReportViewerView.xaml;
+264-1366878487
+Components\ReportDetailsView.xaml;Components\ReportForm.xaml;Components\ReportListItemV.xaml;Components\ReportListView.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\NavigationButtons.xaml;Styles\TextBlockStyles.xaml;Views\AddReportView.xaml;Views\EditReportView.xaml;Views\HomeView.xaml;Views\ReportViewerView.xaml;
 
-True
+False
 
