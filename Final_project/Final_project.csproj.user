@@ -56,6 +56,12 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBlockStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AddReportView.xaml">
       <SubType>Designer</SubType>
     </Page>

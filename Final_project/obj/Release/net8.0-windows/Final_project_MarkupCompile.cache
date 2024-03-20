@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\tMoon\Desktop\Final--project\Final_project\App.xaml
-9886541871
+11-2115417397
 
-37-594047979
-264718104815
-Components\ReportDetailsView.xaml;Components\ReportForm.xaml;Components\ReportListItemV.xaml;Components\ReportListView.xaml;MainWindow.xaml;Views\AddReportView.xaml;Views\EditReportView.xaml;Views\HomeView.xaml;Views\ReportViewerView.xaml;
+38-1570889642
+265-379446098
+Components\ReportDetailsView.xaml;Components\ReportForm.xaml;Components\ReportListItemV.xaml;Components\ReportListView.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextBlockStyles.xaml;Views\AddReportView.xaml;Views\EditReportView.xaml;Views\HomeView.xaml;Views\ReportViewerView.xaml;
 
 True
 

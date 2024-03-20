@@ -192,7 +192,6 @@ C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\App
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Final_project_MarkupCompile.cache
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Final_project_MarkupCompile.lref
-C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\App.baml
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\ReportDetailsView.baml
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\ReportListItemV.baml
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\ReportListView.baml
@@ -212,3 +211,6 @@ C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\ref
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Final_project.pdb
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Final_project.genruntimeconfig.cache
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\ref\Final_project.dll
+C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Styles\ButtonStyles.baml
+C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Styles\TextBlockStyles.baml
+C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\App.baml

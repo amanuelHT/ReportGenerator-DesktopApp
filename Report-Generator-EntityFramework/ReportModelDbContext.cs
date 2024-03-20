@@ -7,6 +7,9 @@ namespace Report_Generator_EntityFramework
 
     public class ReportModelDbContext : DbContext
     {
+
+
+
         public ReportModelDbContext(DbContextOptions options) : base(options)
         {
         }

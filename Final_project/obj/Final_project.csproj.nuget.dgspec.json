@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[5.4.33, )"
             },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
             "DropdownMenu.WPF": {
               "target": "Package",
               "version": "[1.0.0, )"

@@ -31,8 +31,7 @@
                 Margin="25"
                 DataContext="{Binding HomeVM}" />
         </Grid>
-    </ScrollViewer>
-</Window>-->
+    </ScrollViewer>-->
 
 
     <Grid>
