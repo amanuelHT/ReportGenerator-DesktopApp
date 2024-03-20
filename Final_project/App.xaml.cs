@@ -1,4 +1,5 @@
-﻿using Final_project.Stores;
+﻿using Final_project.Components;
+using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Final_project
 
         public IServiceProvider ServiceProvider { get; private set; }
 
+
         private readonly IHost _host;
         public App()
         {
@@ -30,6 +32,12 @@ namespace Final_project
                     string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                     service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                     service.AddSingleton<ReportModelDbContextFactory>();
+
+
+
+                    service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type => (ViewModelBase)serviceProvider.GetRequiredService(type));
+
+
 
 
 
@@ -49,12 +57,35 @@ namespace Final_project
 
 
                     //viewmodels 
-
                     service.AddSingleton<MainViewModel>();
                     service.AddTransient<HomeVM>(CreateHomeViewModel);
                     service.AddSingleton<ReportViewerVM>();
+                    service.AddSingleton<EditReportVM>();
+                    service.AddSingleton<AddReportVM>();
+                    service.AddSingleton<ReportDetailsVM>();
+                    service.AddSingleton<ReportFormVM>();
+                    service.AddSingleton<ReportListingItemVM>();
+                    service.AddSingleton<ReportListVM>();
+                    service.AddSingleton<ViewModelBase>();
+
+
+                    //Views 
+                    service.AddSingleton<AddReportView>();
+                    service.AddSingleton<EditReportView>();
+                    service.AddSingleton<HomeView>();
                     service.AddSingleton<ReportViewerView>();
 
+
+
+                    //navigation
+                    service.AddSingleton<Func<Type, ViewModelBase>>(service => T => (ViewModelBase)service.GetService(typeof(ViewModelBase)));
+
+
+                    //Components view
+                    service.AddSingleton<ReportDetailsView>();
+                    service.AddSingleton<ReportForm>();
+                    service.AddSingleton<ReportListingItemVM>();
+                    service.AddSingleton<ReportListView>();
 
                     service.AddSingleton<MainWindow>((services) => new MainWindow()
                     {

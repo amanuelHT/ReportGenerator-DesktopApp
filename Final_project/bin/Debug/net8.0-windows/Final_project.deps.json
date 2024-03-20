@@ -9,8 +9,10 @@
       "Final_project/1.0.0": {
         "dependencies": {
           "BoldReports.WPF": "5.4.33",
+          "CommunityToolkit.Mvvm": "8.2.2",
           "DropdownMenu.WPF": "1.0.0",
           "LoadingSpinner": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.Extensions.Hosting": "8.0.0",
           "Report-Generator-Domain": "1.0.0",
           "Report-Generator-EntityFramework": "1.0.0",
@@ -58,6 +60,14 @@
           "lib/net8.0/BoldReports.WPF.dll": {
             "assemblyVersion": "5.4800.33.0",
             "fileVersion": "5.4800.33.0"
+          }
+        }
+      },
+      "CommunityToolkit.Mvvm/8.2.2": {
+        "runtime": {
+          "lib/net6.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "8.2.0.0",
+            "fileVersion": "8.2.2.1"
           }
         }
       },
@@ -1136,7 +1146,22 @@
         }
       },
       "System.Diagnostics.DiagnosticSource/8.0.0": {},
-      "System.Diagnostics.EventLog/8.0.0": {},
+      "System.Diagnostics.EventLog/8.0.0": {
+        "runtime": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
       "System.Diagnostics.PerformanceCounter/7.0.0": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "7.0.0"
@@ -1399,6 +1424,13 @@
       "sha512": "sha512-ayjZVBkzJhqRJ/xCmrWnf82VCWhQh0+CLIu5WHU3tqxv8TFaZGEpkFF8WGJqGrDxn/BIJc1WNg9C8d0Wo7WTvA==",
       "path": "boldreports.wpf/5.4.33",
       "hashPath": "boldreports.wpf.5.4.33.nupkg.sha512"
+    },
+    "CommunityToolkit.Mvvm/8.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r0g0k9tGYdrnz8R7T3x5UiokDffeevzK/2P/9SBL6fqLgN8B157MIi/bVUWI1KAz6ZorZrK9AdABCWUeXZZsvA==",
+      "path": "communitytoolkit.mvvm/8.2.2",
+      "hashPath": "communitytoolkit.mvvm.8.2.2.nupkg.sha512"
     },
     "DropdownMenu.WPF/1.0.0": {
       "type": "package",
