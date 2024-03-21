@@ -8,7 +8,18 @@
         <ResourceDictionary>
 
 
-            
+
+            <DataTemplate DataType="{x:Type viewmodels:AddReportVM}">
+                    <views:AddReportView />
+                </DataTemplate>
+           
+
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:EditReportVM}">
+                <views:EditReportView/>
+            </DataTemplate>
+
+
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:HomeVM}">
                 <views:HomeView/>

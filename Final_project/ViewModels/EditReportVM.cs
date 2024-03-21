@@ -10,7 +10,7 @@ namespace Final_project.ViewModels
         public Guid ReportId { get; set; }
 
         public ReportFormVM ReportFormVM { get; }
-        public EditReportVM(ReportModel reportModel, ReportStore reportStore, NavigationStore navigationStore)
+        public EditReportVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation navigationStore)
         {
             ReportId = reportModel.Id;
 

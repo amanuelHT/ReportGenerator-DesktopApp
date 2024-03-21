@@ -4,12 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Views" 
-             xmlns:components="clr-namespace:Final_project.Components" xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HomeVM}"
+             xmlns:components="clr-namespace:Final_project.Components"
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
+              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+             d:DataContext="{d:DesignInstance Type=viewmodels:HomeVM}"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -20,10 +25,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0"  Style="{StaticResource PageHeader}"/>
+            <TextBlock Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" Style="{StaticResource PageHeader}"/>
             <Button Content="Add a report" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding AddReportCommand}"/>
         </Grid>
 
+        <!-- Modal Control -->
+        <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+        </modalcontrol:Modal>
+
+        <!-- Main Content -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -31,7 +42,7 @@
             </Grid.ColumnDefinitions>
 
             <components:ReportListView Grid.Column="0" DataContext="{Binding ReportListVM}"/>
-            <components:ReportDetailsView Grid.Column="1" DataContext="{Binding ReportDetailsVM}" Margin="20 0 0 0" />
+            <components:ReportDetailsView Grid.Column="1" DataContext="{Binding ReportDetailsVM}" Margin="20,0,0,0" />
         </Grid>
     </Grid>
 </UserControl>

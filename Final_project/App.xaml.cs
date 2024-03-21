@@ -57,7 +57,7 @@ namespace Final_project
                     //stores , Single source of truth, defnitly Singlton
                     service.AddSingleton<ReportStore>();
                     service.AddSingleton<SelectedReportStore>();
-                    service.AddSingleton<NavigationStore>();
+                    service.AddSingleton<ModalNavigation>();
 
 
                     //viewmodels 
@@ -121,7 +121,7 @@ namespace Final_project
             return HomeVM.LoadHome(
                  service.GetRequiredService<ReportStore>(),
                  service.GetRequiredService<SelectedReportStore>(),
-                 service.GetRequiredService<NavigationStore>());
+                 service.GetRequiredService<ModalNavigation>());
         }
 
         protected override void OnStartup(StartupEventArgs e)

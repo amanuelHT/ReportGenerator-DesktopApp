@@ -14,11 +14,11 @@ namespace Final_project.ViewModels
 
         public ICommand DeleteCommand { get; }
         public ReportStore ReportStore { get; }
-        public NavigationStore NavigationStore { get; }
+        public ModalNavigation ModalNavigation { get; }
 
 
 
-        public ReportListingItemVM(ReportModel reportModel, ReportStore reportStore, NavigationStore navigationStore)
+        public ReportListingItemVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation navigationStore)
         {
             ReportModel = reportModel;
 

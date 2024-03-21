@@ -9,12 +9,12 @@ namespace Final_project.Commands
 {
     public class OpenEditCommand : CommandBase
     {
-        private readonly NavigationStore _navigationStore;
+        private readonly ModalNavigation _navigationStore;
         //  private readonly ReportModel _reportModel;
         private readonly ReportStore _reportStore;
         private readonly ReportListingItemVM _reportListingItemVM;
 
-        public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, NavigationStore navigationStore)
+        public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, ModalNavigation navigationStore)
         {
 
 

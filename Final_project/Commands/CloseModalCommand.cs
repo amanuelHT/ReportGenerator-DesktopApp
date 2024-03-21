@@ -5,8 +5,8 @@ namespace Final_project.Commands
     public class CloseModalCommand : CommandBase
     {
 
-        private readonly NavigationStore _navigationStore;
-        public CloseModalCommand(NavigationStore navigationStore)
+        private readonly ModalNavigation _navigationStore;
+        public CloseModalCommand(ModalNavigation navigationStore)
         {
 
             _navigationStore = navigationStore;

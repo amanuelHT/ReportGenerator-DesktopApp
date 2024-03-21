@@ -2,7 +2,7 @@
 
 namespace Final_project.Stores
 {
-    public class NavigationStore
+    public class ModalNavigation
     {
         public ViewModelBase _currentView;
         public ViewModelBase CurrentView

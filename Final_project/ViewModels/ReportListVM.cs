@@ -15,7 +15,7 @@ namespace Final_project.ViewModels
         public IEnumerable<ReportListingItemVM> ReportListingItemVM => _reportListingItemVM;
 
         private ReportListingItemVM _selectedReportListingItemVM;
-        private readonly NavigationStore _navigationStore;
+        private readonly ModalNavigation _navigationStore;
         private readonly ReportStore _reportStore;
         public ReportListingItemVM SelectedReportListingItemVM
         {
@@ -38,7 +38,7 @@ namespace Final_project.ViewModels
         ICommand LoadReportCommand { get; }
 
         // Constructor initializes the report list and adds sample reports
-        public ReportListVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        public ReportListVM(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore)
         {
             _reportStore = reportStore;
             _selectedReportStore = selectedReportStore;
@@ -63,7 +63,7 @@ namespace Final_project.ViewModels
             }
         }
 
-        public static ReportListVM loadViewModel(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        public static ReportListVM loadViewModel(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore)
 
         {
             ReportListVM viewmodel = new ReportListVM(reportStore, selectedReportStore, navigationStore);

@@ -8,9 +8,9 @@ namespace Final_project.Commands
     {
         private readonly ReportStore _reportStore;
         private readonly EditReportVM _editReportVM;
-        private readonly NavigationStore _navigationStore;
+        private readonly ModalNavigation _navigationStore;
 
-        public EditReportCommand(EditReportVM editReportVM, ReportStore reportStore, NavigationStore navigationStore)
+        public EditReportCommand(EditReportVM editReportVM, ReportStore reportStore, ModalNavigation navigationStore)
         {
             _editReportVM = editReportVM;
             _reportStore = reportStore;

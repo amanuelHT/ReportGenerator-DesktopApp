@@ -7,7 +7,7 @@ namespace Final_project.ViewModels
     public class AddReportVM : ViewModelBase
     {
         public ReportFormVM ReportFormVM { get; }
-        public AddReportVM(ReportStore reportStore, NavigationStore navigationStore)
+        public AddReportVM(ReportStore reportStore, ModalNavigation navigationStore)
         {
             ICommand submitCommand = new AddReportCommand(this, reportStore, navigationStore);
 

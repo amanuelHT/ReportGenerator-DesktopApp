@@ -6,122 +6,22 @@
         xmlns:local="clr-namespace:Final_project"
         xmlns:views="clr-namespace:Final_project.Views"     
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
-        xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+     
         mc:Ignorable="d"
-         Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized"
-        WindowStyle="None">
+       >
 
-    <Border Background="#272537">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <ContentControl Content="{Binding CurrentView}"/>
 
-            <TextBlock Text="Project"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="20,0,0,0"/>
+    <!--<Grid>
+       
 
-
-            <StackPanel Grid.Row="1">
-                <RadioButton Content="Reports"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource NavigationButtons}"/>
-
-                <RadioButton Content="New report"
-                 Height="50"
-                 Foreground="White"
-                 FontSize="14"
-                 Style="{StaticResource NavigationButtons}"/>
-
-                <RadioButton Content="Quit"
-                 Height="50"
-                 Foreground="White"
-                 FontSize="14"
-                 Style="{StaticResource NavigationButtons}"
-                 Click="Quit"/>
-
-            </StackPanel>
-
-        </Grid>
-    </Border>
-
-
-    
-    
-    <!--<Window.Resources>
-        <DataTemplate DataType="{x:Type vms:AddReportVM}">
-            <views:AddReportView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:EditReportVM}">
-            <views:EditReportView />
-        </DataTemplate>
-    </Window.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid>
-            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}">
-                <ContentControl Margin="50 25" Content="{Binding CurrentVM}" />
-            </modalcontrol:Modal>
-
-            <views:HomeView
-                MaxWidth="1000"
-                Margin="25"
-                DataContext="{Binding HomeVM}" />
-        </Grid>
-    </ScrollViewer>-->
+        --><!-- Home View --><!--
+        <views:HomeView
+            MaxWidth="1000"
+            Margin="25"
+            DataContext="{Binding HomeVM}" />
+    </Grid>-->
 
 </Window>
-
-
-
-
-
-
-
-<!--<Window x:Class="Final_project.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Final_project" 
-        
-        
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">-->
-
-
-
-
-
-<!--xmlns:views="clr-namespace:Final_project.Views"     
-        xmlns:vms="clr-namespace:Final_project.ViewModels" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
-        mc:Ignorable="d"
-        Title="Report Generator" 
-        Height="450" 
-        Width="800"
-        FontSize="16">-->
-
-
-<!--xmlns:boldreports="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
-    
-    
-    <Grid>
-        <boldreports:ReportViewer Name="reportViewer"/>
-
-    </Grid>
-
-
-</Window>-->

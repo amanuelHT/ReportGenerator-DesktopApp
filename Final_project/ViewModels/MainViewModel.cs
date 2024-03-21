@@ -1,42 +1,19 @@
-﻿using Final_project.Stores;
-
-namespace Final_project.ViewModels
+﻿namespace Final_project.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly NavigationStore _navigationStore;
-        public ViewModelBase CurrentVM => _navigationStore.CurrentView;
-        public bool IsFormOpen => _navigationStore.IsOpen;
-
-
-
-
         public HomeVM HomeVM { get; }
 
 
-        public MainViewModel(NavigationStore navigationStore, HomeVM homeVM)
+        public ViewModelBase CurrentView { get; }
+
+        public MainViewModel(HomeVM homeVM)
         {
-            _navigationStore = navigationStore;
-            HomeVM = homeVM;
+            CurrentView = homeVM;
 
-            _navigationStore.CurrentViewChanged += NavigationStore_CurrentViewChanged;
-
-
+            //HomeVM = homeVM;
         }
-
-        protected override void Dispose()
-        {
-            _navigationStore.CurrentViewChanged -= NavigationStore_CurrentViewChanged;
-
-            base.Dispose();
-        }
-
-        private void NavigationStore_CurrentViewChanged()
-        {
-            OnPropertyChanged(nameof(CurrentVM));
-            OnPropertyChanged(nameof(IsFormOpen));
-
-        }
-
     }
 }
+
+
