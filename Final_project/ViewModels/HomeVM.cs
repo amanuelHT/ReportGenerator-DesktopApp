@@ -31,7 +31,7 @@ namespace Final_project.ViewModels
             OnPropertyChanged(nameof(IsFormOpen));
         }
 
-        protected override void Dispose()
+        public override void Dispose()
         {
             _navigationStore.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
             base.Dispose();

@@ -1,6 +1,4 @@
-﻿using Final_project.Stores;
-using Final_project.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Final_project.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,8 +12,8 @@ namespace Final_project.Views
             InitializeComponent();
             // Access the ServiceProvider from the App class and use it to get the required service
 
-            var reportStore = ((App)Application.Current).ServiceProvider.GetRequiredService<ReportStore>();
-            DataContext = new ReportViewerVM(reportStore);
+            //var reportStore = ((App)Application.Current).ServiceProvider.GetRequiredService<ReportStore>();
+            // DataContext = new ReportViewerVM(reportStore);
 
             this.Loaded += OnGenerateReportClick;
 

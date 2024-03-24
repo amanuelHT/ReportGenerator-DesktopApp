@@ -22,7 +22,7 @@ namespace Final_project.ViewModels
             _selectedReportStore.SelectedReportChanged += _selectedReportStore_SelectedReportChanged;
         }
 
-        protected override void Dispose()
+        public override void Dispose()
         {
             _selectedReportStore.SelectedReportChanged -= _selectedReportStore_SelectedReportChanged;
 

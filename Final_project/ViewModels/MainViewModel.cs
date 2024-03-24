@@ -2,18 +2,21 @@
 {
     public class MainViewModel : ViewModelBase
     {
-        public HomeVM HomeVM { get; }
+        private readonly NavigationStore _navigation;
 
+        public ViewModelBase CurrentViewModel => _navigation.CurrentViewModel;
 
-        public ViewModelBase CurrentView { get; }
-
-        public MainViewModel(HomeVM homeVM)
+        public MainViewModel(NavigationStore navigation)
         {
-            CurrentView = homeVM;
+            _navigation = navigation;
 
-            //HomeVM = homeVM;
+            _navigation.CurrentViewModelChanged += GetOnCurrentViewModelChanged;
         }
+
+        private void GetOnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
     }
 }
-
-

@@ -92,7 +92,7 @@ namespace Final_project.ViewModels
 
 
 
-        protected override void Dispose()
+        public override void Dispose()
         {
             _reportStore.ReportAdded -= ReportStore_ReportStoreAdded;
             _reportStore.ReportUpdated -= ReportStore_ReportStoreUpdated;

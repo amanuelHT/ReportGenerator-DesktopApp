@@ -6,22 +6,28 @@
         xmlns:local="clr-namespace:Final_project"
         xmlns:views="clr-namespace:Final_project.Views"     
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
-     
+        xmlns:components="clr-namespace:Final_project.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized"
-       >
+        WindowState="Maximized">
+    <ContentControl Content="{Binding CurrentViewModel}" Grid.Column="1">
+        <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vms:LoginVM}">
+                    <views:LoginView/>
+                </DataTemplate>
 
-    <ContentControl Content="{Binding CurrentView}"/>
+                <DataTemplate DataType="{x:Type vms:AccountVM}">
+                    <views:AccountView/>
+                </DataTemplate>
 
-    <!--<Grid>
-       
+                <DataTemplate DataType="{x:Type vms:SettingsVM}">
+                    <views:SettingsView/>
+                </DataTemplate>
 
-        --><!-- Home View --><!--
-        <views:HomeView
-            MaxWidth="1000"
-            Margin="25"
-            DataContext="{Binding HomeVM}" />
-    </Grid>-->
-
+            <DataTemplate DataType="{x:Type vms:LayoutVM}">
+                <components:LayoutView/>
+            </DataTemplate>
+        </ContentControl.Resources>
+        </ContentControl>
+   
 </Window>

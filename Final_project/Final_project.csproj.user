@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\LayoutView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\NavigationBarView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\ReportDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +25,9 @@
     <Compile Update="Components\ReportListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AccountView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AddReportView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,7 +37,13 @@
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ReportViewerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SettingsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -41,6 +56,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\LayoutView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\NavigationBarView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\ReportDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -65,6 +86,9 @@
     <Page Update="Styles\TextBlockStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AccountView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AddReportView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -74,7 +98,13 @@
     <Page Update="Views\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ReportViewerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,10 +1,15 @@
 ﻿
-FC:\Users\tMoon\Desktop\Final--project\Final_project\App.xaml;;
+
+FC:\Users\tMoon\Desktop\Final--project\Final_project\Components\LayoutView.xaml;;
+FC:\Users\tMoon\Desktop\Final--project\Final_project\Components\NavigationBarView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Components\ReportDetailsView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Components\ReportListItemV.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Components\ReportListView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\MainWindow.xaml;;
+FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\AccountView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\AddReportView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\EditReportView.xaml;;
 FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\HomeView.xaml;;
+FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\LoginView.xaml;;
+FC:\Users\tMoon\Desktop\Final--project\Final_project\Views\SettingsView.xaml;;
 
