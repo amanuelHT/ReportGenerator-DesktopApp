@@ -4,20 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Components"
-             xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl" xmlns:loadingspinner="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinner"
+             xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
+             xmlns:loadingspinner="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinner" 
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ReportListingItemVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Border Padding="10" TextBlock.FontSize="16">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Text="{Binding Tittle}" />
-            
-            <!--<StackPanel Grid.Column="0">
+
+            <StackPanel Grid.Column="0">
                 <TextBlock Text="{Binding Tittle}" />
 
                 <TextBlock
@@ -40,7 +44,7 @@
                         </Style>
                     </Grid.Style>
 
-                   <loadingspinner:LoadingSpinner
+                    <loadingspinner:LoadingSpinner
                         Diameter="20"
                         IsLoading="True"
                         Thickness="2" />
@@ -56,9 +60,9 @@
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
-                    </Grid.Style>-->
+                    </Grid.Style>
 
-                    <dropdownmenucontrol:DropdownMenu x:Name="dropdown" Grid.Column="1" Margin="10 0 0 0" >
+                    <dropdownmenucontrol:DropdownMenu x:Name="dropdown">
                         <Border
                             Background="White"
                             BorderBrush="Gray"
@@ -112,15 +116,14 @@
                                     </Style>
                                 </StackPanel.Resources>
 
-                                <Button Content="Edit" FontSize="16"  Command="{Binding EditCommand}"/>
-
-                                <!-- Delete Button -->
-                                <Button Content="Delete" FontSize="16" Style="{StaticResource DeleteButtonStyle}" />
+                                <Button Command="{Binding EditCommand}" Content="Edit" />
+                                <Button Command="{Binding DeleteCommand}" Content="Delete" />
                             </StackPanel>
                         </Border>
                     </dropdownmenucontrol:DropdownMenu>
-            
                 </Grid>
-         
+            </Grid>
+        </Grid>
     </Border>
+
 </UserControl>

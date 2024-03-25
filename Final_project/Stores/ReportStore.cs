@@ -35,6 +35,7 @@ namespace Final_project.Stores
         public event Action ReportModelLoaded;
         public event Action<ReportModel> ReportAdded;
         public event Action<ReportModel> ReportUpdated;
+        public event Action<Guid> ReportDeleted;
 
 
         public async Task Load()
@@ -74,7 +75,14 @@ namespace Final_project.Stores
 
             ReportUpdated?.Invoke(reportModel);
         }
+        public async Task Delete(Guid id)
+        {
+            await _deleteReportCommand.Execute(id);
 
+            _reportmodel.RemoveAll(y => y.Id == id);
+
+            ReportDeleted?.Invoke(id);
+        }
 
 
 

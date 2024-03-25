@@ -14,9 +14,12 @@ namespace Final_project.ViewModels
         private readonly ObservableCollection<ReportListingItemVM> _reportListingItemVM;
         public IEnumerable<ReportListingItemVM> ReportListingItemVM => _reportListingItemVM;
 
+
         private ReportListingItemVM _selectedReportListingItemVM;
         private readonly ModalNavigation _navigationStore;
         private readonly ReportStore _reportStore;
+
+
         public ReportListingItemVM SelectedReportListingItemVM
         {
             get
@@ -27,7 +30,6 @@ namespace Final_project.ViewModels
             {
                 _selectedReportListingItemVM = value;
                 OnPropertyChanged(nameof(SelectedReportListingItemVM));
-
                 _selectedReportStore.SelectedReport = _selectedReportListingItemVM?.ReportModel;
             }
 
@@ -48,7 +50,7 @@ namespace Final_project.ViewModels
             _reportStore.ReportAdded += ReportStore_ReportStoreAdded;
             _reportStore.ReportUpdated += ReportStore_ReportStoreUpdated;
             _reportStore.ReportModelLoaded += ReportStore_ReportModelLoaded;
-
+            _reportStore.ReportDeleted += ReportStore_Deleted;
 
             LoadReportCommand = new LoadReportCommand(reportStore);
 
@@ -67,7 +69,6 @@ namespace Final_project.ViewModels
 
         {
             ReportListVM viewmodel = new ReportListVM(reportStore, selectedReportStore, navigationStore);
-
             viewmodel.LoadReportCommand.Execute(null);
             return viewmodel;
         }
@@ -89,6 +90,15 @@ namespace Final_project.ViewModels
             }
 
         }
+        private void ReportStore_Deleted(Guid id)
+        {
+            ReportListingItemVM itemViewModel = _reportListingItemVM.FirstOrDefault(y => y.ReportModel?.Id == id);
+
+            if (itemViewModel != null)
+            {
+                _reportListingItemVM.Remove(itemViewModel);
+            }
+        }
 
 
 
@@ -96,8 +106,9 @@ namespace Final_project.ViewModels
         {
             _reportStore.ReportAdded -= ReportStore_ReportStoreAdded;
             _reportStore.ReportUpdated -= ReportStore_ReportStoreUpdated;
-
             _reportStore.ReportModelLoaded -= ReportStore_ReportModelLoaded;
+            _reportStore.ReportDeleted -= ReportStore_Deleted;
+
 
             base.Dispose();
         }

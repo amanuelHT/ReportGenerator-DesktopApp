@@ -10,6 +10,39 @@ namespace Final_project.ViewModels
         public ReportModel ReportModel { get; private set; }
 
         public string Tittle => ReportModel.Tittle;
+
+
+        private bool _isDeleting;
+        public bool IsDeleting
+        {
+            get
+            {
+                return _isDeleting;
+            }
+            set
+            {
+                _isDeleting = value;
+                OnPropertyChanged(nameof(IsDeleting));
+            }
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+                OnPropertyChanged(nameof(HasErrorMessage));
+            }
+        }
+
+        public bool HasErrorMessage => !string.IsNullOrEmpty(ErrorMessage);
+
         public ICommand EditCommand { get; }
 
         public ICommand DeleteCommand { get; }
@@ -23,6 +56,7 @@ namespace Final_project.ViewModels
             ReportModel = reportModel;
 
             EditCommand = new OpenEditCommand(this, reportStore, navigationStore);
+            DeleteCommand = new DeleteReportCommand(this, reportStore);
         }
 
         internal void UpdateReport(ReportModel reportModel)
