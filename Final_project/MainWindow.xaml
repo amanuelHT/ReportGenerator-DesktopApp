@@ -8,8 +8,9 @@
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
         xmlns:components="clr-namespace:Final_project.Components"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized">
+        Title="Report Generator"
+        d:DesignHeight="450" d:DesignWidth="800">
+    
     <ContentControl Content="{Binding CurrentViewModel}" Grid.Column="1">
         <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type vms:LoginVM}">
