@@ -48,6 +48,8 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+           <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <TextBlock
@@ -70,13 +72,26 @@
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
         <Button
-            Grid.Column="3"
+             Grid.Column="3"
+             Margin="10 0 0 0"
+             Command="{Binding NavigateGeneratedReportListingCommand}"
+             Content="Generated Reports" />
+        
+        <Button
+            Grid.Column="4"
             Margin="10 0 0 0"
             Command="{Binding NavigateLoginCommand}"
             Content="Login" />
 
+
         <Button
-             Grid.Column="4"
+            Grid.Column="5"
+            Margin="10 0 0 0"
+            Command="{Binding NavigateReportViewerCommand}"
+            Content="Report Viewer" />
+        
+        <Button
+             Grid.Column="6"
              Margin="10 0 0 0"
              Command="{Binding LogoutCommand}"
              Content="Log out" 

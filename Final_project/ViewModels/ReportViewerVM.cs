@@ -1,6 +1,9 @@
 ﻿using Domain.Models;
+using Final_project.Commands;
+using Final_project.Service;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
@@ -8,14 +11,18 @@ namespace Final_project.ViewModels
     {
         private ObservableCollection<ReportModel> _reports;
         private readonly ReportStore _reportStore;
+        public ICommand NavigateGeneratedReportCommand { get; }
 
         public ObservableCollection<ReportModel> Reports => _reports;
 
-        public ReportViewerVM(ReportStore reportStore)
+        public ReportViewerVM(ReportStore reportStore, INavigationService generatedReportNavigationService)
         {
+
             _reportStore = reportStore;
             _reports = new ObservableCollection<ReportModel>();
             LoadReports();
+            NavigateGeneratedReportCommand = new NavigateCommand(generatedReportNavigationService);
+
         }
 
         private async Task LoadReports()

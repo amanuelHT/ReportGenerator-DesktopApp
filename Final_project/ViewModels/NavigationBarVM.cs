@@ -14,8 +14,9 @@ namespace Final_project.ViewModels
         public ICommand NavigateAccountCommand { get; }
         public ICommand NavigateLoginCommand { get; }
 
-        //public ICommand NavigatePeopleListingCommand { get; }
+        public ICommand NavigateGeneratedReportListingCommand { get; }
         public ICommand LogoutCommand { get; }
+        public ICommand NavigateReportViewerCommand { get; }
 
         public bool IsLoggedIn => _accountStore.IsLoggedIn;
 
@@ -23,12 +24,16 @@ namespace Final_project.ViewModels
             AccountStore accountStore,
             INavigationService settingsNavigationService,
             INavigationService accountNavigationService,
-            INavigationService loginNavigationService)
+            INavigationService loginNavigationService,
+            INavigationService generatedReportListingNavigationService,
+            INavigationService reportViewernavigarionService)
         {
             _accountStore = accountStore;
             NavigateSettingsCommand = new NavigateCommand(settingsNavigationService);
             NavigateAccountCommand = new NavigateCommand(accountNavigationService);
             NavigateLoginCommand = new NavigateCommand(loginNavigationService);
+            NavigateGeneratedReportListingCommand = new NavigateCommand(generatedReportListingNavigationService);
+            NavigateReportViewerCommand = new NavigateCommand(reportViewernavigarionService);
             LogoutCommand = new LogoutCommand(_accountStore);
 
             _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;

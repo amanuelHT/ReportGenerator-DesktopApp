@@ -398,3 +398,5 @@ C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Com
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\NavigationBarView.baml
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\LayoutView.g.cs
 C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Components\LayoutView.baml
+C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Views\GeneratedReportsList.g.cs
+C:\Users\tMoon\Desktop\Final--project\Final_project\obj\Debug\net8.0-windows\Views\GeneratedReportsList.baml

@@ -1,8 +1,17 @@
 ﻿using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Report_Generator_Domain.Commands;
+using Report_Generator_Domain.Queries;
+using Report_Generator_EntityFramework;
+using Report_Generator_EntityFramework.Commands;
+using Report_Generator_EntityFramework.Queries;
 using System.Windows;
 
 namespace Final_project
@@ -19,18 +28,77 @@ namespace Final_project
                 .ConfigureServices((context, service) =>
              {
 
+                 //Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
+                 string? connectionString = context.Configuration.GetConnectionString("Sqlite");
+                 service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
+                 service.AddSingleton<ReportModelDbContextFactory>();
+
+
+                 service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
+                 (ViewModelBase)serviceProvider.GetRequiredService(type));
+
+
+                 //navigation service 
+                 service.AddSingleton<INavigation, Navigation>();
+
+
+                 //                //Queries and commands for database services
+                 service.AddSingleton<IGetAllReportsQuery, GetAllReportsQuery>();
+                 service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
+                 service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
+                 service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
+
+
+                 //                //stores , Single source of truth, defnitly Singlton
+                 service.AddSingleton<SelectedReportStore>();
+                 service.AddSingleton<ModalNavigation>();
                  service.AddSingleton<AccountStore>();
                  service.AddSingleton<NavigationStore>();
+                 service.AddSingleton<GeneratedReportStore>();
+                 service.AddSingleton<ReportStore>();
 
                  service.AddSingleton<MainViewModel>();
-                 service.AddSingleton<INavigationService>(s => SettingsNavigarionService(_serviceProvider));
+                 service.AddSingleton<INavigationService>(s => SettingsNavigarionService(s));
 
+                 //the reasion we make them transient is we dispose our viewmodel, if we dispose that means we are not going to use it again, we are going to resolve a new instance if singlton we are going to get a new instance every time venen though disposed
+                 service.AddTransient<SettingsVM>(s => new SettingsVM(LoginNavigarionService(s)));
+
+                 service.AddTransient<AccountVM>(s =>
+                        new AccountVM(s.GetRequiredService<AccountStore>(),
+                        SettingsNavigarionService(s)));
+
+                 service.AddTransient<LoginVM>(s =>
+                        new LoginVM(s.GetRequiredService<AccountStore>(),
+                        AccountNavigarionService(s)));
+
+                 service.AddTransient<GeneratedReportListVM>(s =>
+                  new GeneratedReportListVM(s.GetRequiredService<GeneratedReportStore>(),
+                     GeneratedRListNavigationService(s)));
+
+                 service.AddTransient<ReportViewerVM>(s =>
+                        new ReportViewerVM(s.GetRequiredService<ReportStore>(),
+                      GeneratedRListNavigationService(s)));
+
+
+
+
+
+
+
+
+
+                 service.AddSingleton<NavigationBarVM>(CreateNavigationBarViewModel);
 
                  service.AddSingleton<MainWindow>((services) => new MainWindow()
                  {
                      DataContext = services.GetRequiredService<MainViewModel>()
                  });
 
+
+                 Bold.Licensing.BoldLicenseProvider.RegisterLicense
+                 (
+                      context.Configuration.GetValue<string>("Licensekey")
+                  );
 
 
              })
@@ -65,7 +133,10 @@ namespace Final_project
                  serviceProvider.GetRequiredService<AccountStore>(),
                   SettingsNavigarionService(serviceProvider),
                     AccountNavigarionService(serviceProvider),
-                      LoginNavigarionService(serviceProvider));
+                      LoginNavigarionService(serviceProvider),
+                       GeneratedRListNavigationService(serviceProvider),
+                       ReportViewerNavigationService(serviceProvider)
+                       );
         }
 
 
@@ -73,9 +144,27 @@ namespace Final_project
         {
             return new LayoutNavigationService<SettingsVM>(
                serviceProvider.GetRequiredService<NavigationStore>(),
-                () => new SettingsVM(LoginNavigarionService(serviceProvider)),
-                 () => CreateNavigationBarViewModel(serviceProvider));
+                () => serviceProvider.GetRequiredService<SettingsVM>(),
+                 () => serviceProvider.GetRequiredService<NavigationBarVM>());
         }
+
+        private INavigationService GeneratedRListNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<GeneratedReportListVM>(
+                  serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<GeneratedReportListVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+
+        }
+        private INavigationService ReportViewerNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<ReportViewerVM>(
+                  serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<ReportViewerVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+
+        }
+
 
         private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
         {
@@ -86,14 +175,13 @@ namespace Final_project
 
         }
 
-
         private INavigationService AccountNavigarionService(IServiceProvider serviceProvider)
         {
             {
                 return new LayoutNavigationService<AccountVM>(
                   serviceProvider.GetRequiredService<NavigationStore>(),
-                   () => new AccountVM(serviceProvider.GetRequiredService<AccountStore>(), SettingsNavigarionService(serviceProvider)),
-                  () => CreateNavigationBarViewModel(serviceProvider));
+                   () => serviceProvider.GetRequiredService<AccountVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
 
 
             }

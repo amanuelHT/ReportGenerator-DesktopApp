@@ -24,6 +24,13 @@
                 <DataTemplate DataType="{x:Type vms:SettingsVM}">
                     <views:SettingsView/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:GeneratedReportListVM}">
+                    <views:GeneratedReportsList/>
+                </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:ReportViewerVM}">
+                <views:ReportViewerView/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type vms:LayoutVM}">
                 <components:LayoutView/>
