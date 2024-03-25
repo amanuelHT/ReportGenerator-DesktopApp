@@ -8,14 +8,11 @@
              >
 
 
-</Application>
-    
-    
-    
-    
-    
-    
-    <!--<Application.Resources>
+
+
+
+
+<Application.Resources>
         <ResourceDictionary>
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:SettingsVM}">
@@ -61,4 +58,9 @@
            
 
         </ResourceDictionary>
-    </Application.Resources>-->
+    </Application.Resources>
+    
+    
+</Application>
+
+

@@ -49,15 +49,18 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock
-            Grid.Column="0"
-            FontSize="14"
-            Foreground="White"
-            Text="Navigation Demo" />
+       
 
+        <Button
+           Grid.Column="0"
+           Margin="10 0 0 0"
+           Command="{Binding NavigatHomeCommand}"
+           Content="Home" />
+        
         <Button
             Grid.Column="1"
             Margin="10 0 0 0"

@@ -1,4 +1,5 @@
 ﻿using Final_project.Commands;
+using Final_project.Service;
 using Final_project.Stores;
 using System.Windows.Input;
 
@@ -13,14 +14,18 @@ namespace Final_project.ViewModels
         public ReportDetailsVM ReportDetailsVM { get; }
         public ReportListVM ReportListVM { get; }
         public ICommand AddReportCommand { get; }
+        public ICommand NavigatHomeCommand { get; }
 
-        public HomeVM(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore)
+        public HomeVM(ReportStore reportStore, SelectedReportStore selectedReportStore,
+             ModalNavigation navigationStore,
+            INavigationService navigationService)
         {
             _navigationStore = navigationStore;
             ReportDetailsVM = new ReportDetailsVM(selectedReportStore);
             ReportListVM = ReportListVM.loadViewModel(reportStore, selectedReportStore, navigationStore);
 
             AddReportCommand = new OpenAddCommand(reportStore, navigationStore);
+
 
             _navigationStore.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
         }
@@ -38,9 +43,9 @@ namespace Final_project.ViewModels
         }
 
 
-        public static HomeVM LoadHome(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore)
+        public static HomeVM LoadHome(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore, INavigationService navigationService)
         {
-            HomeVM viewModel = new HomeVM(reportStore, selectedReportStore, navigationStore);
+            HomeVM viewModel = new HomeVM(reportStore, selectedReportStore, navigationStore, navigationService);
 
             //viewModel.HomeVMCommand.Execute(null);
 

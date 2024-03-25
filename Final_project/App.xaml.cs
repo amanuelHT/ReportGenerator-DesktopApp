@@ -61,6 +61,17 @@ namespace Final_project
                  service.AddSingleton<INavigationService>(s => SettingsNavigarionService(s));
 
                  //the reasion we make them transient is we dispose our viewmodel, if we dispose that means we are not going to use it again, we are going to resolve a new instance if singlton we are going to get a new instance every time venen though disposed
+
+
+                 service.AddTransient<HomeVM>(s =>
+                       new HomeVM(
+                               s.GetRequiredService<ReportStore>(),
+                               s.GetRequiredService<SelectedReportStore>(),
+                               s.GetRequiredService<ModalNavigation>(),
+                                  s.GetRequiredService<INavigationService>())
+                               );
+
+
                  service.AddTransient<SettingsVM>(s => new SettingsVM(LoginNavigarionService(s)));
 
                  service.AddTransient<AccountVM>(s =>
@@ -135,7 +146,8 @@ namespace Final_project
                     AccountNavigarionService(serviceProvider),
                       LoginNavigarionService(serviceProvider),
                        GeneratedRListNavigationService(serviceProvider),
-                       ReportViewerNavigationService(serviceProvider)
+                       ReportViewerNavigationService(serviceProvider),
+                       HomeNavigationService(serviceProvider)
                        );
         }
 
@@ -146,6 +158,15 @@ namespace Final_project
                serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<SettingsVM>(),
                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+        }
+
+        private INavigationService HomeNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<HomeVM>(
+                  serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<HomeVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+
         }
 
         private INavigationService GeneratedRListNavigationService(IServiceProvider serviceProvider)
