@@ -13,7 +13,28 @@
 
     <ContentControl Content="{Binding CurrentViewModel}" Grid.Column="1">
         <ContentControl.Resources>
-          
+            <DataTemplate DataType="{x:Type vms:LoginVM}">
+                <views:LoginView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:AccountVM}">
+                <views:AccountView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:SettingsVM}">
+                <views:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GeneratedReportListVM}">
+                <views:GeneratedReportsList/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:ReportViewerVM}">
+                <views:ReportViewerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:LayoutVM}">
+                <components:LayoutView/>
+            </DataTemplate>
         </ContentControl.Resources>
     </ContentControl>
 
