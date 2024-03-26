@@ -39,3 +39,63 @@ obj/
 .vs/
 *.opendb
 *.dbmdl
+# Ignore Visual Studio temporary files and user settings
+.vs/
+
+# Ignore compiled binary, debug, and release output
+bin/
+obj/
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+
+# Ignore all NuGet packages
+packages/
+
+# Enable "build/" if you have build artifacts that you want to ignore
+# build/
+
+# Ignore the NuGet package related files
+*.nupkg
+*.snupkg
+
+# Ignore the NuGet symbol related files
+*.snupkg
+
+# Ignore the local NuGet feeds
+**/packages/*
+
+# Ignore NuGet personal access tokens
+~/.nuget/
+
+# Ignore temporary files created by the operating system or editors
+[Tt]emp/
+[Tt]mp/
+[Tt]mp.*/
+*.[Tt]mp
+*.bak
+*.cache
+*.log
+*.dll
+*.exe
+*.pdb
+*.olb
+*.blg
+*.bbl
+*.aux
+*.out
+*.o
+*.lof
+
+# Ignore specific file patterns in .obj/ directory
+**/obj/**/*.g.cs
+**/obj/**/*.g.i.cs
+**/obj/**/*.AssemblyInfo.cs
+**/obj/**/*.generated.cs
+**/obj/**/*.runtimeconfig.json
+**/obj/**/*.deps.json
+**/obj/**/apphost.exe
+**/obj/**/refint/*.dll
+**/obj/**/ref/*.dll
