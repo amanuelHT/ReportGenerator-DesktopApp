@@ -20,6 +20,13 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]ogs/
+bin/
+obj/
+.vs/
+*.suo
+*.user
+*.userprefs
+
 
 # Temporary files
 *.tmp
