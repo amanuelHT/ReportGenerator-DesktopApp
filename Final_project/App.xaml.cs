@@ -1,6 +1,7 @@
 ﻿using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Firebase.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -12,7 +13,6 @@ using Report_Generator_Domain.Queries;
 using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
-using Firebase.Auth;
 using System.Windows;
 
 namespace Final_project
@@ -91,7 +91,7 @@ namespace Final_project
                  service.AddTransient<LoginVM>(s => new LoginVM(
                        s.GetRequiredService<AccountStore>(),
                        AccountNavigarionService(s),
-                       s.GetRequiredService<FirebaseAuthProvider>())); 
+                       s.GetRequiredService<FirebaseAuthProvider>()));
                  // Notice how each service is retrieved inside the lambda
 
                  //service.AddTransient<LoginVM>(s =>
@@ -144,6 +144,15 @@ namespace Final_project
             INavigationService initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
             initialNavigationService.Navigate();
 
+
+            ReportModelDbContextFactory reportModelDbContextFactory =
+                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            using (ReportModelDbContext context = reportModelDbContextFactory.Create())
+
+            {
+                context.Database.Migrate();
+
+            }
 
             // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
@@ -204,17 +213,17 @@ namespace Final_project
         }
 
         private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
-{
-    return new LayoutNavigationService<LoginVM>(
-        serviceProvider.GetRequiredService<NavigationStore>(),
-        () => new LoginVM(
-            serviceProvider.GetRequiredService<AccountStore>(),
-            AccountNavigarionService(serviceProvider),
-            serviceProvider.GetRequiredService<FirebaseAuthProvider>() 
-        ),
-        () => CreateNavigationBarViewModel(serviceProvider)
-    );
-}
+        {
+            return new LayoutNavigationService<LoginVM>(
+              serviceProvider.GetRequiredService<NavigationStore>(),
+                 () => new LoginVM(
+                serviceProvider.GetRequiredService<AccountStore>(),
+                AccountNavigarionService(serviceProvider),
+                serviceProvider.GetRequiredService<FirebaseAuthProvider>()
+            ),
+            () => CreateNavigationBarViewModel(serviceProvider)
+        );
+        }
 
 
         //private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
