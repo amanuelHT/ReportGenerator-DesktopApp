@@ -2,7 +2,7 @@
 
 namespace Final_project.ViewModels
 {
-    public class ReportFormVM : ViewModelBase
+    public class ReportFormVM(ICommand submitCommand, ICommand cancelCommand) : ViewModelBase
     {
 
 
@@ -52,15 +52,7 @@ namespace Final_project.ViewModels
         }
 
         public bool CanSubmit => !string.IsNullOrEmpty(Tittle);
-        public ICommand SubmitCommand { get; }
-        public ICommand CancelCommand { get; }
-
-        public ReportFormVM(ICommand submitCommand, ICommand cancelCommand)
-        {
-            SubmitCommand = submitCommand;
-            CancelCommand = cancelCommand;
-        }
-
-
+        public ICommand SubmitCommand { get; } = submitCommand;
+        public ICommand CancelCommand { get; } = cancelCommand;
     }
 }

@@ -235,8 +235,6 @@ namespace Final_project
                   serviceProvider.GetRequiredService<NavigationStore>(),
                    () => serviceProvider.GetRequiredService<AccountVM>(),
                   () => serviceProvider.GetRequiredService<NavigationBarVM>());
-
-
             }
         }
     }
