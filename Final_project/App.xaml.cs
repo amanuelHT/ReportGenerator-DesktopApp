@@ -12,6 +12,7 @@ using Report_Generator_Domain.Queries;
 using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
+using Firebase.Auth;
 using System.Windows;
 
 namespace Final_project
@@ -27,6 +28,13 @@ namespace Final_project
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, service) =>
              {
+
+
+                 string firebaseApiKey = context.Configuration.GetValue<string>("FIREBASE_API_KEY");
+                 FirebaseAuthProvider firebaseAuthProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
+                 service.AddSingleton<FirebaseAuthProvider>(firebaseAuthProvider);
+
+
 
                  //Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
                  string? connectionString = context.Configuration.GetConnectionString("Sqlite");
@@ -60,7 +68,9 @@ namespace Final_project
                  service.AddSingleton<MainViewModel>();
                  service.AddSingleton<INavigationService>(s => SettingsNavigarionService(s));
 
-                 //the reasion we make them transient is we dispose our viewmodel, if we dispose that means we are not going to use it again, we are going to resolve a new instance if singlton we are going to get a new instance every time venen though disposed
+                 //the reasion we make them transient is we dispose our viewmodel,
+                 //if we dispose that means we are not going to use it again, we are going to resolve a new instance
+                 //if singlton we are going to get a new instance every time venen though disposed
 
 
                  service.AddTransient<HomeVM>(s =>
@@ -78,9 +88,16 @@ namespace Final_project
                         new AccountVM(s.GetRequiredService<AccountStore>(),
                         SettingsNavigarionService(s)));
 
-                 service.AddTransient<LoginVM>(s =>
-                        new LoginVM(s.GetRequiredService<AccountStore>(),
-                        AccountNavigarionService(s)));
+                 service.AddTransient<LoginVM>(s => new LoginVM(
+                       s.GetRequiredService<AccountStore>(),
+                       AccountNavigarionService(s),
+                       s.GetRequiredService<FirebaseAuthProvider>())); 
+                 // Notice how each service is retrieved inside the lambda
+
+                 //service.AddTransient<LoginVM>(s =>
+                 //       new LoginVM(s.GetRequiredService<AccountStore>(),
+                 //       AccountNavigarionService(s),
+                 //       s.GetRequiredKeyedService<firebaseAuthProvider>()));
 
                  service.AddTransient<GeneratedReportListVM>(s =>
                   new GeneratedReportListVM(s.GetRequiredService<GeneratedReportStore>(),
@@ -142,9 +159,9 @@ namespace Final_project
 
             return new NavigationBarVM(
                  serviceProvider.GetRequiredService<AccountStore>(),
+                  LoginNavigarionService(serviceProvider),
                   SettingsNavigarionService(serviceProvider),
                     AccountNavigarionService(serviceProvider),
-                      LoginNavigarionService(serviceProvider),
                        GeneratedRListNavigationService(serviceProvider),
                        ReportViewerNavigationService(serviceProvider),
                        HomeNavigationService(serviceProvider)
@@ -186,15 +203,30 @@ namespace Final_project
 
         }
 
-
         private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
-        {
-            return new LayoutNavigationService<LoginVM>(
-                  serviceProvider.GetRequiredService<NavigationStore>(),
-                   () => new LoginVM(serviceProvider.GetRequiredService<AccountStore>(), AccountNavigarionService(serviceProvider)),
-                   () => CreateNavigationBarViewModel(serviceProvider));
+{
+    return new LayoutNavigationService<LoginVM>(
+        serviceProvider.GetRequiredService<NavigationStore>(),
+        () => new LoginVM(
+            serviceProvider.GetRequiredService<AccountStore>(),
+            AccountNavigarionService(serviceProvider),
+            serviceProvider.GetRequiredService<FirebaseAuthProvider>() 
+        ),
+        () => CreateNavigationBarViewModel(serviceProvider)
+    );
+}
 
-        }
+
+        //private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
+        //{
+        //    return new LayoutNavigationService<LoginVM>(
+        //          serviceProvider.GetRequiredService<NavigationStore>(),
+        //           () => new LoginVM(serviceProvider.GetRequiredService<AccountStore>(), 
+        //           serviceProvider.GetRequiredService<FirebaseAuthProvider>(), 
+        //           AccountNavigarionService(serviceProvider)),
+        //           () => CreateNavigationBarViewModel(serviceProvider));
+
+        //}
 
         private INavigationService AccountNavigarionService(IServiceProvider serviceProvider)
         {
