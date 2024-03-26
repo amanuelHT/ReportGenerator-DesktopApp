@@ -6611,23 +6611,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tMoon\\.nuget\\packages\\": {},
+    "C:\\Users\\Aman\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj",
+      "projectUniqueName": "C:\\Users\\Aman\\source\\repos\\Final--project\\Final_project\\Final_project.csproj",
       "projectName": "Final_project",
-      "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\Final_project.csproj",
-      "packagesPath": "C:\\Users\\tMoon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Final_project\\obj\\",
+      "projectPath": "C:\\Users\\Aman\\source\\repos\\Final--project\\Final_project\\Final_project.csproj",
+      "packagesPath": "C:\\Users\\Aman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aman\\source\\repos\\Final--project\\Final_project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\tMoon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6636,7 +6636,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WinUI\\24.1.41\\NuGetPackages": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -6644,11 +6643,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj": {
-              "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj"
+            "C:\\Users\\Aman\\source\\repos\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj": {
+              "projectPath": "C:\\Users\\Aman\\source\\repos\\Final--project\\Report-Generator-Domain\\Report-Generator-Domain.csproj"
             },
-            "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj": {
-              "projectPath": "C:\\Users\\tMoon\\Desktop\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj"
+            "C:\\Users\\Aman\\source\\repos\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\Aman\\source\\repos\\Final--project\\Report-Generator-EntityFramework\\Report-Generator-EntityFramework.csproj"
             }
           }
         }
@@ -6716,7 +6715,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
