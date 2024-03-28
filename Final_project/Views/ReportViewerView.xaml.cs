@@ -1,4 +1,5 @@
 ﻿using Final_project.ViewModels;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,36 +11,54 @@ namespace Final_project.Views
         public ReportViewerView()
         {
             InitializeComponent();
-            // Access the ServiceProvider from the App class and use it to get the required service
-
-            //var reportStore = ((App)Application.Current).ServiceProvider.GetRequiredService<ReportStore>();
-            // DataContext = new ReportViewerVM(reportStore);
 
             this.Loaded += OnGenerateReportClick;
 
         }
 
 
-
-
         private void OnGenerateReportClick(object sender, RoutedEventArgs e)
         {
             try
             {
-
                 var viewModel = DataContext as ReportViewerVM;
 
-                // Assuming "ProductList.GetData()" is your data source method
                 this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
-                this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "DataSet1", Value = viewModel.Reports });
-                this.reportViewer.RefreshReport();
+
+                // Use the selected report's data
+                if (viewModel.SelectedReportData != null)
+                {
+                    DataTable reportDataTable = new DataTable("SelectedReportData");
+
+                    // Add columns for each property
+                    foreach (var property in viewModel.SelectedReportData.GetType().GetProperties())
+                    {
+                        reportDataTable.Columns.Add(property.Name, property.PropertyType);
+                    }
+
+                    // Add a row with values of those properties
+                    DataRow row = reportDataTable.NewRow();
+                    foreach (var property in viewModel.SelectedReportData.GetType().GetProperties())
+                    {
+                        row[property.Name] = property.GetValue(viewModel.SelectedReportData);
+                    }
+                    reportDataTable.Rows.Add(row);
+
+                    this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "DataSet1", Value = reportDataTable });
+                    this.reportViewer.RefreshReport();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading report: " + ex.Message);
             }
+
+
         }
+
     }
+
 }
+

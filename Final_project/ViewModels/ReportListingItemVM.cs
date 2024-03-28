@@ -45,18 +45,24 @@ namespace Final_project.ViewModels
 
         public ICommand EditCommand { get; }
 
+        public ICommand GenerateReport { get; }
+
         public ICommand DeleteCommand { get; }
         public ReportStore ReportStore { get; }
+
         public ModalNavigation ModalNavigation { get; }
 
 
 
-        public ReportListingItemVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation navigationStore)
+        public ReportListingItemVM(ReportModel reportModel,
+            ReportStore reportStore, ModalNavigation navigationStore)
         {
-            ReportModel = reportModel;
 
+            ReportModel = reportModel;
             EditCommand = new OpenEditCommand(this, reportStore, navigationStore);
             DeleteCommand = new DeleteReportCommand(this, reportStore);
+            GenerateReport = new DeleteReportCommand(this, reportStore);
+
         }
 
         internal void UpdateReport(ReportModel reportModel)

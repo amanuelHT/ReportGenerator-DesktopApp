@@ -14,6 +14,8 @@ namespace Final_project.Stores
         private readonly ICreateReportCommand _createReportCommand;
         private readonly IDeleteReportCommand _deleteReportCommand;
         private readonly IUpdateReportCommand _updateReportCommand;
+        private readonly IGetReportDataCommand _getReportDataCommand;
+
 
 
         private readonly List<ReportModel> _reportmodel;
@@ -21,12 +23,15 @@ namespace Final_project.Stores
         public ReportStore(IGetAllReportsQuery query,
             ICreateReportCommand createReportCommand,
             IDeleteReportCommand deleteReportCommand,
-            IUpdateReportCommand updateReportCommand)
+            IUpdateReportCommand updateReportCommand,
+             IGetReportDataCommand getReportDataCommand
+            )
         {
             _query = query;
             _createReportCommand = createReportCommand;
             _deleteReportCommand = deleteReportCommand;
             _updateReportCommand = updateReportCommand;
+            _getReportDataCommand = getReportDataCommand;
 
 
             _reportmodel = new List<ReportModel>();
@@ -85,7 +90,17 @@ namespace Final_project.Stores
         }
 
 
+        public async Task<ReportModel> GetReportData(Guid reportId)
+        {
+            return await _getReportDataCommand.Execute(reportId);
+        }
 
+        // Other methods...
     }
 
+
+
+
 }
+
+

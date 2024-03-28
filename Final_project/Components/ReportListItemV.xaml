@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Final_project.Components"
              xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
              xmlns:loadingspinner="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinner" 
-             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ReportListingItemVM}"
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:ReportListingItemVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -118,6 +119,7 @@
 
                                 <Button Command="{Binding EditCommand}" Content="Edit" />
                                 <Button Command="{Binding DeleteCommand}" Content="Delete" />
+                                <Button Command="{Binding GenerateReport}" Content="Generate Report" />
                             </StackPanel>
                         </Border>
                     </dropdownmenucontrol:DropdownMenu>

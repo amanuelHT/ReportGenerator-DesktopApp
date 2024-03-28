@@ -55,6 +55,7 @@ namespace Final_project
                  service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
                  service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
+                 service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
 
 
                  //                //stores , Single source of truth, defnitly Singlton
