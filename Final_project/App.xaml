@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Final_project"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
-             xmlns:views="clr-namespace:Final_project.Views"
-             
-             >
+             xmlns:views="clr-namespace:Final_project.Views" xmlns:components="clr-namespace:Final_project.Components">
 
 
 
@@ -45,6 +43,18 @@
                 <views:ReportViewerView/>
             </DataTemplate>
 
+
+
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:ImageVM}">
+                <components:ImageView/>
+            </DataTemplate>
+
+
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:ImageCollectionVM}">
+                <components:ImageCollectionView/>
+            </DataTemplate>
 
 
 

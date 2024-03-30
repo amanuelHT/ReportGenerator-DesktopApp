@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Report_Generator_Domain.Commands;
+
 using Report_Generator_EntityFramework.DTOs;
 
 namespace Report_Generator_EntityFramework.Commands
@@ -14,7 +15,7 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task Execute(ReportModel reportModel)
+        public async Task Execute(ReportModel reportModel, List<ReportImageModel> images)
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
@@ -24,7 +25,20 @@ namespace Report_Generator_EntityFramework.Commands
                     Tittle = reportModel.Tittle,
                     Status = reportModel.Status,
                     Kunde = reportModel.Kunde,
+                    Images = new List<ReportImageModelDto>()
                 };
+
+
+                foreach (var image in images)
+                {
+                    var imageDto = new ReportImageModelDto
+                    {
+
+                        Name = image.Name,
+                        ImageUrl = image.ImageUrl
+                    };
+                    reportModelDto.Images.Add(imageDto);
+                }
 
                 context.ReportModels.Add(reportModelDto);
                 await context.SaveChangesAsync();
