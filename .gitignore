@@ -99,3 +99,6 @@ packages/
 **/obj/**/apphost.exe
 **/obj/**/refint/*.dll
 **/obj/**/ref/*.dll
+
+# Ignore service account keys
+serviceAccountKey.json
