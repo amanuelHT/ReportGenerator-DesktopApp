@@ -15,6 +15,8 @@ namespace Report_Generator_EntityFramework
         }
 
         public DbSet<ReportModelDto> ReportModels { get; set; }
+        public DbSet<ReportImageModelDto> ReportImageModels { get; set; }
+
     }
 }
 

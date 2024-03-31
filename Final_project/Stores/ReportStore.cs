@@ -52,9 +52,9 @@ namespace Final_project.Stores
             ReportModelLoaded?.Invoke();
         }
 
-        public async Task Add(ReportModel reportModel)
+        public async Task Add(ReportModel reportModel, List<ReportImageModel> images)
         {
-            await _createReportCommand.Execute(reportModel);
+            await _createReportCommand.Execute(reportModel, images);
 
             _reportmodel.Add(reportModel);
             ReportAdded?.Invoke(reportModel);
