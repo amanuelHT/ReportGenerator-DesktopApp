@@ -1,36 +1,38 @@
-﻿
-
-
-using Domain.Models;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using Final_project.ViewModels;
 
-namespace Final_project.Commands
+public class OpenEditCommand : CommandBase
 {
-    public class OpenEditCommand : CommandBase
+    private readonly ModalNavigation _navigationStore;
+    private readonly ReportStore _reportStore;
+    private readonly ReportListingItemVM _reportListingItemVM;
+
+    public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, ModalNavigation navigationStore)
     {
-        private readonly ModalNavigation _navigationStore;
-        //  private readonly ReportModel _reportModel;
-        private readonly ReportStore _reportStore;
-        private readonly ReportListingItemVM _reportListingItemVM;
+        _navigationStore = navigationStore;
+        _reportStore = reportStore;
+        _reportListingItemVM = reportListingItemVM;
+    }
 
-        public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, ModalNavigation navigationStore)
+    public override async void Execute(object parameter)
+    {
+        Guid reportId = _reportListingItemVM.ReportModel.Id;
+
+        // Retrieve the full report data with images
+        ReportModel reportModelWithImages = await _reportStore.GetReportDataWithImages(reportId);
+
+        if (reportModelWithImages == null)
         {
-
-
-            _navigationStore = navigationStore;
-            _reportStore = reportStore;
-            _reportListingItemVM = reportListingItemVM;
-
-
+            // Handle the case where the report is not found or there's an error loading it.
+            return;
         }
 
-        public override void Execute(object parameter)
-        {
-            ReportModel reportModel = _reportListingItemVM.ReportModel;
+        // Create the edit report view model with the full report data
+        EditReportVM editReportVM = new EditReportVM(reportModelWithImages, _reportStore, _navigationStore);
 
-            EditReportVM editReportVM = new EditReportVM(reportModel, _reportStore, _navigationStore);
-            _navigationStore.CurrentView = editReportVM;
-        }
+        // Change the current view to the edit report view
+        _navigationStore.CurrentView = editReportVM;
     }
 }

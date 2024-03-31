@@ -28,8 +28,22 @@ namespace Final_project.ViewModels
             {
                 foreach (string filePath in openFileDialog.FileNames)
                 {
-                    Images.Add(new ImageVM(filePath));
+                    var imageVM = new ImageVM(filePath);
+                    // Subscribe to the RequestRemoval action
+                    imageVM.RequestRemoval = RemoveImage;
+                    Images.Add(imageVM);
                 }
+            }
+        }
+
+
+
+
+        private void RemoveImage(ImageVM imageVM)
+        {
+            if (Images.Contains(imageVM))
+            {
+                Images.Remove(imageVM);
             }
         }
     }

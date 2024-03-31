@@ -19,9 +19,9 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportImageModelDto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()

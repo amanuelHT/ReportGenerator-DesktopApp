@@ -11,8 +11,8 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240330085148_AddReportImageModel")]
-    partial class AddReportImageModel
+    [Migration("20240331181919_ReportImageModels")]
+    partial class ReportImageModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,9 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportImageModelDto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()

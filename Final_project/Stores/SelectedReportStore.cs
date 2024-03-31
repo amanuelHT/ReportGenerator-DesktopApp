@@ -37,6 +37,10 @@ namespace Final_project.Stores
             }
         }
 
+
+
+
+
         public event Action SelectedReportChanged;
 
         protected virtual void OnSelectedReportChanged()

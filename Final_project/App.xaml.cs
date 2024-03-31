@@ -28,7 +28,7 @@ namespace Final_project
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, service) =>
              {
-                
+
                  string firebaseApiKey = context.Configuration.GetValue<string>("FIREBASE_API_KEY");
                  FirebaseAuthProvider firebaseAuthProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
                  service.AddSingleton<FirebaseAuthProvider>(firebaseAuthProvider);
@@ -55,6 +55,7 @@ namespace Final_project
                  service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
+                 service.AddSingleton<IGetReportImageCommand, GetReportImageCommand>();
 
 
                  //                //stores , Single source of truth, defnitly Singlton

@@ -58,6 +58,12 @@ namespace Final_project.ViewModels
 
             // Initialize ImageViewModel
             ImageCollectionViewModel = new ImageCollectionVM();
+
+
+        }
+        public void RemoveImage(ImageVM imageVM)
+        {
+            ImageCollectionViewModel.Images.Remove(imageVM);
         }
     }
 }
