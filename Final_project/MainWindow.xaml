@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final_project"
-        xmlns:views="clr-namespace:Final_project.Views"     
+        xmlns:views="clr-namespace:Final_project.Views"  
         xmlns:vms="clr-namespace:Final_project.ViewModels" 
         xmlns:components="clr-namespace:Final_project.Components"
         mc:Ignorable="d"
@@ -35,6 +35,11 @@
             <DataTemplate DataType="{x:Type vms:LayoutVM}">
                 <components:LayoutView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:RoleManagementVM}">
+                <views:RoleManagementView/>
+            </DataTemplate>
+
         </ContentControl.Resources>
     </ContentControl>
 

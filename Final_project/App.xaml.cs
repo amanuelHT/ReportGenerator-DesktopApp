@@ -28,8 +28,7 @@ namespace Final_project
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, service) =>
              {
-
-
+                
                  string firebaseApiKey = context.Configuration.GetValue<string>("FIREBASE_API_KEY");
                  FirebaseAuthProvider firebaseAuthProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
                  service.AddSingleton<FirebaseAuthProvider>(firebaseAuthProvider);
@@ -40,7 +39,7 @@ namespace Final_project
                  string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                  service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                  service.AddSingleton<ReportModelDbContextFactory>();
-
+                 Stores.FirestoreHelper.InitializeFirestore();
 
                  service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
                  (ViewModelBase)serviceProvider.GetRequiredService(type));
@@ -72,6 +71,9 @@ namespace Final_project
                  //the reasion we make them transient is we dispose our viewmodel,
                  //if we dispose that means we are not going to use it again, we are going to resolve a new instance
                  //if singlton we are going to get a new instance every time venen though disposed
+
+                 service.AddTransient<RoleManagementVM>(provider =>
+                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));
 
 
                  service.AddTransient<HomeVM>(s =>
@@ -174,8 +176,17 @@ namespace Final_project
                     AccountNavigarionService(serviceProvider),
                        GeneratedRListNavigationService(serviceProvider),
                        ReportViewerNavigationService(serviceProvider),
-                       HomeNavigationService(serviceProvider)
+                       HomeNavigationService(serviceProvider),
+                       RoleManagementNavigationService(serviceProvider)
                        );
+        }
+
+        private INavigationService RoleManagementNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<RoleManagementVM>(
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<RoleManagementVM>(),
+                () => serviceProvider.GetRequiredService<NavigationBarVM>());
         }
 
 

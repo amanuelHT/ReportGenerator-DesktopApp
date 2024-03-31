@@ -19,6 +19,7 @@ namespace Final_project.ViewModels
         public ICommand NavigateReportViewerCommand { get; }
         public ICommand NavigatHomeCommand { get; }
         public bool IsLoggedIn => _accountStore.IsLoggedIn;
+        public ICommand NavigateRoleManagementViewCommand { get; private set; }
 
         public NavigationBarVM(
             AccountStore accountStore,
@@ -27,7 +28,8 @@ namespace Final_project.ViewModels
             INavigationService loginNavigationService,
             INavigationService generatedReportListingNavigationService,
             INavigationService reportViewernavigarionService,
-            INavigationService HomeNavigationService)
+            INavigationService HomeNavigationService,
+            INavigationService roleManagementNavigationService)
         {
             _accountStore = accountStore;
             NavigateSettingsCommand = new NavigateCommand(settingsNavigationService);
@@ -37,6 +39,7 @@ namespace Final_project.ViewModels
             NavigateReportViewerCommand = new NavigateCommand(reportViewernavigarionService);
             NavigatHomeCommand = new NavigateCommand(HomeNavigationService);
             LogoutCommand = new LogoutCommand(_accountStore);
+            NavigateRoleManagementViewCommand = new NavigateCommand(roleManagementNavigationService);
 
             _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;
         }

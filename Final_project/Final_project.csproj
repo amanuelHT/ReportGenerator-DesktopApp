@@ -16,6 +16,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="DropdownMenu.WPF" Version="1.0.0" />
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.6.0" />
     <PackageReference Include="LoadingSpinner" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
@@ -41,6 +42,9 @@
       <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
     </None>
     <None Update="Resources\Report1.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="serviceAccountKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

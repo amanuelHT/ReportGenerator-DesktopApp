@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Components" 
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:NavigationBarVM}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:RoleManagementVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Black"
@@ -61,6 +61,7 @@
         <Button Grid.Column="1" Margin="10 0 0 0" Command="{Binding NavigateSettingsCommand}" Content="Setting" />
         <Button Grid.Column="2" Margin="10 0 0 0" Command="{Binding NavigateGeneratedReportListingCommand}" Content="Generated Reports" />
         <Button Grid.Column="3" Margin="10 0 0 0" Command="{Binding NavigateReportViewerCommand}" Content="Report Viewer" />
+        <Button Grid.Column="4" Margin="10,0,0,0" Command="{Binding NavigateRoleManagementViewCommand}" Content="Role Management" />
 
         <!-- Right-aligned buttons -->
         <Button Grid.Column="5" Margin="10 0 0 0" Command="{Binding NavigateAccountCommand}" Content="Account" 
@@ -68,6 +69,7 @@
         <Button Grid.Column="6" Margin="10 0 0 0" Command="{Binding NavigateLoginCommand}" Content="Login" />
         <Button Grid.Column="7" Margin="10 0 0 0" Command="{Binding LogoutCommand}" Content="Log out" 
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+       
     </Grid>
 
 
