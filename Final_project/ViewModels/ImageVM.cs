@@ -35,6 +35,8 @@ namespace Final_project.ViewModels
             ImageUri = new Uri(imagePath, UriKind.RelativeOrAbsolute);
             ImageId = imageId; // Assign image ID
             RemoveImageCommand = new RelayCommand(RemoveImage);
+
+
         }
 
         private void RemoveImage()

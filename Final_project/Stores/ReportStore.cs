@@ -111,7 +111,7 @@ namespace Final_project.Stores
 
             _reportImagemodel.RemoveAll(y => y.Id == id);
 
-            ReportDeleted?.Invoke(id);
+            ImageDeleted?.Invoke(id);
         }
 
 
