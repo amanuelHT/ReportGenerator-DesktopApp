@@ -10,12 +10,16 @@ namespace Final_project.Stores
             get => _currentAccount;
             set
             {
-                _currentAccount = value;
-                CurrentAccountChanged?.Invoke();
+                if (_currentAccount != value)
+                {
+                    _currentAccount = value;
+                    CurrentAccountChanged?.Invoke();
+                }
             }
         }
 
-        public bool IsLoggedIn => CurrentAccount != null;
+
+    public bool IsLoggedIn => CurrentAccount != null;
 
         public event Action CurrentAccountChanged;
 
@@ -23,5 +27,6 @@ namespace Final_project.Stores
         {
             CurrentAccount = null;
         }
+       
     }
 }
