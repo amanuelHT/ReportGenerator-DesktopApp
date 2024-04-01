@@ -65,7 +65,8 @@ namespace Final_project.ViewModels
             OnPropertyChanged(nameof(Tittle));
             OnPropertyChanged(nameof(Status));
             OnPropertyChanged(nameof(Kunde));
-            LoadImages(_selectedReportStore.SelectedReport.Images);
+
+
         }
     }
 }

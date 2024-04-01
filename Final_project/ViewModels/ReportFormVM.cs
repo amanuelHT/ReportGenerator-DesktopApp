@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using Final_project.Commands;
+using Final_project.Stores;
+using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
@@ -10,7 +12,7 @@ namespace Final_project.ViewModels
 
         // ImageViewModel instance
         public ImageCollectionVM ImageCollectionViewModel { get; }
-
+        public DeleteImageCommand DeleteImageCommand { get; set; }
 
         // Public properties with property change notification
         public string Tittle
@@ -51,7 +53,7 @@ namespace Final_project.ViewModels
         public ICommand CancelCommand { get; }
 
         // Constructor
-        public ReportFormVM(ICommand submitCommand, ICommand cancelCommand)
+        public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore)
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
@@ -59,11 +61,14 @@ namespace Final_project.ViewModels
             // Initialize ImageViewModel
             ImageCollectionViewModel = new ImageCollectionVM();
 
-
+            // Instantiate DeleteImageCommand
+            DeleteImageCommand = new DeleteImageCommand(reportStore);
         }
+
         public void RemoveImage(ImageVM imageVM)
         {
             ImageCollectionViewModel.Images.Remove(imageVM);
+            DeleteImageCommand.ExecuteAsync(imageVM.ImageId);
         }
     }
 }

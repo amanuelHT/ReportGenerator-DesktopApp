@@ -22,7 +22,7 @@ namespace Final_project.ViewModels
             ICommand submitCommand = new EditReportCommand(this, reportStore, navigationStore);
             ICommand cancelCommand = new CloseModalCommand(navigationStore);
 
-            ReportFormVM = new ReportFormVM(submitCommand, cancelCommand)
+            ReportFormVM = new ReportFormVM(submitCommand, cancelCommand, reportStore)
             {
                 Tittle = reportModel.Tittle,
                 Status = reportModel.Status,
@@ -38,7 +38,7 @@ namespace Final_project.ViewModels
 
             foreach (var image in images)
             {
-                var imageVM = new ImageVM(image.ImageUrl);
+                var imageVM = new ImageVM(image.ImageUrl, image.Id);
 
                 imageVM.RequestRemoval = ReportFormVM.RemoveImage;
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);

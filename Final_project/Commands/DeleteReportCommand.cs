@@ -29,7 +29,7 @@ namespace Final_project.Commands
             }
             catch (Exception)
             {
-                _reportListingItemVM.ErrorMessage = "Failed to delete YouTube viewer. Please try again later.";
+                _reportListingItemVM.ErrorMessage = "Failed to deleter. Please try again later.";
             }
             finally
             {

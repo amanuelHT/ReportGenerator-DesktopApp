@@ -13,7 +13,7 @@ namespace Final_project.ViewModels
 
             ICommand cancelCommand = new CloseModalCommand(navigationStore);
 
-            ReportFormVM = new ReportFormVM(submitCommand, cancelCommand);
+            ReportFormVM = new ReportFormVM(submitCommand, cancelCommand, reportStore);
 
 
         }

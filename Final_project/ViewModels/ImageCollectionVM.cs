@@ -28,7 +28,10 @@ namespace Final_project.ViewModels
             {
                 foreach (string filePath in openFileDialog.FileNames)
                 {
-                    var imageVM = new ImageVM(filePath);
+                    // Generate a unique image ID
+                    Guid imageId = Guid.NewGuid();
+
+                    var imageVM = new ImageVM(filePath, imageId);
                     // Subscribe to the RequestRemoval action
                     imageVM.RequestRemoval = RemoveImage;
                     Images.Add(imageVM);
@@ -39,11 +42,13 @@ namespace Final_project.ViewModels
 
 
 
+
         private void RemoveImage(ImageVM imageVM)
         {
             if (Images.Contains(imageVM))
             {
                 Images.Remove(imageVM);
+
             }
         }
     }

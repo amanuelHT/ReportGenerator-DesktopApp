@@ -57,6 +57,8 @@ namespace Final_project
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
                  service.AddSingleton<IGetReportImageCommand, GetReportImageCommand>();
 
+                 service.AddSingleton<IDeleteReportImageCommand, DeleteReportImageCommand>();
+
 
                  //                //stores , Single source of truth, defnitly Singlton
                  service.AddSingleton<SelectedReportStore>();

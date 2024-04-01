@@ -49,6 +49,8 @@ namespace Final_project.Commands
             }
             catch (Exception)
             {
+
+
                 throw;
 
             }

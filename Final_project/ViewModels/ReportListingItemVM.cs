@@ -54,14 +54,16 @@ namespace Final_project.ViewModels
 
 
 
-        public ReportListingItemVM(ReportModel reportModel,
-            ReportStore reportStore, ModalNavigation navigationStore)
+        public ReportListingItemVM(
+            ReportModel reportModel,
+            ReportStore reportStore,
+            ModalNavigation navigationStore)
         {
 
             ReportModel = reportModel;
             EditCommand = new OpenEditCommand(this, reportStore, navigationStore);
             DeleteCommand = new DeleteReportCommand(this, reportStore);
-            GenerateReport = new DeleteReportCommand(this, reportStore);
+
 
         }
 
