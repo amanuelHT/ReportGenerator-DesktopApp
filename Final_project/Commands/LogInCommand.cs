@@ -6,6 +6,8 @@ using Firebase.Auth;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using UserInfo = Report_Generator_Domain.Models.UserInfo;
 
 namespace Final_project.Commands
 {
@@ -31,17 +33,29 @@ namespace Final_project.Commands
             try
             {
                 var auth = await _firebaseAuthProvider.SignInWithEmailAndPasswordAsync(_login.Username, _login.Password);
-                // Assuming you want to create an Account object on successful login
-                Account account = new Account()
-                {
-                    Email = auth.User.Email,
-                    Username = auth.User.Email, 
-                    // Or another identifier if you have it
-                };
 
-                _accountStore.CurrentAccount = account;
-                //MessageBox.Show("LogIn successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Add a step here to retrieve the role from Firestore
+                var userDocument = await FirestoreHelper.Database
+                  .Collection("users")
+                  .Document(auth.User.LocalId)
+                  .GetSnapshotAsync();
+
+                if (userDocument.Exists)
+                {
+                    var userInfo = userDocument.ConvertTo<UserInfo>();
+                    Account account = new Account()
+                    {
+                        Email = auth.User.Email,
+                        Username = auth.User.Email,
+                        Role = userInfo.Role
+                    };
+
+                    _accountStore.CurrentAccount = account;
+               
                 _navigationService.Navigate();
+
+                }
+
             }
             catch (Exception)
             {

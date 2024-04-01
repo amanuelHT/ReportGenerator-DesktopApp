@@ -17,21 +17,7 @@ public class RoleManagementCommand : AsyncCommandBase
 
 
 
-    private bool ValidateInputs()
-    {
-        // Check if any of the required inputs are null, empty, or consist only of white-space characters
-        if (string.IsNullOrWhiteSpace(_viewModel.FirstName) ||
-            string.IsNullOrWhiteSpace(_viewModel.LastName) ||
-            string.IsNullOrWhiteSpace(_viewModel.Email) ||
-            string.IsNullOrWhiteSpace(_viewModel.Password) ||
-            _viewModel.BirthDate == null ||
-            string.IsNullOrWhiteSpace(_viewModel.SelectedRole))
-        {
-            return false;
-        }
-        // Add any additional validation logic here if necessary
-        return true;
-    }
+  
 
     public override async Task ExecuteAsync(object parameter)
     {
@@ -94,9 +80,19 @@ public class RoleManagementCommand : AsyncCommandBase
     }
 
 
-    //private bool ValidateInputs()
-    //{
-    //    // Implement your input validation logic here
-    //    return true;
-    //}
+    private bool ValidateInputs()
+    {
+        // Check if any of the required inputs are null, empty, or consist only of white-space characters
+        if (string.IsNullOrWhiteSpace(_viewModel.FirstName) ||
+            string.IsNullOrWhiteSpace(_viewModel.LastName) ||
+            string.IsNullOrWhiteSpace(_viewModel.Email) ||
+            string.IsNullOrWhiteSpace(_viewModel.Password) ||
+            _viewModel.BirthDate == null ||
+            string.IsNullOrWhiteSpace(_viewModel.SelectedRole))
+        {
+            return false;
+        }
+        // Add any additional validation logic here if necessary
+        return true;
+    }
 }

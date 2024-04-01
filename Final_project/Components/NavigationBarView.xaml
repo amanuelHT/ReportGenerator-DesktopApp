@@ -57,19 +57,24 @@
         </Grid.ColumnDefinitions>
 
         <!-- Left-aligned buttons -->
-        <Button Grid.Column="0" Margin="10 0 0 0" Command="{Binding NavigatHomeCommand}" Content="Home" />
-        <Button Grid.Column="1" Margin="10 0 0 0" Command="{Binding NavigateSettingsCommand}" Content="Setting" />
-        <Button Grid.Column="2" Margin="10 0 0 0" Command="{Binding NavigateGeneratedReportListingCommand}" Content="Generated Reports" />
-        <Button Grid.Column="3" Margin="10 0 0 0" Command="{Binding NavigateReportViewerCommand}" Content="Report Viewer" />
-        <Button Grid.Column="4" Margin="10,0,0,0" Command="{Binding NavigateRoleManagementViewCommand}" Content="Role Management" />
+        <Button Grid.Column="0" Margin="10 0 0 0" Command="{Binding NavigatHomeCommand}" Content="Home" 
+                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button Grid.Column="1" Margin="10 0 0 0" Command="{Binding NavigateSettingsCommand}" Content="Setting" 
+                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button Grid.Column="2" Margin="10 0 0 0" Command="{Binding NavigateGeneratedReportListingCommand}" Content="Generated Reports" 
+                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button Grid.Column="3" Margin="10 0 0 0" Command="{Binding NavigateReportViewerCommand}" Content="Report Viewer" 
+                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button Grid.Column="4" Margin="10 0 0 0" Content="Role Management" Command="{Binding NavigateRoleManagementCommand}" Visibility="{Binding RoleManagementVisibility}" />
+
 
         <!-- Right-aligned buttons -->
         <Button Grid.Column="5" Margin="10 0 0 0" Command="{Binding NavigateAccountCommand}" Content="Account" 
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <Button Grid.Column="6" Margin="10 0 0 0" Command="{Binding NavigateLoginCommand}" Content="Login" />
+        <!--<Button Grid.Column="6" Margin="10 0 0 0" Command="{Binding NavigateLoginCommand}" Content="Login" />-->
         <Button Grid.Column="7" Margin="10 0 0 0" Command="{Binding LogoutCommand}" Content="Log out" 
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
-       
+
     </Grid>
 
 
