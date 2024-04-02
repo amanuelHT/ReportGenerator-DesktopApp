@@ -8,15 +8,15 @@
         public string Kunde { get; }
 
         // Collection of ReportImageModel
-        public List<ReportImageModel> Images { get; private set; }
+        public List<ReportImageModel> Images { get; set; }
 
-        public ReportModel(Guid id, string tittle, bool status, string kunde)
+        public ReportModel(Guid id, string tittle, bool status, string kunde, List<ReportImageModel> images)
         {
             Id = id;
             Tittle = tittle; // Corrected spelling here too
             Status = status;
             Kunde = kunde;
-            Images = new List<ReportImageModel>();
+            Images = images;
         }
 
 

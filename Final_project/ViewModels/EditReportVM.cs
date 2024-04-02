@@ -30,25 +30,15 @@ namespace Final_project.ViewModels
             {
                 Tittle = reportModel.Tittle,
                 Status = reportModel.Status,
-                Kunde = reportModel.Kunde
+                Kunde = reportModel.Kunde,
+                Images = reportModel.Images,
             };
 
-            LoadImages(reportModel.Images);
+
 
         }
 
-        private void LoadImages(IEnumerable<ReportImageModel> images)
-        {
-            if (images == null) return;
 
-            foreach (var image in images)
-            {
-                var imageVM = new ImageVM(image.ImageUrl, image.Id, _reportStore);
-
-
-                ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
-            }
-        }
 
 
     }

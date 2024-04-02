@@ -25,11 +25,11 @@ namespace Final_project.Stores
         private readonly List<ReportImageModel> _reportImagemodel;
 
         public ReportStore(IGetAllReportsQuery query,
-            ICreateReportCommand createReportCommand,
-            IDeleteReportCommand deleteReportCommand,
-            IUpdateReportCommand updateReportCommand,
+             ICreateReportCommand createReportCommand,
+             IDeleteReportCommand deleteReportCommand,
+             IUpdateReportCommand updateReportCommand,
              IGetReportDataCommand getReportDataCommand,
-             IGetReportImageCommand getReportImageCommand,
+              IGetReportImageCommand getReportImageCommand,
              IDeleteReportImageCommand deleteReportImageCommand
 
             )
@@ -67,9 +67,9 @@ namespace Final_project.Stores
             ReportModelLoaded?.Invoke();
         }
 
-        public async Task Add(ReportModel reportModel, List<ReportImageModel> images)
+        public async Task Add(ReportModel reportModel)
         {
-            await _createReportCommand.Execute(reportModel, images);
+            await _createReportCommand.Execute(reportModel);
 
             _reportmodel.Add(reportModel);
             ReportAdded?.Invoke(reportModel);
@@ -78,6 +78,11 @@ namespace Final_project.Stores
 
         public async Task Update(ReportModel reportModel)
         {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> new-branch-name
             await _updateReportCommand.Execute(reportModel);
 
             int currentIndex = _reportmodel.FindIndex(y => y.Id == reportModel.Id);

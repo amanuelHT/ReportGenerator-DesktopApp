@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
 
 namespace Report_Generator_EntityFramework.Commands
@@ -16,16 +17,36 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
+                // Query the report including its associated images
                 var reportModelDto = await context.ReportModels
-                    .FindAsync(reportId);
+                    .Include(report => report.Images) // Include related images
+                    .FirstOrDefaultAsync(report => report.Id == reportId);
 
-                if (reportModelDto == null) return null;
+                if (reportModelDto == null)
+                    return null;
 
-                return new ReportModel(
+                // Convert DTO images to domain model
+                var reportImages = reportModelDto.Images.Select(imageDto =>
+                    new ReportImageModel(
+                        imageDto.Id,
+                        imageDto.Name,
+                        imageDto.ImageUrl))
+                    .ToList();
+
+                // Create the ReportModel object
+                var reportModel = new ReportModel(
                     reportModelDto.Id,
                     reportModelDto.Tittle,
                     reportModelDto.Status,
-                    reportModelDto.Kunde);
+                    reportModelDto.Kunde,
+                    reportImages
+
+                    )
+                {
+
+                };
+
+                return reportModel;
             }
         }
     }

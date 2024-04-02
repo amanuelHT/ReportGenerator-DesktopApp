@@ -7,7 +7,6 @@ namespace Report_Generator_EntityFramework.Queries
 {
     public class GetAllReportsQuery : IGetAllReportsQuery
     {
-
         private readonly ReportModelDbContextFactory _contextFactory;
 
         public GetAllReportsQuery(ReportModelDbContextFactory contextFactory)
@@ -17,15 +16,17 @@ namespace Report_Generator_EntityFramework.Queries
 
         public async Task<IEnumerable<ReportModel>> Execute()
         {
-
             using (ReportModelDbContext context = _contextFactory.Create())
             {
-                IEnumerable<ReportModelDto> reportmodeldtos = await context.ReportModels.ToListAsync();
+                IEnumerable<ReportModelDto> reportModelDtos = await context.ReportModels.ToListAsync();
 
-                return reportmodeldtos.Select(y => new ReportModel(y.Id, y.Tittle, y.Status, y.Kunde));
+                return reportModelDtos.Select(y => new ReportModel(
+                    y.Id,
+                    y.Tittle,
+                    y.Status,
+                    y.Kunde,
+                    y.Images?.Select(dto => new ReportImageModel(dto.Id, dto.Name, dto.ImageUrl)).ToList() ?? new List<ReportImageModel>()));
             }
-
-
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Final_project.Commands;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using System.Windows.Input;
 
@@ -10,6 +11,7 @@ namespace Final_project.ViewModels
         private bool _status;
         private string _kunde;
 
+        public List<ReportImageModel> Images { get; set; }
 
         public ImageCollectionVM ImageCollectionViewModel { get; }
         public DeleteImageCommand DeleteImageCommand { get; set; }
@@ -47,22 +49,42 @@ namespace Final_project.ViewModels
 
         public bool CanSubmit => !string.IsNullOrEmpty(Tittle);
 
-
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-
         public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore)
         {
-            SubmitCommand = submitCommand;
-            CancelCommand = cancelCommand;
-
+            SubmitCommand = submitCommand ?? throw new ArgumentNullException(nameof(submitCommand));
+            CancelCommand = cancelCommand ?? throw new ArgumentNullException(nameof(cancelCommand));
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore);
+            Images = ConvertImageVMsToReportImageModels();
 
-
+            ImageCollectionViewModel.ImageAdded += OnImageAdded;
         }
 
+        private List<ReportImageModel> ConvertImageVMsToReportImageModels()
+        {
+            return ImageCollectionViewModel.Images.Select(imageVM =>
+                new ReportImageModel(
+                    imageVM.ImageId,
+                    imageVM.ImageName,
+                    imageVM.ImageUri.ToString()
+                   )).ToList();
+        }
 
+        private void OnImageAdded(ImageVM imageVM)
+        {
+            Images.Add(new ReportImageModel(
+                imageVM.ImageId,
+               imageVM.ImageName,
+                imageVM.ImageUri.ToString()));
+        }
+
+        public override void Dispose()
+        {
+            ImageCollectionViewModel.ImageAdded -= OnImageAdded;
+            base.Dispose();
+        }
     }
 }
