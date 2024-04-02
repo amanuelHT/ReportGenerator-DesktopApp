@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Domain.Models;
 using Final_project.Stores;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
@@ -10,16 +11,18 @@ namespace Final_project.ViewModels
     public class ImageCollectionVM : ViewModelBase
     {
         private readonly ReportStore _reportStore;
+        private readonly ReportFormVM _reportFormVM; // Reference to ReportFormVM
 
         public ObservableCollection<ImageVM> Images { get; private set; }
         public ICommand UploadImageCommand { get; }
 
-        public ImageCollectionVM(ReportStore reportStore)
+        // Modify constructor to accept ReportFormVM
+        public ImageCollectionVM(ReportStore reportStore, ReportFormVM reportFormVM)
         {
             Images = new ObservableCollection<ImageVM>();
             UploadImageCommand = new RelayCommand(UploadImage);
             _reportStore = reportStore;
-
+            _reportFormVM = reportFormVM; // Assign reference to ReportFormVM
 
             _reportStore.ImageDeleted += ReportStore_ImageDeleted;
         }
@@ -40,7 +43,6 @@ namespace Final_project.ViewModels
             base.Dispose();
         }
 
-
         private void UploadImage()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -59,6 +61,9 @@ namespace Final_project.ViewModels
                     var imageVM = new ImageVM(filePath, imageId, _reportStore);
 
                     Images.Add(imageVM);
+
+                    // Add ReportImageModel to ReportFormVM
+                    _reportFormVM.Images.Add(new ReportImageModel(imageId, filePath, filePath));
                 }
             }
         }

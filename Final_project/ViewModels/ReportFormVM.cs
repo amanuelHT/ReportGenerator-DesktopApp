@@ -10,12 +10,11 @@ namespace Final_project.ViewModels
         private string _tittle;
         private bool _status;
         private string _kunde;
+
         public List<ReportImageModel> Images { get; set; }
 
         public ImageCollectionVM ImageCollectionViewModel { get; }
         public DeleteImageCommand DeleteImageCommand { get; set; }
-
-
 
         public string Tittle
         {
@@ -50,22 +49,19 @@ namespace Final_project.ViewModels
 
         public bool CanSubmit => !string.IsNullOrEmpty(Tittle);
 
-
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-
+        // Modify constructor to accept List<ImageVM>
         public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore)
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
+            Images = new List<ReportImageModel>();
 
 
-            ImageCollectionViewModel = new ImageCollectionVM(reportStore);
 
-
+            ImageCollectionViewModel = new ImageCollectionVM(reportStore, this);
         }
-
-
     }
 }

@@ -29,20 +29,12 @@ namespace Final_project.Commands
                 reportForm.Images
             );
 
-            List<ReportImageModel> images = new List<ReportImageModel>();
-            foreach (var imageVM in reportForm.ImageCollectionViewModel.Images)
-            {
-                var imageUri = imageVM.ImageUri;
-                var imageId = Guid.NewGuid();
-                var imageName = System.IO.Path.GetFileName(imageUri.LocalPath);
 
-                images.Add(new ReportImageModel(imageId, imageName, imageUri.ToString()));
-            }
 
             try
             {
 
-                await _reportStore.Add(reportModel, images);
+                await _reportStore.Add(reportModel);
 
                 _navigationStore.Close();
             }
