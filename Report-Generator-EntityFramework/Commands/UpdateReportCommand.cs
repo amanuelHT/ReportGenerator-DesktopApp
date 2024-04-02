@@ -6,7 +6,6 @@ namespace Report_Generator_EntityFramework.Commands
 {
     public class UpdateReportCommand : IUpdateReportCommand
     {
-
         private readonly ReportModelDbContextFactory _contextFactory;
 
         public UpdateReportCommand(ReportModelDbContextFactory contextFactory)
@@ -16,29 +15,19 @@ namespace Report_Generator_EntityFramework.Commands
 
         public async Task Execute(ReportModel reportModel, List<ReportImageModel> images)
         {
-
             using (ReportModelDbContext context = _contextFactory.Create())
             {
+                // Convert ReportModel to DTO
                 ReportModelDto reportModelDto = new ReportModelDto()
                 {
                     Id = reportModel.Id,
                     Tittle = reportModel.Tittle,
                     Status = reportModel.Status,
                     Kunde = reportModel.Kunde,
-                    Images = new List<ReportImageModelDto>()
+
                 };
 
 
-                foreach (var image in images)
-                {
-                    var imageDto = new ReportImageModelDto
-                    {
-
-                        Name = image.Name,
-                        ImageUrl = image.ImageUrl
-                    };
-                    reportModelDto.Images.Add(imageDto);
-                }
 
                 context.ReportModels.Update(reportModelDto);
                 await context.SaveChangesAsync();

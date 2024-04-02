@@ -17,52 +17,37 @@ namespace Final_project.Commands
             _navigationStore = navigationStore;
         }
 
-
         public override async Task ExecuteAsync(object parameter)
         {
             ReportFormVM reportForm = _editReportVM.ReportFormVM;
-
-
 
             ReportModel reportModel = new ReportModel(
                 _editReportVM.ReportId,
                 reportForm.Tittle,
                 reportForm.Status,
                 reportForm.Kunde
-                );
+            );
 
-            List<ReportImageModel> images = new List<ReportImageModel>();
-            foreach (var imageVM in reportForm.ImageCollectionViewModel.Images)
-            {
-                var imageUri = imageVM.ImageUri;
-                var imageId = Guid.NewGuid(); // Generate a new Guid for each image
-                var imageName = System.IO.Path.GetFileName(imageUri.LocalPath); // Extracts the file name
+            // Filter images to remove duplicates based on URL
+            List<ReportImageModel> images = reportForm.ImageCollectionViewModel.Images
+                .GroupBy(img => img.ImageUri.ToString())
+                .Select(grp => grp.First()) // Take only the first occurrence of each unique image URL
+                .Select(imageVM => new ReportImageModel(
+                    Guid.NewGuid(), // Generate a new Guid for each image
+                    System.IO.Path.GetFileName(imageVM.ImageUri.LocalPath), // Extracts the file name
+                    imageVM.ImageUri.ToString()
+                ))
+                .ToList();
 
-                images.Add(new ReportImageModel(imageId, imageName, imageUri.ToString()));
-            }
             try
             {
                 await _reportStore.Update(reportModel, images);
-
                 _navigationStore.Close();
-
             }
             catch (Exception)
             {
-
-
                 throw;
-
             }
-
-
-
-
-
-
-
-
         }
     }
-
 }
