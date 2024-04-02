@@ -7,11 +7,15 @@ namespace Final_project.ViewModels
 {
     public class EditReportVM : ViewModelBase
     {
+        private readonly ReportStore _reportStore;
+
         public Guid ReportId { get; set; }
         public ReportFormVM ReportFormVM { get; }
 
         public EditReportVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation navigationStore)
         {
+
+            _reportStore = reportStore;
             if (reportModel == null)
             {
                 throw new ArgumentNullException(nameof(reportModel));
@@ -30,6 +34,7 @@ namespace Final_project.ViewModels
             };
 
             LoadImages(reportModel.Images);
+
         }
 
         private void LoadImages(IEnumerable<ReportImageModel> images)
@@ -38,9 +43,9 @@ namespace Final_project.ViewModels
 
             foreach (var image in images)
             {
-                var imageVM = new ImageVM(image.ImageUrl, image.Id);
+                var imageVM = new ImageVM(image.ImageUrl, image.Id, _reportStore);
 
-                imageVM.RequestRemoval = ReportFormVM.RemoveImage;
+
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
             }
         }

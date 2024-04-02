@@ -1,5 +1,4 @@
 ﻿using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.DTOs;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -12,18 +11,19 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
+        // In DeleteReportImageCommand
         public async Task Execute(Guid id)
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
-                ReportImageModelDto reportImageDto = new ReportImageModelDto()
+                var reportImageDto = await context.ReportImageModels.FindAsync(id);
+                if (reportImageDto != null)
                 {
-                    Id = id,
-                };
-
-                context.ReportImageModels.Remove(reportImageDto);
-                await context.SaveChangesAsync();
+                    context.ReportImageModels.Remove(reportImageDto);
+                    await context.SaveChangesAsync();
+                }
             }
         }
+
     }
 }

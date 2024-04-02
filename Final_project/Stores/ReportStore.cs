@@ -95,6 +95,8 @@ namespace Final_project.Stores
             ReportUpdated?.Invoke(reportModel);
         }
 
+
+
         public async Task Delete(Guid id)
         {
             await _deleteReportCommand.Execute(id);
@@ -103,7 +105,6 @@ namespace Final_project.Stores
 
             ReportDeleted?.Invoke(id);
         }
-
 
         public async Task DeleteImage(Guid id)
         {
@@ -123,7 +124,6 @@ namespace Final_project.Stores
         {
             return await _getReportDataCommand.Execute(reportId);
         }
-
 
         public async Task<ReportModel> GetImages(Guid reportId)
         {
@@ -145,9 +145,6 @@ namespace Final_project.Stores
             // Return the report with the images
             return reportModel;
         }
-
-
-
 
         public async Task<ReportModel> GetReportDataWithImages(Guid reportId)
         {

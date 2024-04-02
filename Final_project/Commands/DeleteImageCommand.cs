@@ -5,10 +5,12 @@ namespace Final_project.Commands
     public class DeleteImageCommand : AsyncCommandBase
     {
         private readonly ReportStore _reportStore;
+        private readonly Guid _imageId;
 
-        public DeleteImageCommand(ReportStore reportStore)
+        public DeleteImageCommand(ReportStore reportStore, Guid id)
         {
             _reportStore = reportStore;
+            _imageId = id;
         }
 
         public override async Task ExecuteAsync(object parameter)
@@ -17,8 +19,8 @@ namespace Final_project.Commands
 
             try
             {
-                Guid imageId = (Guid)parameter;
-                await _reportStore.DeleteImage(imageId);
+
+                await _reportStore.DeleteImage(_imageId);
             }
             catch (Exception)
             {

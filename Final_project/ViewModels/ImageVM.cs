@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Final_project.Commands;
+using Final_project.Stores;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
@@ -6,8 +7,6 @@ namespace Final_project.ViewModels
     public class ImageVM : ViewModelBase
     {
         private Uri _imageUri;
-        private Guid _imageId; // Add image ID property
-
         public Uri ImageUri
         {
             get => _imageUri;
@@ -18,34 +17,22 @@ namespace Final_project.ViewModels
             }
         }
 
-        public Guid ImageId // Image ID property
-        {
-            get => _imageId;
-            set
-            {
-                _imageId = value;
-                OnPropertyChanged(nameof(ImageId));
-            }
-        }
+        public Guid ImageId { get; set; }
+
 
         public ICommand RemoveImageCommand { get; }
 
-        public ImageVM(string imagePath, Guid imageId) // Modify constructor to accept image ID
+        public ImageVM(string imagePath, Guid imageId, ReportStore reportStore) // Modify constructor to accept image ID
         {
             ImageUri = new Uri(imagePath, UriKind.RelativeOrAbsolute);
-            ImageId = imageId; // Assign image ID
-            RemoveImageCommand = new RelayCommand(RemoveImage);
+            ImageId = imageId;
+            RemoveImageCommand = new DeleteImageCommand(reportStore, imageId);
 
 
         }
 
-        private void RemoveImage()
-        {
-            // Invoke the RequestRemoval action if it's not null
-            RequestRemoval?.Invoke(this);
-        }
 
-        // Action for requesting removal
-        public Action<ImageVM> RequestRemoval;
+
+
     }
 }
