@@ -52,16 +52,39 @@ namespace Final_project.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        // Modify constructor to accept List<ImageVM>
         public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore)
         {
-            SubmitCommand = submitCommand;
-            CancelCommand = cancelCommand;
-            Images = new List<ReportImageModel>();
+            SubmitCommand = submitCommand ?? throw new ArgumentNullException(nameof(submitCommand));
+            CancelCommand = cancelCommand ?? throw new ArgumentNullException(nameof(cancelCommand));
 
+            ImageCollectionViewModel = new ImageCollectionVM(reportStore);
+            Images = ConvertImageVMsToReportImageModels();
 
+            ImageCollectionViewModel.ImageAdded += OnImageAdded;
+        }
 
-            ImageCollectionViewModel = new ImageCollectionVM(reportStore, this);
+        private List<ReportImageModel> ConvertImageVMsToReportImageModels()
+        {
+            return ImageCollectionViewModel.Images.Select(imageVM =>
+                new ReportImageModel(
+                    imageVM.ImageId,
+                    imageVM.ImageName,
+                    imageVM.ImageUri.ToString()
+                   )).ToList();
+        }
+
+        private void OnImageAdded(ImageVM imageVM)
+        {
+            Images.Add(new ReportImageModel(
+                imageVM.ImageId,
+               imageVM.ImageName,
+                imageVM.ImageUri.ToString()));
+        }
+
+        public override void Dispose()
+        {
+            ImageCollectionViewModel.ImageAdded -= OnImageAdded;
+            base.Dispose();
         }
     }
 }

@@ -76,11 +76,11 @@ namespace Final_project.Stores
         }
 
 
-        public async Task Update(ReportModel reportModel, List<ReportImageModel> images)
+        public async Task Update(ReportModel reportModel)
         {
 
 
-            await _updateReportCommand.Execute(reportModel, images);
+            await _updateReportCommand.Execute(reportModel);
 
             int currentIndex = _reportmodel.FindIndex(y => y.Id == reportModel.Id);
             if (currentIndex == -1)

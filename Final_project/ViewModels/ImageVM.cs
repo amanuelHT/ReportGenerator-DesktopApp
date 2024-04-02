@@ -7,6 +7,7 @@ namespace Final_project.ViewModels
     public class ImageVM : ViewModelBase
     {
         private Uri _imageUri;
+
         public Uri ImageUri
         {
             get => _imageUri;
@@ -17,22 +18,16 @@ namespace Final_project.ViewModels
             }
         }
 
-        public Guid ImageId { get; set; }
+        public Guid ImageId { get; private set; }
+        public string ImageName { get; private set; }
+        public ICommand RemoveImageCommand { get; private set; }
 
-
-        public ICommand RemoveImageCommand { get; }
-
-        public ImageVM(string imagePath, Guid imageId, ReportStore reportStore) // Modify constructor to accept image ID
+        public ImageVM(Guid imageId, string name, string imageUri, ReportStore reportStore)
         {
-            ImageUri = new Uri(imagePath, UriKind.RelativeOrAbsolute);
             ImageId = imageId;
+            ImageName = name;
+            ImageUri = new Uri(imageUri, UriKind.RelativeOrAbsolute);
             RemoveImageCommand = new DeleteImageCommand(reportStore, imageId);
-
-
         }
-
-
-
-
     }
 }

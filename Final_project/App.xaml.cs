@@ -68,6 +68,9 @@ namespace Final_project
                  service.AddSingleton<GeneratedReportStore>();
                  service.AddSingleton<ReportStore>();
 
+
+                 service.AddSingleton<ImageCollectionVM>();
+                 service.AddSingleton<ImageVM>();
                  service.AddSingleton<MainViewModel>();
                  service.AddSingleton<INavigationService>(s => SettingsNavigarionService(s));
 
