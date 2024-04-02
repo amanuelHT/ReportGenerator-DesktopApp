@@ -1,4 +1,5 @@
-﻿using Final_project.Commands;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using System.Windows.Input;
 
@@ -9,10 +10,12 @@ namespace Final_project.ViewModels
         private string _tittle;
         private bool _status;
         private string _kunde;
-
+        public List<ReportImageModel> Images { get; set; }
 
         public ImageCollectionVM ImageCollectionViewModel { get; }
         public DeleteImageCommand DeleteImageCommand { get; set; }
+
+
 
         public string Tittle
         {

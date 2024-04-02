@@ -22,7 +22,13 @@ namespace Report_Generator_EntityFramework.Queries
             {
                 IEnumerable<ReportModelDto> reportmodeldtos = await context.ReportModels.ToListAsync();
 
-                return reportmodeldtos.Select(y => new ReportModel(y.Id, y.Tittle, y.Status, y.Kunde));
+                return reportmodeldtos.Select(y => new ReportModel(
+           y.Id,
+           y.Tittle,
+           y.Status,
+           y.Kunde,
+           y.Images.Select(dto => new ReportImageModel(dto.Id, dto.Name, dto.ImageUrl)).ToList()));
+
             }
 
 

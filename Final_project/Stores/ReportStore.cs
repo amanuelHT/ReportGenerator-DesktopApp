@@ -25,11 +25,11 @@ namespace Final_project.Stores
         private readonly List<ReportImageModel> _reportImagemodel;
 
         public ReportStore(IGetAllReportsQuery query,
-            ICreateReportCommand createReportCommand,
-            IDeleteReportCommand deleteReportCommand,
-            IUpdateReportCommand updateReportCommand,
+             ICreateReportCommand createReportCommand,
+             IDeleteReportCommand deleteReportCommand,
+             IUpdateReportCommand updateReportCommand,
              IGetReportDataCommand getReportDataCommand,
-             IGetReportImageCommand getReportImageCommand,
+              IGetReportImageCommand getReportImageCommand,
              IDeleteReportImageCommand deleteReportImageCommand
 
             )

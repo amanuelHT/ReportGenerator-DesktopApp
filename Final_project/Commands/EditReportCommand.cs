@@ -28,7 +28,8 @@ namespace Final_project.Commands
                 _editReportVM.ReportId,
                 reportForm.Tittle,
                 reportForm.Status,
-                reportForm.Kunde
+                reportForm.Kunde,
+                reportForm.Images
                 );
 
             List<ReportImageModel> images = new List<ReportImageModel>();

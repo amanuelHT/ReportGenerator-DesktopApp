@@ -25,29 +25,30 @@ namespace Final_project.Commands
                 Guid.NewGuid(),
                 reportForm.Tittle,
                 reportForm.Status,
-                reportForm.Kunde
+                reportForm.Kunde,
+                reportForm.Images
             );
 
             List<ReportImageModel> images = new List<ReportImageModel>();
             foreach (var imageVM in reportForm.ImageCollectionViewModel.Images)
             {
                 var imageUri = imageVM.ImageUri;
-                var imageId = Guid.NewGuid(); // Generate a new Guid for each image
-                var imageName = System.IO.Path.GetFileName(imageUri.LocalPath); // Extracts the file name
+                var imageId = Guid.NewGuid();
+                var imageName = System.IO.Path.GetFileName(imageUri.LocalPath);
 
                 images.Add(new ReportImageModel(imageId, imageName, imageUri.ToString()));
             }
 
             try
             {
-                // Now passing both the reportModel and its images
+
                 await _reportStore.Add(reportModel, images);
 
                 _navigationStore.Close();
             }
             catch (Exception ex)
             {
-                // Consider adding some error handling logic here
+
                 throw;
             }
         }
