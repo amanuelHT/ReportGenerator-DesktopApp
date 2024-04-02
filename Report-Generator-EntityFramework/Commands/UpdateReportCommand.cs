@@ -13,7 +13,7 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task Execute(ReportModel reportModel, List<ReportImageModel> images)
+        public async Task Execute(ReportModel reportModel)
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {

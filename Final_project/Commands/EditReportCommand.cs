@@ -28,20 +28,9 @@ namespace Final_project.Commands
                 reportForm.Kunde
             );
 
-            // Filter images to remove duplicates based on URL
-            List<ReportImageModel> images = reportForm.ImageCollectionViewModel.Images
-                .GroupBy(img => img.ImageUri.ToString())
-                .Select(grp => grp.First()) // Take only the first occurrence of each unique image URL
-                .Select(imageVM => new ReportImageModel(
-                    Guid.NewGuid(), // Generate a new Guid for each image
-                    System.IO.Path.GetFileName(imageVM.ImageUri.LocalPath), // Extracts the file name
-                    imageVM.ImageUri.ToString()
-                ))
-                .ToList();
-
             try
             {
-                await _reportStore.Update(reportModel, images);
+                await _reportStore.Update(reportModel);
                 _navigationStore.Close();
             }
             catch (Exception)
