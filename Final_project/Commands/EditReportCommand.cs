@@ -23,19 +23,12 @@ namespace Final_project.Commands
 
             ReportModel reportModel = new ReportModel(
                 _editReportVM.ReportId,
-                reportForm.Tittle,
-                reportForm.Status,
-<<<<<<< HEAD
-                reportForm.Kunde
+                  reportForm.Tittle,
+                  reportForm.Status,
+                  reportForm.Kunde,
+                  reportForm.Images
             );
 
-            try
-            {
-                await _reportStore.Update(reportModel);
-=======
-                reportForm.Kunde,
-                reportForm.Images
-                );
 
 
 
@@ -43,7 +36,7 @@ namespace Final_project.Commands
             {
                 await _reportStore.Update(reportModel);
 
->>>>>>> new-branch-name
+
                 _navigationStore.Close();
             }
             catch (Exception)

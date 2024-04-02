@@ -24,12 +24,10 @@ namespace Report_Generator_EntityFramework.Commands
                     Tittle = reportModel.Tittle,
                     Status = reportModel.Status,
                     Kunde = reportModel.Kunde,
+                    Images = new List<ReportImageModelDto>()
 
                 };
 
-
-<<<<<<< HEAD
-=======
                 foreach (var image in reportModel.Images)
                 {
                     var imageDto = new ReportImageModelDto
@@ -40,7 +38,7 @@ namespace Report_Generator_EntityFramework.Commands
                     };
                     reportModelDto.Images.Add(imageDto);
                 }
->>>>>>> new-branch-name
+
 
                 context.ReportModels.Update(reportModelDto);
                 await context.SaveChangesAsync();
