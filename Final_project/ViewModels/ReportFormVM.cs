@@ -58,7 +58,7 @@ namespace Final_project.ViewModels
             CancelCommand = cancelCommand;
 
 
-
+            ImageCollectionViewModel = new ImageCollectionVM(reportStore);
 
 
         }
