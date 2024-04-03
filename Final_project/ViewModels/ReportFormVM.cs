@@ -52,12 +52,12 @@ namespace Final_project.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore)
+        public ReportFormVM(ICommand submitCommand, ICommand cancelCommand, ReportStore reportStore, Guid reportid)
         {
-            SubmitCommand = submitCommand ?? throw new ArgumentNullException(nameof(submitCommand));
-            CancelCommand = cancelCommand ?? throw new ArgumentNullException(nameof(cancelCommand));
+            SubmitCommand = submitCommand;
+            CancelCommand = cancelCommand;
 
-            ImageCollectionViewModel = new ImageCollectionVM(reportStore);
+            ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
             Images = ConvertImageVMsToReportImageModels();
 
             ImageCollectionViewModel.ImageAdded += OnImageAdded;

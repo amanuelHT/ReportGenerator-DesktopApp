@@ -17,37 +17,30 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
-                // Query the report including its associated images
                 var reportModelDto = await context.ReportModels
-                    .Include(report => report.Images) // Include related images
+                    .Include(report => report.Images)
                     .FirstOrDefaultAsync(report => report.Id == reportId);
 
                 if (reportModelDto == null)
                     return null;
 
-                // Convert DTO images to domain model
-                var reportImages = reportModelDto.Images.Select(imageDto =>
-                    new ReportImageModel(
+                var reportImages = reportModelDto.Images
+                    .Select(imageDto => new ReportImageModel(
                         imageDto.Id,
-                        imageDto.Name,
-                        imageDto.ImageUrl))
+                        imageDto.Name ?? "DefaultName", // Handle NULL Name
+                        imageDto.ImageUrl ?? "DefaultImageUrl")) // Handle NULL ImageUrl
                     .ToList();
 
-                // Create the ReportModel object
-                var reportModel = new ReportModel(
+                return new ReportModel(
                     reportModelDto.Id,
                     reportModelDto.Tittle,
                     reportModelDto.Status,
                     reportModelDto.Kunde,
                     reportImages
-
-                    )
-                {
-
-                };
-
-                return reportModel;
+                );
             }
         }
+
     }
+
 }

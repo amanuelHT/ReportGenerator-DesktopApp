@@ -1,4 +1,5 @@
-﻿using Report_Generator_Domain.Commands;
+﻿using Microsoft.EntityFrameworkCore;
+using Report_Generator_Domain.Commands;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -11,19 +12,28 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        // In DeleteReportImageCommand
-        public async Task Execute(Guid id)
+        public async Task Execute(Guid imageId)
         {
-            using (ReportModelDbContext context = _contextFactory.Create())
+            using (var context = _contextFactory.Create())
             {
-                var reportImageDto = await context.ReportImageModels.FindAsync(id);
-                if (reportImageDto != null)
+                // Find the report that contains the image
+                var reportWithImage = await context.ReportModels
+                    .Include(r => r.Images)
+                    .FirstOrDefaultAsync(r => r.Images.Any(img => img.Id == imageId));
+
+                if (reportWithImage != null)
                 {
-                    context.ReportImageModels.Remove(reportImageDto);
-                    await context.SaveChangesAsync();
+                    // Remove the image from the report's collection
+                    var imageToRemove = reportWithImage.Images.FirstOrDefault(img => img.Id == imageId);
+                    if (imageToRemove != null)
+                    {
+                        reportWithImage.Images.Remove(imageToRemove);
+
+                        // Save changes to the context
+                        await context.SaveChangesAsync();
+                    }
                 }
             }
         }
-
     }
 }

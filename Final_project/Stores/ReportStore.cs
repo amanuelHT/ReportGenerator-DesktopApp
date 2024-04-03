@@ -64,6 +64,7 @@ namespace Final_project.Stores
 
             _reportmodel.Clear();
             _reportmodel.AddRange(reportModels);
+
             ReportModelLoaded?.Invoke();
         }
 
@@ -89,6 +90,7 @@ namespace Final_project.Stores
             else
             {
                 _reportmodel.Add(reportModel);
+
             }
 
             ReportUpdated?.Invoke(reportModel);

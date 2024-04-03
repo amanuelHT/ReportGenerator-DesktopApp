@@ -10,16 +10,51 @@ namespace Final_project.ViewModels
     {
         private readonly ReportStore _reportStore;
 
+
+        private readonly Guid _reportId;
+
         public ObservableCollection<ImageVM> Images { get; private set; }
         public ICommand UploadImageCommand { get; private set; }
 
         public event Action<ImageVM> ImageAdded;
 
-        public ImageCollectionVM(ReportStore reportStore)
+        public ImageCollectionVM(ReportStore reportStore, Guid reportId)
         {
-            Images = new ObservableCollection<ImageVM>();
+            _reportStore = reportStore ?? throw new ArgumentNullException(nameof(reportStore));
+            _reportId = reportId;
             UploadImageCommand = new RelayCommand(UploadImage);
-            reportStore = reportStore;
+            Images = new ObservableCollection<ImageVM>();
+
+            LoadImagesFromReports();
+        }
+
+        private void LoadImagesFromReports()
+        {
+            var reportImages = _reportStore.ReportModels
+                .FirstOrDefault(rm => rm.Id == _reportId)?.Images;
+
+            if (reportImages != null)
+            {
+                foreach (var reportImageModel in reportImages)
+                {
+                    var imageVM = new ImageVM(
+                        reportImageModel.Id,
+                        reportImageModel.Name,
+                        reportImageModel.ImageUrl,
+                        this, _reportStore);
+
+                    Images.Add(imageVM);
+                }
+            }
+        }
+
+        public void RemoveImage(Guid imageId)
+        {
+            var imageToRemove = Images.FirstOrDefault(i => i.ImageId == imageId);
+            if (imageToRemove != null)
+            {
+                Images.Remove(imageToRemove);
+            }
         }
 
         private void UploadImage()
@@ -37,13 +72,18 @@ namespace Final_project.ViewModels
                     Guid imageId = Guid.NewGuid();
                     string name = System.IO.Path.GetFileNameWithoutExtension(filePath);
 
-                    var imageVM = new ImageVM(imageId, name, filePath, _reportStore);
+                    // Create a new ImageVM instance
+                    var imageVM = new ImageVM(imageId, name, filePath, this, _reportStore);
 
                     Images.Add(imageVM);
                     ImageAdded?.Invoke(imageVM);
+
+
+
                 }
             }
         }
+
 
 
     }

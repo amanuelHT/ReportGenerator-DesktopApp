@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
 using Report_Generator_EntityFramework.DTOs;
 
@@ -15,37 +16,49 @@ namespace Report_Generator_EntityFramework.Commands
 
         public async Task Execute(ReportModel reportModel)
         {
-            using (ReportModelDbContext context = _contextFactory.Create())
+            using (var context = _contextFactory.Create())
             {
-                // Convert ReportModel to DTO
-                ReportModelDto reportModelDto = new ReportModelDto()
-                {
-                    Id = reportModel.Id,
-                    Tittle = reportModel.Tittle,
-                    Status = reportModel.Status,
-                    Kunde = reportModel.Kunde,
-                    Images = new List<ReportImageModelDto>()
+                var existingReport = await context.ReportModels
+                    .Include(r => r.Images)
+                    .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
-                };
-
-                foreach (var image in reportModel.Images)
+                if (existingReport != null)
                 {
-                    var imageDto = new ReportImageModelDto
+                    existingReport.Tittle = reportModel.Tittle;
+                    existingReport.Status = reportModel.Status;
+                    existingReport.Kunde = reportModel.Kunde;
+
+                    // Update existing images and add new images
+                    foreach (var image in reportModel.Images)
                     {
+                        var existingImage = existingReport.Images
+                            .FirstOrDefault(i => i.Id == image.Id);
 
-                        Name = image.Name,
-                        ImageUrl = image.ImageUrl
-                    };
-                    reportModelDto.Images.Add(imageDto);
+                        if (existingImage != null)
+                        {
+                            existingImage.Name = image.Name;
+                            existingImage.ImageUrl = image.ImageUrl;
+                        }
+                        else
+                        {
+                            // Add new image
+                            existingReport.Images.Add(new ReportImageModelDto
+                            {
+                                Id = Guid.NewGuid(),
+                                Name = image.Name,
+                                ImageUrl = image.ImageUrl
+                            });
+                        }
+                    }
+
+                    // Remove any images not present in the updated report
+                    var imageIds = reportModel.Images.Select(i => i.Id).ToList();
+                    existingReport.Images.RemoveAll(i => !imageIds.Contains(i.Id));
+
+                    context.ReportModels.Update(existingReport);
+                    await context.SaveChangesAsync();
                 }
-
-
-                context.ReportModels.Update(reportModelDto);
-                await context.SaveChangesAsync();
             }
         }
     }
 }
-
-
-
