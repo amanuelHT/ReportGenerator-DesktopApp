@@ -48,7 +48,7 @@ namespace Final_project.ViewModels
             HomeVM viewModel = new HomeVM(reportStore, selectedReportStore, navigationStore, navigationService);
 
             //viewModel.HomeVMCommand.Execute(null);
-
+            //fetene
             return viewModel;
         }
     }
