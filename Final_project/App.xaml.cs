@@ -95,8 +95,8 @@ namespace Final_project
 
                  //service.AddTransient<UserInfoVM>();
 
-               
-                service.AddTransient<UserInfoVM>(s => new UserInfoVM(firebaseAuthProvider,RoleManagementNavigationService(s)));
+
+                 service.AddTransient<UserInfoVM>(s => new UserInfoVM(firebaseAuthProvider, RoleManagementNavigationService(s)));
 
                  service.AddTransient<AccountVM>(s =>
                         new AccountVM(s.GetRequiredService<AccountStore>(),
@@ -121,7 +121,7 @@ namespace Final_project
                         new ReportViewerVM(s.GetRequiredService<ReportStore>(),
                       GeneratedRListNavigationService(s)));
 
-                 
+
 
 
 
@@ -217,8 +217,8 @@ namespace Final_project
                    () => serviceProvider.GetRequiredService<HomeVM>(),
                   () => serviceProvider.GetRequiredService<NavigationBarVM>());
 
-        } 
-        
+        }
+
         private INavigationService UserInfoNavigationService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<UserInfoVM>(

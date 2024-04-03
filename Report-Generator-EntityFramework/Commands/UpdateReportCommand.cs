@@ -22,18 +22,7 @@ namespace Report_Generator_EntityFramework.Commands
                     .Include(r => r.Images)
                     .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
-<<<<<<< HEAD
                 if (existingReport != null)
-=======
-                };
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 97a6e3179d9a800a68fc242a1e71c9c37fb6aee6
-                foreach (var image in reportModel.Images)
->>>>>>> 7409369210726ee76c4c28c670a771f0d38e3631
                 {
                     existingReport.Tittle = reportModel.Tittle;
                     existingReport.Status = reportModel.Status;

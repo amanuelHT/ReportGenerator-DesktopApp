@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Final_project {
+namespace Final_project.Resources {
     
     
     /// <summary>
@@ -20,17 +20,17 @@ namespace Final_project {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ReportData")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    public partial class ReportData : global::System.Data.DataSet {
         
-        private ReportModelsDataTable tableReportModels;
+        private ReportDataDataTable tableReportData;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DataSet1() {
+        public ReportData() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Final_project {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ReportData(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Final_project {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ReportModels"] != null)) {
-                    base.Tables.Add(new ReportModelsDataTable(ds.Tables["ReportModels"]));
+                if ((ds.Tables["ReportData"] != null)) {
+                    base.Tables.Add(new ReportDataDataTable(ds.Tables["ReportData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Final_project {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ReportModelsDataTable ReportModels {
+        public ReportDataDataTable _ReportData {
             get {
-                return this.tableReportModels;
+                return this.tableReportData;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Final_project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            ReportData cln = ((ReportData)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Final_project {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ReportModels"] != null)) {
-                    base.Tables.Add(new ReportModelsDataTable(ds.Tables["ReportModels"]));
+                if ((ds.Tables["ReportData"] != null)) {
+                    base.Tables.Add(new ReportDataDataTable(ds.Tables["ReportData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Final_project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableReportModels = ((ReportModelsDataTable)(base.Tables["ReportModels"]));
+            this.tableReportData = ((ReportDataDataTable)(base.Tables["ReportData"]));
             if ((initTable == true)) {
-                if ((this.tableReportModels != null)) {
-                    this.tableReportModels.InitVars();
+                if ((this.tableReportData != null)) {
+                    this.tableReportData.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace Final_project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "ReportData";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet1.xsd";
+            this.Namespace = "http://tempuri.org/ReportData.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableReportModels = new ReportModelsDataTable();
-            base.Tables.Add(this.tableReportModels);
+            this.tableReportData = new ReportDataDataTable();
+            base.Tables.Add(this.tableReportData);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeReportModels() {
+        private bool ShouldSerialize_ReportData() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace Final_project {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            ReportData ds = new ReportData();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,14 +270,14 @@ namespace Final_project {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void ReportModelsRowChangeEventHandler(object sender, ReportModelsRowChangeEvent e);
+        public delegate void ReportDataRowChangeEventHandler(object sender, ReportDataRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ReportModelsDataTable : global::System.Data.TypedTableBase<ReportModelsRow> {
+        public partial class ReportDataDataTable : global::System.Data.TypedTableBase<ReportDataRow> {
             
             private global::System.Data.DataColumn columnId;
             
@@ -289,8 +289,8 @@ namespace Final_project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsDataTable() {
-                this.TableName = "ReportModels";
+            public ReportDataDataTable() {
+                this.TableName = "ReportData";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +298,7 @@ namespace Final_project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ReportModelsDataTable(global::System.Data.DataTable table) {
+            internal ReportDataDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,7 +315,7 @@ namespace Final_project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected ReportModelsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ReportDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -363,48 +363,48 @@ namespace Final_project {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow this[int index] {
+            public ReportDataRow this[int index] {
                 get {
-                    return ((ReportModelsRow)(this.Rows[index]));
+                    return ((ReportDataRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ReportModelsRowChangeEventHandler ReportModelsRowChanging;
+            public event ReportDataRowChangeEventHandler ReportDataRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ReportModelsRowChangeEventHandler ReportModelsRowChanged;
+            public event ReportDataRowChangeEventHandler ReportDataRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ReportModelsRowChangeEventHandler ReportModelsRowDeleting;
+            public event ReportDataRowChangeEventHandler ReportDataRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ReportModelsRowChangeEventHandler ReportModelsRowDeleted;
+            public event ReportDataRowChangeEventHandler ReportDataRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddReportModelsRow(ReportModelsRow row) {
+            public void AddReportDataRow(ReportDataRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow AddReportModelsRow(System.Guid Id, string Tittle, bool Status, string Kunde) {
-                ReportModelsRow rowReportModelsRow = ((ReportModelsRow)(this.NewRow()));
+            public ReportDataRow AddReportDataRow(System.Guid Id, string Tittle, bool Status, string Kunde) {
+                ReportDataRow rowReportDataRow = ((ReportDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         Tittle,
                         Status,
                         Kunde};
-                rowReportModelsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowReportModelsRow);
-                return rowReportModelsRow;
+                rowReportDataRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportDataRow);
+                return rowReportDataRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ReportModelsDataTable cln = ((ReportModelsDataTable)(base.Clone()));
+                ReportDataDataTable cln = ((ReportDataDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -412,7 +412,7 @@ namespace Final_project {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ReportModelsDataTable();
+                return new ReportDataDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,32 +435,34 @@ namespace Final_project {
                 base.Columns.Add(this.columnStatus);
                 this.columnKunde = new global::System.Data.DataColumn("Kunde", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKunde);
+                this.ExtendedProperties.Add("Generator_TablePropName", "_ReportData");
+                this.ExtendedProperties.Add("Generator_UserTableName", "ReportData");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow NewReportModelsRow() {
-                return ((ReportModelsRow)(this.NewRow()));
+            public ReportDataRow NewReportDataRow() {
+                return ((ReportDataRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ReportModelsRow(builder);
+                return new ReportDataRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ReportModelsRow);
+                return typeof(ReportDataRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ReportModelsRowChanged != null)) {
-                    this.ReportModelsRowChanged(this, new ReportModelsRowChangeEvent(((ReportModelsRow)(e.Row)), e.Action));
+                if ((this.ReportDataRowChanged != null)) {
+                    this.ReportDataRowChanged(this, new ReportDataRowChangeEvent(((ReportDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -468,8 +470,8 @@ namespace Final_project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ReportModelsRowChanging != null)) {
-                    this.ReportModelsRowChanging(this, new ReportModelsRowChangeEvent(((ReportModelsRow)(e.Row)), e.Action));
+                if ((this.ReportDataRowChanging != null)) {
+                    this.ReportDataRowChanging(this, new ReportDataRowChangeEvent(((ReportDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -477,8 +479,8 @@ namespace Final_project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ReportModelsRowDeleted != null)) {
-                    this.ReportModelsRowDeleted(this, new ReportModelsRowChangeEvent(((ReportModelsRow)(e.Row)), e.Action));
+                if ((this.ReportDataRowDeleted != null)) {
+                    this.ReportDataRowDeleted(this, new ReportDataRowChangeEvent(((ReportDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -486,14 +488,14 @@ namespace Final_project {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ReportModelsRowDeleting != null)) {
-                    this.ReportModelsRowDeleting(this, new ReportModelsRowChangeEvent(((ReportModelsRow)(e.Row)), e.Action));
+                if ((this.ReportDataRowDeleting != null)) {
+                    this.ReportDataRowDeleting(this, new ReportDataRowChangeEvent(((ReportDataRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveReportModelsRow(ReportModelsRow row) {
+            public void RemoveReportDataRow(ReportDataRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -502,7 +504,7 @@ namespace Final_project {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                ReportData ds = new ReportData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -520,7 +522,7 @@ namespace Final_project {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ReportModelsDataTable";
+                attribute2.FixedValue = "ReportDataDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -564,15 +566,15 @@ namespace Final_project {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ReportModelsRow : global::System.Data.DataRow {
+        public partial class ReportDataRow : global::System.Data.DataRow {
             
-            private ReportModelsDataTable tableReportModels;
+            private ReportDataDataTable tableReportData;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ReportModelsRow(global::System.Data.DataRowBuilder rb) : 
+            internal ReportDataRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableReportModels = ((ReportModelsDataTable)(this.Table));
+                this.tableReportData = ((ReportDataDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -580,14 +582,14 @@ namespace Final_project {
             public System.Guid Id {
                 get {
                     try {
-                        return ((global::System.Guid)(this[this.tableReportModels.IdColumn]));
+                        return ((global::System.Guid)(this[this.tableReportData.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'ReportModels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'ReportData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportModels.IdColumn] = value;
+                    this[this.tableReportData.IdColumn] = value;
                 }
             }
             
@@ -596,14 +598,14 @@ namespace Final_project {
             public string Tittle {
                 get {
                     try {
-                        return ((string)(this[this.tableReportModels.TittleColumn]));
+                        return ((string)(this[this.tableReportData.TittleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Tittle\' in table \'ReportModels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tittle\' in table \'ReportData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportModels.TittleColumn] = value;
+                    this[this.tableReportData.TittleColumn] = value;
                 }
             }
             
@@ -612,14 +614,14 @@ namespace Final_project {
             public bool Status {
                 get {
                     try {
-                        return ((bool)(this[this.tableReportModels.StatusColumn]));
+                        return ((bool)(this[this.tableReportData.StatusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'ReportModels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'ReportData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportModels.StatusColumn] = value;
+                    this[this.tableReportData.StatusColumn] = value;
                 }
             }
             
@@ -628,63 +630,63 @@ namespace Final_project {
             public string Kunde {
                 get {
                     try {
-                        return ((string)(this[this.tableReportModels.KundeColumn]));
+                        return ((string)(this[this.tableReportData.KundeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kunde\' in table \'ReportModels\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kunde\' in table \'ReportData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportModels.KundeColumn] = value;
+                    this[this.tableReportData.KundeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdNull() {
-                return this.IsNull(this.tableReportModels.IdColumn);
+                return this.IsNull(this.tableReportData.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetIdNull() {
-                this[this.tableReportModels.IdColumn] = global::System.Convert.DBNull;
+                this[this.tableReportData.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsTittleNull() {
-                return this.IsNull(this.tableReportModels.TittleColumn);
+                return this.IsNull(this.tableReportData.TittleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTittleNull() {
-                this[this.tableReportModels.TittleColumn] = global::System.Convert.DBNull;
+                this[this.tableReportData.TittleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsStatusNull() {
-                return this.IsNull(this.tableReportModels.StatusColumn);
+                return this.IsNull(this.tableReportData.StatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetStatusNull() {
-                this[this.tableReportModels.StatusColumn] = global::System.Convert.DBNull;
+                this[this.tableReportData.StatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsKundeNull() {
-                return this.IsNull(this.tableReportModels.KundeColumn);
+                return this.IsNull(this.tableReportData.KundeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetKundeNull() {
-                this[this.tableReportModels.KundeColumn] = global::System.Convert.DBNull;
+                this[this.tableReportData.KundeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -692,22 +694,22 @@ namespace Final_project {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class ReportModelsRowChangeEvent : global::System.EventArgs {
+        public class ReportDataRowChangeEvent : global::System.EventArgs {
             
-            private ReportModelsRow eventRow;
+            private ReportDataRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRowChangeEvent(ReportModelsRow row, global::System.Data.DataRowAction action) {
+            public ReportDataRowChangeEvent(ReportDataRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow Row {
+            public ReportDataRow Row {
                 get {
                     return this.eventRow;
                 }

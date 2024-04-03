@@ -1,11 +1,5 @@
 ﻿using Google.Cloud.Firestore;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Final_project.Stores
@@ -18,7 +12,7 @@ namespace Final_project.Stores
         public static void InitializeFirestore()
         {
             // Adjust the path as necessary, e.g., if it's in the output directory
-            var serviceAccountPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "serviceAccountKey.json");
+            var serviceAccountPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/serviceAccountKey.json");
 
             if (!File.Exists(serviceAccountPath))
             {

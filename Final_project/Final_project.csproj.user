@@ -59,14 +59,7 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="DataSet1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="ReportData.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Update="Components\ImageCollectionView.xaml">
       <SubType>Designer</SubType>
@@ -92,7 +85,7 @@
     <Page Update="Components\ReportListView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ButtonStyles.xaml">
