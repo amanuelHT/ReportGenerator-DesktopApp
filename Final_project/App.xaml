@@ -6,32 +6,26 @@
              xmlns:views="clr-namespace:Final_project.Views" xmlns:components="clr-namespace:Final_project.Components">
 
 
-
-
-
-
 <Application.Resources>
         <ResourceDictionary>
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:SettingsVM}">
                 <views:SettingsView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type TypeName=viewmodels:LoginVM}">
                 <views:LoginView/>
             </DataTemplate>
 
 
-
             <DataTemplate DataType="{x:Type viewmodels:AddReportVM}">
-                    <views:AddReportView />
-                </DataTemplate>
-           
+                <views:AddReportView />
+            </DataTemplate>
 
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:EditReportVM}">
                 <views:EditReportView/>
             </DataTemplate>
-
 
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:HomeVM}">
@@ -43,7 +37,12 @@
                 <views:ReportViewerView/>
             </DataTemplate>
 
-
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:UserInfoVM}">
+                <views:UserInfoView/>
+                
+            </DataTemplate><DataTemplate DataType="{x:Type TypeName=viewmodels:RoleManagementVM}">
+                <views:RoleManagementView/>
+            </DataTemplate>
 
 
             <DataTemplate DataType="{x:Type TypeName=viewmodels:ImageVM}">
@@ -51,11 +50,9 @@
             </DataTemplate>
 
 
-
             <DataTemplate DataType="{x:Type TypeName=viewmodels:ImageCollectionVM}">
                 <components:ImageCollectionView/>
             </DataTemplate>
-
 
 
             <ResourceDictionary.MergedDictionaries>
@@ -64,8 +61,6 @@
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-
-           
 
         </ResourceDictionary>
     </Application.Resources>

@@ -72,7 +72,7 @@ namespace Final_project
                  service.AddSingleton<ImageCollectionVM>();
                  service.AddSingleton<ImageVM>();
                  service.AddSingleton<MainViewModel>();
-                 service.AddSingleton<INavigationService>(s => SettingsNavigarionService(s));
+                 service.AddSingleton<INavigationService>(s => LoginNavigarionService(s));
 
                  //the reasion we make them transient is we dispose our viewmodel,
                  //if we dispose that means we are not going to use it again, we are going to resolve a new instance
@@ -92,6 +92,11 @@ namespace Final_project
 
 
                  service.AddTransient<SettingsVM>(s => new SettingsVM(LoginNavigarionService(s)));
+
+                 //service.AddTransient<UserInfoVM>();
+
+               
+                service.AddTransient<UserInfoVM>(s => new UserInfoVM(firebaseAuthProvider,RoleManagementNavigationService(s)));
 
                  service.AddTransient<AccountVM>(s =>
                         new AccountVM(s.GetRequiredService<AccountStore>(),
@@ -116,7 +121,7 @@ namespace Final_project
                         new ReportViewerVM(s.GetRequiredService<ReportStore>(),
                       GeneratedRListNavigationService(s)));
 
-
+                 
 
 
 
@@ -159,7 +164,7 @@ namespace Final_project
             using (ReportModelDbContext context = reportModelDbContextFactory.Create())
 
             {
-                context.Database.Migrate();
+                //context.Database.Migrate();
 
             }
 
@@ -183,7 +188,8 @@ namespace Final_project
                        GeneratedRListNavigationService(serviceProvider),
                        ReportViewerNavigationService(serviceProvider),
                        HomeNavigationService(serviceProvider),
-                       RoleManagementNavigationService(serviceProvider)
+                       RoleManagementNavigationService(serviceProvider),
+                       UserInfoNavigationService(serviceProvider)
                        );
         }
 
@@ -209,6 +215,15 @@ namespace Final_project
             return new LayoutNavigationService<HomeVM>(
                   serviceProvider.GetRequiredService<NavigationStore>(),
                    () => serviceProvider.GetRequiredService<HomeVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+
+        } 
+        
+        private INavigationService UserInfoNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<UserInfoVM>(
+                  serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<UserInfoVM>(),
                   () => serviceProvider.GetRequiredService<NavigationBarVM>());
 
         }

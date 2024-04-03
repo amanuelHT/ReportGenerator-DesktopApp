@@ -28,8 +28,7 @@ namespace Report_Generator_EntityFramework.Commands
                 };
 
 
-<<<<<<< HEAD
-=======
+
                 foreach (var image in reportModel.Images)
                 {
                     var imageDto = new ReportImageModelDto
@@ -40,7 +39,7 @@ namespace Report_Generator_EntityFramework.Commands
                     };
                     reportModelDto.Images.Add(imageDto);
                 }
->>>>>>> new-branch-name
+
 
                 context.ReportModels.Update(reportModelDto);
                 await context.SaveChangesAsync();

@@ -25,8 +25,9 @@
             public bool IsLoggedIn => _accountStore.IsLoggedIn;
             public ICommand NavigateRoleManagementViewCommand { get; private set; }
             public ICommand NavigateRoleManagementCommand { get; }
-
-            public NavigationBarVM(
+            public ICommand NavigateUserInfoCommand { get; }
+      
+        public NavigationBarVM(
                 AccountStore accountStore,
                 INavigationService settingsNavigationService,
                 INavigationService accountNavigationService,
@@ -34,7 +35,8 @@
                 INavigationService generatedReportListingNavigationService,
                 INavigationService reportViewernavigarionService,
                 INavigationService HomeNavigationService,
-                INavigationService roleManagementNavigationService)
+                INavigationService roleManagementNavigationService,
+                INavigationService UserInfoNavigationService)
             {
                 _accountStore = accountStore;
                 _navigationService = roleManagementNavigationService;
@@ -47,6 +49,7 @@
                 NavigatHomeCommand = new NavigateCommand(HomeNavigationService);
                 LogoutCommand = new LogoutCommand(_accountStore);
                 NavigateRoleManagementViewCommand = new NavigateCommand(roleManagementNavigationService);
+                NavigateUserInfoCommand = new NavigateCommand(UserInfoNavigationService);
 
 
                 _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;

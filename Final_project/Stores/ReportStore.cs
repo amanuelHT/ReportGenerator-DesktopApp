@@ -78,11 +78,7 @@ namespace Final_project.Stores
 
         public async Task Update(ReportModel reportModel)
         {
-<<<<<<< HEAD
-=======
 
-
->>>>>>> new-branch-name
             await _updateReportCommand.Execute(reportModel);
 
             int currentIndex = _reportmodel.FindIndex(y => y.Id == reportModel.Id);
