@@ -23,6 +23,13 @@ namespace Final_project.Commands
 
             ReportModel reportModel = new ReportModel(
                 _editReportVM.ReportId,
+<<<<<<< HEAD
+                reportForm.Tittle,
+                reportForm.Status,
+                reportForm.Kunde,
+                reportForm.Images
+            ) ;
+=======
                   reportForm.Tittle,
                   reportForm.Status,
                   reportForm.Kunde,
@@ -30,6 +37,7 @@ namespace Final_project.Commands
             );
 
 
+>>>>>>> 97a6e3179d9a800a68fc242a1e71c9c37fb6aee6
 
 
             try

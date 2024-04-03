@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Final_project.Views.UserInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Final_project.Views"
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <!--<UserControl.DataContext>
+        <viewmodels:UserInfoVM/>
+    </UserControl.DataContext>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" AutoGenerateColumns="False"
+          ItemsSource="{Binding Users}"
+          CanUserAddRows="False"
+          CanUserDeleteRows="False"
+          IsReadOnly="True"
+          Margin="10"
+          BorderThickness="1"
+          BorderBrush="#FFCCCCCC"
+          GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <!-- Your other columns here -->
+
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate}" />
+                <DataGridTextColumn Header="Role" Binding="{Binding Role}" />
+                <!-- The Actions column with the three-dot menu -->
+                <DataGridTemplateColumn Width="Auto" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <ToggleButton x:Name="btnOpenMenu" Content="..."/>
+                                <Popup IsOpen="{Binding IsChecked, ElementName=btnOpenMenu, Mode=TwoWay}"
+                               Placement="Bottom" StaysOpen="False">
+                                    <Border Background="White" Padding="5" CornerRadius="5">
+                                        <StackPanel>
+                                            <!--<Button Content="Edit" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>
+                                            <Button Content="Delete" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>-->
+                                        </StackPanel>
+                                    </Border>
+                                </Popup>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Add a new user"
+                    FontSize="14"
+                    Padding="10"
+                    Margin="0,20,0,0"
+                    Command="{Binding NavigateRoleManagement}"/>
+             <!--Replace with your actual command and style--> 
+        </StackPanel>
+    </Grid>
+</UserControl>
