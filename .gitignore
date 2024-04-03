@@ -101,4 +101,4 @@ packages/
 **/obj/**/ref/*.dll
 
 # Ignore service account keys
-serviceAccountKey.json
+# serviceAccountKey.json
