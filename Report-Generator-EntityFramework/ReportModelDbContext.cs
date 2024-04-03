@@ -18,6 +18,7 @@ namespace Report_Generator_EntityFramework
         public DbSet<ReportImageModelDto> ReportImageModels { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Define foreign key relationship between ReportImageModelDto and ReportModelDto

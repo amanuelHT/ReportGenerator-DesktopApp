@@ -100,9 +100,6 @@ packages/
 **/obj/**/refint/*.dll
 **/obj/**/ref/*.dll
 
-# SQLite Database File
-*.db
-*.sqlite
 
 # Ignore service account keys
 # serviceAccountKey.json
