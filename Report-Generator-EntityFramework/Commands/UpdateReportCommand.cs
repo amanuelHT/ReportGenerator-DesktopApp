@@ -24,11 +24,15 @@ namespace Report_Generator_EntityFramework.Commands
                     Tittle = reportModel.Tittle,
                     Status = reportModel.Status,
                     Kunde = reportModel.Kunde,
+                    Images = new List<ReportImageModelDto>()
 
                 };
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 97a6e3179d9a800a68fc242a1e71c9c37fb6aee6
                 foreach (var image in reportModel.Images)
                 {
                     var imageDto = new ReportImageModelDto

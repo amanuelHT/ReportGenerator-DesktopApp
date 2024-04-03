@@ -9,6 +9,6 @@
         public bool Status { get; set; }
         public string Kunde { get; set; }
 
-        public virtual ICollection<ReportImageModelDto> Images { get; set; }
+        public virtual List<ReportImageModelDto> Images { get; set; }
     }
 }
