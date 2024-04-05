@@ -27,6 +27,7 @@ namespace Final_project.ViewModels
             Users = new ObservableCollection<UserInfo>();
             LoadUsersAsync(firebaseAuthProvider);
             NavigateRoleManagement = new NavigateCommand(RoleManagementNavigationService);
+          
         }
 
         private async void LoadUsersAsync(FirebaseAuthProvider firebaseAuthProvider)

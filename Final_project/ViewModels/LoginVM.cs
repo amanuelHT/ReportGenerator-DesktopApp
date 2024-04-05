@@ -12,7 +12,7 @@ namespace Final_project.ViewModels
         private readonly FirebaseAuthProvider _firebaseAuthProvider;
 
         public string name => "Log";
-        public ICommand NavigateAccountCommand { get; }
+        public ICommand NavigateResetPassword { get; }
         public ICommand LogInCommand { get; }
 
 
@@ -40,12 +40,12 @@ namespace Final_project.ViewModels
         }
 
         public LoginVM(AccountStore accountStore,
-            INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider)
+            INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider, INavigationService ResetPasswordNavigarionService)
         {
 
 
             LogInCommand = new LogInCommand(this, accountStore, accountNavigationService, firebaseAuthProvider);
-
+            NavigateResetPassword = new NavigateCommand(ResetPasswordNavigarionService);
         }
     }
 }
