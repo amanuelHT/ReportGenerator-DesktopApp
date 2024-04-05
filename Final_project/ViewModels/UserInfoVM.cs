@@ -45,6 +45,7 @@ namespace Final_project.ViewModels
             catch (Exception ex)
             {
                 // Handle any exceptions, possibly logging them or informing the user
+                // Handle any exceptions, possibly logging them or informing the user
             }
         }
 
