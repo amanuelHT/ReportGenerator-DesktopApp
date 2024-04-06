@@ -24,5 +24,7 @@ namespace Final_project.Views
         {
             InitializeComponent();
         }
+
+       
     }
 }
