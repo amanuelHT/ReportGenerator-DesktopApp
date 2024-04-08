@@ -10,9 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
 using Report_Generator_Domain.Queries;
-using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
+using Report_Generator_EntityFramework.ReportsDbContext;
 using System.Windows;
 
 namespace Final_project
@@ -161,10 +161,11 @@ namespace Final_project
 
             ReportModelDbContextFactory reportModelDbContextFactory =
                  _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            using (ReportModelDbContext context = reportModelDbContextFactory.Create())
+            using (
+                ReportModelDbContext context = reportModelDbContextFactory.Create())
 
             {
-                //context.Database.Migrate();
+                context.Database.Migrate();
 
             }
 

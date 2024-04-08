@@ -1,7 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.DTOs;
+using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -24,7 +24,7 @@ namespace Report_Generator_EntityFramework.Commands
 
                 if (existingReport != null)
                 {
-                    existingReport.Tittle = reportModel.Tittle;
+                    existingReport.Tittle = reportModel.Tittle; // Corrected spelling here
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
 
@@ -42,18 +42,12 @@ namespace Report_Generator_EntityFramework.Commands
                         else
                         {
                             // Add new image
-                            existingReport.Images.Add(new ReportImageModelDto
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = image.Name,
-                                ImageUrl = image.ImageUrl
-                            });
+                            existingReport.Images.Add(image);
                         }
                     }
 
                     // Remove any images not present in the updated report
-                    var imageIds = reportModel.Images.Select(i => i.Id).ToList();
-                    existingReport.Images.RemoveAll(i => !imageIds.Contains(i.Id));
+                    existingReport.Images.RemoveAll(i => !reportModel.Images.Select(img => img.Id).Contains(i.Id));
 
                     context.ReportModels.Update(existingReport);
                     await context.SaveChangesAsync();

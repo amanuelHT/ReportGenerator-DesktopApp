@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
+using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -17,17 +18,16 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (var context = _contextFactory.Create())
             {
-                // This query assumes your ReportImageModels table or set has a foreign key to the report table via 'ReportModelId'
+                // Query the images associated with the specified reportId
                 var imageDtos = await context.ReportImageModels
                     .AsNoTracking()
                     .Where(img => img.ReportModelId == reportId)
                     .ToListAsync();
 
-                var imageModels = new List<ReportImageModel>();
-                foreach (var imgDto in imageDtos)
-                {
-                    imageModels.Add(new ReportImageModel(imgDto.Id, imgDto.Name, imgDto.ImageUrl));
-                }
+                // Convert imageDtos to ReportImageModel instances
+                var imageModels = imageDtos.Select(imgDto =>
+                    new ReportImageModel(imgDto.Id, imgDto.Name, imgDto.ImageUrl, reportId)) // Pass reportId as reportModelId
+                    .ToList();
 
                 return imageModels;
             }

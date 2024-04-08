@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Report_Generator_EntityFramework
+namespace Report_Generator_EntityFramework.ReportsDbContext
 {
     public class ReportModelDesignTimeDbContext : IDesignTimeDbContextFactory<ReportModelDbContext>
     {
@@ -10,7 +10,7 @@ namespace Report_Generator_EntityFramework
         public ReportModelDbContext CreateDbContext(string[] args = null)
         {
 
-            return new ReportModelDbContext(new DbContextOptionsBuilder().UseSqlite("Data Source =Reports.db").Options);
+            return new ReportModelDbContext(new DbContextOptionsBuilder().UseSqlite("Data Source =MyReports.db").Options);
 
         }
     }

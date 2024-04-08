@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.DTOs;
+using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -18,17 +18,17 @@ namespace Report_Generator_EntityFramework.Commands
             using (ReportModelDbContext context = _contextFactory.Create())
             {
                 // Find the report model by its ID
-                ReportModelDto reportModelDto = await context.ReportModels
+                var reportModel = await context.ReportModels
                     .Include(report => report.Images) // Include related images
                     .FirstOrDefaultAsync(report => report.Id == id);
 
-                if (reportModelDto != null)
+                if (reportModel != null)
                 {
                     // Remove all associated images
-                    context.ReportImageModels.RemoveRange(reportModelDto.Images);
+                    context.ReportImageModels.RemoveRange(reportModel.Images);
 
                     // Remove the report model itself
-                    context.ReportModels.Remove(reportModelDto);
+                    context.ReportModels.Remove(reportModel);
 
                     // Save changes to the database
                     await context.SaveChangesAsync();

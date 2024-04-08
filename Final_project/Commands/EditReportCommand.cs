@@ -25,8 +25,8 @@ namespace Final_project.Commands
                 _editReportVM.ReportId,
                 reportForm.Tittle,
                 reportForm.Status,
-                reportForm.Kunde,
-                reportForm.Images
+                reportForm.Kunde
+
             );
 
             try

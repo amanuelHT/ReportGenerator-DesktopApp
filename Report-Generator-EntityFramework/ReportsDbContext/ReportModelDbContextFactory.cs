@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Report_Generator_EntityFramework
+namespace Report_Generator_EntityFramework.ReportsDbContext
 {
     public class ReportModelDbContextFactory
     {

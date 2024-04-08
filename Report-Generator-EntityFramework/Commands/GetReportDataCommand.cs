@@ -1,6 +1,7 @@
-﻿using Domain.Models;
+﻿using Domain.Models; // Import the Domain Models namespace
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
+using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -17,30 +18,20 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
-                var reportModelDto = await context.ReportModels
+                var reportModel = await context.ReportModels
                     .Include(report => report.Images)
                     .FirstOrDefaultAsync(report => report.Id == reportId);
 
-                if (reportModelDto == null)
+                if (reportModel == null)
                     return null;
 
-                var reportImages = reportModelDto.Images
-                    .Select(imageDto => new ReportImageModel(
-                        imageDto.Id,
-                        imageDto.Name ?? "DefaultName", // Handle NULL Name
-                        imageDto.ImageUrl ?? "DefaultImageUrl")) // Handle NULL ImageUrl
-                    .ToList();
-
                 return new ReportModel(
-                    reportModelDto.Id,
-                    reportModelDto.Tittle,
-                    reportModelDto.Status,
-                    reportModelDto.Kunde,
-                    reportImages
+                    reportModel.Id,
+                    reportModel.Tittle, // Corrected spelling here
+                    reportModel.Status,
+                    reportModel.Kunde
                 );
             }
         }
-
     }
-
 }

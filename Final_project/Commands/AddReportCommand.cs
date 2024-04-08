@@ -25,8 +25,8 @@ namespace Final_project.Commands
                 Guid.NewGuid(),
                 reportForm.Tittle,
                 reportForm.Status,
-                reportForm.Kunde,
-                reportForm.Images
+                reportForm.Kunde
+
             );
 
 

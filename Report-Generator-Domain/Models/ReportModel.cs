@@ -1,25 +1,25 @@
-﻿namespace Domain.Models
+﻿// Modify the ReportModel class
+namespace Domain.Models
 {
     public class ReportModel
     {
-        public Guid Id { get; }
-        public string Tittle { get; } // Note: Corrected the spelling of 'Title'
-        public bool Status { get; }
-        public string Kunde { get; }
+        public Guid Id { get; set; }
+        public string Tittle { get; set; } // Note: Corrected the spelling of 'Title'
+        public bool Status { get; set; }
+        public string Kunde { get; set; }
 
         // Collection of ReportImageModel
         public List<ReportImageModel> Images { get; set; }
 
-        public ReportModel(Guid id, string tittle, bool status, string kunde, List<ReportImageModel> images)
+        public ReportModel(Guid id, string tittle, bool status, string kunde)
         {
             Id = id;
-            Tittle = tittle; // Corrected spelling here too
+            Tittle = tittle;
             Status = status;
             Kunde = kunde;
-            Images = images;
+            Images = new List<ReportImageModel>();
         }
 
 
     }
 }
-

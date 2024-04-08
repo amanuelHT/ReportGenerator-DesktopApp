@@ -2,15 +2,20 @@
 {
     public class ReportImageModel
     {
-        public Guid Id { get; }
-        public string Name { get; }
-        public string ImageUrl { get; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
 
-        public ReportImageModel(Guid id, string name, string imageUrl)
+        // Property to represent the association with ReportModel
+        public Guid ReportModelId { get; set; } // Foreign key
+        public ReportModel ReportModel { get; set; } // Navigation property
+
+        public ReportImageModel(Guid id, string name, string imageUrl, Guid reportModelId)
         {
             Id = id;
             Name = name;
             ImageUrl = imageUrl;
+            ReportModelId = reportModelId; // Set the foreign key property
         }
     }
 }

@@ -58,27 +58,27 @@ namespace Final_project.ViewModels
             CancelCommand = cancelCommand;
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
-            Images = ConvertImageVMsToReportImageModels();
+            //Images = ConvertImageVMsToReportImageModels();
 
             ImageCollectionViewModel.ImageAdded += OnImageAdded;
         }
 
-        private List<ReportImageModel> ConvertImageVMsToReportImageModels()
-        {
-            return ImageCollectionViewModel.Images.Select(imageVM =>
-                new ReportImageModel(
-                    imageVM.ImageId,
-                    imageVM.ImageName,
-                    imageVM.ImageUri.ToString()
-                   )).ToList();
-        }
+        //private List<ReportImageModel> ConvertImageVMsToReportImageModels()
+        //{
+        //    //return ImageCollectionViewModel.Images.Select(imageVM =>
+        //    //    new ReportImageModel(
+        //    //        imageVM.ImageId,
+        //    //        imageVM.ImageName,
+        //    //        imageVM.ImageUri.ToString()
+        //    //       )).ToList();
+        //}
 
         private void OnImageAdded(ImageVM imageVM)
         {
-            Images.Add(new ReportImageModel(
-                imageVM.ImageId,
-               imageVM.ImageName,
-                imageVM.ImageUri.ToString()));
+            //Images.Add(new ReportImageModel(
+            //    imageVM.ImageId,
+            //   imageVM.ImageName,
+            //    imageVM.ImageUri.ToString()));
         }
 
         public override void Dispose()

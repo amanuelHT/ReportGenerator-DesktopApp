@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Report_Generator_EntityFramework;
+using Report_Generator_EntityFramework.ReportsDbContext;
 
 #nullable disable
 
@@ -17,7 +17,7 @@ namespace Report_Generator_EntityFramework.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
 
-            modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportImageModelDto", b =>
+            modelBuilder.Entity("Domain.Models.ReportImageModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,7 +41,7 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("ReportImageModels");
                 });
 
-            modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportModelDto", b =>
+            modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,9 +63,9 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("ReportModels");
                 });
 
-            modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportImageModelDto", b =>
+            modelBuilder.Entity("Domain.Models.ReportImageModel", b =>
                 {
-                    b.HasOne("Report_Generator_EntityFramework.DTOs.ReportModelDto", "ReportModel")
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
                         .WithMany("Images")
                         .HasForeignKey("ReportModelId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -74,7 +74,7 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
-            modelBuilder.Entity("Report_Generator_EntityFramework.DTOs.ReportModelDto", b =>
+            modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
                     b.Navigation("Images");
                 });
