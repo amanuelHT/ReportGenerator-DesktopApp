@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace Final_project.Views
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for ResetPasswordView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class ResetPasswordView : UserControl
     {
-        public LoginView()
+        public ResetPasswordView()
         {
             InitializeComponent();
         }
 
-    
+       
     }
 }

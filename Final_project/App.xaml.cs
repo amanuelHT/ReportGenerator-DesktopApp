@@ -79,7 +79,10 @@ namespace Final_project
                  //if singlton we are going to get a new instance every time venen though disposed
 
                  service.AddTransient<RoleManagementVM>(provider =>
-                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));
+                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));   
+                 
+                 service.AddTransient<ResetPasswordVM>(provider =>
+                       new ResetPasswordVM(provider.GetRequiredService<FirebaseAuthProvider>()));
 
 
                  service.AddTransient<HomeVM>(s =>
@@ -93,6 +96,7 @@ namespace Final_project
 
                  service.AddTransient<SettingsVM>(s => new SettingsVM(LoginNavigarionService(s)));
 
+
                  //service.AddTransient<UserInfoVM>();
 
 
@@ -102,10 +106,15 @@ namespace Final_project
                         new AccountVM(s.GetRequiredService<AccountStore>(),
                         SettingsNavigarionService(s)));
 
+
+
+                 //service.AddTransient<LoginVM>(s => new LoginVM(ResetPasswordNavigarionService(s)));
+
                  service.AddTransient<LoginVM>(s => new LoginVM(
                        s.GetRequiredService<AccountStore>(),
                        AccountNavigarionService(s),
-                       s.GetRequiredService<FirebaseAuthProvider>()));
+                       s.GetRequiredService<FirebaseAuthProvider>(),
+                       ResetPasswordNavigarionService(s)));
                  // Notice how each service is retrieved inside the lambda
 
                  //service.AddTransient<LoginVM>(s =>
@@ -245,6 +254,14 @@ namespace Final_project
                   () => serviceProvider.GetRequiredService<NavigationBarVM>());
 
         }
+        private INavigationService ResetPasswordNavigarionService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<ResetPasswordVM>(
+                  serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<ResetPasswordVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
+
+        }
 
         private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
         {
@@ -253,7 +270,8 @@ namespace Final_project
                  () => new LoginVM(
                 serviceProvider.GetRequiredService<AccountStore>(),
                 AccountNavigarionService(serviceProvider),
-                serviceProvider.GetRequiredService<FirebaseAuthProvider>()
+                serviceProvider.GetRequiredService<FirebaseAuthProvider>(),
+                ResetPasswordNavigarionService(serviceProvider)
             ),
             () => CreateNavigationBarViewModel(serviceProvider)
         );

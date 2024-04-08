@@ -40,8 +40,14 @@
             <DataTemplate DataType="{x:Type TypeName=viewmodels:UserInfoVM}">
                 <views:UserInfoView/>
                 
-            </DataTemplate><DataTemplate DataType="{x:Type TypeName=viewmodels:RoleManagementVM}">
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:RoleManagementVM}">
                 <views:RoleManagementView/>
+            </DataTemplate> 
+            
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:ResetPasswordVM}">
+                <views:ResetPasswordView/>
             </DataTemplate>
 
 
