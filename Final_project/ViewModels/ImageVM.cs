@@ -1,4 +1,5 @@
-﻿using Final_project.Commands;
+﻿using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
 using System.Windows.Input;
 
@@ -6,11 +7,9 @@ namespace Final_project.ViewModels
 {
     public class ImageVM : ViewModelBase
     {
-
-
         private readonly ImageCollectionVM _imageCollectionVM;
         private readonly ReportStore _reportStore;
-
+        public ReportImageModel ReportImageModel { get; private set; }
         private Uri _imageUri;
 
         public Uri ImageUri
@@ -36,20 +35,19 @@ namespace Final_project.ViewModels
             _imageCollectionVM = imageCollectionVM;
             _reportStore = reportStore;
 
-            RemoveImageCommand = new DeleteImageCommand(_reportStore, ImageId);
+            // Use the new RemoveImageCommand
+            RemoveImageCommand = new DeleteImageCommand(reportStore, this, _imageCollectionVM);
 
-            reportStore.ImageDeleted += ReportStore_ImageDeleted;
         }
 
-        private void ReportStore_ImageDeleted(Guid imageId)
+        private void ReportStore_ImageDeleted(Guid id)
         {
-            if (ImageId == imageId)
+            ImageVM imageToRemove = _imageCollectionVM.Images.FirstOrDefault(image => image.ImageId == id);
+
+            if (imageToRemove != null)
             {
-                _imageCollectionVM.RemoveImage(ImageId);
+                _imageCollectionVM.RemoveImage(imageToRemove);
             }
-
-
-
         }
 
         public override void Dispose()
@@ -57,6 +55,5 @@ namespace Final_project.ViewModels
             _reportStore.ImageDeleted -= ReportStore_ImageDeleted;
             base.Dispose();
         }
-
     }
 }

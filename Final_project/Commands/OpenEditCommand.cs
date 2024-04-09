@@ -23,16 +23,20 @@ public class OpenEditCommand : CommandBase
         // Retrieve the full report data with images
         ReportModel reportData = await _reportStore.GetReportData(reportId);
 
+
         if (reportData == null)
         {
             // Handle the case where the report is not found or there's an error loading it.
             return;
         }
 
-        // Create the edit report view model with the full report data
-        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _navigationStore);
 
-        // Change the current view to the edit report view
+        // Retrieve the images for the report
+        List<ReportImageModel> images = await _reportStore.GetImagesForReportData(reportId);
+        reportData.Images = images;
+
+        // Create and navigate to the edit report view model
+        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _navigationStore);
         _navigationStore.CurrentView = editReportVM;
     }
 }

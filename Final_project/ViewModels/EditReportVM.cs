@@ -31,8 +31,16 @@ namespace Final_project.ViewModels
                 Tittle = reportModel.Tittle,
                 Status = reportModel.Status,
                 Kunde = reportModel.Kunde,
-                Images = reportModel.Images,
+                // Initialize ImageCollectionViewModel with existing images
+                ImageCollectionViewModel = new ImageCollectionVM(reportStore, ReportId)
             };
+
+            // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel
+            foreach (var img in reportModel.Images)
+            {
+                var imageVM = new ImageVM(img.Id, img.Name, img.ImageUrl, ReportFormVM.ImageCollectionViewModel, reportStore);
+                ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
+            }
         }
     }
 }

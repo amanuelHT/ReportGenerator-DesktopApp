@@ -56,6 +56,9 @@ namespace Final_project
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
                  service.AddSingleton<IGetReportImageCommand, GetReportImageCommand>();
+                 service.AddSingleton<IGetImageForReportCommand, GetImageForReportCommand>();
+                 service.AddSingleton<ICreateImageCommand, CreateImageCommand>();
+
 
                  service.AddSingleton<IDeleteReportImageCommand, DeleteReportImageCommand>();
 
@@ -79,8 +82,8 @@ namespace Final_project
                  //if singlton we are going to get a new instance every time venen though disposed
 
                  service.AddTransient<RoleManagementVM>(provider =>
-                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));   
-                 
+                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));
+
                  service.AddTransient<ResetPasswordVM>(provider =>
                        new ResetPasswordVM(provider.GetRequiredService<FirebaseAuthProvider>()));
 
@@ -168,15 +171,15 @@ namespace Final_project
             initialNavigationService.Navigate();
 
 
-            ReportModelDbContextFactory reportModelDbContextFactory =
-                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            using (
-                ReportModelDbContext context = reportModelDbContextFactory.Create())
+            //ReportModelDbContextFactory reportModelDbContextFactory =
+            //     _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            //using (
+            //    ReportModelDbContext context = reportModelDbContextFactory.Create())
 
-            {
-                context.Database.Migrate();
+            //{
+            //    context.Database.Migrate();
 
-            }
+            //}
 
             // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();

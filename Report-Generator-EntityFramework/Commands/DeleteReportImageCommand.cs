@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// DeleteReportImageCommand.cs
+using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
 using Report_Generator_EntityFramework.ReportsDbContext;
 
@@ -17,20 +18,16 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (var context = _contextFactory.Create())
             {
-                // Find the report that contains the image
                 var reportWithImage = await context.ReportModels
                     .Include(r => r.Images)
                     .FirstOrDefaultAsync(r => r.Images.Any(img => img.Id == imageId));
 
                 if (reportWithImage != null)
                 {
-                    // Remove the image from the report's collection
                     var imageToRemove = reportWithImage.Images.FirstOrDefault(img => img.Id == imageId);
                     if (imageToRemove != null)
                     {
                         reportWithImage.Images.Remove(imageToRemove);
-
-                        // Save changes to the context
                         await context.SaveChangesAsync();
                     }
                 }

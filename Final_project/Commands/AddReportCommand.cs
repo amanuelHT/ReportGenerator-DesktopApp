@@ -23,24 +23,30 @@ namespace Final_project.Commands
 
             ReportModel reportModel = new ReportModel(
                 Guid.NewGuid(),
-                reportForm.Tittle,
+                reportForm.Tittle, // Ensure 'Tittle' is the intended property name (commonly 'Title')
                 reportForm.Status,
                 reportForm.Kunde
-
             );
 
-
+            // Assuming the ImageCollectionVM is part of your ReportFormVM
+            foreach (var imageVM in reportForm.ImageCollectionViewModel.Images)
+            {
+                ReportImageModel imageModel = new ReportImageModel(
+                    imageVM.ImageId,
+                    imageVM.ImageName,
+                    imageVM.ImageUri.ToString(),
+                    reportModel.Id); // Use 'reportModel' instead of 'newReport'
+                reportModel.Images.Add(imageModel);
+            }
 
             try
             {
-
                 await _reportStore.Add(reportModel);
-
                 _navigationStore.Close();
             }
             catch (Exception ex)
             {
-
+                // Handle exception appropriately
                 throw;
             }
         }

@@ -13,7 +13,7 @@ namespace Final_project.ViewModels
 
         public List<ReportImageModel> Images { get; set; }
 
-        public ImageCollectionVM ImageCollectionViewModel { get; }
+        public ImageCollectionVM ImageCollectionViewModel { get; set; }
         public DeleteImageCommand DeleteImageCommand { get; set; }
 
         public string Tittle
@@ -58,33 +58,10 @@ namespace Final_project.ViewModels
             CancelCommand = cancelCommand;
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
-            //Images = ConvertImageVMsToReportImageModels();
 
-            ImageCollectionViewModel.ImageAdded += OnImageAdded;
         }
 
-        //private List<ReportImageModel> ConvertImageVMsToReportImageModels()
-        //{
-        //    //return ImageCollectionViewModel.Images.Select(imageVM =>
-        //    //    new ReportImageModel(
-        //    //        imageVM.ImageId,
-        //    //        imageVM.ImageName,
-        //    //        imageVM.ImageUri.ToString()
-        //    //       )).ToList();
-        //}
 
-        private void OnImageAdded(ImageVM imageVM)
-        {
-            //Images.Add(new ReportImageModel(
-            //    imageVM.ImageId,
-            //   imageVM.ImageName,
-            //    imageVM.ImageUri.ToString()));
-        }
 
-        public override void Dispose()
-        {
-            ImageCollectionViewModel.ImageAdded -= OnImageAdded;
-            base.Dispose();
-        }
     }
 }
