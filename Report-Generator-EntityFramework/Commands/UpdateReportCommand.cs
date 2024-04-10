@@ -9,13 +9,11 @@ namespace Report_Generator_EntityFramework.Commands
     {
         private readonly ReportModelDbContextFactory _contextFactory;
         private readonly ICreateImageCommand _createImageCommand;
-        private readonly IDeleteReportImageCommand _deleteReportImageCommand;
 
-        public UpdateReportCommand(ReportModelDbContextFactory contextFactory, ICreateImageCommand createImageCommand, IDeleteReportImageCommand deleteReportImageCommand)
+        public UpdateReportCommand(ReportModelDbContextFactory contextFactory, ICreateImageCommand createImageCommand)
         {
             _contextFactory = contextFactory;
             _createImageCommand = createImageCommand;
-            _deleteReportImageCommand = deleteReportImageCommand;
         }
 
         public async Task Execute(ReportModel reportModel)
@@ -32,24 +30,18 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
 
-                    // Delete all existing images related to the report
-                    var existingImages = await context.ReportImageModels.Where(i => i.ReportModelId == reportModel.Id).ToListAsync();
-                    foreach (var existingImage in existingImages)
-                    {
-                        await _deleteReportImageCommand.Execute(existingImage.Id);
-                    }
+                    // Filter out images that already exist in the database
+                    var newImages = reportModel.Images
+                        .Where(newImage => existingReport.Images.All(existingImage => existingImage.Id != newImage.Id))
+                        .ToList();
 
-                    // Add new images to the report
-                    await _createImageCommand.Execute(reportModel.Id, reportModel.Images);
+                    // Add new filtered images to the report
+                    await _createImageCommand.Execute(reportModel.Id, newImages);
 
                     // Save changes to the context
                     await context.SaveChangesAsync();
                 }
-
-                // Save changes to the context
-                await context.SaveChangesAsync();
             }
         }
     }
 }
-

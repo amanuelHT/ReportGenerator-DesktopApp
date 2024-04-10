@@ -139,22 +139,17 @@ namespace Final_project.Stores
 
 
 
-        public async Task<List<ReportImageModel>> GetImagesForReportData(Guid reportId)
-        {
-            return await _getImageForReporCommand.Execute(reportId);
-        }
-
-
-        public async Task<ReportModel> GetReportData(Guid reportId)
+        public async Task<(ReportModel report, List<ReportImageModel> images)> GetReportData(Guid reportId)
         {
             return await _getReportDataCommand.Execute(reportId);
         }
 
 
-        public async Task<ReportModel> GetImageReportData(Guid reportId)
-        {
-            return await _getReportDataCommand.Execute(reportId);
-        }
+
+        //public async Task<ReportModel> GetImageReportData(Guid reportId)
+        //{
+        //    return await _getReportDataCommand.Execute(reportId);
+        //}
 
 
 

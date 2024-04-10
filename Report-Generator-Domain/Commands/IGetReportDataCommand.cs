@@ -4,8 +4,6 @@ namespace Report_Generator_Domain.Commands
 {
     public interface IGetReportDataCommand
     {
-        Task<ReportModel> Execute(Guid reportId);
+        Task<(ReportModel report, List<ReportImageModel> images)> Execute(Guid reportId);
     }
-
-
 }

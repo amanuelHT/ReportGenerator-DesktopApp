@@ -9,8 +9,6 @@ namespace Final_project.ViewModels
 {
     public class ReportViewerVM : ViewModelBase
     {
-        private ObservableCollection<ReportModel> _reports;
-        private ObservableCollection<ReportImageModel> _reportImages;
         private readonly ReportStore _reportStore;
         public ICommand NavigateGeneratedReportCommand { get; }
         public ObservableCollection<ReportModel> AvailableReports { get; }
@@ -28,41 +26,32 @@ namespace Final_project.ViewModels
             }
         }
 
+        public ReportModel SelectedReportData { get; private set; }
+        public ObservableCollection<ReportImageModel> ReportImages { get; private set; }
+
         public ReportViewerVM(ReportStore reportStore, INavigationService generatedReportNavigationService)
         {
             _reportStore = reportStore;
-            _reports = new ObservableCollection<ReportModel>();
-            LoadReports(); // Load all reports initially
             NavigateGeneratedReportCommand = new NavigateCommand(generatedReportNavigationService);
             AvailableReports = new ObservableCollection<ReportModel>(_reportStore.ReportModels);
         }
-
-        private async Task LoadReports()
-        {
-            await _reportStore.Load();
-            _reports.Clear();
-            foreach (var report in _reportStore.ReportModels)
-            {
-                _reports.Add(report);
-
-            }
-        }
-
-        // Add a property to expose the selected report's data
-        public ReportModel SelectedReportData { get; private set; }
 
         private async Task LoadSelectedReport()
         {
             if (_selectedReport == null) return;
 
-            var selectedReportData = await _reportStore.GetReportData(_selectedReport.Id);
-            if (selectedReportData != null)
+            // Retrieve the full report data with images
+            (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(_selectedReport.Id);
+
+            if (reportData != null)
             {
-                SelectedReportData = selectedReportData; // Set the selected report's data
+                SelectedReportData = reportData; // Set the selected report's data
                 OnPropertyChanged(nameof(SelectedReportData)); // Notify the view
+
+                // Load images for the selected report
+                ReportImages = new ObservableCollection<ReportImageModel>(images);
+                OnPropertyChanged(nameof(ReportImages)); // Notify the view
             }
         }
-
     }
 }
-

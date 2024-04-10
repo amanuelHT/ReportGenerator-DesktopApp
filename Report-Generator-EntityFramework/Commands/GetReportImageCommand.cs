@@ -18,18 +18,11 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (var context = _contextFactory.Create())
             {
-                // Query the images associated with the specified reportId
-                var imageDtos = await context.ReportImageModels
-                    .AsNoTracking()
-                    .Where(img => img.ReportModelId == reportId)
+                var images = await context.ReportImageModels
+                    .Where(image => image.ReportModelId == reportId)
                     .ToListAsync();
 
-                // Convert imageDtos to ReportImageModel instances
-                var imageModels = imageDtos.Select(imgDto =>
-                    new ReportImageModel(imgDto.Id, imgDto.Name, imgDto.ImageUrl, reportId)) // Pass reportId as reportModelId
-                    .ToList();
-
-                return imageModels;
+                return images;
             }
         }
     }

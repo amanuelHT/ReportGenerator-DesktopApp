@@ -21,8 +21,7 @@ public class OpenEditCommand : CommandBase
         Guid reportId = _reportListingItemVM.ReportModel.Id;
 
         // Retrieve the full report data with images
-        ReportModel reportData = await _reportStore.GetReportData(reportId);
-
+        (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(reportId);
 
         if (reportData == null)
         {
@@ -30,9 +29,7 @@ public class OpenEditCommand : CommandBase
             return;
         }
 
-
-        // Retrieve the images for the report
-        List<ReportImageModel> images = await _reportStore.GetImagesForReportData(reportId);
+        // Add retrieved images to the report data
         reportData.Images = images;
 
         // Create and navigate to the edit report view model
