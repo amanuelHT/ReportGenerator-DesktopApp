@@ -29,6 +29,17 @@ namespace Final_project.Commands
 
             );
 
+            // Assuming the ImageCollectionVM is part of your ReportFormVM
+            foreach (var imageVM in reportForm.ImageCollectionViewModel.Images)
+            {
+                ReportImageModel imageModel = new ReportImageModel(
+                    imageVM.ImageId,
+                    imageVM.ImageName,
+                    imageVM.ImageUri.ToString(),
+                    reportModel.Id); // Use 'reportModel' instead of 'newReport'
+                reportModel.Images.Add(imageModel);
+            }
+
             try
             {
                 await _reportStore.Update(reportModel);
