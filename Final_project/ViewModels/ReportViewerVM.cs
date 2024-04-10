@@ -21,7 +21,6 @@ namespace Final_project.ViewModels
             {
                 _selectedReport = value;
                 OnPropertyChanged(nameof(SelectedReport));
-                // Trigger loading of the data for the selected report
                 LoadSelectedReport();
             }
         }
@@ -40,17 +39,15 @@ namespace Final_project.ViewModels
         {
             if (_selectedReport == null) return;
 
-            // Retrieve the full report data with images
             (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {
-                SelectedReportData = reportData; // Set the selected report's data
-                OnPropertyChanged(nameof(SelectedReportData)); // Notify the view
+                SelectedReportData = reportData;
+                OnPropertyChanged(nameof(SelectedReportData));
 
-                // Load images for the selected report
                 ReportImages = new ObservableCollection<ReportImageModel>(images);
-                OnPropertyChanged(nameof(ReportImages)); // Notify the view
+                OnPropertyChanged(nameof(ReportImages));
             }
         }
     }

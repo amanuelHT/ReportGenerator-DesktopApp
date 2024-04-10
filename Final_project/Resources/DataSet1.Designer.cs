@@ -28,8 +28,6 @@ namespace Final_project.Resources {
         
         private ReportImageModelDataTable tableReportImageModel;
         
-        private global::System.Data.DataRelation relationReportModels_ReportImageModel;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -220,7 +218,6 @@ namespace Final_project.Resources {
                     this.tableReportImageModel.InitVars();
                 }
             }
-            this.relationReportModels_ReportImageModel = this.Relations["ReportModels_ReportImageModel"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -235,10 +232,6 @@ namespace Final_project.Resources {
             base.Tables.Add(this.tableReportModels);
             this.tableReportImageModel = new ReportImageModelDataTable();
             base.Tables.Add(this.tableReportImageModel);
-            this.relationReportModels_ReportImageModel = new global::System.Data.DataRelation("ReportModels_ReportImageModel", new global::System.Data.DataColumn[] {
-                        this.tableReportModels.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableReportImageModel.ReportModelIdColumn}, false);
-            this.Relations.Add(this.relationReportModels_ReportImageModel);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -610,15 +603,11 @@ namespace Final_project.Resources {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ReportImageModelDataTable : global::System.Data.TypedTableBase<ReportImageModelRow> {
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnImage1;
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnImage2;
             
-            private global::System.Data.DataColumn columnImageUrl;
-            
-            private global::System.Data.DataColumn columnImage;
-            
-            private global::System.Data.DataColumn columnReportModelId;
+            private global::System.Data.DataColumn columnImage3;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -655,41 +644,25 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn Image1Column {
                 get {
-                    return this.columnId;
+                    return this.columnImage1;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn Image2Column {
                 get {
-                    return this.columnName;
+                    return this.columnImage2;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImageUrlColumn {
+            public global::System.Data.DataColumn Image3Column {
                 get {
-                    return this.columnImageUrl;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImageColumn {
-                get {
-                    return this.columnImage;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ReportModelIdColumn {
-                get {
-                    return this.columnReportModelId;
+                    return this.columnImage3;
                 }
             }
             
@@ -730,17 +703,12 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportImageModelRow AddReportImageModelRow(System.Guid Id, string Name, string ImageUrl, byte Image, ReportModelsRow parentReportModelsRowByReportModels_ReportImageModel) {
+            public ReportImageModelRow AddReportImageModelRow(byte Image1, byte Image2, byte Image3) {
                 ReportImageModelRow rowReportImageModelRow = ((ReportImageModelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
-                        Name,
-                        ImageUrl,
-                        Image,
-                        null};
-                if ((parentReportModelsRowByReportModels_ReportImageModel != null)) {
-                    columnValuesArray[4] = parentReportModelsRowByReportModels_ReportImageModel[0];
-                }
+                        Image1,
+                        Image2,
+                        Image3};
                 rowReportImageModelRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportImageModelRow);
                 return rowReportImageModelRow;
@@ -763,26 +731,20 @@ namespace Final_project.Resources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnImageUrl = base.Columns["ImageUrl"];
-                this.columnImage = base.Columns["Image"];
-                this.columnReportModelId = base.Columns["ReportModelId"];
+                this.columnImage1 = base.Columns["Image1"];
+                this.columnImage2 = base.Columns["Image2"];
+                this.columnImage3 = base.Columns["Image3"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnImageUrl = new global::System.Data.DataColumn("ImageUrl", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImageUrl);
-                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImage);
-                this.columnReportModelId = new global::System.Data.DataColumn("ReportModelId", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReportModelId);
+                this.columnImage1 = new global::System.Data.DataColumn("Image1", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage1);
+                this.columnImage2 = new global::System.Data.DataColumn("Image2", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage2);
+                this.columnImage3 = new global::System.Data.DataColumn("Image3", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage3);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1034,17 +996,6 @@ namespace Final_project.Resources {
             public void SetKundeNull() {
                 this[this.tableReportModels.KundeColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportImageModelRow[] GetReportImageModelRows() {
-                if ((this.Table.ChildRelations["ReportModels_ReportImageModel"] == null)) {
-                    return new ReportImageModelRow[0];
-                }
-                else {
-                    return ((ReportImageModelRow[])(base.GetChildRows(this.Table.ChildRelations["ReportModels_ReportImageModel"])));
-                }
-            }
         }
         
         /// <summary>
@@ -1063,153 +1014,86 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.Guid Id {
+            public byte Image1 {
                 get {
                     try {
-                        return ((global::System.Guid)(this[this.tableReportImageModel.IdColumn]));
+                        return ((byte)(this[this.tableReportImageModel.Image1Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'ReportImageModel\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image1\' in table \'ReportImageModel\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportImageModel.IdColumn] = value;
+                    this[this.tableReportImageModel.Image1Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public byte Image2 {
                 get {
                     try {
-                        return ((string)(this[this.tableReportImageModel.NameColumn]));
+                        return ((byte)(this[this.tableReportImageModel.Image2Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'ReportImageModel\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image2\' in table \'ReportImageModel\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportImageModel.NameColumn] = value;
+                    this[this.tableReportImageModel.Image2Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ImageUrl {
+            public byte Image3 {
                 get {
                     try {
-                        return ((string)(this[this.tableReportImageModel.ImageUrlColumn]));
+                        return ((byte)(this[this.tableReportImageModel.Image3Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ImageUrl\' in table \'ReportImageModel\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image3\' in table \'ReportImageModel\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableReportImageModel.ImageUrlColumn] = value;
+                    this[this.tableReportImageModel.Image3Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public byte Image {
-                get {
-                    try {
-                        return ((byte)(this[this.tableReportImageModel.ImageColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Image\' in table \'ReportImageModel\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableReportImageModel.ImageColumn] = value;
-                }
+            public bool IsImage1Null() {
+                return this.IsNull(this.tableReportImageModel.Image1Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.Guid ReportModelId {
-                get {
-                    try {
-                        return ((global::System.Guid)(this[this.tableReportImageModel.ReportModelIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ReportModelId\' in table \'ReportImageModel\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableReportImageModel.ReportModelIdColumn] = value;
-                }
+            public void SetImage1Null() {
+                this[this.tableReportImageModel.Image1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow ReportModelsRow {
-                get {
-                    return ((ReportModelsRow)(this.GetParentRow(this.Table.ParentRelations["ReportModels_ReportImageModel"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["ReportModels_ReportImageModel"]);
-                }
+            public bool IsImage2Null() {
+                return this.IsNull(this.tableReportImageModel.Image2Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableReportImageModel.IdColumn);
+            public void SetImage2Null() {
+                this[this.tableReportImageModel.Image2Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableReportImageModel.IdColumn] = global::System.Convert.DBNull;
+            public bool IsImage3Null() {
+                return this.IsNull(this.tableReportImageModel.Image3Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableReportImageModel.NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableReportImageModel.NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImageUrlNull() {
-                return this.IsNull(this.tableReportImageModel.ImageUrlColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImageUrlNull() {
-                this[this.tableReportImageModel.ImageUrlColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImageNull() {
-                return this.IsNull(this.tableReportImageModel.ImageColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImageNull() {
-                this[this.tableReportImageModel.ImageColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsReportModelIdNull() {
-                return this.IsNull(this.tableReportImageModel.ReportModelIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetReportModelIdNull() {
-                this[this.tableReportImageModel.ReportModelIdColumn] = global::System.Convert.DBNull;
+            public void SetImage3Null() {
+                this[this.tableReportImageModel.Image3Column] = global::System.Convert.DBNull;
             }
         }
         

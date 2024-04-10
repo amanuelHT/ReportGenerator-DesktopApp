@@ -43,31 +43,23 @@
         <rd:TableAdapterName />
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="DataSet2">
+    <DataSet Name="DataSet3">
       <Query>
         <DataSourceName>DataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ImageUrl">
-          <DataField>ImageUrl</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Image">
-          <DataField>Image</DataField>
+        <Field Name="Image1">
+          <DataField>Image1</DataField>
           <rd:TypeName>System.Byte</rd:TypeName>
         </Field>
-        <Field Name="ReportModelId">
-          <DataField>ReportModelId</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
+        <Field Name="Image2">
+          <DataField>Image2</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="Image3">
+          <DataField>Image3</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -382,15 +374,15 @@
               </Border>
             </Style>
           </Tablix>
-          <Image Name="Image6">
+          <Image Name="Image1">
             <Source>Database</Source>
-            <Value>=First(Fields!Image.Value, "DataSet2")</Value>
+            <Value>=First(Fields!Image1.Value, "DataSet3")</Value>
             <MIMEType>image/x-png</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>1.23833in</Top>
-            <Left>2.08208in</Left>
-            <Height>1.55208in</Height>
-            <Width>2.6875in</Width>
+            <Left>1.07167in</Left>
+            <Height>1.30208in</Height>
+            <Width>2.16667in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -398,11 +390,43 @@
               </Border>
             </Style>
           </Image>
+          <Image Name="Image2">
+            <Source>Database</Source>
+            <Value>=First(Fields!Image2.Value, "DataSet3")</Value>
+            <MIMEType>image/x-png</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>1.23833in</Top>
+            <Left>3.56125in</Left>
+            <Height>1.30208in</Height>
+            <Width>2.13542in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Image Name="Image3">
+            <Source>Database</Source>
+            <Value>=First(Fields!Image3.Value, "DataSet3")</Value>
+            <MIMEType>image/x-png</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>1.23833in</Top>
+            <Left>5.92583in</Left>
+            <Height>1.30208in</Height>
+            <Width>1.60417in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>2.93625in</Height>
+        <Height>7.61333in</Height>
         <Style />
       </Body>
-      <Width>7.92708in</Width>
+      <Width>9.15625in</Width>
       <Page>
         <PageHeader>
           <Height>1.34375in</Height>

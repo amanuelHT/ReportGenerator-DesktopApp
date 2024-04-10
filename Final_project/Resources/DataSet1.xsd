@@ -25,20 +25,13 @@
         <xs:element name="ReportImageModel" msprop:Generator_RowEvHandlerName="ReportImageModelRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportImageModelRowDeleted" msprop:Generator_RowDeletingName="ReportImageModelRowDeleting" msprop:Generator_RowEvArgName="ReportImageModelRowChangeEvent" msprop:Generator_TablePropName="ReportImageModel" msprop:Generator_RowChangedName="ReportImageModelRowChanged" msprop:Generator_RowChangingName="ReportImageModelRowChanging" msprop:Generator_TableClassName="ReportImageModelDataTable" msprop:Generator_RowClassName="ReportImageModelRow" msprop:Generator_TableVarName="tableReportImageModel" msprop:Generator_UserTableName="ReportImageModel">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
-              <xs:element name="ImageUrl" msprop:Generator_ColumnPropNameInRow="ImageUrl" msprop:Generator_ColumnPropNameInTable="ImageUrlColumn" msprop:Generator_ColumnVarNameInTable="columnImageUrl" msprop:Generator_UserColumnName="ImageUrl" type="xs:string" minOccurs="0" />
-              <xs:element name="Image" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_UserColumnName="Image" type="xs:unsignedByte" minOccurs="0" />
-              <xs:element name="ReportModelId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ReportModelId" msprop:Generator_ColumnPropNameInTable="ReportModelIdColumn" msprop:Generator_ColumnVarNameInTable="columnReportModelId" msprop:Generator_UserColumnName="ReportModelId" type="xs:string" minOccurs="0" />
+              <xs:element name="Image1" msprop:Generator_ColumnPropNameInRow="Image1" msprop:Generator_ColumnPropNameInTable="Image1Column" msprop:Generator_ColumnVarNameInTable="columnImage1" msprop:Generator_UserColumnName="Image1" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Image2" msprop:Generator_ColumnPropNameInRow="Image2" msprop:Generator_ColumnPropNameInTable="Image2Column" msprop:Generator_ColumnVarNameInTable="columnImage2" msprop:Generator_UserColumnName="Image2" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Image3" msprop:Generator_ColumnPropNameInRow="Image3" msprop:Generator_ColumnPropNameInTable="Image3Column" msprop:Generator_ColumnVarNameInTable="columnImage3" msprop:Generator_UserColumnName="Image3" type="xs:unsignedByte" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="ReportModels_ReportImageModel" msdata:parent="ReportModels" msdata:child="ReportImageModel" msdata:parentkey="Id" msdata:childkey="ReportModelId" msprop:Generator_UserParentTable="ReportModels" msprop:Generator_UserChildTable="ReportImageModel" msprop:Generator_RelationVarName="relationReportModels_ReportImageModel" msprop:Generator_ChildPropName="GetReportImageModelRows" msprop:Generator_ParentPropName="ReportModelsRow" msprop:Generator_UserRelationName="ReportModels_ReportImageModel" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

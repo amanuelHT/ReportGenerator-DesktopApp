@@ -1,7 +1,8 @@
-﻿using Final_project.ViewModels;
+﻿using BoldReports.Windows;
+using Domain.Models;
+using Final_project.ViewModels;
+using System.Collections.ObjectModel;
 using System.Data;
-using System.IO;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,56 +16,29 @@ namespace Final_project.Views
             this.Loaded += OnGenerateReportClick;
         }
 
-        private async void OnGenerateReportClick(object sender, RoutedEventArgs e)
+        private void OnGenerateReportClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 var viewModel = DataContext as ReportViewerVM;
 
-                this.reportViewer.ReportPath = Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
+                this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
 
-                // Use the selected report's data
+                // Handle the report data
                 if (viewModel.SelectedReportData != null)
                 {
-                    DataTable reportDataTable = new DataTable("SelectedReportData");
+                    DataTable reportDataTable = CreateReportDataTable(viewModel.SelectedReportData);
+                    this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet1", Value = reportDataTable });
 
-                    // Add columns for each property
-                    foreach (var property in viewModel.SelectedReportData.GetType().GetProperties())
-                    {
-                        reportDataTable.Columns.Add(property.Name, property.PropertyType);
-                    }
-
-                    // Add a row with values of those properties
-                    DataRow row = reportDataTable.NewRow();
-                    foreach (var property in viewModel.SelectedReportData.GetType().GetProperties())
-                    {
-                        row[property.Name] = property.GetValue(viewModel.SelectedReportData);
-                    }
-                    reportDataTable.Rows.Add(row);
-
-                    // Add images to the dataset
-                    // Add images to the dataset
+                    // Handle the images
                     if (viewModel.ReportImages != null && viewModel.ReportImages.Any())
                     {
-                        DataTable imageDataTable = new DataTable("ReportImages");
-                        imageDataTable.Columns.Add("Image", typeof(byte[]));
-
-                        foreach (var imageModel in viewModel.ReportImages)
-                        {
-                            byte[] imageData = await GetImageData(imageModel.ImageUrl);
-                            DataRow imageRow = imageDataTable.NewRow();
-                            imageRow["Image"] = imageData;
-                            imageDataTable.Rows.Add(imageRow);
-                        }
-
-                        this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "DataSet2", Value = imageDataTable });
+                        DataTable imagesTable = CreateImagesDataTable(viewModel.ReportImages);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable });
                     }
 
-
-
-                    this.reportViewer.DataSources.Add(new BoldReports.Windows.ReportDataSource { Name = "DataSet1", Value = reportDataTable });
                     this.reportViewer.RefreshReport();
                 }
             }
@@ -74,36 +48,67 @@ namespace Final_project.Views
             }
         }
 
-        private async Task<byte[]> GetImageData(string imageUrl)
+        private DataTable CreateReportDataTable(ReportModel reportData)
         {
-            if (imageUrl.StartsWith("http://") || imageUrl.StartsWith("https://"))
+            DataTable dataTable = new DataTable("SelectedReportData");
+
+            // Reflectively add columns for each property
+            foreach (var property in reportData.GetType().GetProperties())
             {
-                using (var httpClient = new HttpClient())
-                {
-                    var response = await httpClient.GetAsync(imageUrl);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return await response.Content.ReadAsByteArrayAsync();
-                    }
-                    else
-                    {
-                        throw new Exception($"Failed to download image from {imageUrl}");
-                    }
-                }
-            }
-            else if (imageUrl.StartsWith("file://"))
-            {
-                // Convert file URI to a local path
-                string localPath = new Uri(imageUrl).LocalPath;
-                return File.ReadAllBytes(localPath);
-            }
-            else
-            {
-                throw new Exception($"Unsupported image URL scheme in {imageUrl}");
+                dataTable.Columns.Add(property.Name, property.PropertyType);
             }
 
+            // Add a row with values of those properties
+            DataRow row = dataTable.NewRow();
+            foreach (var property in reportData.GetType().GetProperties())
+            {
+                row[property.Name] = property.GetValue(reportData);
+            }
+            dataTable.Rows.Add(row);
 
+            return dataTable;
         }
+
+        private DataTable CreateImagesDataTable(ObservableCollection<ReportImageModel> images)
+        {
+            DataTable imagesTable = new DataTable("ReportImages");
+            for (int i = 1; i <= 3; i++)
+            {
+                imagesTable.Columns.Add("Image" + i, typeof(byte[]));
+            }
+
+            DataRow newRow = imagesTable.NewRow();
+            for (int i = 0; i < images.Count && i < 3; i++)
+            {
+                newRow["Image" + (i + 1)] = GetImageData(images[i].ImageUrl);
+            }
+            imagesTable.Rows.Add(newRow);
+
+            return imagesTable;
+        }
+
+
+
+        private byte[] GetImageData(string imageUrl)
+        {
+            try
+            {
+                // Create a Uri from imageUrl
+                var uri = new Uri(imageUrl);
+
+                // Convert the Uri to a local path
+                string localPath = uri.LocalPath;
+
+                // Read the file as a byte array
+                return System.IO.File.ReadAllBytes(localPath);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to load image data from URL: {imageUrl}", ex);
+            }
+        }
+
+
 
     }
 }
