@@ -6,14 +6,16 @@
              xmlns:local="clr-namespace:Final_project.Views" 
              xmlns:components="clr-namespace:Final_project.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             MinWidth="200" MinHeight="100" MaxWidth="1000" MaxHeight="800">
     <Grid>
         <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Add Report"  Style="{StaticResource PageHeader}"/>
+        <!-- Adjusted margin for the TextBlock -->
+        <TextBlock Grid.Row="0" Text="Add Report" Margin="0, -20,0,0" Style="{StaticResource PageHeader}"/>
 
         <components:ReportForm Grid.Row="1" Margin="0 20 0 0" DataContext="{Binding ReportFormVM}" />
     </Grid>
