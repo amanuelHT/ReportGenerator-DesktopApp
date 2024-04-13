@@ -16,9 +16,9 @@ namespace Final_project.Stores
         private readonly IDeleteReportCommand _deleteReportCommand;
         private readonly IUpdateReportCommand _updateReportCommand;
         private readonly IGetReportDataCommand _getReportDataCommand;
-        private readonly IGetReportImageCommand _getReportImageCommand;
+        //private readonly IGetReportImageCommand _getReportImageCommand;
         private readonly IDeleteReportImageCommand _deleteReportImageCommand;
-        private readonly IGetImageForReportCommand _getImageForReporCommand;
+        //private readonly IGetImageForReportCommand _getImageForReporCommand;
         private readonly ICreateImageCommand _createImageCommand;
 
 
@@ -31,9 +31,9 @@ namespace Final_project.Stores
              IDeleteReportCommand deleteReportCommand,
              IUpdateReportCommand updateReportCommand,
              IGetReportDataCommand getReportDataCommand,
-              IGetReportImageCommand getReportImageCommand,
+             //IGetReportImageCommand getReportImageCommand,
              IDeleteReportImageCommand deleteReportImageCommand,
-            IGetImageForReportCommand getImageForReportCommand,
+            //IGetImageForReportCommand getImageForReportCommand,
             ICreateImageCommand createImageCommand
 
             )
@@ -43,9 +43,9 @@ namespace Final_project.Stores
             _deleteReportCommand = deleteReportCommand;
             _updateReportCommand = updateReportCommand;
             _getReportDataCommand = getReportDataCommand;
-            _getReportImageCommand = getReportImageCommand;
+            //_getReportImageCommand = getReportImageCommand;
             _deleteReportImageCommand = deleteReportImageCommand;
-            _getImageForReporCommand = getImageForReportCommand;
+            //_getImageForReporCommand = getImageForReportCommand;
             _createImageCommand = createImageCommand;
 
 

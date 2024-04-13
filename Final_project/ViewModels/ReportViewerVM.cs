@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Domain.Models;
 using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
@@ -7,23 +8,20 @@ using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class ReportViewerVM : ViewModelBase
+    public partial class ReportViewerVM : ObservableObject
     {
         private readonly ReportStore _reportStore;
         public ICommand NavigateGeneratedReportCommand { get; }
         public ObservableCollection<ReportModel> AvailableReports { get; }
 
+        [ObservableProperty]
         private ReportModel _selectedReport;
-        public ReportModel SelectedReport
+
+        partial void OnSelectedReportChanged(ReportModel value)
         {
-            get => _selectedReport;
-            set
-            {
-                _selectedReport = value;
-                OnPropertyChanged(nameof(SelectedReport));
-                LoadSelectedReport();
-            }
+            LoadSelectedReport();
         }
+
 
         public ReportModel SelectedReportData { get; private set; }
         public ObservableCollection<ReportImageModel> ReportImages { get; private set; }

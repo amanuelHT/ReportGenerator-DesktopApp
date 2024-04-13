@@ -1,4 +1,5 @@
-﻿using Final_project.Service;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
 using Firebase.Auth;
@@ -41,8 +42,8 @@ namespace Final_project
                  service.AddSingleton<ReportModelDbContextFactory>();
                  Stores.FirestoreHelper.InitializeFirestore();
 
-                 service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
-                 (ViewModelBase)serviceProvider.GetRequiredService(type));
+                 service.AddSingleton<Func<Type, ObservableObject>>(serviceProvider => type =>
+                 (ObservableObject)serviceProvider.GetRequiredService(type));
 
 
                  //navigation service 
@@ -55,12 +56,10 @@ namespace Final_project
                  service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
-                 service.AddSingleton<IGetReportImageCommand, GetReportImageCommand>();
-                 service.AddSingleton<IGetImageForReportCommand, GetImageForReportCommand>();
-                 service.AddSingleton<ICreateImageCommand, CreateImageCommand>();
+                 service.AddSingleton<ICreateImageCommand, ImageCreationCommand>();
 
 
-                 service.AddSingleton<IDeleteReportImageCommand, DeleteReportImageCommand>();
+                 service.AddSingleton<IDeleteReportImageCommand, ImageDeletionCommand>();
 
 
                  //                //stores , Single source of truth, defnitly Singlton

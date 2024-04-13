@@ -1,11 +1,11 @@
-﻿using Final_project.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Final_project.Stores
 {
     public class ModalNavigation
     {
-        public ViewModelBase _currentView;
-        public ViewModelBase CurrentView
+        public ObservableObject _currentView;
+        public ObservableObject CurrentView
         {
             get { return _currentView; }
             set

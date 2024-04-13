@@ -1,8 +1,9 @@
-﻿using Final_project.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.ViewModels;
 
 namespace Final_project.Service
 {
-    public class LayoutNavigationService<TViewModel> : INavigationService where TViewModel : ViewModelBase
+    public class LayoutNavigationService<TViewModel> : INavigationService where TViewModel : ObservableObject
     {
         private readonly NavigationStore _navigationStore;
         private readonly Func<TViewModel> _createViewModel;

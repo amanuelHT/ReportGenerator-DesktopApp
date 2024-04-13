@@ -1,14 +1,15 @@
-﻿using Final_project.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class HomeVM : ViewModelBase
+    public class HomeVM : ObservableObject
     {
         private readonly ModalNavigation _navigationStore;
-        public ViewModelBase CurrentVM => _navigationStore.CurrentView;
+        public ObservableObject CurrentVM => _navigationStore.CurrentView;
         public bool IsFormOpen => _navigationStore.IsOpen;
 
         public ReportDetailsVM ReportDetailsVM { get; }
@@ -36,11 +37,11 @@ namespace Final_project.ViewModels
             OnPropertyChanged(nameof(IsFormOpen));
         }
 
-        public override void Dispose()
-        {
-            _navigationStore.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
-            base.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    _navigationStore.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
+        //    base.Dispose();
+        //}
 
 
         public static HomeVM LoadHome(ReportStore reportStore, SelectedReportStore selectedReportStore, ModalNavigation navigationStore, INavigationService navigationService)

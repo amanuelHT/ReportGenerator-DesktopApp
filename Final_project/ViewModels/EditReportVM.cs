@@ -1,11 +1,12 @@
-﻿using Domain.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Domain.Models;
 using Final_project.Commands;
 using Final_project.Stores;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class EditReportVM : ViewModelBase
+    public class EditReportVM : ObservableObject
     {
         private readonly ReportStore _reportStore;
 

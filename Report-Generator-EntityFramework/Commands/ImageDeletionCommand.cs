@@ -5,11 +5,11 @@ using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
-    public class DeleteReportImageCommand : IDeleteReportImageCommand
+    public class ImageDeletionCommand : IDeleteReportImageCommand
     {
         private readonly ReportModelDbContextFactory _contextFactory;
 
-        public DeleteReportImageCommand(ReportModelDbContextFactory contextFactory)
+        public ImageDeletionCommand(ReportModelDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
         }

@@ -1,53 +1,31 @@
-﻿using Domain.Models;
-using Final_project.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Domain.Models;
 using Final_project.Stores;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class ReportFormVM : ViewModelBase
+    public partial class ReportFormVM : ObservableObject
     {
-        private string _tittle;
-        private bool _status;
-        private string _kunde;
+
 
         public List<ReportImageModel> Images { get; set; }
 
         public ImageCollectionVM ImageCollectionViewModel { get; set; }
-        public DeleteImageCommand DeleteImageCommand { get; set; }
 
-        public string Tittle
-        {
-            get => _tittle;
-            set
-            {
-                _tittle = value;
-                OnPropertyChanged(nameof(Tittle));
-                OnPropertyChanged(nameof(CanSubmit));
-            }
-        }
 
-        public bool Status
-        {
-            get => _status;
-            set
-            {
-                _status = value;
-                OnPropertyChanged(nameof(Status));
-            }
-        }
 
-        public string Kunde
-        {
-            get => _kunde;
-            set
-            {
-                _kunde = value;
-                OnPropertyChanged(nameof(Kunde));
-            }
-        }
+        [ObservableProperty]
+        private string _tittle;
 
-        public bool CanSubmit => !string.IsNullOrEmpty(Tittle);
+        [ObservableProperty]
+        private bool _status;
+
+
+        [ObservableProperty]
+        private string _kunde;
+
+
 
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
