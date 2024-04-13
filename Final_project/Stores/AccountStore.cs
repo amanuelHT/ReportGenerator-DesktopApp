@@ -20,6 +20,7 @@ namespace Final_project.Stores
 
 
     public bool IsLoggedIn => CurrentAccount != null;
+    public bool IsLoggedOut=> CurrentAccount == null;
 
         public event Action CurrentAccountChanged;
 

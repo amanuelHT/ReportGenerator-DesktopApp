@@ -23,6 +23,7 @@
             public ICommand NavigateReportViewerCommand { get; }
             public ICommand NavigatHomeCommand { get; }
             public bool IsLoggedIn => _accountStore.IsLoggedIn;
+            public bool IsLoggedOut => _accountStore.IsLoggedOut;
             public ICommand NavigateRoleManagementViewCommand { get; private set; }
             public ICommand NavigateRoleManagementCommand { get; }
             public ICommand NavigateUserInfoCommand { get; }
@@ -68,6 +69,7 @@
         private void OnCurrentAccountChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+            OnPropertyChanged(nameof(IsLoggedOut));
             OnPropertyChanged(nameof(RoleManagementVisibility));
         }
 
