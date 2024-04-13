@@ -81,11 +81,12 @@ namespace Final_project
                  //if we dispose that means we are not going to use it again, we are going to resolve a new instance
                  //if singlton we are going to get a new instance every time venen though disposed
 
-                 service.AddTransient<RoleManagementVM>(provider =>
-                       new RoleManagementVM(provider.GetRequiredService<FirebaseAuthProvider>()));
+                 service.AddTransient<RoleManagementVM>(s =>
+                       new RoleManagementVM(s.GetRequiredService<FirebaseAuthProvider>()));
 
-                 service.AddTransient<ResetPasswordVM>(provider =>
-                       new ResetPasswordVM(provider.GetRequiredService<FirebaseAuthProvider>()));
+                 service.AddTransient<ResetPasswordVM>(s =>
+                       new ResetPasswordVM(s.GetRequiredService<FirebaseAuthProvider>(),
+                       s.GetRequiredService<INavigationService>()));
 
 
                  service.AddTransient<HomeVM>(s =>

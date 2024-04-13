@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth;
 using Final_project.Commands;
 using System.Windows.Input;
+using Final_project.Service;
 
 namespace Final_project.ViewModels
 {
@@ -20,11 +21,14 @@ namespace Final_project.ViewModels
         }
 
         public ICommand ResetPasswordCommand { get; }
+        public ICommand CancelCommand { get; }
 
-        public ResetPasswordVM(FirebaseAuthProvider firebaseAuthProvider)
+        public ResetPasswordVM(FirebaseAuthProvider firebaseAuthProvider, INavigationService LoginNavigarionService)
         {
             _firebaseAuthProvider = firebaseAuthProvider;
             ResetPasswordCommand = new ResetPasswordCommand(this, _firebaseAuthProvider);
+            CancelCommand = new NavigateCommand(LoginNavigarionService);
+
         }
     }
 }
