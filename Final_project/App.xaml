@@ -65,6 +65,8 @@
                 <ResourceDictionary Source="Styles/TextBlockStyles.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
+                <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
 
 

@@ -17,7 +17,8 @@ namespace Final_project.ViewModels
         public ICommand AddReportCommand { get; }
         public ICommand NavigatHomeCommand { get; }
 
-        public HomeVM(ReportStore reportStore, SelectedReportStore selectedReportStore,
+        public HomeVM(ReportStore reportStore,
+            SelectedReportStore selectedReportStore,
              ModalNavigation navigationStore,
             INavigationService navigationService)
         {
