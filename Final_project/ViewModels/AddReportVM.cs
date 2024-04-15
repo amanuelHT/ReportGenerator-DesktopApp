@@ -9,11 +9,11 @@ namespace Final_project.ViewModels
 
     {
         public ReportFormVM ReportFormVM { get; }
-        public AddReportVM(ReportStore reportStore, ModalNavigation navigationStore)
+        public AddReportVM(HomeVM homeVM, ReportStore reportStore, NavigationStore navigationStore)
         {
             ICommand submitCommand = new AddReportCommand(this, reportStore, navigationStore);
 
-            ICommand cancelCommand = new CloseModalCommand(navigationStore);
+            ICommand cancelCommand = new CloseModalCommand(homeVM, navigationStore);
 
             ReportFormVM = new ReportFormVM(submitCommand, cancelCommand, reportStore, Guid.Empty);
 

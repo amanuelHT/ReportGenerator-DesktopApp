@@ -8,9 +8,9 @@ namespace Final_project.Commands
     {
         private readonly ReportStore _reportStore;
         private readonly EditReportVM _editReportVM;
-        private readonly ModalNavigation _navigationStore;
+        private readonly NavigationStore _navigationStore;
 
-        public EditReportCommand(EditReportVM editReportVM, ReportStore reportStore, ModalNavigation navigationStore)
+        public EditReportCommand(EditReportVM editReportVM, ReportStore reportStore, NavigationStore navigationStore)
         {
             _editReportVM = editReportVM;
             _reportStore = reportStore;
@@ -43,9 +43,9 @@ namespace Final_project.Commands
             try
             {
                 await _reportStore.Update(reportModel);
+                reportForm.CancelCommand.Execute(null);
 
 
-                _navigationStore.Close();
             }
             catch (Exception)
             {

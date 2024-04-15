@@ -27,16 +27,16 @@ namespace Final_project.ViewModels
 
         public ReportStore ReportStore { get; }
 
-        public ModalNavigation ModalNavigation { get; }
+        public NavigationStore ModalNavigation { get; }
 
 
-        public ReportListingItemVM(
+        public ReportListingItemVM(HomeVM homeVM,
             ReportModel reportModel,
             ReportStore reportStore,
-            ModalNavigation navigationStore)
+            NavigationStore navigationStore)
         {
             ReportModel = reportModel;
-            EditCommand = new OpenEditCommand(this, reportStore, navigationStore);
+            EditCommand = new OpenEditCommand(homeVM, this, reportStore, navigationStore);
             ReportStore = reportStore;
         }
 

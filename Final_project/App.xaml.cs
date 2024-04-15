@@ -89,9 +89,10 @@ namespace Final_project
 
                  service.AddTransient<HomeVM>(s =>
                        new HomeVM(
+
                                s.GetRequiredService<ReportStore>(),
                                s.GetRequiredService<SelectedReportStore>(),
-                               s.GetRequiredService<ModalNavigation>(),
+                               s.GetRequiredService<NavigationStore>(),
                                   s.GetRequiredService<INavigationService>())
                                );
 

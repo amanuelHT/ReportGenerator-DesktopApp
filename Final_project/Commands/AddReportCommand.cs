@@ -8,9 +8,9 @@ namespace Final_project.Commands
     {
         private readonly AddReportVM _addReportVM;
         private readonly ReportStore _reportStore;
-        private readonly ModalNavigation _navigationStore;
+        private readonly NavigationStore _navigationStore;
 
-        public AddReportCommand(AddReportVM addReportVM, ReportStore reportStore, ModalNavigation navigationStore)
+        public AddReportCommand(AddReportVM addReportVM, ReportStore reportStore, NavigationStore navigationStore)
         {
             _addReportVM = addReportVM;
             _reportStore = reportStore;
@@ -42,7 +42,7 @@ namespace Final_project.Commands
             try
             {
                 await _reportStore.Add(reportModel);
-                _navigationStore.Close();
+                reportForm.CancelCommand.Execute(null);
             }
             catch (Exception ex)
             {
