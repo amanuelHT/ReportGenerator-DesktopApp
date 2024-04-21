@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 
 namespace Final_project.Views
 {
@@ -9,9 +10,18 @@ namespace Final_project.Views
             InitializeComponent();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        public void CloseWindow()
         {
-            Close();
+            try
+            {
+                Close();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception appropriately
+                Debug.WriteLine($"Exception occurred while closing the window: {ex.Message}");
+            }
         }
+
     }
 }

@@ -40,6 +40,12 @@
     <Compile Update="Components\Upload images.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tables\DataFraOppdragsgiverPrøverView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataFraOppdragsgiverTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AccountView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -107,6 +113,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\CustomModalView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataFraOppdragsgiverPrøverView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataFraOppdragsgiverTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Final_project"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
-             xmlns:views="clr-namespace:Final_project.Views" xmlns:components="clr-namespace:Final_project.Components">
+             xmlns:views="clr-namespace:Final_project.Views"
+             xmlns:components="clr-namespace:Final_project.Components"
+             xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
+             xmlns:tables="clr-namespace:Final_project.Tables">
 
+              <!--xmlns:table="clr-namespace: Final_project.TablesView"--> 
 
 <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +20,20 @@
             <DataTemplate DataType="{x:Type TypeName=viewmodels:LoginVM}">
                 <views:LoginView/>
             </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type tableVM:DataFraOppdragsgiverPrøverVM}">
+                <tables:DataFraOppdragsgiverPrøverView/>
+            </DataTemplate>
+
+
+
+            <!--<DataTemplate DataType="{x:Type TypeName=tableVM:DataFraOppdragsgiverTableVM}">
+                <tables:DataFraOppdragsgiverTableView/>
+            </DataTemplate>-->
+
+
+
 
 
             <DataTemplate DataType="{x:Type viewmodels:AddReportVM}">

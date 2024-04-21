@@ -1,6 +1,5 @@
 ﻿using Domain.Models;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {

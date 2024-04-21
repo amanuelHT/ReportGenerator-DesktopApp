@@ -2,6 +2,7 @@
 using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
+using Final_project.Views;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
@@ -17,16 +18,19 @@ namespace Final_project.ViewModels
         public ICommand AddReportCommand { get; }
         public ICommand NavigatHomeCommand { get; }
 
-        public HomeVM(ReportStore reportStore,
-            SelectedReportStore selectedReportStore,
+        public HomeVM(
+             ModalWindow modalWindow,
+             ModalNavigation modalNavigation,
+             ReportStore reportStore,
+             SelectedReportStore selectedReportStore,
              NavigationStore navigationStore,
             INavigationService navigationService)
         {
             _navigationStore = navigationStore;
             ReportDetailsVM = new ReportDetailsVM(selectedReportStore);
-            ReportListVM = ReportListVM.loadViewModel(this, reportStore, selectedReportStore, navigationStore);
+            ReportListVM = ReportListVM.loadViewModel(reportStore, selectedReportStore, navigationStore, modalNavigation);
 
-            AddReportCommand = new OpenAddCommand(this, reportStore, navigationStore);
+            AddReportCommand = new OpenAddCommand(modalWindow, modalNavigation, reportStore, navigationStore);
 
 
             //_navigationStore.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
@@ -45,9 +49,9 @@ namespace Final_project.ViewModels
         //}
 
 
-        public static HomeVM LoadHome(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, INavigationService navigationService)
+        public static HomeVM LoadHome(ModalWindow modalWindow, ModalNavigation modalNavigation, ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, INavigationService navigationService)
         {
-            HomeVM viewModel = new HomeVM(reportStore, selectedReportStore, navigationStore, navigationService);
+            HomeVM viewModel = new HomeVM(modalWindow, modalNavigation, reportStore, selectedReportStore, navigationStore, navigationService);
 
             //viewModel.HomeVMCommand.Execute(null);
             //fetene

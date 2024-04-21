@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Queries;
-using Report_Generator_EntityFramework.ReportsDbContext;
 using System.Diagnostics;
 
 namespace Report_Generator_EntityFramework.Queries
@@ -30,6 +29,7 @@ namespace Report_Generator_EntityFramework.Queries
                         report.Tittle,
                         report.Status,
                         report.Kunde
+
                     )).ToList();
                 }
             }

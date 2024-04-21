@@ -8,15 +8,17 @@ using Final_project.Views;
 public class OpenEditCommand : CommandBase
 {
     private readonly NavigationStore _navigationStore;
+    private readonly ModalNavigation _modalNavigation;
     private readonly ReportStore _reportStore;
-    private readonly HomeVM homeVM;
+
     private readonly ReportListingItemVM _reportListingItemVM;
 
-    public OpenEditCommand(HomeVM homeVM, ReportListingItemVM reportListingItemVM, ReportStore reportStore, NavigationStore navigationStore)
+    public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
     {
         _navigationStore = navigationStore;
+        _modalNavigation = modalNavigation;
         _reportStore = reportStore;
-        this.homeVM = homeVM;
+
         _reportListingItemVM = reportListingItemVM;
     }
 
@@ -37,7 +39,7 @@ public class OpenEditCommand : CommandBase
         reportData.Images = images;
 
         // Create and navigate to the edit report view model
-        EditReportVM editReportVM = new EditReportVM(homeVM, reportData, _reportStore, _navigationStore);
+        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);
         // Show the window
         ReportWindowHelper.ShowReportWindow(new EditReportView { DataContext = editReportVM }, "Edit Report");
 

@@ -13,7 +13,7 @@ namespace Final_project.ViewModels
         private readonly SelectedReportStore _selectedReportStore;
         private readonly ObservableCollection<ReportListingItemVM> _reportListingItemVM;
         private readonly NavigationStore _navigationStore;
-        private readonly HomeVM _homeVM;
+        private readonly ModalNavigation _modalNavigation;
         private readonly ReportStore _reportStore;
 
         [ObservableProperty]
@@ -25,12 +25,12 @@ namespace Final_project.ViewModels
         public ICommand LoadReportCommand { get; }
         private bool _disposed = false;
 
-        public ReportListVM(HomeVM homeVM, ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        public ReportListVM(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
         {
-            _homeVM = homeVM;
             _reportStore = reportStore;
             _selectedReportStore = selectedReportStore;
             _navigationStore = navigationStore;
+            _modalNavigation = modalNavigation;
             _reportListingItemVM = new ObservableCollection<ReportListingItemVM>();
 
             _reportStore.ReportAdded += ReportStore_ReportStoreAdded;
@@ -41,9 +41,9 @@ namespace Final_project.ViewModels
             LoadReportCommand = new LoadReportCommand(reportStore);
         }
 
-        public static ReportListVM loadViewModel(HomeVM homeVM, ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore)
+        public static ReportListVM loadViewModel(ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
         {
-            ReportListVM viewmodel = new ReportListVM(homeVM, reportStore, selectedReportStore, navigationStore);
+            ReportListVM viewmodel = new ReportListVM(reportStore, selectedReportStore, navigationStore, modalNavigation);
             viewmodel.LoadReportCommand.Execute(null);
             return viewmodel;
         }
@@ -82,7 +82,7 @@ namespace Final_project.ViewModels
 
         private void AddReport(ReportModel reportModel)
         {
-            ReportListingItemVM itemVM = new ReportListingItemVM(_homeVM, reportModel, _reportStore, _navigationStore);
+            ReportListingItemVM itemVM = new ReportListingItemVM(reportModel, _reportStore, _navigationStore, _modalNavigation);
             _reportListingItemVM.Add(itemVM);
         }
 

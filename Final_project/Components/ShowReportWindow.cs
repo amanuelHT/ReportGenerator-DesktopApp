@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using Final_project.Views;
 
 namespace Final_project.Components
 {
@@ -6,18 +6,15 @@ namespace Final_project.Components
     {
         public static void ShowReportWindow(object viewModel, string title)
         {
-            // Create a new window for editing or adding the report
-            Window reportWindow = new Window
+            // Create a new instance of the ModalWindow
+            ModalWindow modalWindow = new ModalWindow
             {
                 Title = title,
-                Width = 600,
-                Height = 400,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                Content = viewModel
+                DataContext = viewModel
             };
 
-            // Show the window
-            reportWindow.ShowDialog();
+            // Show the modal window
+            modalWindow.ShowDialog();
         }
     }
 }

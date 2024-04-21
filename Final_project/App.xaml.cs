@@ -2,6 +2,7 @@
 using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.Views;
 using Firebase.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -10,10 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
+using Report_Generator_Domain.ITables;
 using Report_Generator_Domain.Queries;
+using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
-using Report_Generator_EntityFramework.ReportsDbContext;
+using Report_Generator_EntityFramework.Tables;
 using System.Windows;
 
 namespace Final_project
@@ -62,6 +65,11 @@ namespace Final_project
                  service.AddSingleton<IDeleteReportImageCommand, ImageDeletionCommand>();
 
 
+                 service.AddSingleton<ICreateDataFraOppdragsgiverPrøverModelCommand, CreateDataFraOppdragsgiverPrøverModelCommand>();
+
+
+
+
                  //                //stores , Single source of truth, defnitly Singlton
                  service.AddSingleton<SelectedReportStore>();
                  service.AddSingleton<ModalNavigation>();
@@ -69,6 +77,8 @@ namespace Final_project
                  service.AddSingleton<NavigationStore>();
                  service.AddSingleton<GeneratedReportStore>();
                  service.AddSingleton<ReportStore>();
+                 service.AddSingleton<ModalWindow>();
+
 
 
                  service.AddSingleton<ImageCollectionVM>();
@@ -89,7 +99,8 @@ namespace Final_project
 
                  service.AddTransient<HomeVM>(s =>
                        new HomeVM(
-
+                             s.GetRequiredService<ModalWindow>(),
+                               s.GetRequiredService<ModalNavigation>(),
                                s.GetRequiredService<ReportStore>(),
                                s.GetRequiredService<SelectedReportStore>(),
                                s.GetRequiredService<NavigationStore>(),

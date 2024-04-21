@@ -8,13 +8,18 @@ namespace Final_project.Commands
 {
     public class OpenAddCommand : ICommand
     {
-        private readonly HomeVM _homeVM;
+        private readonly ModalWindow _modalWindow;
+        private readonly ModalNavigation _modalNavigation;
         private readonly ReportStore _reportStore;
         private readonly NavigationStore _navigationStore;
 
-        public OpenAddCommand(HomeVM homeVM, ReportStore reportStore, NavigationStore navigationStore)
+        public OpenAddCommand(ModalWindow modalWindow,
+            ModalNavigation modalNavigation,
+            ReportStore reportStore,
+            NavigationStore navigationStore)
         {
-            _homeVM = homeVM;
+            _modalWindow = modalWindow;
+            _modalNavigation = modalNavigation;
             _reportStore = reportStore;
             _navigationStore = navigationStore;
         }
@@ -31,7 +36,7 @@ namespace Final_project.Commands
             try
             {
                 // Create an instance of the AddReportVM
-                AddReportVM addReportVM = new AddReportVM(_homeVM, _reportStore, _navigationStore);
+                AddReportVM addReportVM = new AddReportVM(_modalWindow, _modalNavigation, _reportStore, _navigationStore);
 
                 // Show the window
                 ReportWindowHelper.ShowReportWindow(new AddReportView { DataContext = addReportVM }, "Add Report");

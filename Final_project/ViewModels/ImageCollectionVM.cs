@@ -32,6 +32,8 @@ namespace Final_project.ViewModels
 
 
 
+
+
         [RelayCommand]
         private void UploadImage()
         {

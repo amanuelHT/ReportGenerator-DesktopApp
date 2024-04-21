@@ -1,6 +1,8 @@
 ﻿using Domain.Models;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.Views;
+using Report_Generator_Domain.Models;
 
 namespace Final_project.Commands
 {
@@ -9,9 +11,12 @@ namespace Final_project.Commands
         private readonly AddReportVM _addReportVM;
         private readonly ReportStore _reportStore;
         private readonly NavigationStore _navigationStore;
+        private readonly ModalWindow _modalWindow;
 
-        public AddReportCommand(AddReportVM addReportVM, ReportStore reportStore, NavigationStore navigationStore)
+
+        public AddReportCommand(ModalWindow modalWindow, AddReportVM addReportVM, ReportStore reportStore, NavigationStore navigationStore)
         {
+            _modalWindow = modalWindow;
             _addReportVM = addReportVM;
             _reportStore = reportStore;
             _navigationStore = navigationStore;
@@ -26,6 +31,7 @@ namespace Final_project.Commands
                 reportForm.Tittle, // Ensure 'Tittle' is the intended property name (commonly 'Title')
                 reportForm.Status,
                 reportForm.Kunde
+
             );
 
             // Assuming the ImageCollectionVM is part of your ReportFormVM
@@ -39,10 +45,33 @@ namespace Final_project.Commands
                 reportModel.Images.Add(imageModel);
             }
 
+            // Assuming the ImageCollectionVM is part of your ReportFormVM
+            foreach (var Prøver in reportForm.DataFraOppdragsgiverTableVM.Prøver)
+            {
+                DataFraOppdragsgiverPrøverModel prøverModel = new DataFraOppdragsgiverPrøverModel(
+                       Guid.NewGuid(),
+                       Prøver.Name,
+                       Prøver.Description,
+                       reportModel.Id); // Use 'reportModel' instead of 'newReport'
+                reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
+            }
+
+
+
+
             try
             {
                 await _reportStore.Add(reportModel);
-                reportForm.CancelCommand.Execute(null);
+
+                //// Assuming modalWindow is the instance of ModalWindow
+                //_modalWindow.Dispatcher.Invoke(() =>
+                //{
+                //    _modalWindow.DialogResult = true; // or false depending on the scenario
+                //    _modalWindow.Close();
+                //});
+
+
+
             }
             catch (Exception ex)
             {

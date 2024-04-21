@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Final_project.Tables.DataFraOppdragsgiverPrøverView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Final_project.Tables" xmlns:tablesvm="clr-namespace:Final_project.ViewModels.TablesVM" d:DataContext="{d:DesignInstance Type=tablesvm:DataFraOppdragsgiverPrøverVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- First Person -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Name:" FontWeight="Bold" Margin="5"/>
+            <TextBox Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="38,1,-103,11"/>
+        </Grid>
+
+
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="167.035"/>
+                <ColumnDefinition Width="42.965"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Discription:" FontWeight="Bold" Margin="5,5,5,5"/>
+            <TextBox Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Grid.ColumnSpan="2"/>
+        </Grid>
+
+        <!-- Cancel and Submit Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="5">
+            <Button Margin="5" Content="Submittt" Command="{Binding SubmitCommand}"/>
+            <Button Content="remove" Command="{Binding RemovePrøveCommand}"/>
+
+
+        </StackPanel>
+    </Grid>
+</UserControl>

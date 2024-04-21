@@ -4,31 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Components" 
-             xmlns:converters="clr-namespace:Final_project.Converters"
              mc:Ignorable="d" 
              x:Name="mytextbox"
              d:DesignWidth="200" Background="White">
 
-    <UserControl.Resources>
-        <converters:StringIsNullOrEmptyToVisibilityConverter x:Key="booltovis"/>
-    </UserControl.Resources>
-
     <StackPanel Margin="20 10">
         <!-- Label or Watermark -->
         <TextBlock Text="{Binding ElementName=mytextbox, Path=Watermark}"
-                  Foreground="Gray" FontSize="13" Margin="0 0 0 8"/>
+                   Foreground="Gray" FontSize="13" Margin="0 0 0 8"/>
 
         <!-- Input Field -->
         <Grid>
-            <TextBox x:Name="textbox"/>
-
-            <TextBlock Text="{Binding ElementName=mytextbox, Path=Text}"  
-                       Visibility="{Binding ElementName=textbox, Path=Text, Converter={StaticResource booltovis}}"
-                       Margin="13 0"
-                       Background="Transparent" Foreground="#868686"
-                       IsHitTestVisible="False" Panel.ZIndex="1"
-                       FontSize="14"
-                       VerticalAlignment="Center" />
+            <TextBox Text="{Binding ElementName=mytextbox, Path=Text}"
+                     x:Name="textbox"
+                     Margin="0"
+                     Background="#F0F0F0" 
+                     Foreground="#333333" 
+                     FontSize="11"
+                     BorderThickness="0"
+                     Padding="10"
+                     Width="200"/>
+            <!-- Add your TextBox style here -->
         </Grid>
     </StackPanel>
 </UserControl>

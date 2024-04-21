@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {

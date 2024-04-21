@@ -27,6 +27,8 @@ namespace Final_project.Commands
                 reportForm.Status,
                 reportForm.Kunde
 
+
+
             );
 
             // Assuming the ImageCollectionVM is part of your ReportFormVM
@@ -43,7 +45,7 @@ namespace Final_project.Commands
             try
             {
                 await _reportStore.Update(reportModel);
-                reportForm.CancelCommand.Execute(null);
+
 
 
             }
