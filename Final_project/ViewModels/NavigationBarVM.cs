@@ -14,19 +14,20 @@ namespace Final_project.ViewModels
         private object createSettingsNavigarionService;
         private readonly INavigationService _navigationService;
 
-
-        public ICommand NavigateSettingsCommand { get; }
-        public ICommand NavigateAccountCommand { get; }
-        public ICommand NavigateLoginCommand { get; }
-        public ICommand NavigateGeneratedReportListingCommand { get; }
-        public ICommand LogoutCommand { get; }
-        public ICommand NavigateReportViewerCommand { get; }
-        public ICommand NavigatHomeCommand { get; }
-        public bool IsLoggedIn => _accountStore.IsLoggedIn;
-        public ICommand NavigateRoleManagementViewCommand { get; private set; }
-        public ICommand NavigateRoleManagementCommand { get; }
-        public ICommand NavigateUserInfoCommand { get; }
-
+       
+            public ICommand NavigateSettingsCommand { get; }
+            public ICommand NavigateAccountCommand { get; }
+            public ICommand NavigateLoginCommand { get; }
+            public ICommand NavigateGeneratedReportListingCommand { get; }
+            public ICommand LogoutCommand { get; }
+            public ICommand NavigateReportViewerCommand { get; }
+            public ICommand NavigatHomeCommand { get; }
+            public bool IsLoggedIn => _accountStore.IsLoggedIn;
+            public bool IsLoggedOut => _accountStore.IsLoggedOut;
+            public ICommand NavigateRoleManagementViewCommand { get; private set; }
+            public ICommand NavigateRoleManagementCommand { get; }
+            public ICommand NavigateUserInfoCommand { get; }
+      
         public NavigationBarVM(
                 AccountStore accountStore,
                 INavigationService settingsNavigationService,
@@ -68,6 +69,7 @@ namespace Final_project.ViewModels
         private void OnCurrentAccountChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+            OnPropertyChanged(nameof(IsLoggedOut));
             OnPropertyChanged(nameof(RoleManagementVisibility));
         }
 
