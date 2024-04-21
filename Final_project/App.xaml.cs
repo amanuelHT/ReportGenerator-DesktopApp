@@ -182,15 +182,15 @@ namespace Final_project
             initialNavigationService.Navigate();
 
 
-            //ReportModelDbContextFactory reportModelDbContextFactory =
-            //     _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            //using (
-            //    ReportModelDbContext context = reportModelDbContextFactory.Create())
+            ReportModelDbContextFactory reportModelDbContextFactory =
+                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            using (
+                ReportModelDbContext context = reportModelDbContextFactory.Create())
 
-            //{
-            //    context.Database.Migrate();
+            {
+                context.Database.Migrate();
 
-            //}
+            }
 
             // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();

@@ -2,6 +2,7 @@
 using Domain.Models;
 using Final_project.Commands;
 using Final_project.Stores;
+using Final_project.ViewModels.TablesVM;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
@@ -35,6 +36,8 @@ namespace Final_project.ViewModels
 
                 // Initialize ImageCollectionViewModel with existing images
                 ImageCollectionViewModel = new ImageCollectionVM(reportStore, ReportId)
+
+
             };
 
             // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel
@@ -43,6 +46,16 @@ namespace Final_project.ViewModels
                 var imageVM = new ImageVM(img.Id, img.Name, img.ImageUrl, ReportFormVM.ImageCollectionViewModel, reportStore);
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
             }
+
+
+
+            // Assuming reportModel.DataFraOppdragsgiverPrøver is a collection of DataFraOppdragsgiverPrøverModel
+            foreach (var prøve in reportModel.DataFraOppdragsgiverPrøver)
+            {
+                var prøveVM = new DataFraOppdragsgiverPrøverVM(prøve);
+                ReportFormVM.DataFraOppdragsgiverTableVM.Prøver.Add(prøveVM);
+            }
+
         }
     }
 }

@@ -69,11 +69,28 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("Datomottatt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Dmax")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("KjerneImax")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("KjerneImin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Overdekningoppgitt")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OverflateOK")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OverflateUK")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

@@ -1,9 +1,10 @@
 ﻿using Domain.Models;
+using Report_Generator_Domain.Models;
 
 namespace Report_Generator_Domain.Commands
 {
     public interface IGetReportDataCommand
     {
-        Task<(ReportModel report, List<ReportImageModel> images)> Execute(Guid reportId);
+        Task<(ReportModel report, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels)> Execute(Guid reportId);
     }
 }

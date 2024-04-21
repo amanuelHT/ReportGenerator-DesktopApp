@@ -11,7 +11,7 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240420215422_InitialCreate")]
+    [Migration("20240421182024_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -72,11 +72,28 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("Datomottatt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Dmax")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("KjerneImax")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("KjerneImin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Overdekningoppgitt")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OverflateOK")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OverflateUK")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

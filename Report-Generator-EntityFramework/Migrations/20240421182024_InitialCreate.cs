@@ -30,8 +30,13 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Datomottatt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Overdekningoppgitt = table.Column<string>(type: "TEXT", nullable: false),
+                    Dmax = table.Column<string>(type: "TEXT", nullable: false),
+                    KjerneImax = table.Column<int>(type: "INTEGER", nullable: false),
+                    KjerneImin = table.Column<int>(type: "INTEGER", nullable: false),
+                    OverflateOK = table.Column<string>(type: "TEXT", nullable: false),
+                    OverflateUK = table.Column<string>(type: "TEXT", nullable: false),
                     ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

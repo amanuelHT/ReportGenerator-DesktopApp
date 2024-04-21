@@ -41,7 +41,7 @@ namespace Final_project.ViewModels
             //AddReportTableCommand = new OpenAddReportTableCommand(modalNavigation, reportStore);
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
-            DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, reportid);
+            DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, modalNavigation, reportid);
 
             DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(reportStore, modalNavigation, reportid, DataFraOppdragsgiverTableVM);
 

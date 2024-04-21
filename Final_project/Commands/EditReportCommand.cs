@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Report_Generator_Domain.Models;
 
 namespace Final_project.Commands
 {
@@ -41,6 +42,23 @@ namespace Final_project.Commands
                     reportModel.Id); // Use 'reportModel' instead of 'newReport'
                 reportModel.Images.Add(imageModel);
             }
+
+
+            foreach (var Prøver in reportForm.DataFraOppdragsgiverTableVM.Prøver)
+            {
+                DataFraOppdragsgiverPrøverModel prøverModel = new DataFraOppdragsgiverPrøverModel(
+                       Guid.NewGuid(),
+                       Prøver.Datomottatt,
+                       Prøver.Overdekningoppgitt,
+                       Prøver.Dmax,
+                       Prøver.KjerneImax,
+                       Prøver.KjerneImin,
+                       Prøver.OverflateOK,
+                       Prøver.OverflateUK,
+                       reportModel.Id); // Use 'reportModel' instead of 'newReport'
+                reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
+            }
+
 
             try
             {

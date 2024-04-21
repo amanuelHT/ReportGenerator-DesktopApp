@@ -45,13 +45,17 @@ namespace Final_project.Commands
                 reportModel.Images.Add(imageModel);
             }
 
-            // Assuming the ImageCollectionVM is part of your ReportFormVM
             foreach (var Prøver in reportForm.DataFraOppdragsgiverTableVM.Prøver)
             {
                 DataFraOppdragsgiverPrøverModel prøverModel = new DataFraOppdragsgiverPrøverModel(
                        Guid.NewGuid(),
-                       Prøver.Name,
-                       Prøver.Description,
+                       Prøver.Datomottatt,
+                       Prøver.Overdekningoppgitt,
+                       Prøver.Dmax,
+                       Prøver.KjerneImax,
+                       Prøver.KjerneImin,
+                       Prøver.OverflateOK,
+                       Prøver.OverflateUK,
                        reportModel.Id); // Use 'reportModel' instead of 'newReport'
                 reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
             }

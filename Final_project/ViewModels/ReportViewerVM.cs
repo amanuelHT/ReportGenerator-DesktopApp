@@ -3,6 +3,7 @@ using Domain.Models;
 using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
+using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -37,7 +38,7 @@ namespace Final_project.ViewModels
         {
             if (_selectedReport == null) return;
 
-            (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(_selectedReport.Id);
+            (ReportModel reportData, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

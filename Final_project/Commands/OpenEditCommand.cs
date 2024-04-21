@@ -4,6 +4,7 @@ using Final_project.Components;
 using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
+using Report_Generator_Domain.Models;
 
 public class OpenEditCommand : CommandBase
 {
@@ -27,7 +28,7 @@ public class OpenEditCommand : CommandBase
         Guid reportId = _reportListingItemVM.ReportModel.Id;
 
         // Retrieve the full report data with images
-        (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(reportId);
+        (ReportModel reportData, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels) = await _reportStore.GetReportData(reportId);
 
         if (reportData == null)
         {
@@ -37,6 +38,8 @@ public class OpenEditCommand : CommandBase
 
         // Add retrieved images to the report data
         reportData.Images = images;
+
+        reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
 
         // Create and navigate to the edit report view model
         EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);

@@ -71,19 +71,25 @@
                     <RadioButton Content="Ikke Godkjent" Margin="10 0 0 0" IsChecked="{Binding IsIkkeGodkjent}" />
                 </StackPanel>
 
+                <Grid Grid.Row="1" Margin="-10 0 0 0">
+                    <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                </Grid>
+
 
                 <Grid Grid.Row="2" Margin="30">
-                    <Grid.ColumnDefinitions>
-                        <!-- Define two columns, each taking half the space -->
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <!-- Define two rows, each taking available space -->
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <!-- Data fra oppdragsgiver Prøver View -->
-                    <tables:DataFraOppdragsgiverPrøverView Grid.Column="0" DataContext="{Binding DataFraOppdragsgiverPrøverVM}" />
+                    <!-- Modal Control -->
+                    <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                        <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+                    </modalcontrol:Modal>
 
-                    <!-- Data fra oppdragsgiver Table View -->
-                    <tables:DataFraOppdragsgiverTableView Grid.Column="1" DataContext="{Binding DataFraOppdragsgiverTableVM}" />
+                    <!-- Data fra oppdragsgiver Table View in the second row -->
+                    <tables:DataFraOppdragsgiverTableView Grid.Row="1" DataContext="{Binding DataFraOppdragsgiverTableVM}" />
                 </Grid>
 
 
