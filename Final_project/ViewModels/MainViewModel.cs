@@ -1,10 +1,12 @@
-﻿namespace Final_project.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Final_project.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject
     {
         private readonly NavigationStore _navigation;
 
-        public ViewModelBase CurrentViewModel => _navigation.CurrentViewModel;
+        public ObservableObject CurrentViewModel => _navigation.CurrentViewModel;
 
         public MainViewModel(NavigationStore navigation)
         {

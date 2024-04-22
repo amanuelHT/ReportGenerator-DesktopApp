@@ -1,18 +1,25 @@
 ﻿using Domain.Models;
 using Final_project.Commands;
+using Final_project.Components;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.Views;
+using Report_Generator_Domain.Models;
 
 public class OpenEditCommand : CommandBase
 {
-    private readonly ModalNavigation _navigationStore;
+    private readonly NavigationStore _navigationStore;
+    private readonly ModalNavigation _modalNavigation;
     private readonly ReportStore _reportStore;
+
     private readonly ReportListingItemVM _reportListingItemVM;
 
-    public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, ModalNavigation navigationStore)
+    public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
     {
         _navigationStore = navigationStore;
+        _modalNavigation = modalNavigation;
         _reportStore = reportStore;
+
         _reportListingItemVM = reportListingItemVM;
     }
 
@@ -21,7 +28,11 @@ public class OpenEditCommand : CommandBase
         Guid reportId = _reportListingItemVM.ReportModel.Id;
 
         // Retrieve the full report data with images
-        (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(reportId);
+        (ReportModel reportData,
+            List<ReportImageModel> images,
+            List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+            List<ConcreteDensityModel> concreteDensityModels) = await _reportStore.GetReportData(reportId);
 
         if (reportData == null)
         {
@@ -29,11 +40,24 @@ public class OpenEditCommand : CommandBase
             return;
         }
 
-        // Add retrieved images to the report data
+        // Add retrieved datas to the report data
         reportData.Images = images;
 
+        reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
+
+        reportData.DataEtterKuttingOgSlipingModel = dataEtterKuttingOgSlipingModels;
+
+        reportData.ConcreteDensityModel = concreteDensityModels;
+
+
         // Create and navigate to the edit report view model
-        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _navigationStore);
-        _navigationStore.CurrentView = editReportVM;
+        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);
+        // Show the window
+        ReportWindowHelper.ShowReportWindow(new EditReportView { DataContext = editReportVM }, "Edit Report");
+
+
+
+
+
     }
 }

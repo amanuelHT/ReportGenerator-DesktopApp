@@ -1,10 +1,11 @@
-﻿using Domain.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Domain.Models;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
 
 namespace Final_project.ViewModels
 {
-    public class ReportDetailsVM : ViewModelBase
+    public class ReportDetailsVM : ObservableObject
     {
         private readonly SelectedReportStore _selectedReportStore;
         private ReportModel SelectedReport => _selectedReportStore.SelectedReport;
@@ -53,11 +54,11 @@ namespace Final_project.ViewModels
         }
 
 
-        public override void Dispose()
-        {
-            _selectedReportStore.SelectedReportChanged -= _selectedReportStore_SelectedReportChanged;
-            base.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    _selectedReportStore.SelectedReportChanged -= _selectedReportStore_SelectedReportChanged;
+        //    base.Dispose();
+        //}
 
         private void _selectedReportStore_SelectedReportChanged()
         {

@@ -2,9 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="PageHeader" TargetType="TextBlock">
-    <Setter Property="VerticalAlignment" Value="Center" />
-    <Setter Property="FontSize" Value="32" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="black" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="TextAlignment" Value="Center" />
+     
+        <!-- Add more setters as needed -->
     </Style>
+
 
     <Style x:Key="ErrorMessage" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red" />
@@ -13,6 +20,50 @@
     <SolidColorBrush x:Key="BorderPrimary" Color="#1c1c1c" />
 
 
+    <Style TargetType="TextBox">
+
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="#F0F0F0"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <!--<Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>-->
+        <Setter Property="Width" Value="200"/>
+
    
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#EFEFEF"/>
+                            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+                            <Setter Property="Foreground" Value="#999999"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#666666"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="#3399FF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
 
 </ResourceDictionary>

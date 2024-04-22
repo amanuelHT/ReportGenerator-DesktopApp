@@ -1,4 +1,5 @@
-﻿using Final_project.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
 using Firebase.Auth;
@@ -6,7 +7,7 @@ using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class LoginVM : ViewModelBase
+    public class LoginVM : ObservableObject
     {
         private NavigationStore _navigationStore;
         private readonly FirebaseAuthProvider _firebaseAuthProvider;

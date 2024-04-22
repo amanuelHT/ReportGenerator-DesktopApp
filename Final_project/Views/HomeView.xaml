@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Final_project.Views" 
              xmlns:components="clr-namespace:Final_project.Components"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
-              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl" xmlns:stores="clr-namespace:Final_project.Stores"
              d:DataContext="{d:DesignInstance Type=viewmodels:HomeVM}"
              
              mc:Ignorable="d" 
@@ -29,10 +29,12 @@
             <Button Content="Add a report" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding AddReportCommand}"/>
         </Grid>
 
-        <!-- Modal Control -->
-        <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+    
+
+
+        <stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
-        </modalcontrol:Modal>
+        </stores:CustomModalView>
 
         <!-- Main Content -->
         <Grid Grid.Row="1">

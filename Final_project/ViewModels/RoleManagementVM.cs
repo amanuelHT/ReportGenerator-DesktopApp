@@ -1,16 +1,13 @@
-﻿using Final_project.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Commands;
 using Firebase.Auth;
-using System;
-
-using System.Windows.Media;
 using System.Windows.Input;
-using BoldReports.UI.Xaml;
-using Syncfusion.Windows.Shared;
+using System.Windows.Media;
 
 namespace Final_project.ViewModels
 {
-  
-    public class RoleManagementVM : ViewModelBase
+
+    public partial class RoleManagementVM : ObservableObject
     {
 
 
@@ -21,33 +18,14 @@ namespace Final_project.ViewModels
             CancelCommand = new RelayCommand(_ => ClearInputs());
 
         }
-        private string _firstName;
-        public string FirstName
-        {
-            get => _firstName;
-            set
-            {
-                if (_firstName != value)
-                {
-                    _firstName = value;
-                    OnPropertyChanged(nameof(FirstName));
-                }
-            }
-        }
 
+        [ObservableProperty]
+        private string _firstName;
+
+
+        [ObservableProperty]
         private string _lastName;
-        public string LastName
-        {
-            get => _lastName;
-            set
-            {
-                if (_lastName != value)
-                {
-                    _lastName = value;
-                    OnPropertyChanged(nameof(LastName));
-                }
-            }
-        }
+
 
         //private string _birthDate;
         //public string BirthDate
@@ -221,8 +199,8 @@ namespace Final_project.ViewModels
         }
 
 
-        
-      
+
+
         private void ClearInputs()
         {
             // Reset all the properties to their default values
@@ -243,10 +221,10 @@ namespace Final_project.ViewModels
         // Implement any additional logic or methods needed for your ViewModel here.
 
         // Override the Dispose method if needed to clean up resources
-        public override void Dispose()
-        {
-            // Clean up any resources or subscriptions here if necessary
-            base.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    // Clean up any resources or subscriptions here if necessary
+        //    base.Dispose();
+        //}
     }
 }

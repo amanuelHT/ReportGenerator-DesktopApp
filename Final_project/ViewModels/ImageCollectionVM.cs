@@ -1,15 +1,17 @@
-﻿using Final_project.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Final_project.Commands;
 using Final_project.Stores;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class ImageCollectionVM : ViewModelBase
+    public partial class ImageCollectionVM : ObservableObject
     {
         public ObservableCollection<ImageVM> Images { get; private set; }
         public ImageVM _imageVM { get; private set; }
-        public ICommand UploadImageCommand { get; private set; }
+
 
         public event Action<ImageVM> ImageAdded;
         public event Action<ImageVM> ImageDeleted;
@@ -17,9 +19,6 @@ namespace Final_project.ViewModels
         {
             Images = new ObservableCollection<ImageVM>();
 
-
-            // Initialize the UploadImageCommand with the AddImageCommand
-            UploadImageCommand = new AddImageCommand(this);
         }
 
         public void RemoveImage(ImageVM image)
@@ -31,10 +30,30 @@ namespace Final_project.ViewModels
             }
         }
 
-        public void AddImage(ImageVM image)
+
+
+
+
+        [RelayCommand]
+        private void UploadImage()
         {
-            Images.Add(image);
-            ImageAdded?.Invoke(image);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg",
+                Multiselect = true
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (string filePath in openFileDialog.FileNames)
+                {
+                    Guid imageId = Guid.NewGuid();
+                    string name = System.IO.Path.GetFileNameWithoutExtension(filePath);
+                    var imageVM = new ImageVM(imageId, name, filePath, this, null); // Assuming null is okay for reportStore
+                    Images.Add(imageVM);
+                    ImageAdded?.Invoke(imageVM);
+                }
+            }
         }
     }
 }

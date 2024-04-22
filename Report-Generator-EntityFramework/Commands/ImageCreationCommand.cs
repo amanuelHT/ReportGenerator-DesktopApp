@@ -1,14 +1,13 @@
 ﻿using Domain.Models;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.ReportsDbContext;
 
 namespace Report_Generator_EntityFramework.Commands
 {
-    public class CreateImageCommand : ICreateImageCommand
+    public class ImageCreationCommand : ICreateImageCommand
     {
         private readonly ReportModelDbContextFactory _contextFactory;
 
-        public CreateImageCommand(ReportModelDbContextFactory contextFactory)
+        public ImageCreationCommand(ReportModelDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
         }

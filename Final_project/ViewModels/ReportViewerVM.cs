@@ -1,29 +1,28 @@
-﻿using Domain.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Domain.Models;
 using Final_project.Commands;
 using Final_project.Service;
 using Final_project.Stores;
+using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class ReportViewerVM : ViewModelBase
+    public partial class ReportViewerVM : ObservableObject
     {
         private readonly ReportStore _reportStore;
         public ICommand NavigateGeneratedReportCommand { get; }
         public ObservableCollection<ReportModel> AvailableReports { get; }
 
+        [ObservableProperty]
         private ReportModel _selectedReport;
-        public ReportModel SelectedReport
+
+        partial void OnSelectedReportChanged(ReportModel value)
         {
-            get => _selectedReport;
-            set
-            {
-                _selectedReport = value;
-                OnPropertyChanged(nameof(SelectedReport));
-                LoadSelectedReport();
-            }
+            LoadSelectedReport();
         }
+
 
         public ReportModel SelectedReportData { get; private set; }
         public ObservableCollection<ReportImageModel> ReportImages { get; private set; }
@@ -39,7 +38,11 @@ namespace Final_project.ViewModels
         {
             if (_selectedReport == null) return;
 
-            (ReportModel reportData, List<ReportImageModel> images) = await _reportStore.GetReportData(_selectedReport.Id);
+            (ReportModel reportData,
+                List<ReportImageModel> images,
+                List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+                List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+                List<ConcreteDensityModel> concreteDensityModels) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

@@ -16,6 +16,9 @@
     <Compile Update="Components\LayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\ModalForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +32,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Components\ReportListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\TextBoxView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\Upload images.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\ConcreteDensityPrøveView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\ConcreteDensityTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataEtterKuttingOgSlipingTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataFraOppdragsgiverPrøverView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataFraOppdragsgiverTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\AccountView.xaml.cs">
@@ -47,6 +74,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ModalWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ReportViewerView.xaml.cs">
@@ -70,6 +100,9 @@
     <Page Update="Components\LayoutView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Components\ModalForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\NavigationBarView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -83,6 +116,33 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\ReportListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\TextBoxView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\Upload images.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\CustomModalView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\ConcreteDensityPrøveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\ConcreteDensityTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataEtterKuttingOgSlipingTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataFraOppdragsgiverPrøverView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataFraOppdragsgiverTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">
@@ -113,6 +173,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModalWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ReportViewerView.xaml">

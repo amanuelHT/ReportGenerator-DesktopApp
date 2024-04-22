@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Final_project.Tables.DataFraOppdragsgiverTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tablesvm="clr-namespace:Final_project.ViewModels.TablesVM"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=tablesvm:DataFraOppdragsgiverTableVM}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Grid -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Data fra oppdragsgiver" 
+                       FontSize="16" FontWeight="Bold" 
+                       Margin="10" HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+
+            <Button Content="Add data" Command="{Binding AddPrøveCommand}"
+                    HorizontalAlignment="Right" Margin="10" 
+                    Grid.Column="1"/>
+        </Grid>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mottatt Dato" 
+                                    Binding="{Binding Datomottatt, StringFormat={}{0:yyyy-MM-dd}}" />
+                <DataGridTextColumn Header="Overdekning Oppgitt" 
+                                    Binding="{Binding Overdekningoppgitt}" />
+                <DataGridTextColumn Header="Dmax" 
+                                    Binding="{Binding Dmax}" />
+                <DataGridTextColumn Header="Kjerne I max" 
+                                    Binding="{Binding KjerneImax}" />
+                <DataGridTextColumn Header="Kjerne I min" 
+                                    Binding="{Binding KjerneImin}" />
+                <DataGridTextColumn Header="Overflate OK" 
+                                    Binding="{Binding OverflateOK}" />
+                <DataGridTextColumn Header="Overflate UK" 
+                                    Binding="{Binding OverflateUK}" />
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove"
+        Command="{Binding DataContext.RemovePrøveCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+        CommandParameter="{Binding}" />
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,22 +1,23 @@
-﻿namespace Final_project.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+
+
+
+namespace Final_project.ViewModels
+
 {
-    public class LayoutVM : ViewModelBase
+    public class LayoutVM : ObservableObject
+
     {
         public NavigationBarVM NavigationBarVM { get; }
-        public ViewModelBase ContentViewModel { get; }
+        public ObservableObject ContentViewModel { get; }
 
-        public LayoutVM(NavigationBarVM navigationBarViewModel, ViewModelBase contentViewModel)
+        public LayoutVM(NavigationBarVM navigationBarViewModel, ObservableObject contentViewModel)
         {
             NavigationBarVM = navigationBarViewModel;
             ContentViewModel = contentViewModel;
         }
 
-        public override void Dispose()
-        {
-            NavigationBarVM.Dispose();
-            ContentViewModel.Dispose();
 
-            base.Dispose();
-        }
     }
 }

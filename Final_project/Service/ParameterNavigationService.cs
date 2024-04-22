@@ -1,11 +1,11 @@
-﻿using Final_project.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Final_project.Service
 {
     //to support multiple parameters, create an object to hold all the parameters
     //and use that object as the tparameter type
     public class ParameterNavigationService<TParameter, TViewModel>
-            where TViewModel : ViewModelBase
+            where TViewModel : ObservableRecipient
     {
         private readonly NavigationStore _navigationStore;
         private readonly Func<TParameter, TViewModel> _createViewModel;

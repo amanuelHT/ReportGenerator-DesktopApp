@@ -1,7 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
-using Report_Generator_EntityFramework.ReportsDbContext;
+using Report_Generator_Domain.Models;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -14,7 +14,11 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task<(ReportModel report, List<ReportImageModel> images)> Execute(Guid reportId)
+        public async Task<(ReportModel report,
+            List<ReportImageModel> images,
+            List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+            List<ConcreteDensityModel> concreteDensityModels)> Execute(Guid reportId)
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
@@ -22,13 +26,29 @@ namespace Report_Generator_EntityFramework.Commands
                     .FirstOrDefaultAsync(report => report.Id == reportId);
 
                 if (report == null)
-                    return (null, null);
+                    return (null, null, null, null, null);
 
                 var images = await context.ReportImageModels
                     .Where(image => image.ReportModelId == reportId)
                     .ToListAsync();
 
-                return (report, images);
+                var prøve = await context.DataFraOppdragsgiverPrøverModels
+                    .Where(prøve => prøve.ReportModelId == reportId)
+                    .ToListAsync();
+
+                var kutingprøve = await context.DataEtterKuttingOgSlipingModels
+                    .Where(prøve => prøve.ReportModelId == reportId)
+                    .ToListAsync();
+
+                var concretdensity = await context.concreteDensityModels
+                    .Where(density => density.ReportModelId == reportId)
+                    .ToListAsync();
+
+
+
+
+
+                return (report, images, prøve, kutingprøve, concretdensity);
             }
         }
     }

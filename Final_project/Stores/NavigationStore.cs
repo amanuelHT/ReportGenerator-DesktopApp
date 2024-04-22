@@ -1,24 +1,19 @@
-﻿using Final_project.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 public class NavigationStore
 {
     public event Action CurrentViewModelChanged;
-    private ViewModelBase _currentViewModel;
+    private ObservableObject _currentViewModel;
 
-    public ViewModelBase CurrentViewModel
+    public ObservableObject CurrentViewModel
     {
         get => _currentViewModel;
         set
         {
-            _currentViewModel?.Dispose();
             _currentViewModel = value;
             OnCurrentViewModelChanged();
-
-
         }
     }
-
-
 
     protected void OnCurrentViewModelChanged()
     {

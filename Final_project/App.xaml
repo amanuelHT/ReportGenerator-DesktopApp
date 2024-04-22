@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Final_project"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
-             xmlns:views="clr-namespace:Final_project.Views" xmlns:components="clr-namespace:Final_project.Components">
+             xmlns:views="clr-namespace:Final_project.Views"
+             xmlns:components="clr-namespace:Final_project.Components"
+             xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
+             xmlns:tables="clr-namespace:Final_project.Tables">
 
+              <!--xmlns:table="clr-namespace: Final_project.TablesView"--> 
 
 <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +20,39 @@
             <DataTemplate DataType="{x:Type TypeName=viewmodels:LoginVM}">
                 <views:LoginView/>
             </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type tableVM:DataFraOppdragsgiverPrøverVM}">
+                <tables:DataFraOppdragsgiverPrøverView/>
+            </DataTemplate>
+
+
+
+            <!--<DataTemplate DataType="{x:Type TypeName=tableVM:DataFraOppdragsgiverTableVM}">
+                <tables:DataFraOppdragsgiverTableView/>
+            </DataTemplate>-->
+
+
+            <DataTemplate DataType="{x:Type tableVM:DataEtterKuttingOgSlipingPrøveVM}">
+                <tables:DataEtterKuttingOgSlipingPrøveView/>
+            </DataTemplate>
+
+
+
+            <DataTemplate DataType="{x:Type tableVM:DataEtterKuttingOgSlipingTableVM}">
+                <tables:DataEtterKuttingOgSlipingTableView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type tableVM:ConcreteDensityPrøveVM}">
+                <tables:ConcreteDensityPrøveView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type tableVM:ConcreteDensityTableVM}">
+                <tables:ConcreteDensityTableView/>
+            </DataTemplate>
+
+
 
 
             <DataTemplate DataType="{x:Type viewmodels:AddReportVM}">
@@ -65,6 +102,8 @@
                 <ResourceDictionary Source="Styles/TextBlockStyles.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
+                <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
 
 

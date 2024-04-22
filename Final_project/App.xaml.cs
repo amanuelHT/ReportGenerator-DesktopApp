@@ -1,6 +1,8 @@
-﻿using Final_project.Service;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.Views;
 using Firebase.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -9,10 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
+using Report_Generator_Domain.ITables;
 using Report_Generator_Domain.Queries;
+using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
-using Report_Generator_EntityFramework.ReportsDbContext;
+using Report_Generator_EntityFramework.Tables;
 using System.Windows;
 
 namespace Final_project
@@ -41,8 +45,8 @@ namespace Final_project
                  service.AddSingleton<ReportModelDbContextFactory>();
                  Stores.FirestoreHelper.InitializeFirestore();
 
-                 service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
-                 (ViewModelBase)serviceProvider.GetRequiredService(type));
+                 service.AddSingleton<Func<Type, ObservableObject>>(serviceProvider => type =>
+                 (ObservableObject)serviceProvider.GetRequiredService(type));
 
 
                  //navigation service 
@@ -55,12 +59,15 @@ namespace Final_project
                  service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
-                 service.AddSingleton<IGetReportImageCommand, GetReportImageCommand>();
-                 service.AddSingleton<IGetImageForReportCommand, GetImageForReportCommand>();
-                 service.AddSingleton<ICreateImageCommand, CreateImageCommand>();
+                 service.AddSingleton<ICreateImageCommand, ImageCreationCommand>();
 
 
-                 service.AddSingleton<IDeleteReportImageCommand, DeleteReportImageCommand>();
+                 service.AddSingleton<IDeleteReportImageCommand, ImageDeletionCommand>();
+
+
+                 service.AddSingleton<ICreateDataFraOppdragsgiverPrøverModelCommand, CreateDataFraOppdragsgiverPrøverModelCommand>();
+
+
 
 
                  //                //stores , Single source of truth, defnitly Singlton
@@ -70,6 +77,8 @@ namespace Final_project
                  service.AddSingleton<NavigationStore>();
                  service.AddSingleton<GeneratedReportStore>();
                  service.AddSingleton<ReportStore>();
+                 service.AddSingleton<ModalWindow>();
+
 
 
                  service.AddSingleton<ImageCollectionVM>();
@@ -91,9 +100,11 @@ namespace Final_project
 
                  service.AddTransient<HomeVM>(s =>
                        new HomeVM(
+                             s.GetRequiredService<ModalWindow>(),
+                               s.GetRequiredService<ModalNavigation>(),
                                s.GetRequiredService<ReportStore>(),
                                s.GetRequiredService<SelectedReportStore>(),
-                               s.GetRequiredService<ModalNavigation>(),
+                               s.GetRequiredService<NavigationStore>(),
                                   s.GetRequiredService<INavigationService>())
                                );
 
@@ -172,15 +183,15 @@ namespace Final_project
             initialNavigationService.Navigate();
 
 
-            //ReportModelDbContextFactory reportModelDbContextFactory =
-            //     _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            //using (
-            //    ReportModelDbContext context = reportModelDbContextFactory.Create())
+            ReportModelDbContextFactory reportModelDbContextFactory =
+                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            using (
+                ReportModelDbContext context = reportModelDbContextFactory.Create())
 
-            //{
-            //    context.Database.Migrate();
+            {
+                context.Database.Migrate();
 
-            //}
+            }
 
             // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();

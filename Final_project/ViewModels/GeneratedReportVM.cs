@@ -1,6 +1,8 @@
-﻿namespace Final_project.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Final_project.ViewModels
 {
-    public class GeneratedReportVM : ViewModelBase
+    public class GeneratedReportVM : ObservableObject
     {
         public string Name { get; }
 
