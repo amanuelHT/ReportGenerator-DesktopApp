@@ -53,6 +53,33 @@
       <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
       <Generator>MSDataSetGenerator</Generator>
     </None>
+    <None Update="Resources\Reports\DataEtterKuttingOgSliping.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\DataFraOppdraggsgiver.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\DataOmOppdrag.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\Densitet.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\Figur-GodkjentBruddform.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\Trykktesting.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\vedlegg1-ProvestyykerFørSliping.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\vedlegg2-EtterSliping.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reports\vedlegg3-EtterTrykktest.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\serviceAccountKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

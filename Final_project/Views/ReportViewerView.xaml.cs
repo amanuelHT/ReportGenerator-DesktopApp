@@ -3,6 +3,7 @@ using Domain.Models;
 using Final_project.ViewModels;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +14,7 @@ namespace Final_project.Views
         public ReportViewerView()
         {
             InitializeComponent();
+            this.reportViewer.SubreportProcessing += new SubreportProcessingEventHandler(OnSubreportProcessing);
             this.Loaded += OnGenerateReportClick;
         }
 
@@ -22,7 +24,7 @@ namespace Final_project.Views
             {
                 var viewModel = DataContext as ReportViewerVM;
 
-                this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
+                this.reportViewer.ReportPath =Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
 
@@ -45,6 +47,23 @@ namespace Final_project.Views
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading report: " + ex.Message);
+            }
+        }
+
+
+
+
+        private void OnSubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        {
+            // Since your subreport 'Subreport' does not require data, you can pass an empty DataTable.
+            // The 'ReportPath' property holds the path of the subreport being processed, and you need to compare it with the subreport file name
+            if (Path.GetFileNameWithoutExtension(e.ReportPath) == "Subreport1") // This should be the name of your subreport file without the '.rdlc' extension
+            {
+                // Create an empty DataTable to satisfy the report processor
+                DataTable emptyDataTable = new DataTable();
+
+                // Add an empty data source with the name expected by the subreport, if it expects one.
+                e.DataSources.Add(new ReportDataSource("SubreportDataSet", emptyDataTable));
             }
         }
 
