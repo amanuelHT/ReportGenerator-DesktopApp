@@ -3,6 +3,7 @@ using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
 using Report_Generator_Domain.Models;
+using System.Windows;
 
 namespace Final_project.Commands
 {
@@ -115,30 +116,55 @@ namespace Final_project.Commands
                     // (e.g., log an error, display a message to the user)
                     Console.WriteLine("Prøve object is null.");
                 }
+
+
+
+
+
             }
 
 
 
 
+            foreach (var trykktesting in reportForm.TrykktestingTableVM.Trykketester)
+            {
+                if (trykktesting != null)
+                {
+                    TrykktestingModel trykktestingModel = new TrykktestingModel(
+                        Guid.NewGuid(),
+                        trykktesting.TrykkflateMm,
+                        trykktesting.PalastHastighetMPas,
+                        trykktesting.TrykkfasthetMPa,
+                        trykktesting.TrykkfasthetMPaNSE,
+                        reportModel.Id
+                    );
 
+                    reportModel.TrykktestingModel.Add(trykktestingModel);  // Add the newly created model to the report model
+                }
+                else
+                {
+                    // Handle the case where trykktesting entry is null
+                    // Possible actions: log an error, display a message, etc.
+                    Console.WriteLine("Trykktesting entry is null.");
+                }
+            }
+
+            bool success = false;
             try
             {
                 await _reportStore.Add(reportModel);
-
-                //// Assuming modalWindow is the instance of ModalWindow
-                //_modalWindow.Dispatcher.Invoke(() =>
-                //{
-                //    _modalWindow.DialogResult = true; // or false depending on the scenario
-                //    _modalWindow.Close();
-                //});
-
-
-
+                success = true;
             }
             catch (Exception ex)
             {
-                // Handle exception appropriately
-                throw;
+                MessageBox.Show($"An error occurred while adding the report: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                if (success)
+                {
+                    MessageBox.Show("Report has been added successfully.");
+                }
             }
         }
     }

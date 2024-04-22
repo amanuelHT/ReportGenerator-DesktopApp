@@ -10,7 +10,8 @@ namespace Report_Generator_Domain.Commands
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-             List<ConcreteDensityModel> concreteDensityModels
+             List<ConcreteDensityModel> concreteDensityModels,
+            List<TrykktestingModel> trykktestingModels
             )> Execute(Guid reportId);
     }
 }

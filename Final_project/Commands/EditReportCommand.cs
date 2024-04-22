@@ -116,6 +116,28 @@ namespace Final_project.Commands
                 }
             }
 
+            foreach (var trykktesting in reportForm.TrykktestingTableVM.Trykketester)
+            {
+                if (trykktesting != null)
+                {
+                    TrykktestingModel trykktestingModel = new TrykktestingModel(
+                        Guid.NewGuid(),
+                        trykktesting.TrykkflateMm,
+                        trykktesting.PalastHastighetMPas,
+                        trykktesting.TrykkfasthetMPa,
+                        trykktesting.TrykkfasthetMPaNSE,
+                        reportModel.Id
+                    );
+
+                    reportModel.TrykktestingModel.Add(trykktestingModel);  // Add the newly created model to the report model
+                }
+                else
+                {
+                    // Handle the case where trykktesting entry is null
+                    // Possible actions: log an error, display a message, etc.
+                    Console.WriteLine("Trykktesting entry is null.");
+                }
+            }
 
             try
             {

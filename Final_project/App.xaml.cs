@@ -11,12 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Report_Generator_Domain.Commands;
-using Report_Generator_Domain.ITables;
+
 using Report_Generator_Domain.Queries;
 using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
-using Report_Generator_EntityFramework.Tables;
+
 using System.Windows;
 
 namespace Final_project
@@ -64,8 +64,6 @@ namespace Final_project
 
                  service.AddSingleton<IDeleteReportImageCommand, ImageDeletionCommand>();
 
-
-                 service.AddSingleton<ICreateDataFraOppdragsgiverPrøverModelCommand, CreateDataFraOppdragsgiverPrøverModelCommand>();
 
 
 
@@ -183,15 +181,15 @@ namespace Final_project
             initialNavigationService.Navigate();
 
 
-            ReportModelDbContextFactory reportModelDbContextFactory =
-                 _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            using (
-                ReportModelDbContext context = reportModelDbContextFactory.Create())
+            //ReportModelDbContextFactory reportModelDbContextFactory =
+            //     _host.Services.GetRequiredService<ReportModelDbContextFactory>();
+            //using (
+            //    ReportModelDbContext context = reportModelDbContextFactory.Create())
 
-            {
-                context.Database.Migrate();
+            //{
+            //    context.Database.Migrate();
 
-            }
+            //}
 
             // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();

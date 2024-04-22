@@ -39,6 +39,20 @@
 
 
 
+
+            <DataTemplate DataType="{x:Type tableVM:TrykktestingPrøveVM}">
+                <tables:TrykktestingPrøveView/>
+            </DataTemplate>
+
+
+
+
+            <DataTemplate DataType="{x:Type tableVM:TrykktestingTableVM}">
+                <tables:TrykktestingTableView/>
+            </DataTemplate>
+            
+            
+            
             <DataTemplate DataType="{x:Type tableVM:DataEtterKuttingOgSlipingTableVM}">
                 <tables:DataEtterKuttingOgSlipingTableView/>
             </DataTemplate>

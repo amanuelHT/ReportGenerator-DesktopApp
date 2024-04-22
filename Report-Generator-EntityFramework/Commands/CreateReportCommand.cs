@@ -38,6 +38,12 @@ namespace Report_Generator_EntityFramework.Commands
                     context.concreteDensityModels.Add(density);
                 }
 
+
+                foreach (var trykktesting in reportModel.TrykktestingModel)
+                {
+                    context.trykktestingModels.Add(trykktesting);
+                }
+
                 // Save changes to the database
                 await context.SaveChangesAsync();
             }

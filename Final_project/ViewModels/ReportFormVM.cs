@@ -23,6 +23,9 @@ namespace Final_project.ViewModels
         public ConcreteDensityTableVM ConcreteDensityTableVM { get; }
         public ConcreteDensityPrøveVM ConcreteDensityPrøveVM { get; }
 
+        public TrykktestingTableVM TrykktestingTableVM { get; }
+        public TrykktestingPrøveVM TrykktestingPrøveVM { get; }
+
 
         [ObservableProperty]
         private string _tittle;
@@ -57,6 +60,10 @@ namespace Final_project.ViewModels
 
             ConcreteDensityTableVM = new ConcreteDensityTableVM(modalNavigation, reportid);
             ConcreteDensityPrøveVM = new ConcreteDensityPrøveVM(modalNavigation, reportid, ConcreteDensityTableVM);
+
+
+            TrykktestingTableVM = new TrykktestingTableVM(modalNavigation, reportid);
+            TrykktestingPrøveVM = new TrykktestingPrøveVM(modalNavigation, reportid, TrykktestingTableVM);
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
         }

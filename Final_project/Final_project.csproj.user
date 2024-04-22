@@ -58,6 +58,12 @@
     <Compile Update="Tables\DataFraOppdragsgiverTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tables\TrykktestingPrøveView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\TrykktestingTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AccountView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -143,6 +149,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Tables\DataFraOppdragsgiverTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\TrykktestingPrøveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\TrykktestingTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

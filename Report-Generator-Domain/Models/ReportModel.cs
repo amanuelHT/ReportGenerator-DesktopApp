@@ -22,6 +22,8 @@ namespace Domain.Models
 
         public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
 
+        public List<TrykktestingModel> TrykktestingModel { get; set; }
+
 
 
         public ReportModel(Guid id, string tittle, bool status, string kunde)
@@ -34,7 +36,7 @@ namespace Domain.Models
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
             DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
             ConcreteDensityModel = new List<ConcreteDensityModel>();
-
+            TrykktestingModel = new List<TrykktestingModel>();
 
 
         }

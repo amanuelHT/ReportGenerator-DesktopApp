@@ -26,6 +26,7 @@ namespace Final_project.ViewModels
 
         public ReportModel SelectedReportData { get; private set; }
         public ObservableCollection<ReportImageModel> ReportImages { get; private set; }
+        public ObservableCollection<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels1 { get; private set; }
 
         public ReportViewerVM(ReportStore reportStore, INavigationService generatedReportNavigationService)
         {
@@ -42,7 +43,8 @@ namespace Final_project.ViewModels
                 List<ReportImageModel> images,
                 List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
                 List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-                List<ConcreteDensityModel> concreteDensityModels) = await _reportStore.GetReportData(_selectedReport.Id);
+                List<ConcreteDensityModel> concreteDensityModels,
+                List<TrykktestingModel> trykktestingModels) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

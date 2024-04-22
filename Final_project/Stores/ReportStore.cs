@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 using Report_Generator_Domain.Commands;
-using Report_Generator_Domain.ITables;
+
 using Report_Generator_Domain.Models;
 using Report_Generator_Domain.Queries;
 
@@ -22,7 +22,6 @@ namespace Final_project.Stores
         private readonly IDeleteReportImageCommand _deleteReportImageCommand;
         //private readonly IGetImageForReportCommand _getImageForReporCommand;
         private readonly ICreateImageCommand _createImageCommand;
-        private readonly ICreateDataFraOppdragsgiverPrøverModelCommand _iCreateDataFraOppdragsgiverPrøverModelCommand;
 
 
 
@@ -37,8 +36,8 @@ namespace Final_project.Stores
              //IGetReportImageCommand getReportImageCommand,
              IDeleteReportImageCommand deleteReportImageCommand,
             //IGetImageForReportCommand getImageForReportCommand,
-            ICreateImageCommand createImageCommand,
-            ICreateDataFraOppdragsgiverPrøverModelCommand createDataFraOppdragsgiverPrøverModelCommand
+            ICreateImageCommand createImageCommand
+
 
             )
         {
@@ -51,7 +50,6 @@ namespace Final_project.Stores
             _deleteReportImageCommand = deleteReportImageCommand;
             //_getImageForReporCommand = getImageForReportCommand;
             _createImageCommand = createImageCommand;
-            _iCreateDataFraOppdragsgiverPrøverModelCommand = createDataFraOppdragsgiverPrøverModelCommand;
 
 
 
@@ -99,13 +97,6 @@ namespace Final_project.Stores
         }
 
 
-        public async Task AddDataFraOppdragsgiverPrøver(Guid tableid, List<DataFraOppdragsgiverPrøverModel> prove)
-        {
-            await _iCreateDataFraOppdragsgiverPrøverModelCommand.Execute(tableid, prove);
-
-            //_reportImagemodel.Add(reportImageModel);
-            //ImageAdded?.Invoke(reportImageModel);
-        }
 
 
 
@@ -159,7 +150,8 @@ namespace Final_project.Stores
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-            List<ConcreteDensityModel> concreteDensityModels
+            List<ConcreteDensityModel> concreteDensityModels,
+            List<TrykktestingModel> trykktestingModels
             )> GetReportData(Guid reportId)
         {
             return await _getReportDataCommand.Execute(reportId);

@@ -189,6 +189,34 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("DataFraOppdragsgiverPrøverModels");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PalastHastighetMPas")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ReportModelId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TrykkfasthetMPa")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TrykkfasthetMPaNSE")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TrykkflateMm")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportModelId");
+
+                    b.ToTable("trykktestingModels");
+                });
+
             modelBuilder.Entity("Domain.Models.ReportImageModel", b =>
                 {
                     b.HasOne("Domain.Models.ReportModel", "ReportModel")
@@ -233,6 +261,17 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                        .WithMany("TrykktestingModel")
+                        .HasForeignKey("ReportModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReportModel");
+                });
+
             modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
                     b.Navigation("ConcreteDensityModel");
@@ -242,6 +281,8 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("DataFraOppdragsgiverPrøver");
 
                     b.Navigation("Images");
+
+                    b.Navigation("TrykktestingModel");
                 });
 #pragma warning restore 612, 618
         }

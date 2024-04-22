@@ -20,6 +20,7 @@ namespace Report_Generator_EntityFramework
         public DbSet<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøverModels { get; set; }
         public DbSet<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; set; }
         public DbSet<ConcreteDensityModel> concreteDensityModels { get; set; }
+        public DbSet<TrykktestingModel> trykktestingModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +48,12 @@ namespace Report_Generator_EntityFramework
             modelBuilder.Entity<ConcreteDensityModel>()
                .HasOne(prøver => prøver.ReportModel)
                .WithMany(table => table.ConcreteDensityModel)
+               .HasForeignKey(prøver => prøver.ReportModelId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TrykktestingModel>()
+               .HasOne(prøver => prøver.ReportModel)
+               .WithMany(table => table.TrykktestingModel)
                .HasForeignKey(prøver => prøver.ReportModelId)
                .OnDelete(DeleteBehavior.Cascade);
         }

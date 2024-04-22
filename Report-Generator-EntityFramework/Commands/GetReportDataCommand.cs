@@ -18,7 +18,9 @@ namespace Report_Generator_EntityFramework.Commands
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-            List<ConcreteDensityModel> concreteDensityModels)> Execute(Guid reportId)
+            List<ConcreteDensityModel> concreteDensityModels,
+            List<TrykktestingModel> trykktestingModels
+            )> Execute(Guid reportId)
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
@@ -26,7 +28,7 @@ namespace Report_Generator_EntityFramework.Commands
                     .FirstOrDefaultAsync(report => report.Id == reportId);
 
                 if (report == null)
-                    return (null, null, null, null, null);
+                    return (null, null, null, null, null, null);
 
                 var images = await context.ReportImageModels
                     .Where(image => image.ReportModelId == reportId)
@@ -46,9 +48,12 @@ namespace Report_Generator_EntityFramework.Commands
 
 
 
+                var TrykktestingModel = await context.trykktestingModels
+                    .Where(trykk => trykk.ReportModelId == reportId)
+                    .ToListAsync();
 
 
-                return (report, images, prøve, kutingprøve, concretdensity);
+                return (report, images, prøve, kutingprøve, concretdensity, TrykktestingModel);
             }
         }
     }

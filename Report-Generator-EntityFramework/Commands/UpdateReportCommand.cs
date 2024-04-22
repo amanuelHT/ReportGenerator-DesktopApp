@@ -33,6 +33,7 @@ namespace Report_Generator_EntityFramework.Commands
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
                     UpdateCocretDensity(context, existingReport, reportModel);
+                    Updatetrykketessting(context, existingReport, reportModel);
                     // Save changes to the context
                     await context.SaveChangesAsync();
                 }
@@ -158,6 +159,41 @@ namespace Report_Generator_EntityFramework.Commands
                     existingPrøve.Pw = newPrøve.Pw; // Assuming this is also updatable
                     existingPrøve.V = newPrøve.V; // Assuming this is also updatable
                     existingPrøve.Densitet = newPrøve.Densitet;
+                }
+            }
+
+        }
+
+        private void Updatetrykketessting(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            // Remove prøver that are no longer present
+            foreach (var existingPrøve in existingReport.TrykktestingModel.ToList())
+            {
+                if (!newReport.TrykktestingModel.Any(p => p.Id == existingPrøve.Id))
+                {
+                    context.Remove(existingPrøve);
+                }
+            }
+
+            // Add new prøver
+            foreach (var newPrøve in newReport.TrykktestingModel)
+            {
+                if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
+                {
+                    context.Add(newPrøve);
+                }
+            }
+
+            // Optionally, update existing prøver if they contain updatable properties
+            foreach (var existingTrykktesting in existingReport.TrykktestingModel)
+            {
+                var newTrykktesting = newReport.TrykktestingModel.FirstOrDefault(p => p.Id == existingTrykktesting.Id);
+                if (existingTrykktesting != null)
+                {
+                    existingTrykktesting.TrykkflateMm = newTrykktesting.TrykkflateMm;
+                    existingTrykktesting.PalastHastighetMPas = newTrykktesting.PalastHastighetMPas;
+                    existingTrykktesting.TrykkfasthetMPa = newTrykktesting.TrykkfasthetMPa;
+                    existingTrykktesting.TrykkfasthetMPaNSE = newTrykktesting.TrykkfasthetMPaNSE;
                 }
             }
 
