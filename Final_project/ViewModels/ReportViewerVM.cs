@@ -41,7 +41,8 @@ namespace Final_project.ViewModels
             (ReportModel reportData,
                 List<ReportImageModel> images,
                 List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
-                List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels) = await _reportStore.GetReportData(_selectedReport.Id);
+                List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+                List<ConcreteDensityModel> concreteDensityModels) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

@@ -158,7 +158,8 @@ namespace Final_project.Stores
             ReportModel report,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
-            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+            List<ConcreteDensityModel> concreteDensityModels
             )> GetReportData(Guid reportId)
         {
             return await _getReportDataCommand.Execute(reportId);

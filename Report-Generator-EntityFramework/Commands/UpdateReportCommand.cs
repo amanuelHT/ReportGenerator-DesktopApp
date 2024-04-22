@@ -32,7 +32,7 @@ namespace Report_Generator_EntityFramework.Commands
 
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
-
+                    UpdateCocretDensity(context, existingReport, reportModel);
                     // Save changes to the context
                     await context.SaveChangesAsync();
                 }
@@ -124,5 +124,45 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
         }
+
+        private void UpdateCocretDensity(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            // Remove prøver that are no longer present
+            foreach (var existingPrøve in existingReport.ConcreteDensityModel.ToList())
+            {
+                if (!newReport.ConcreteDensityModel.Any(p => p.Id == existingPrøve.Id))
+                {
+                    context.Remove(existingPrøve);
+                }
+            }
+
+            // Add new prøver
+            foreach (var newPrøve in newReport.ConcreteDensityModel)
+            {
+                if (!existingReport.ConcreteDensityModel.Any(p => p.Id == newPrøve.Id))
+                {
+                    context.Add(newPrøve);
+                }
+            }
+
+            // Optionally, update existing prøver if they contain updatable properties
+            foreach (var existingPrøve in existingReport.ConcreteDensityModel)
+            {
+                var newPrøve = newReport.ConcreteDensityModel.FirstOrDefault(p => p.Id == existingPrøve.Id);
+                if (newPrøve != null)
+                {
+                    // Update only the updatable properties from newPrøve
+                    existingPrøve.Dato = newPrøve.Dato;
+                    existingPrøve.MasseILuft = newPrøve.MasseILuft;
+                    existingPrøve.MasseIVannbad = newPrøve.MasseIVannbad; // Assuming this is also updatable
+                    existingPrøve.Pw = newPrøve.Pw; // Assuming this is also updatable
+                    existingPrøve.V = newPrøve.V; // Assuming this is also updatable
+                    existingPrøve.Densitet = newPrøve.Densitet;
+                }
+            }
+
+        }
+
+
     }
 }

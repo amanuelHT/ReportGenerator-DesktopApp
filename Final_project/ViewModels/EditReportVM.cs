@@ -62,6 +62,12 @@ namespace Final_project.ViewModels
                 var prøveVM = new DataEtterKuttingOgSlipingPrøveVM(prøve);
                 ReportFormVM.DataEtterKuttingOgSlipingTableVM.Prøver.Add(prøveVM);
             }
+
+            foreach (var densityModel in reportModel.ConcreteDensityModel)
+            {
+                var densityPrøveVM = new ConcreteDensityPrøveVM(densityModel);
+                ReportFormVM.ConcreteDensityTableVM.Prøver.Add(densityPrøveVM);
+            }
         }
     }
 }

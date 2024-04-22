@@ -91,6 +91,31 @@ namespace Final_project.Commands
                     Console.WriteLine("Prøver object is null.");
                 }
             }
+            foreach (var prøve in reportForm.ConcreteDensityTableVM.Prøver)
+            {
+                // Check if prøve is null before creating a new DataPrøverModel
+                if (prøve != null)
+                {
+                    ConcreteDensityModel concreteDensityModel = new ConcreteDensityModel(
+                        prøve.Provnr,
+                        prøve.Dato,
+                        prøve.MasseILuft,
+                        prøve.MasseIVannbad,
+                        prøve.Pw,
+                        prøve.V,
+                        prøve.Densitet,
+                        reportModel.Id
+                    );
+
+                    reportModel.ConcreteDensityModel.Add(concreteDensityModel);  // Add the newly created model to the report model
+                }
+                else
+                {
+                    // Handle the case where prøve is null
+                    // (e.g., log an error, display a message to the user)
+                    Console.WriteLine("Prøve object is null.");
+                }
+            }
 
 
 

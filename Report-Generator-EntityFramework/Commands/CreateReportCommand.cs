@@ -32,6 +32,12 @@ namespace Report_Generator_EntityFramework.Commands
                     context.DataEtterKuttingOgSlipingModels.Add(prøver);
                 }
 
+
+                foreach (var density in reportModel.ConcreteDensityModel)
+                {
+                    context.concreteDensityModels.Add(density);
+                }
+
                 // Save changes to the database
                 await context.SaveChangesAsync();
             }

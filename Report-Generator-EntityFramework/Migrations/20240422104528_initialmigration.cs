@@ -26,6 +26,31 @@ namespace Report_Generator_EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "concreteDensityModels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Dato = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    MasseILuft = table.Column<double>(type: "REAL", nullable: false),
+                    MasseIVannbad = table.Column<double>(type: "REAL", nullable: false),
+                    Pw = table.Column<double>(type: "REAL", nullable: false),
+                    V = table.Column<double>(type: "REAL", nullable: false),
+                    Densitet = table.Column<double>(type: "REAL", nullable: false),
+                    ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_concreteDensityModels", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_concreteDensityModels_ReportModels_ReportModelId",
+                        column: x => x.ReportModelId,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DataEtterKuttingOgSlipingModels",
                 columns: table => new
                 {
@@ -100,6 +125,11 @@ namespace Report_Generator_EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_concreteDensityModels_ReportModelId",
+                table: "concreteDensityModels",
+                column: "ReportModelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DataEtterKuttingOgSlipingModels_ReportModelId",
                 table: "DataEtterKuttingOgSlipingModels",
                 column: "ReportModelId");
@@ -118,6 +148,9 @@ namespace Report_Generator_EntityFramework.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "concreteDensityModels");
+
             migrationBuilder.DropTable(
                 name: "DataEtterKuttingOgSlipingModels");
 

@@ -20,6 +20,10 @@ namespace Final_project.ViewModels
         public DataEtterKuttingOgSlipingTableVM DataEtterKuttingOgSlipingTableVM { get; }
         public DataEtterKuttingOgSlipingPrøveVM DataEtterKuttingOgSlipingPrøveVM { get; }
 
+        public ConcreteDensityTableVM ConcreteDensityTableVM { get; }
+        public ConcreteDensityPrøveVM ConcreteDensityPrøveVM { get; }
+
+
         [ObservableProperty]
         private string _tittle;
 
@@ -42,6 +46,7 @@ namespace Final_project.ViewModels
             //AddReportTableCommand = new OpenAddReportTableCommand(modalNavigation, reportStore);
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
+
             DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, modalNavigation, reportid);
             DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(reportStore, modalNavigation, reportid, DataFraOppdragsgiverTableVM);
 
@@ -50,6 +55,8 @@ namespace Final_project.ViewModels
             DataEtterKuttingOgSlipingPrøveVM = new DataEtterKuttingOgSlipingPrøveVM(modalNavigation, reportid, DataEtterKuttingOgSlipingTableVM);
 
 
+            ConcreteDensityTableVM = new ConcreteDensityTableVM(modalNavigation, reportid);
+            ConcreteDensityPrøveVM = new ConcreteDensityPrøveVM(modalNavigation, reportid, ConcreteDensityTableVM);
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
         }

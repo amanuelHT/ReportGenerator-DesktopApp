@@ -9,7 +9,8 @@ namespace Report_Generator_Domain.Commands
             ReportModel report,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
-            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+             List<ConcreteDensityModel> concreteDensityModels
             )> Execute(Guid reportId);
     }
 }

@@ -63,6 +63,40 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("ReportModels");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.ConcreteDensityModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Dato")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Densitet")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("MasseILuft")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("MasseIVannbad")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Pw")
+                        .HasColumnType("REAL");
+
+                    b.Property<Guid>("ReportModelId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("V")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportModelId");
+
+                    b.ToTable("concreteDensityModels");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.DataEtterKuttingOgSlipingModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -166,6 +200,17 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.ConcreteDensityModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                        .WithMany("ConcreteDensityModel")
+                        .HasForeignKey("ReportModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReportModel");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.DataEtterKuttingOgSlipingModel", b =>
                 {
                     b.HasOne("Domain.Models.ReportModel", "ReportModel")
@@ -190,6 +235,8 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
+                    b.Navigation("ConcreteDensityModel");
+
                     b.Navigation("DataEtterKuttingOgSlipingModel");
 
                     b.Navigation("DataFraOppdragsgiverPrøver");

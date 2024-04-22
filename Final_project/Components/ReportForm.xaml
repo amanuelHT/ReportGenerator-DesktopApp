@@ -82,6 +82,7 @@
                         <!-- Define two rows, each taking available space -->
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/> 
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -93,7 +94,9 @@
                     <!-- Data fra oppdragsgiver Table View in the second row -->
                     <tables:DataFraOppdragsgiverTableView Grid.Row="1" DataContext="{Binding DataFraOppdragsgiverTableVM}" />
 
-                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="2" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}" />
+                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="2" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}" />    
+                    
+                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}" />
                 </Grid>
 
 

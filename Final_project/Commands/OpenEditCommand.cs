@@ -31,7 +31,8 @@ public class OpenEditCommand : CommandBase
         (ReportModel reportData,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
-            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels) = await _reportStore.GetReportData(reportId);
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+            List<ConcreteDensityModel> concreteDensityModels) = await _reportStore.GetReportData(reportId);
 
         if (reportData == null)
         {
@@ -39,12 +40,14 @@ public class OpenEditCommand : CommandBase
             return;
         }
 
-        // Add retrieved images to the report data
+        // Add retrieved datas to the report data
         reportData.Images = images;
 
         reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
 
         reportData.DataEtterKuttingOgSlipingModel = dataEtterKuttingOgSlipingModels;
+
+        reportData.ConcreteDensityModel = concreteDensityModels;
 
 
         // Create and navigate to the edit report view model

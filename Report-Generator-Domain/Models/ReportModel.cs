@@ -20,6 +20,9 @@ namespace Domain.Models
         public List<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModel { get; set; }
 
 
+        public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
+
+
 
         public ReportModel(Guid id, string tittle, bool status, string kunde)
         {
@@ -30,6 +33,8 @@ namespace Domain.Models
             Images = new List<ReportImageModel>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
             DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
+            ConcreteDensityModel = new List<ConcreteDensityModel>();
+
 
 
         }
