@@ -28,7 +28,10 @@ public class OpenEditCommand : CommandBase
         Guid reportId = _reportListingItemVM.ReportModel.Id;
 
         // Retrieve the full report data with images
-        (ReportModel reportData, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels) = await _reportStore.GetReportData(reportId);
+        (ReportModel reportData,
+            List<ReportImageModel> images,
+            List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels) = await _reportStore.GetReportData(reportId);
 
         if (reportData == null)
         {
@@ -40,6 +43,9 @@ public class OpenEditCommand : CommandBase
         reportData.Images = images;
 
         reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
+
+        reportData.DataEtterKuttingOgSlipingModel = dataEtterKuttingOgSlipingModels;
+
 
         // Create and navigate to the edit report view model
         EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);

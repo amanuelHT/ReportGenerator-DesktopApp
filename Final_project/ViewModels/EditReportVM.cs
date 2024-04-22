@@ -56,6 +56,12 @@ namespace Final_project.ViewModels
                 ReportFormVM.DataFraOppdragsgiverTableVM.Prøver.Add(prøveVM);
             }
 
+
+            foreach (var prøve in reportModel.DataEtterKuttingOgSlipingModel)
+            {
+                var prøveVM = new DataEtterKuttingOgSlipingPrøveVM(prøve);
+                ReportFormVM.DataEtterKuttingOgSlipingTableVM.Prøver.Add(prøveVM);
+            }
         }
     }
 }

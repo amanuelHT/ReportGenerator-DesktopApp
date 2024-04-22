@@ -59,6 +59,36 @@ namespace Final_project.Commands
                 reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
             }
 
+            foreach (var Prøver in reportForm.DataEtterKuttingOgSlipingTableVM.Prøver)
+            {
+                // Check if Prøver is null before creating a new DataEtterKuttingOgSlipingModel
+                if (Prøver != null)
+                {
+                    DataEtterKuttingOgSlipingModel prøverModel = new DataEtterKuttingOgSlipingModel(
+                        Guid.NewGuid(),
+                        Prøver.IvannbadDato,
+                        Prøver.TestDato,
+                        Prøver.Overflatetilstand,
+                        Prøver.Dm,
+                        Prøver.Prøvetykke,
+                        Prøver.DmPrøvetykkeRatio,
+                        Prøver.TrykkfasthetMPa,
+                        Prøver.FasthetSammenligning,
+                        Prøver.FørSliping,
+                        Prøver.EtterSliping,
+                        Prøver.MmTilTopp,
+                        reportModel.Id
+                    );
+
+                    reportModel.DataEtterKuttingOgSlipingModel.Add(prøverModel);
+                }
+                else
+                {
+                    // Handle the case where Prøver is null
+                    // (e.g., log an error, display a message to the user)
+                    Console.WriteLine("Prøver object is null.");
+                }
+            }
 
             try
             {

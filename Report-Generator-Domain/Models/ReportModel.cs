@@ -17,6 +17,7 @@ namespace Domain.Models
         public List<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøver { get; set; }
 
 
+        public List<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModel { get; set; }
 
 
 
@@ -28,6 +29,7 @@ namespace Domain.Models
             Kunde = kunde;
             Images = new List<ReportImageModel>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
+            DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
 
 
         }

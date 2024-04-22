@@ -33,6 +33,18 @@
             </DataTemplate>-->
 
 
+            <DataTemplate DataType="{x:Type tableVM:DataEtterKuttingOgSlipingPrøveVM}">
+                <tables:DataEtterKuttingOgSlipingPrøveView/>
+            </DataTemplate>
+
+
+
+            <DataTemplate DataType="{x:Type tableVM:DataEtterKuttingOgSlipingTableVM}">
+                <tables:DataEtterKuttingOgSlipingTableView/>
+            </DataTemplate>
+
+
+
 
 
 

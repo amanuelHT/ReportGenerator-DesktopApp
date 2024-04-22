@@ -18,6 +18,7 @@ namespace Report_Generator_EntityFramework
         public DbSet<ReportModel> ReportModels { get; set; }
         public DbSet<ReportImageModel> ReportImageModels { get; set; }
         public DbSet<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøverModels { get; set; }
+        public DbSet<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,12 @@ namespace Report_Generator_EntityFramework
                 .WithMany(table => table.DataFraOppdragsgiverPrøver)
                 .HasForeignKey(prøver => prøver.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<DataEtterKuttingOgSlipingModel>()
+               .HasOne(prøver => prøver.ReportModel)
+               .WithMany(table => table.DataEtterKuttingOgSlipingModel)
+               .HasForeignKey(prøver => prøver.ReportModelId)
+               .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_Generator_EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,35 @@ namespace Report_Generator_EntityFramework.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ReportModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DataEtterKuttingOgSlipingModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    IvannbadDato = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TestDato = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Overflatetilstand = table.Column<string>(type: "TEXT", nullable: false),
+                    Dm = table.Column<double>(type: "REAL", nullable: false),
+                    Prøvetykke = table.Column<double>(type: "REAL", nullable: false),
+                    DmPrøvetykkeRatio = table.Column<double>(type: "REAL", nullable: false),
+                    TrykkfasthetMPa = table.Column<double>(type: "REAL", nullable: false),
+                    FasthetSammenligning = table.Column<string>(type: "TEXT", nullable: false),
+                    FørSliping = table.Column<double>(type: "REAL", nullable: false),
+                    EtterSliping = table.Column<double>(type: "REAL", nullable: false),
+                    MmTilTopp = table.Column<double>(type: "REAL", nullable: false),
+                    ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataEtterKuttingOgSlipingModels", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DataEtterKuttingOgSlipingModels_ReportModels_ReportModelId",
+                        column: x => x.ReportModelId,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,6 +100,11 @@ namespace Report_Generator_EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_DataEtterKuttingOgSlipingModels_ReportModelId",
+                table: "DataEtterKuttingOgSlipingModels",
+                column: "ReportModelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DataFraOppdragsgiverPrøverModels_ReportModelId",
                 table: "DataFraOppdragsgiverPrøverModels",
                 column: "ReportModelId");
@@ -84,6 +118,9 @@ namespace Report_Generator_EntityFramework.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "DataEtterKuttingOgSlipingModels");
+
             migrationBuilder.DropTable(
                 name: "DataFraOppdragsgiverPrøverModels");
 

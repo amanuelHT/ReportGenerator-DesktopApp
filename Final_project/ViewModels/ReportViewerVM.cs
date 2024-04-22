@@ -38,7 +38,10 @@ namespace Final_project.ViewModels
         {
             if (_selectedReport == null) return;
 
-            (ReportModel reportData, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels) = await _reportStore.GetReportData(_selectedReport.Id);
+            (ReportModel reportData,
+                List<ReportImageModel> images,
+                List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+                List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

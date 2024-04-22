@@ -31,6 +31,7 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.Kunde = reportModel.Kunde;
 
                     UpdatePrøver(context, existingReport, reportModel);
+                    UpdateEtterKuttingPrøver(context, existingReport, reportModel);
 
                     // Save changes to the context
                     await context.SaveChangesAsync();
@@ -76,6 +77,52 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
+
+
+        }
+
+        private void UpdateEtterKuttingPrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            // Remove prøver that are no longer present
+            foreach (var existingPrøve in existingReport.DataEtterKuttingOgSlipingModel.ToList())
+            {
+                if (!newReport.DataEtterKuttingOgSlipingModel.Any(p => p.Id == existingPrøve.Id))
+                {
+                    context.Remove(existingPrøve);
+                }
+            }
+
+            // Add new prøver
+            foreach (var newPrøve in newReport.DataEtterKuttingOgSlipingModel)
+            {
+                if (!existingReport.DataEtterKuttingOgSlipingModel.Any(p => p.Id == newPrøve.Id))
+                {
+                    context.Add(newPrøve);
+                }
+            }
+
+            // Optionally, update existing prøver if they contain updatable properties
+            foreach (var existingPrøve in existingReport.DataEtterKuttingOgSlipingModel)
+            {
+                var newPrøve = newReport.DataEtterKuttingOgSlipingModel.FirstOrDefault(p => p.Id == existingPrøve.Id);
+                if (newPrøve != null)
+                {
+                    // Update additional properties from reportModel
+                    // Update additional properties from newPrøve (changed from reportModel)
+
+                    existingPrøve.IvannbadDato = newPrøve.IvannbadDato;
+                    existingPrøve.TestDato = newPrøve.TestDato;
+                    existingPrøve.Overflatetilstand = newPrøve.Overflatetilstand;
+                    existingPrøve.Dm = newPrøve.Dm;
+                    existingPrøve.Prøvetykke = newPrøve.Prøvetykke;
+                    existingPrøve.DmPrøvetykkeRatio = newPrøve.DmPrøvetykkeRatio;
+                    existingPrøve.TrykkfasthetMPa = newPrøve.TrykkfasthetMPa;
+                    existingPrøve.FasthetSammenligning = newPrøve.FasthetSammenligning;
+                    existingPrøve.FørSliping = newPrøve.FørSliping;
+                    existingPrøve.EtterSliping = newPrøve.EtterSliping;
+                    existingPrøve.MmTilTopp = newPrøve.MmTilTopp;
+                }
+            }
         }
     }
 }

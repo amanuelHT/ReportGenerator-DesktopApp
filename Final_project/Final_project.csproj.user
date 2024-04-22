@@ -40,6 +40,12 @@
     <Compile Update="Components\Upload images.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Tables\DataEtterKuttingOgSlipingTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Tables\DataFraOppdragsgiverPrøverView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -113,6 +119,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\CustomModalView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tables\DataEtterKuttingOgSlipingTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Tables\DataFraOppdragsgiverPrøverView.xaml">

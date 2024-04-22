@@ -154,7 +154,12 @@ namespace Final_project.Stores
 
 
 
-        public async Task<(ReportModel report, List<ReportImageModel> images, List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels)> GetReportData(Guid reportId)
+        public async Task<(
+            ReportModel report,
+            List<ReportImageModel> images,
+            List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels
+            )> GetReportData(Guid reportId)
         {
             return await _getReportDataCommand.Execute(reportId);
         }

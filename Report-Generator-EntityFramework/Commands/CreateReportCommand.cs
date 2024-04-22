@@ -25,6 +25,13 @@ namespace Report_Generator_EntityFramework.Commands
                     context.DataFraOppdragsgiverPrøverModels.Add(prøver);
                 }
 
+
+                // Add associated DataFraOppdragsgiverPrøver to the context
+                foreach (var prøver in reportModel.DataEtterKuttingOgSlipingModel)
+                {
+                    context.DataEtterKuttingOgSlipingModels.Add(prøver);
+                }
+
                 // Save changes to the database
                 await context.SaveChangesAsync();
             }

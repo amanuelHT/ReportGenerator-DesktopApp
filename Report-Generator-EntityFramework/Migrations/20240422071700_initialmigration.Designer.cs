@@ -11,8 +11,8 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240421182024_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240422071700_initialmigration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,57 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ReportModels");
+                });
+
+            modelBuilder.Entity("Report_Generator_Domain.Models.DataEtterKuttingOgSlipingModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Dm")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("DmPrøvetykkeRatio")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("EtterSliping")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("FasthetSammenligning")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("FørSliping")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("IvannbadDato")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("MmTilTopp")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Overflatetilstand")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Prøvetykke")
+                        .HasColumnType("REAL");
+
+                    b.Property<Guid>("ReportModelId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TestDato")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("TrykkfasthetMPa")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportModelId");
+
+                    b.ToTable("DataEtterKuttingOgSlipingModels");
                 });
 
             modelBuilder.Entity("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", b =>
@@ -118,6 +169,17 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.DataEtterKuttingOgSlipingModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                        .WithMany("DataEtterKuttingOgSlipingModel")
+                        .HasForeignKey("ReportModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReportModel");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", b =>
                 {
                     b.HasOne("Domain.Models.ReportModel", "ReportModel")
@@ -131,6 +193,8 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
+                    b.Navigation("DataEtterKuttingOgSlipingModel");
+
                     b.Navigation("DataFraOppdragsgiverPrøver");
 
                     b.Navigation("Images");

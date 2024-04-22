@@ -17,7 +17,8 @@ namespace Final_project.ViewModels
         public ImageCollectionVM ImageCollectionViewModel { get; set; }
         public DataFraOppdragsgiverTableVM DataFraOppdragsgiverTableVM { get; set; }
         public DataFraOppdragsgiverPrøverVM DataFraOppdragsgiverPrøverVM { get; }
-
+        public DataEtterKuttingOgSlipingTableVM DataEtterKuttingOgSlipingTableVM { get; }
+        public DataEtterKuttingOgSlipingPrøveVM DataEtterKuttingOgSlipingPrøveVM { get; }
 
         [ObservableProperty]
         private string _tittle;
@@ -42,8 +43,12 @@ namespace Final_project.ViewModels
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
             DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, modalNavigation, reportid);
-
             DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(reportStore, modalNavigation, reportid, DataFraOppdragsgiverTableVM);
+
+
+            DataEtterKuttingOgSlipingTableVM = new DataEtterKuttingOgSlipingTableVM(modalNavigation, reportid);
+            DataEtterKuttingOgSlipingPrøveVM = new DataEtterKuttingOgSlipingPrøveVM(modalNavigation, reportid, DataEtterKuttingOgSlipingTableVM);
+
 
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;

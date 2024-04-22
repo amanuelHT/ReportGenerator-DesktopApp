@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿
+
+using Domain.Models;
 
 namespace Report_Generator_Domain.Models
 {
