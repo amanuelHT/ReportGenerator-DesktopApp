@@ -14,20 +14,20 @@ namespace Final_project.ViewModels
         private object createSettingsNavigarionService;
         private readonly INavigationService _navigationService;
 
-       
-            public ICommand NavigateSettingsCommand { get; }
-            public ICommand NavigateAccountCommand { get; }
-            public ICommand NavigateLoginCommand { get; }
-            public ICommand NavigateGeneratedReportListingCommand { get; }
-            public ICommand LogoutCommand { get; }
-            public ICommand NavigateReportViewerCommand { get; }
-            public ICommand NavigatHomeCommand { get; }
-            public bool IsLoggedIn => _accountStore.IsLoggedIn;
-            public bool IsLoggedOut => _accountStore.IsLoggedOut;
-            public ICommand NavigateRoleManagementViewCommand { get; private set; }
-            public ICommand NavigateRoleManagementCommand { get; }
-            public ICommand NavigateUserInfoCommand { get; }
-      
+
+        public ICommand NavigateSettingsCommand { get; }
+        public ICommand NavigateAccountCommand { get; }
+        public ICommand NavigateLoginCommand { get; }
+        public ICommand NavigateGeneratedReportListingCommand { get; }
+        public ICommand LogoutCommand { get; }
+        public ICommand NavigateReportViewerCommand { get; }
+        public ICommand NavigateHomeCommand { get; }
+        public bool IsLoggedIn => _accountStore.IsLoggedIn;
+        public bool IsLoggedOut => _accountStore.IsLoggedOut;
+        public ICommand NavigateRoleManagementViewCommand { get; private set; }
+        public ICommand NavigateRoleManagementCommand { get; }
+        public ICommand NavigateUserInfoCommand { get; }
+
         public NavigationBarVM(
                 AccountStore accountStore,
                 INavigationService settingsNavigationService,
@@ -47,7 +47,7 @@ namespace Final_project.ViewModels
             NavigateLoginCommand = new NavigateCommand(loginNavigationService);
             NavigateGeneratedReportListingCommand = new NavigateCommand(generatedReportListingNavigationService);
             NavigateReportViewerCommand = new NavigateCommand(reportViewernavigarionService);
-            NavigatHomeCommand = new NavigateCommand(HomeNavigationService);
+            NavigateHomeCommand = new NavigateCommand(HomeNavigationService);
             LogoutCommand = new LogoutCommand(_accountStore);
             NavigateRoleManagementViewCommand = new NavigateCommand(roleManagementNavigationService);
             NavigateUserInfoCommand = new NavigateCommand(UserInfoNavigationService);

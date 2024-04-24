@@ -4,14 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Components" 
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:RoleManagementVM}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:NavigationBarVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="Black"
-             >
-
-
+             d:DesignHeight="450" d:DesignWidth="200"
+             Background="#250A09FF">
 
     <UserControl.Resources>
         <Style TargetType="Button">
@@ -22,19 +20,22 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <TextBlock Text="{TemplateBinding Content}" />
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" 
+                                                  ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                                  VerticalAlignment="Center" 
+                                                  HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <TextBlock Text="{TemplateBinding Content}" TextDecorations="Underline" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="Foreground" Value="Yellow" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -42,39 +43,94 @@
     </UserControl.Resources>
 
     <Grid MaxWidth="1000" Margin="20 10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <!-- Left buttons -->
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <!-- Spacer -->
-            <ColumnDefinition Width="Auto" />
-            <!-- Right buttons -->
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <!-- Left-aligned buttons -->
-        <Button Grid.Column="0" Margin="10 0 0 0" Command="{Binding NavigatHomeCommand}" Content="Home" />
-        <Button Grid.Column="1" Margin="10 0 0 0" Command="{Binding NavigateSettingsCommand}" Content="Setting" />
-        <Button Grid.Column="2" Margin="10 0 0 0" Command="{Binding NavigateGeneratedReportListingCommand}" Content="Generated Reports" />
-        <Button Grid.Column="3" Margin="10 0 0 0" Command="{Binding NavigateReportViewerCommand}" Content="Report Viewer" />
-        <Button Grid.Column="4" Margin="10 0 0 0" Command="{Binding NavigateUserInfoCommand}"  Content="UserInfoManagement" 
-                Visibility="{Binding RoleManagementVisibility}"/>
-        <!--<Button Grid.Column="5" Margin="10 0 0 0" Content="Role Management" Command="{Binding NavigateRoleManagementCommand}" Visibility="{Binding RoleManagementVisibility}"/>-->
-
-        <!-- Right-aligned buttons -->
-        <Button Grid.Column="6" Margin="10 0 0 0" Command="{Binding NavigateAccountCommand}" Content="Account" 
-                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <Button Grid.Column="7" Margin="10 0 0 0" Command="{Binding LogoutCommand}" Content="Log out" 
-                Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <Button Grid.Column="7" Margin="10 0 0 0" Command="{Binding NavigateLoginCommand}" Content="Login" 
-                Visibility="{Binding IsLoggedOut, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Grid.RowDefinitions>
+            <!-- Button rows -->
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
 
-    </Grid>
+      
+            <!-- Navigation buttons with icons to the left of the text -->
+            <Button Grid.Row="0" Margin="0 0 55 10" Command="{Binding NavigateHomeCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Home" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Home" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+        <Button Grid.Row="1" Margin="10 0 55 10" Command="{Binding NavigateSettingsCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="EyeSettings" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Settings" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="2" Margin="10 0 0 10" Command="{Binding NavigateGeneratedReportListingCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="FileDocument" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Generated Reports" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+        <Button Grid.Row="3" Margin="0 10 15 10" Command="{Binding NavigateReportViewerCommand}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="FileFind" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Report Viewer" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="4" Margin="10 0 0 10" Command="{Binding NavigateUserInfoCommand}" Visibility="{Binding RoleManagementVisibility}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="AccountCircle" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="User Info" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="6" Margin="10 0 0 10" Command="{Binding NavigateAccountCommand}" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="AccountBox" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Account" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="7" Margin="10 0 0 10" Command="{Binding LogoutCommand}" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Logout" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Log Out" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+        <Button Grid.Row="7" Margin="10 0 55 10" Command="{Binding NavigateLoginCommand}" Visibility="{Binding IsLoggedOut, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Login" Height="30" Width="30" Foreground="Black"/>
+                        <TextBlock Text="Login" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+
 
 
 </UserControl>

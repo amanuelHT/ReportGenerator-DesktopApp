@@ -1,20 +1,20 @@
-﻿<UserControl  x:Class="Final_project.Views.GeneratedReportsList"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Views"
+             xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="Final_project.Views.GeneratedReportsList"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
 
-        <!--<PdfViewer:PdfDocumentView x:Name="pdfViewer" HorizontalAlignment="Left" Margin="348,0,0,0" VerticalAlignment="Center" Height="450" Width="452"/>
-             --><!--xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"--><!--
+        <PdfViewer:PdfDocumentView x:Name="pdfViewer" HorizontalAlignment="Left" Margin="348,0,0,0" VerticalAlignment="Center" Height="450" Width="452"/>
 
         <Button x:Name="UploadButton" Content="Upload file" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" />
         <Button x:Name="DownloadBUtton" Content="Download" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Click="DownloadButton_Click" />
-        <ListBox x:Name="ReportsListBox" ItemsSource="{Binding Items}"  Margin="10,30,638,225" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single"/>-->
+        <ListBox x:Name="ReportsListBox" ItemsSource="{Binding Items}"  Margin="10,30,638,225" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single"/>
 
     </Grid>
 </UserControl>
