@@ -1,9 +1,9 @@
 ﻿using BoldReports.Windows;
 using Domain.Models;
 using Final_project.ViewModels;
+using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,7 +14,6 @@ namespace Final_project.Views
         public ReportViewerView()
         {
             InitializeComponent();
-            this.reportViewer.SubreportProcessing += new SubreportProcessingEventHandler(OnSubreportProcessing);
             this.Loaded += OnGenerateReportClick;
         }
 
@@ -24,7 +23,7 @@ namespace Final_project.Views
             {
                 var viewModel = DataContext as ReportViewerVM;
 
-                this.reportViewer.ReportPath =Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
+                this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
 
@@ -41,6 +40,23 @@ namespace Final_project.Views
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable });
                     }
 
+
+                    // Handle the trykketesting 
+                    if (viewModel.TrykktestingModels != null && viewModel.TrykktestingModels.Any())
+                    {
+                        DataTable tryktable = CreateTrykktestingTable(viewModel.TrykktestingModels);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet2", Value = tryktable }); // Use "DataSet2" here for trykktesting data
+                    }
+
+
+
+
+
+
+
+
+
+
                     this.reportViewer.RefreshReport();
                 }
             }
@@ -50,22 +66,38 @@ namespace Final_project.Views
             }
         }
 
-
-
-
-        private void OnSubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        private DataTable CreateTrykktestingTable(ObservableCollection<TrykktestingModel> trykktestingModels)
         {
-            // Since your subreport 'Subreport' does not require data, you can pass an empty DataTable.
-            // The 'ReportPath' property holds the path of the subreport being processed, and you need to compare it with the subreport file name
-            if (Path.GetFileNameWithoutExtension(e.ReportPath) == "Subreport1") // This should be the name of your subreport file without the '.rdlc' extension
-            {
-                // Create an empty DataTable to satisfy the report processor
-                DataTable emptyDataTable = new DataTable();
+            // Create a new DataTable.
+            DataTable trykTable = new DataTable("TrykktestingData");
 
-                // Add an empty data source with the name expected by the subreport, if it expects one.
-                e.DataSources.Add(new ReportDataSource("SubreportDataSet", emptyDataTable));
+            // Define the columns that correspond to the properties of TrykktestingModel.
+            trykTable.Columns.Add("TrykkflateMm", typeof(decimal));
+            trykTable.Columns.Add("PalastHastighetMPas", typeof(decimal));
+            trykTable.Columns.Add("TrykkfasthetMPa", typeof(decimal));
+            trykTable.Columns.Add("TrykkfasthetMPaNSE", typeof(decimal));
+
+            // Iterate over each TrykktestingModel in the collection.
+            foreach (var model in trykktestingModels)
+            {
+                // Create a new row in the DataTable for each TrykktestingModel.
+                DataRow row = trykTable.NewRow();
+
+                // Set the row's column values to the properties of the TrykktestingModel.
+                row["TrykkflateMm"] = model.TrykkflateMm;
+                row["PalastHastighetMPas"] = model.PalastHastighetMPas;
+                row["TrykkfasthetMPa"] = model.TrykkfasthetMPa;
+                row["TrykkfasthetMPaNSE"] = model.TrykkfasthetMPaNSE;
+
+                // Add the row to the DataTable.
+                trykTable.Rows.Add(row);
             }
+
+            return trykTable;
         }
+
+
+
 
         private DataTable CreateReportDataTable(ReportModel reportData)
         {

@@ -95,7 +95,11 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Update="Resources\ReportData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Page Update="Components\ImageCollectionView.xaml">
       <SubType>Designer</SubType>

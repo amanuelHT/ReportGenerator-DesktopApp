@@ -25,6 +25,7 @@
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.3.0" />
     <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
+    <PackageReference Include="Syncfusion.Grid.WPF" Version="25.1.41" />
     <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="25.1.39" />
   </ItemGroup>
 
@@ -49,10 +50,12 @@
     <None Update="Resources\Report1.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\Report2.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\ReportData.xsd">
-      <SubType>Designer</SubType>
-      <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
     </None>
     <None Update="Resources\Reports\DataEtterKuttingOgSliping.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -102,9 +105,9 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Resources\ReportData.Designer.cs">
-      <DependentUpon>ReportData.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DependentUpon>ReportData.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
 

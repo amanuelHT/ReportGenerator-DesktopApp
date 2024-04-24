@@ -22,6 +22,9 @@ namespace Report_Generator_EntityFramework.Commands
                 var existingReport = await context.ReportModels
                     .Include(r => r.Images) // Include images for updating
                     .Include(r => r.DataFraOppdragsgiverPrøver) // Include prøver for updating
+                    .Include(r => r.DataEtterKuttingOgSlipingModel)
+                     .Include(r => r.ConcreteDensityModel)
+                     .Include(r => r.TrykktestingModel)
                     .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
                 if (existingReport != null)
@@ -32,7 +35,7 @@ namespace Report_Generator_EntityFramework.Commands
 
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
-                    UpdateCocretDensity(context, existingReport, reportModel);
+                    UpdateConcreteDensity(context, existingReport, reportModel);
                     Updatetrykketessting(context, existingReport, reportModel);
                     // Save changes to the context
                     await context.SaveChangesAsync();
@@ -42,7 +45,6 @@ namespace Report_Generator_EntityFramework.Commands
 
         private void UpdatePrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove prøver that are no longer present
             foreach (var existingPrøve in existingReport.DataFraOppdragsgiverPrøver.ToList())
             {
                 if (!newReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == existingPrøve.Id))
@@ -51,40 +53,27 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
-            // Add new prøver
-            foreach (var newPrøve in newReport.DataFraOppdragsgiverPrøver)
+            if (newReport.DataFraOppdragsgiverPrøver.Any())
             {
-                if (!existingReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == newPrøve.Id))
+                foreach (var newPrøve in newReport.DataFraOppdragsgiverPrøver)
                 {
-                    context.Add(newPrøve);
+                    if (!existingReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == newPrøve.Id))
+                    {
+                        context.Add(newPrøve);
+                    }
                 }
             }
-
-            // Optionally, update existing prøver if they contain updatable properties
-            foreach (var existingPrøve in existingReport.DataFraOppdragsgiverPrøver)
+            else
             {
-                var newPrøve = newReport.DataFraOppdragsgiverPrøver.FirstOrDefault(p => p.Id == existingPrøve.Id);
-                if (newPrøve != null)
-                {
-                    // Update properties based on the new model structure
-                    existingPrøve.Datomottatt = newPrøve.Datomottatt;
-                    existingPrøve.Overdekningoppgitt = newPrøve.Overdekningoppgitt;
-                    existingPrøve.Dmax = newPrøve.Dmax;
-                    existingPrøve.KjerneImax = newPrøve.KjerneImax;
-                    existingPrøve.KjerneImin = newPrøve.KjerneImin;
-                    existingPrøve.OverflateOK = newPrøve.OverflateOK;
-                    existingPrøve.OverflateUK = newPrøve.OverflateUK;
-                    // Additional fields can be updated here as necessary
-                }
+                context.RemoveRange(existingReport.DataFraOppdragsgiverPrøver);
             }
 
-
-
+            context.SaveChanges();
         }
+
 
         private void UpdateEtterKuttingPrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove prøver that are no longer present
             foreach (var existingPrøve in existingReport.DataEtterKuttingOgSlipingModel.ToList())
             {
                 if (!newReport.DataEtterKuttingOgSlipingModel.Any(p => p.Id == existingPrøve.Id))
@@ -93,42 +82,27 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
-            // Add new prøver
-            foreach (var newPrøve in newReport.DataEtterKuttingOgSlipingModel)
+            if (newReport.DataEtterKuttingOgSlipingModel.Any())
             {
-                if (!existingReport.DataEtterKuttingOgSlipingModel.Any(p => p.Id == newPrøve.Id))
+                foreach (var newPrøve in newReport.DataEtterKuttingOgSlipingModel)
                 {
-                    context.Add(newPrøve);
+                    if (!existingReport.DataEtterKuttingOgSlipingModel.Any(p => p.Id == newPrøve.Id))
+                    {
+                        context.Add(newPrøve);
+                    }
                 }
             }
-
-            // Optionally, update existing prøver if they contain updatable properties
-            foreach (var existingPrøve in existingReport.DataEtterKuttingOgSlipingModel)
+            else
             {
-                var newPrøve = newReport.DataEtterKuttingOgSlipingModel.FirstOrDefault(p => p.Id == existingPrøve.Id);
-                if (newPrøve != null)
-                {
-                    // Update additional properties from reportModel
-                    // Update additional properties from newPrøve (changed from reportModel)
-
-                    existingPrøve.IvannbadDato = newPrøve.IvannbadDato;
-                    existingPrøve.TestDato = newPrøve.TestDato;
-                    existingPrøve.Overflatetilstand = newPrøve.Overflatetilstand;
-                    existingPrøve.Dm = newPrøve.Dm;
-                    existingPrøve.Prøvetykke = newPrøve.Prøvetykke;
-                    existingPrøve.DmPrøvetykkeRatio = newPrøve.DmPrøvetykkeRatio;
-                    existingPrøve.TrykkfasthetMPa = newPrøve.TrykkfasthetMPa;
-                    existingPrøve.FasthetSammenligning = newPrøve.FasthetSammenligning;
-                    existingPrøve.FørSliping = newPrøve.FørSliping;
-                    existingPrøve.EtterSliping = newPrøve.EtterSliping;
-                    existingPrøve.MmTilTopp = newPrøve.MmTilTopp;
-                }
+                context.RemoveRange(existingReport.DataEtterKuttingOgSlipingModel);
             }
+
+            context.SaveChanges();
         }
 
-        private void UpdateCocretDensity(DbContext context, ReportModel existingReport, ReportModel newReport)
+
+        private void UpdateConcreteDensity(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove prøver that are no longer present
             foreach (var existingPrøve in existingReport.ConcreteDensityModel.ToList())
             {
                 if (!newReport.ConcreteDensityModel.Any(p => p.Id == existingPrøve.Id))
@@ -137,36 +111,29 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
-            // Add new prøver
-            foreach (var newPrøve in newReport.ConcreteDensityModel)
+            if (newReport.ConcreteDensityModel.Any())
             {
-                if (!existingReport.ConcreteDensityModel.Any(p => p.Id == newPrøve.Id))
+                foreach (var newPrøve in newReport.ConcreteDensityModel)
                 {
-                    context.Add(newPrøve);
+                    if (!existingReport.ConcreteDensityModel.Any(p => p.Id == newPrøve.Id))
+                    {
+                        context.Add(newPrøve);
+                    }
                 }
             }
-
-            // Optionally, update existing prøver if they contain updatable properties
-            foreach (var existingPrøve in existingReport.ConcreteDensityModel)
+            else
             {
-                var newPrøve = newReport.ConcreteDensityModel.FirstOrDefault(p => p.Id == existingPrøve.Id);
-                if (newPrøve != null)
-                {
-                    // Update only the updatable properties from newPrøve
-                    existingPrøve.Dato = newPrøve.Dato;
-                    existingPrøve.MasseILuft = newPrøve.MasseILuft;
-                    existingPrøve.MasseIVannbad = newPrøve.MasseIVannbad; // Assuming this is also updatable
-                    existingPrøve.Pw = newPrøve.Pw; // Assuming this is also updatable
-                    existingPrøve.V = newPrøve.V; // Assuming this is also updatable
-                    existingPrøve.Densitet = newPrøve.Densitet;
-                }
+                context.RemoveRange(existingReport.ConcreteDensityModel);
             }
 
+            context.SaveChanges();
         }
+
+
 
         private void Updatetrykketessting(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove prøver that are no longer present
+            // Remove existing prøver that are not present in the newReport
             foreach (var existingPrøve in existingReport.TrykktestingModel.ToList())
             {
                 if (!newReport.TrykktestingModel.Any(p => p.Id == existingPrøve.Id))
@@ -175,30 +142,27 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
-            // Add new prøver
-            foreach (var newPrøve in newReport.TrykktestingModel)
+            // Check if the newReport has any prøver, and remove all existing if no new prøver are provided
+            if (newReport.TrykktestingModel.Any())
             {
-                if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
+                // Add new prøver from newReport, only if there are any
+                foreach (var newPrøve in newReport.TrykktestingModel)
                 {
-                    context.Add(newPrøve);
+                    if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
+                    {
+                        context.Add(newPrøve);
+                    }
                 }
             }
-
-            // Optionally, update existing prøver if they contain updatable properties
-            foreach (var existingTrykktesting in existingReport.TrykktestingModel)
+            else
             {
-                var newTrykktesting = newReport.TrykktestingModel.FirstOrDefault(p => p.Id == existingTrykktesting.Id);
-                if (existingTrykktesting != null)
-                {
-                    existingTrykktesting.TrykkflateMm = newTrykktesting.TrykkflateMm;
-                    existingTrykktesting.PalastHastighetMPas = newTrykktesting.PalastHastighetMPas;
-                    existingTrykktesting.TrykkfasthetMPa = newTrykktesting.TrykkfasthetMPa;
-                    existingTrykktesting.TrykkfasthetMPaNSE = newTrykktesting.TrykkfasthetMPaNSE;
-                }
+                // If newReport has no prøver, remove all existing ones
+                context.RemoveRange(existingReport.TrykktestingModel);
             }
 
+            // Save changes to the database after updates
+            context.SaveChanges();
         }
-
 
     }
 }

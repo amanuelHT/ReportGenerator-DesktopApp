@@ -16,7 +16,6 @@ using Report_Generator_Domain.Queries;
 using Report_Generator_EntityFramework;
 using Report_Generator_EntityFramework.Commands;
 using Report_Generator_EntityFramework.Queries;
-
 using System.Windows;
 
 namespace Final_project
@@ -162,8 +161,8 @@ namespace Final_project
                  Bold.Licensing.BoldLicenseProvider.RegisterLicense
                  (
                       context.Configuration.GetValue<string>("Licensekey")
-                  );
 
+                  );
 
              })
                .Build();

@@ -26,7 +26,15 @@ namespace Final_project.ViewModels
 
         public ReportModel SelectedReportData { get; private set; }
         public ObservableCollection<ReportImageModel> ReportImages { get; private set; }
-        public ObservableCollection<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels1 { get; private set; }
+
+
+
+        public ObservableCollection<TrykktestingModel> TrykktestingModels { get; private set; }
+        public ObservableCollection<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; private set; }
+        public ObservableCollection<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøverModels { get; private set; }
+        public ObservableCollection<ConcreteDensityModel> ConcreteDensityModels { get; private set; }
+
+
 
         public ReportViewerVM(ReportStore reportStore, INavigationService generatedReportNavigationService)
         {
@@ -53,6 +61,28 @@ namespace Final_project.ViewModels
 
                 ReportImages = new ObservableCollection<ReportImageModel>(images);
                 OnPropertyChanged(nameof(ReportImages));
+
+
+                TrykktestingModels = new ObservableCollection<TrykktestingModel>(trykktestingModels);
+                OnPropertyChanged(nameof(TrykktestingModels));
+
+
+
+                DataEtterKuttingOgSlipingModels = new ObservableCollection<DataEtterKuttingOgSlipingModel>(dataEtterKuttingOgSlipingModels);
+                OnPropertyChanged(nameof(DataEtterKuttingOgSlipingModels));
+
+                DataFraOppdragsgiverPrøverModels = new ObservableCollection<DataFraOppdragsgiverPrøverModel>(dataFraOppdragsgiverPrøverModels);
+                OnPropertyChanged(nameof(DataFraOppdragsgiverPrøverModels));
+
+                ConcreteDensityModels = new ObservableCollection<ConcreteDensityModel>(concreteDensityModels);
+                OnPropertyChanged(nameof(ConcreteDensityModels));
+
+
+
+
+
+
+
             }
         }
     }

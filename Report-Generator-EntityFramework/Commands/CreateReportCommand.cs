@@ -19,6 +19,8 @@ namespace Report_Generator_EntityFramework.Commands
                 // Add the report model to the context
                 context.ReportModels.Add(reportModel);
 
+
+
                 // Add associated DataFraOppdragsgiverPrøver to the context
                 foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)
                 {

@@ -68,6 +68,12 @@ namespace Final_project.ViewModels
                 var densityPrøveVM = new ConcreteDensityPrøveVM(densityModel);
                 ReportFormVM.ConcreteDensityTableVM.Prøver.Add(densityPrøveVM);
             }
+
+            foreach (var trykktestingModel in reportModel.TrykktestingModel)
+            {
+                var trykktesting = new TrykktestingPrøveVM(trykktestingModel);
+                ReportFormVM.TrykktestingTableVM.Trykketester.Add(trykktesting);
+            }
         }
     }
 }
