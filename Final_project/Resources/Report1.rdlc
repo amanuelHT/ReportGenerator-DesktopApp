@@ -396,8 +396,13 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
+<<<<<<< HEAD
             <Top>0.44667in</Top>
             <Left>1.41542in</Left>
+=======
+            <Top>27.32619in</Top>
+            <Left>0.46291in</Left>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
             <Height>0.5in</Height>
             <Width>4in</Width>
             <Style>
@@ -411,10 +416,17 @@
             <Value>=First(Fields!Image1.Value, "DataSet3")</Value>
             <MIMEType>image/x-png</MIMEType>
             <Sizing>FitProportional</Sizing>
+<<<<<<< HEAD
             <Top>1.23833in</Top>
             <Left>1.07167in</Left>
             <Height>1.30208in</Height>
             <Width>2.16667in</Width>
+=======
+            <Top>29.38534in</Top>
+            <Left>0.27282in</Left>
+            <Height>1.21627in</Height>
+            <Width>1.60566in</Width>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -427,10 +439,17 @@
             <Value>=First(Fields!Image2.Value, "DataSet3")</Value>
             <MIMEType>image/x-png</MIMEType>
             <Sizing>FitProportional</Sizing>
+<<<<<<< HEAD
             <Top>1.23833in</Top>
             <Left>3.56125in</Left>
             <Height>1.30208in</Height>
             <Width>2.13542in</Width>
+=======
+            <Top>29.38534in</Top>
+            <Left>2.60875in</Left>
+            <Height>1.21627in</Height>
+            <Width>1.85416in</Width>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -443,9 +462,15 @@
             <Value>=First(Fields!Image3.Value, "DataSet3")</Value>
             <MIMEType>image/x-png</MIMEType>
             <Sizing>FitProportional</Sizing>
+<<<<<<< HEAD
             <Top>1.23833in</Top>
             <Left>5.92583in</Left>
             <Height>1.30208in</Height>
+=======
+            <Top>29.38534in</Top>
+            <Left>4.97333in</Left>
+            <Height>1.21627in</Height>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
             <Width>1.60417in</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -454,6 +479,7 @@
               </Border>
             </Style>
           </Image>
+<<<<<<< HEAD
           <Tablix Name="Tablix2">
             <TablixBody>
               <TablixColumns>
@@ -746,12 +772,23 @@
             <Left>1.91542in</Left>
             <Height>0.5in</Height>
             <Width>4in</Width>
+=======
+          <Image Name="Image5">
+            <Source>Embedded</Source>
+            <Value>Skjermbilde20240420194606</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>34.72173in</Top>
+            <Left>0.94898in</Left>
+            <Height>6.96164in</Height>
+            <Width>4.98928in</Width>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
+<<<<<<< HEAD
           </Tablix>
         </ReportItems>
         <Height>7.61333in</Height>
@@ -765,24 +802,245 @@
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="Textbox17">
+=======
+          </Image>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>UiA, Institutt for Ingeniørvitenskap, Betongprøvestasjonen</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>42.23863in</Top>
+            <Left>0.83955in</Left>
+            <Height>0.34265in</Height>
+            <Width>5.28232in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image6">
+            <Source>Embedded</Source>
+            <Value>Skjermbilde20240422003007</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.17639cm</Top>
+            <Left>1.60485cm</Left>
+            <Height>7.33843in</Height>
+            <Width>5.30642in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Subreport Name="Subreport1">
+            <ReportName>Reports\DataOmOppdrag</ReportName>
+            <OmitBorderOnPageBreak>true</OmitBorderOnPageBreak>
+            <Top>9.64116in</Top>
+            <Left>0.04441in</Left>
+            <Height>1.13529in</Height>
+            <Width>6.76686in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport2">
+            <ReportName>Reports\DataFraOppdraggsgiver</ReportName>
+            <OmitBorderOnPageBreak>true</OmitBorderOnPageBreak>
+            <Top>11.23934in</Top>
+            <Height>0.94239in</Height>
+            <Width>6.77972in</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport3">
+            <ReportName>Reports\DataEtterKuttingOgSliping</ReportName>
+            <OmitBorderOnPageBreak>true</OmitBorderOnPageBreak>
+            <Top>12.74683in</Top>
+            <Left>0.04441in</Left>
+            <Height>1.40535in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport4">
+            <ReportName>Reports\Densitet</ReportName>
+            <Top>14.69919in</Top>
+            <Height>1.32819in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport5">
+            <ReportName>Reports\Trykktesting</ReportName>
+            <Top>16.4795in</Top>
+            <Height>1.05581in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport6">
+            <ReportName>Reports\Figur-GodkjentBruddform</ReportName>
+            <Top>18.20293in</Top>
+            <Height>1.24825in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport7">
+            <ReportName>Reports\vedlegg1-ProvestyykerFørSliping</ReportName>
+            <Top>20.14937in</Top>
+            <Left>0.04441in</Left>
+            <Height>1.34105in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport8">
+            <ReportName>Reports\vedlegg2-EtterSliping</ReportName>
+            <Top>22.65506in</Top>
+            <Height>1.15128in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="Subreport9">
+            <ReportName>Reports\vedlegg3-EtterTrykktest</ReportName>
+            <Top>24.91094in</Top>
+            <Left>0.07596in</Left>
+            <Height>1.34105in</Height>
+            <Width>6.73531in</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+        </ReportItems>
+        <Height>42.58129in</Height>
+        <Style />
+      </Body>
+      <Width>8.66464in</Width>
+      <Page>
+        <PageHeader>
+          <Height>0.29736in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox2">
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
+<<<<<<< HEAD
                       <Value>User info Reports</Value>
+=======
+                      <Value>fadf</Value>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
+<<<<<<< HEAD
               <rd:DefaultName>Textbox17</rd:DefaultName>
               <Top>0.36333in</Top>
               <Left>2.50917in</Left>
               <Height>0.25in</Height>
               <Width>1.94792in</Width>
+=======
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Height>0.25in</Height>
+              <Width>1in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>dato 12,03,200</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Left>5.46291in</Left>
+              <Height>0.25in</Height>
+              <Width>1.11459in</Width>
+              <ZIndex>1</ZIndex>
+>>>>>>> add651ac4dd8e1880f98aeeda7e126ee4480e114
               <Style>
                 <Border>
                   <Style>None</Style>
