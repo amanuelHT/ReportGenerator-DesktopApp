@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+
+    <!-- window border color -->
+    <Color x:Key="winBorColor1">#332604</Color>
+    <Color x:Key="winBorColor2">#806c38</Color>
+    <Color x:Key="winBorColor3">black</Color>
+
+
+    <!-- background color color -->
+    <Color x:Key="primarybackgroundC1">black</Color>
+    <Color x:Key="primarybackgroundC2">black</Color>
+
+
+    <Color x:Key="SecondarybackgroundC1">black</Color>
+    <Color x:Key="SecondarybackgroundC2">#14121c</Color>
+
+    <!-- Color Definitions -->
+    <Color x:Key="PrimaryColor">#FF6200EE</Color>
+    <!-- Example: Deep Purple -->
+    <Color x:Key="SecondaryColor">#FF03DAC5</Color>
+    <!-- Example: Teal -->
+    <Color x:Key="BackgroundColor">#FFF3F4F6</Color>
+    <!-- Example: Light Gray -->
+    <Color x:Key="ForegroundColor">#FF212121</Color>
+    <!-- Example: Dark Gray -->
+    <Color x:Key="AccentColor">#FFFFC107</Color>
+    <!-- Example: Amber -->
+    <Color x:Key="DisabledColor">#FFBDBDBD</Color>
+    <!-- Example: Grey -->
+    <Color x:Key="AddActionColor">#FF4CAF50</Color>
+    <!-- Example: Green -->
+    <!-- Solid Color Brushes -->
+    <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush x:Key="SecondaryColorBrush" Color="{StaticResource SecondaryColor}" />
+    <SolidColorBrush x:Key="BackgroundColorBrush" Color="{StaticResource BackgroundColor}" />
+    <SolidColorBrush x:Key="ForegroundColorBrush" Color="{StaticResource ForegroundColor}" />
+    <SolidColorBrush x:Key="AccentColorBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="DisabledColorBrush" Color="{StaticResource DisabledColor}" />
+
+    <!-- Button Backgrounds -->
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush x:Key="ButtonHoverBackgroundBrush" Color="{StaticResource SecondaryColor}" />
+
+    <!-- Button Foreground (Text) -->
+    <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{StaticResource ForegroundColor}" />
+
+    <!-- Application Background -->
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource BackgroundColor}" />
+
+    <!-- Text Color -->
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource ForegroundColor}" />
+
+    <!-- Highlight Brush -->
+    <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource AccentColor}" />
+
+    <!-- Disabled State for Controls -->
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="{StaticResource DisabledColor}" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="{StaticResource BackgroundColor}" />
+
+    <SolidColorBrush x:Key="AddActionButtonBrush" Color="{StaticResource AddActionColor}" />
+
+    <!-- window border color -->
+   
+    
+</ResourceDictionary>
