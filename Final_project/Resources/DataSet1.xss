@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:ReportModels" ZOrder="3" X="121" Y="100" Height="105" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:ReportImageModel" ZOrder="2" X="389" Y="83" Height="86" Width="179" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
-    <Shape ID="DesignTable:TrykktestingModel" ZOrder="1" X="278" Y="284" Height="220" Width="176" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
+    <Shape ID="DesignTable:TrykktestingModel" ZOrder="1" X="382" Y="277" Height="182" Width="176" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

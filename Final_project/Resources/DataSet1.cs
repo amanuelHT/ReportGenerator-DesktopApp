@@ -113,10 +113,3 @@ namespace Final_project
 namespace Final_project
 {
 }
-
-public partial class DataSet1 {
-}
-
-
-public partial class DataSet1 {
-}

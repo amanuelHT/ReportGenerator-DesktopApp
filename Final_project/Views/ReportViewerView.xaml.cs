@@ -15,6 +15,8 @@ namespace Final_project.Views
         {
             InitializeComponent();
             this.Loaded += OnGenerateReportClick;
+
+
         }
 
         private void OnGenerateReportClick(object sender, RoutedEventArgs e)
@@ -65,6 +67,7 @@ namespace Final_project.Views
                 MessageBox.Show("Error loading report: " + ex.Message);
             }
         }
+
 
         private DataTable CreateTrykktestingTable(ObservableCollection<TrykktestingModel> trykktestingModels)
         {
