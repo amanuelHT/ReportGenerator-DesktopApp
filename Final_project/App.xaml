@@ -117,7 +117,9 @@
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
                 <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
-
+                <ResourceDictionary Source="Styles/UiColors.xaml"/>
+              
+                
             </ResourceDictionary.MergedDictionaries>
 
 

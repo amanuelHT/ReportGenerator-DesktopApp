@@ -6,16 +6,27 @@
     <!-- window border color -->
     <Color x:Key="winBorColor1">#332604</Color>
     <Color x:Key="winBorColor2">#806c38</Color>
-    <Color x:Key="winBorColor3">black</Color>
+    <Color x:Key="winBorColor3">#e3d8ba</Color>
 
 
     <!-- background color color -->
-    <Color x:Key="primarybackgroundC1">black</Color>
-    <Color x:Key="primarybackgroundC2">black</Color>
+    <Color x:Key="primarybackgroundC1">#07486e</Color>
+    <Color x:Key="primarybackgroundC2">#041a26</Color>
 
 
-    <Color x:Key="SecondarybackgroundC1">black</Color>
+    <Color x:Key="SecondarybackgroundC1">#241d3b</Color>
     <Color x:Key="SecondarybackgroundC2">#14121c</Color>
+
+    <Color x:Key="textcolor1">#71eba8</Color>
+    <Color x:Key="textcolor2">#abdec2</Color>
+    <Color x:Key="textcolor3">#23c3eb</Color>
+    <Color x:Key="textcolor4">#4d6d75</Color>
+
+
+
+    <Color x:Key="IconColor">#FF00FF00</Color>
+    <SolidColorBrush x:Key="IconColorBrush" Color="{StaticResource IconColor}" />
+
 
     <!-- Color Definitions -->
     <Color x:Key="PrimaryColor">#FF6200EE</Color>
@@ -51,7 +62,10 @@
     <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource BackgroundColor}" />
 
     <!-- Text Color -->
-    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource ForegroundColor}" />
+     <SolidColorBrush x:Key="TextColor1" Color="{StaticResource textcolor1}" />
+     <SolidColorBrush x:Key="TextColor2" Color="{StaticResource textcolor2}" />
+     <SolidColorBrush x:Key="TextColor3" Color="{StaticResource textcolor3}" />
+     <SolidColorBrush x:Key="TextColor4" Color="{StaticResource textcolor4}" />
 
     <!-- Highlight Brush -->
     <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource AccentColor}" />

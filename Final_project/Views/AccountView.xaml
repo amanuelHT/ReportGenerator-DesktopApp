@@ -28,7 +28,7 @@
                            Text="{Binding Email}"/>
                 <Button FontSize="18" Content="Go to Settings" Margin="20,10" Padding="10" 
                         Command="{Binding NavigateSettingsCommand}" 
-                        Background="#007ACC" Foreground="White" BorderBrush="Transparent" 
+                        Background="#007ACC" Foreground="White" BorderBrush="Bisque" 
                         HorizontalAlignment="Stretch"/>
             </StackPanel>
         </Border>

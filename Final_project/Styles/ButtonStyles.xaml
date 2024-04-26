@@ -3,6 +3,8 @@
 
 
     <Style TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#547AFF" />
         <Setter Property="Padding" Value="20 8" />
@@ -10,23 +12,32 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextBlock.TextAlignment" Value="Center" />
-
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border
-                           Margin="{TemplateBinding Margin}"
-                           Padding="{TemplateBinding Padding}"
-                           Background="{TemplateBinding Background}"
-                           CornerRadius="3">
-                        <ContentPresenter />
+                        Margin="{TemplateBinding Margin}"
+                        Padding="{TemplateBinding Padding}"
+                     
+                        CornerRadius="3"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" 
+                                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                          VerticalAlignment="Center" 
+                                          HorizontalAlignment="Center"/>
+                       
+                        </StackPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Yellow" />
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
@@ -115,5 +126,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    
+
+
 
 </ResourceDictionary>

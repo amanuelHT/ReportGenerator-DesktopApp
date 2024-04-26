@@ -6,11 +6,15 @@
              xmlns:local="clr-namespace:Final_project.Views" 
              xmlns:components="clr-namespace:Final_project.Components"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
-              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl" xmlns:stores="clr-namespace:Final_project.Stores"
+             xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+             xmlns:stores="clr-namespace:Final_project.Stores"
+             xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
              d:DataContext="{d:DesignInstance Type=viewmodels:HomeVM}"
-             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Bisque"
+             
+             >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,15 +25,29 @@
         <!-- Top Row: Add Button and Text -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" Style="{StaticResource PageHeader}"/>
-            <Button Content="Add a report" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding AddReportCommand}"/>
-        </Grid>
+            <TextBlock Grid.Column="0" Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 0 0" Style="{StaticResource PageHeader}"/>
 
-    
+            <TextBlock Text="Add a report" Margin="0 30 20 0" Grid.Column="1" />
+            <Button FontSize="16" Grid.Column="2" HorizontalAlignment="Right" Command="{Binding AddReportCommand}" Style="{StaticResource ButtonSecondary}" Background="Transparent">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Width="50" Height="50" Fill="{StaticResource AddActionButtonBrush}" />
+                            <TextBlock Text="+" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Height="56"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+
+        </Grid>
 
 
         <stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">

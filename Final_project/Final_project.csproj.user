@@ -137,6 +137,12 @@
     <Page Update="Styles\CustomModalView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\NavigationButtons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\UiColors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Tables\ConcreteDensityPrøveView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -165,9 +171,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ButtonStyles.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Styles\NavigationButtons.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\TextBlockStyles.xaml">
