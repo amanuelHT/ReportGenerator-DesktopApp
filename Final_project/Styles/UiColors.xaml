@@ -77,6 +77,77 @@
     <SolidColorBrush x:Key="AddActionButtonBrush" Color="{StaticResource AddActionColor}" />
 
     <!-- window border color -->
-   
-    
+
+
+    <!-- Light Blue Shades -->
+    <Color x:Key="LightBlue100">#B3E5FC</Color>
+    <Color x:Key="LightBlue200">#81D4FA</Color>
+    <Color x:Key="LightBlue300">#4FC3F7</Color>
+
+    <!-- Purple Shades -->
+    <Color x:Key="Purple100">#CE93D8</Color>
+    <Color x:Key="Purple200">#BA68C8</Color>
+    <Color x:Key="Purple300">#AB47BC</Color>
+
+    <!-- Green Shades -->
+    <Color x:Key="Green100">#A5D6A7</Color>
+    <Color x:Key="Green200">#81C784</Color>
+    <Color x:Key="Green300">#66BB6A</Color>
+
+    <!-- Yellow Shades -->
+    <Color x:Key="Yellow100">#FFF59D</Color>
+    <Color x:Key="Yellow200">#FFEE58</Color>
+    <Color x:Key="Yellow300">#FFEB3B</Color>
+
+    <!-- Orange Shades -->
+    <Color x:Key="Orange100">#FFCC80</Color>
+    <Color x:Key="Orange200">#FFB74D</Color>
+    <Color x:Key="Orange300">#FFA726</Color>
+
+    <!-- Red Shades -->
+    <Color x:Key="Red100">#EF9A9A</Color>
+    <Color x:Key="Red200">#E57373</Color>
+    <Color x:Key="Red300">#EF5350</Color>
+
+    <!-- Gray Shades -->
+    <Color x:Key="Gray100">#E0E0E0</Color>
+    <Color x:Key="Gray200">#BDBDBD</Color>
+    <Color x:Key="Gray300">#9E9E9E</Color>
+
+    <!-- Cyan Shades -->
+    <Color x:Key="Cyan100">#80DEEA</Color>
+    <Color x:Key="Cyan200">#4DD0E1</Color>
+    <Color x:Key="Cyan300">#26C6DA</Color>
+
+    <!-- Pink Shades -->
+    <Color x:Key="Pink100">#F48FB1</Color>
+    <Color x:Key="Pink200">#F06292</Color>
+    <Color x:Key="Pink300">#EC407A</Color>
+
+    <!-- Deep Blue Shades -->
+    <Color x:Key="DeepBlue100">#9FA8DA</Color>
+    <Color x:Key="DeepBlue200">#7986CB</Color>
+    <Color x:Key="DeepBlue300">#5C6BC0</Color>
+
+
+
+    <!-- Red Shades -->
+    <Color x:Key="RedShade100">#FFCDD2</Color>
+    <Color x:Key="RedShade200">#EF9A9A</Color>
+    <Color x:Key="RedShade300">#E57373</Color>
+
+    <!-- Blue Shades -->
+    <Color x:Key="BlueShade100">#BBDEFB</Color>
+    <Color x:Key="BlueShade200">#64B5F6</Color>
+    <Color x:Key="BlueShade300">#42A5F5</Color>
+
+    <!-- Black Shades -->
+    <Color x:Key="BlackShade100">#E0E0E0</Color>
+    <Color x:Key="BlackShade200">#BDBDBD</Color>
+    <Color x:Key="BlackShade300">#9E9E9E</Color>
+
+    <!-- Green Shades -->
+    <Color x:Key="GreenShade100">#C8E6C9</Color>
+    <Color x:Key="GreenShade200">#A5D6A7</Color>
+    <Color x:Key="GreenShade300">#81C784</Color>
 </ResourceDictionary>

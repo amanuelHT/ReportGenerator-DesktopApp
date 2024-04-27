@@ -4,21 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Components"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             Background="Transparent">
 
-    <Border BorderThickness="2"
-            Opacity="0.5"
-            CornerRadius="10"
-          >
-         <!--Set background to Transparent--> 
-        <Border.BorderBrush>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{StaticResource winBorColor1}" Offset="0"></GradientStop>
-                <GradientStop Color="{StaticResource winBorColor2}" Offset="0.5"></GradientStop>
-                <GradientStop Color="{StaticResource winBorColor3}" Offset="1"></GradientStop>
-            </LinearGradientBrush>
-        </Border.BorderBrush>
-
+ 
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -31,7 +20,7 @@
             
             
             <!-- Navigation bar in the first column, full height -->
-            <Border CornerRadius="10 0 0 10" Grid.Column="0">
+        <Border CornerRadius="10 0 0 10" Grid.Column="0" Opacity="100">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="{StaticResource primarybackgroundC1}" Offset="0"></GradientStop>
@@ -52,6 +41,5 @@
             </Border>
             
         </Grid>
-        
-    </Border>
+   
 </UserControl>

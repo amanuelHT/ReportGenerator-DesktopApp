@@ -13,14 +13,8 @@
 <Application.Resources>
         <ResourceDictionary>
 
-            <DataTemplate DataType="{x:Type TypeName=viewmodels:SettingsVM}">
-                <views:SettingsView/>
-            </DataTemplate>
-            
-            <DataTemplate DataType="{x:Type TypeName=viewmodels:LoginVM}">
-                <views:LoginView/>
-            </DataTemplate>
-
+           
+           
 
             <DataTemplate DataType="{x:Type tableVM:DataFraOppdragsgiverPrøverVM}">
                 <tables:DataFraOppdragsgiverPrøverView/>
@@ -74,13 +68,25 @@
             </DataTemplate>
 
 
+            
+            
             <DataTemplate DataType="{x:Type TypeName=viewmodels:EditReportVM}">
                 <views:EditReportView/>
             </DataTemplate>
 
 
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:SettingsVM}">
+                <views:SettingsView/>
+            </DataTemplate>
+
+
             <DataTemplate DataType="{x:Type TypeName=viewmodels:HomeVM}">
                 <views:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:GeneratedReportListVM}">
+                <views:GeneratedReportsList/>
             </DataTemplate>
 
 
@@ -101,9 +107,13 @@
                 <views:ResetPasswordView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:AccountVM}">
+                <views:AccountView/>
+            </DataTemplate>
 
-            <DataTemplate DataType="{x:Type TypeName=viewmodels:ImageVM}">
-                <components:ImageView/>
+
+            <DataTemplate DataType="{x:Type TypeName=viewmodels:LoginVM}">
+                <views:LoginView/>
             </DataTemplate>
 
 

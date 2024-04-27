@@ -33,28 +33,18 @@ namespace Final_project.ViewModels
             AddReportCommand = new OpenAddCommand(modalWindow, modalNavigation, reportStore, navigationStore);
 
 
-            //_navigationStore.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
+
         }
 
-        //private void ModalNavigation_CurrentViewChanged()
-        //{
-        //    OnPropertyChanged(nameof(CurrentVM));
-        //    OnPropertyChanged(nameof(IsFormOpen));
-        //}
 
-        //public override void Dispose()
-        //{
-        //    _navigationStore.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
-        //    base.Dispose();
-        //}
+
+
 
 
         public static HomeVM LoadHome(ModalWindow modalWindow, ModalNavigation modalNavigation, ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, INavigationService navigationService)
         {
             HomeVM viewModel = new HomeVM(modalWindow, modalNavigation, reportStore, selectedReportStore, navigationStore, navigationService);
 
-            //viewModel.HomeVMCommand.Execute(null);
-            //fetene
             return viewModel;
         }
     }

@@ -25,6 +25,38 @@ namespace Final_project
 
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
+        private void closebtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement logic to close the window here (e.g., using Window.Close())
+            Window window = Window.GetWindow(this);
+            window.Close();
+        }
+
+        private void minimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement logic to minimize the window here (e.g., using Window.WindowState)
+            Window window = Window.GetWindow(this);
+            window.WindowState = WindowState.Minimized;
+        }
+
+        private void maximizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement logic to maximize/normalize the window here (e.g., using Window.WindowState)
+            Window window = Window.GetWindow(this);
+            if (window.WindowState == WindowState.Maximized)
+            {
+                window.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                window.WindowState = WindowState.Maximized;
+            }
+        }
+
+
+
+
+
     }
 
 }

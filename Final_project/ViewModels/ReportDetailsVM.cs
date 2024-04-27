@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace Final_project.ViewModels
 {
-    public class ReportDetailsVM : ObservableObject
+    public class ReportDetailsVM : ObservableObject, IDisposable
     {
         private readonly SelectedReportStore _selectedReportStore;
         private ReportModel SelectedReport => _selectedReportStore.SelectedReport;
@@ -53,13 +53,11 @@ namespace Final_project.ViewModels
             }
         }
 
+        public void Dispose()
+        {
+            _selectedReportStore.SelectedReportChanged -= _selectedReportStore_SelectedReportChanged;
 
-        //public override void Dispose()
-        //{
-        //    _selectedReportStore.SelectedReportChanged -= _selectedReportStore_SelectedReportChanged;
-        //    base.Dispose();
-        //}
-
+        }
         private void _selectedReportStore_SelectedReportChanged()
         {
             OnPropertyChanged(nameof(HasReportSelected));
