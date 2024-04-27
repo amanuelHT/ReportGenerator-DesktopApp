@@ -9,29 +9,43 @@
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ReportListingItemVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent">
 
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Border Padding="10" TextBlock.FontSize="16">
+   
+    
+    <Border Padding="10" TextBlock.FontSize="18" Background="Transparent">
+    <!--<Border CornerRadius="20 20 20 20" Grid.Column="0" Opacity="100">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource Pink100}" Offset="0"></GradientStop>
+                <GradientStop Color="{StaticResource Pink300}" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Border.Background>-->
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="{Binding Tittle}" />
+            <RadioButton Style="{StaticResource navbuttons}">
+            <!--<StackPanel Grid.Column="0">-->
+                <TextBlock Text="{Binding Tittle}"
+                           Foreground="Black" 
+                          />
 
-                <TextBlock
+                <!--<TextBlock
                     FontSize="10"
                     Style="{StaticResource ErrorMessage}"
                     Text="{Binding ErrorMessage}"
-                    Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            </StackPanel>
-
+                    Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />-->
+            <!--</StackPanel>-->
+            </RadioButton>
             <Grid Grid.Column="1" Margin="10 0 0 0">
                 <Grid>
                     <Grid.Style>
@@ -45,10 +59,10 @@
                         </Style>
                     </Grid.Style>
 
-                    <loadingspinner:LoadingSpinner
+                    <!--<loadingspinner:LoadingSpinner
                         Diameter="20"
                         IsLoading="True"
-                        Thickness="2" />
+                        Thickness="2" />-->
                 </Grid>
 
                 <Grid>
@@ -72,7 +86,7 @@
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
                                         <Setter Property="Background" Value="#f0f0f0" />
-                                        <Setter Property="Foreground" Value="Black" />
+                                        <Setter Property="Foreground" Value="red" />
                                         <Setter Property="Padding" Value="20 10" />
                                         <Setter Property="Cursor" Value="Hand" />
                                         <EventSetter Event="Click" Handler="Button_Click" />
@@ -123,6 +137,7 @@
                             </StackPanel>
                         </Border>
                     </dropdownmenucontrol:DropdownMenu>
+                    
                 </Grid>
             </Grid>
         </Grid>

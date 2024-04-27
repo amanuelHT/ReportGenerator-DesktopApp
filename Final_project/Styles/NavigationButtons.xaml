@@ -90,8 +90,8 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Margin" Value="0 0 0 5"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Foreground" Value="#17140b"/>
+                <Setter Property="Background" Value="{StaticResource TextColor2}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextColor4}"/>
                 <Setter Property="BorderBrush" Value="{Binding Path=tag , RelativeSource={RelativeSource self}}"/>
             </Trigger>
 
@@ -108,7 +108,7 @@
         
         <!--button icon-->
      <Style x:Key="navicon" TargetType="icon:PackIconMaterial">
-        <Setter Property="Foreground" Value="#4a3701"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryColorBrush}"/>
         
         <Setter Property="Width" Value="22"/>
         <Setter Property="Height" Value="22"/>
@@ -118,7 +118,7 @@
     <!--button text -->
     <Style x:Key="navtext" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
-       
+        <Setter Property="Foreground" Value="{StaticResource SecondaryColorBrush}"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalAlignment" Value="Center"/>

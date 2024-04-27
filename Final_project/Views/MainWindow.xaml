@@ -20,7 +20,7 @@
     </Window.Background>
 
 
-    <Border BorderThickness="2"
+    <Border BorderThickness="1"
            Opacity="0.5"
            CornerRadius="10"
          >

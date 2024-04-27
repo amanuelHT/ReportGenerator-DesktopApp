@@ -31,7 +31,7 @@
     <!-- Color Definitions -->
     <Color x:Key="PrimaryColor">#FF6200EE</Color>
     <!-- Example: Deep Purple -->
-    <Color x:Key="SecondaryColor">#FF03DAC5</Color>
+    <Color x:Key="SecondaryColor">#FF6200EE</Color>
     <!-- Example: Teal -->
     <Color x:Key="BackgroundColor">#FFF3F4F6</Color>
     <!-- Example: Light Gray -->

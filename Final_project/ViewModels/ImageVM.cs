@@ -6,7 +6,7 @@ using Final_project.Stores;
 
 namespace Final_project.ViewModels
 {
-    public partial class ImageVM : ObservableObject
+    public partial class ImageVM : ObservableObject, IDisposable
     {
         private readonly ImageCollectionVM _imageCollectionVM;
         private readonly ReportStore _reportStore;
@@ -31,7 +31,7 @@ namespace Final_project.ViewModels
             _imageCollectionVM = imageCollectionVM;
             _reportStore = reportStore;
 
-
+            _reportStore.ImageDeleted += ReportStore_ImageDeleted;
         }
 
 
@@ -40,10 +40,10 @@ namespace Final_project.ViewModels
         {
             try
             {
-                // Delete the image from the report store
+
                 await _reportStore.DeleteImage(ImageId);
 
-                // Remove the image from the UI collection
+
                 _imageCollectionVM.RemoveImage(this);
             }
             catch (Exception)
@@ -54,25 +54,23 @@ namespace Final_project.ViewModels
 
 
 
+        private void ReportStore_ImageDeleted(Guid id)
+        {
+            ImageVM imageToRemove = _imageCollectionVM.Images.FirstOrDefault(image => image.ImageId == id);
+
+            if (imageToRemove != null)
+            {
+                _imageCollectionVM.RemoveImage(imageToRemove);
+            }
+        }
+
+
+        public void Dispose()
+        {
+            _reportStore.ImageDeleted -= ReportStore_ImageDeleted;
+        }
 
 
 
-
-
-        //private void ReportStore_ImageDeleted(Guid id)
-        //{
-        //    ImageVM imageToRemove = _imageCollectionVM.Images.FirstOrDefault(image => image.ImageId == id);
-
-        //    if (imageToRemove != null)
-        //    {
-        //        _imageCollectionVM.RemoveImage(imageToRemove);
-        //    }
-        //}
-
-        ////public override void Dispose()
-        ////{
-        ////    _reportStore.ImageDeleted -= ReportStore_ImageDeleted;
-        ////    base.Dispose();
-        //}
     }
 }

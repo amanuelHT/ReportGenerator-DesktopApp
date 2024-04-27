@@ -9,38 +9,47 @@
 
 
     <Grid>
-        <Border
-            BorderBrush="{StaticResource BorderPrimary}"
-            BorderThickness="1"
-            CornerRadius="5"
-            SnapsToDevicePixels="True">
+      
             <Grid>
                 <Grid.OpacityMask>
                     <VisualBrush Visual="{Binding ElementName=border}" />
                 </Grid.OpacityMask>
                 <Border
                     x:Name="border"
-                    Background="White"
-                    CornerRadius="5" />
+                    Background="Black"
+                    CornerRadius="5 20 5 20" />
 
-                <ListView
-                    BorderThickness="0"
-                    ItemsSource="{Binding ReportListingItemVM}"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    SelectedItem="{Binding  SelectedReportListingItemVM}"
-                    SelectionMode="Single">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <local:ReportListItemV />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </Border>
+            <ListView
+                        BorderThickness="0"
+                       
+                        ItemsSource="{Binding ReportListingItemVM}"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        SelectedItem="{Binding SelectedReportListingItemVM}"
+                        SelectionMode="Single"> 
+                
+                <ListView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource textcolor3}" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </ListView.Background>
+               
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+               
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:ReportListItemV />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+          
+            </ListView>
+
+
+        </Grid>
+     
     </Grid>
 </UserControl>

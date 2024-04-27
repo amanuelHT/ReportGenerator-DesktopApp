@@ -11,9 +11,17 @@
 
 
     <Grid>
-        <!-- Outer border with styling -->
-        <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">
 
+        <!--<Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">-->
+
+        <Border CornerRadius="20 20 20 20" Grid.Column="0" Opacity="100">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{StaticResource Pink100}" Offset="0"></GradientStop>
+                    <GradientStop Color="{StaticResource Pink300}" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+     
             <!-- Main Grid -->
             <Grid>
 

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class NavigationBarVM : ObservableObject
+    public class NavigationBarVM : ObservableObject, IDisposable
     {
         private readonly AccountStore _accountStore;
         private object createSettingsNavigarionService;
@@ -73,11 +73,11 @@ namespace Final_project.ViewModels
             OnPropertyChanged(nameof(RoleManagementVisibility));
         }
 
-        //public override void Dispose()
-        //    {
-        //        _accountStore.CurrentAccountChanged -= OnCurrentAccountChanged;
+        public void Dispose()
+        {
+            _accountStore.CurrentAccountChanged -= OnCurrentAccountChanged;
+        }
 
-        //        base.Dispose();
-        //    }
+
     }
 }

@@ -12,7 +12,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:HomeVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Bisque"
+             Background="Transparent"
              
              >
 
@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Reports" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 0 0" Style="{StaticResource PageHeader}"/>
+            <TextBlock Grid.Column="0" Text="Reports" Style="{StaticResource PageHeader}" Background="Transparent"/>
 
             <TextBlock Text="Add a report" Margin="0 30 20 0" Grid.Column="1" />
             <Button FontSize="16" Grid.Column="2" HorizontalAlignment="Right" Command="{Binding AddReportCommand}" Style="{StaticResource ButtonSecondary}" Background="Transparent">
@@ -62,6 +62,9 @@
             </Grid.ColumnDefinitions>
 
             <components:ReportListView Grid.Column="0" DataContext="{Binding ReportListVM}"/>
+            
+            
+            
             <components:ReportDetailsView Grid.Column="1" DataContext="{Binding ReportDetailsVM}" Margin="20,0,0,0" />
         </Grid>
     </Grid>
