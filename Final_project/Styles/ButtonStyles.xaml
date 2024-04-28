@@ -5,10 +5,10 @@
                     >
 
 
-    <Style TargetType="Button">
+    <Style  x:Key="buttonstyle" TargetType="Button">
         <Setter Property="Background" Value="red" />
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="#547AFF" />
+        <Setter Property="Background" Value="{Binding Path=tag , RelativeSource={RelativeSource self}}" />
         <Setter Property="Padding" Value="20 8" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalAlignment" Value="Center" />

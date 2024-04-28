@@ -17,8 +17,8 @@
         <Border CornerRadius="20 20 20 20" Grid.Column="0" Opacity="100">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="{StaticResource Pink100}" Offset="0"></GradientStop>
-                    <GradientStop Color="{StaticResource Pink300}" Offset="1"></GradientStop>
+                    <GradientStop Color="{StaticResource textcolor3}" Offset="0"></GradientStop>
+                    <GradientStop Color="{StaticResource textcolor4}" Offset="1"></GradientStop>
                 </LinearGradientBrush>
             </Border.Background>
      
@@ -40,7 +40,7 @@
                         </Style>
                     </Grid.Style>
                     <!-- TextBlock for the message -->
-                    <TextBlock Grid.Row="0" FontSize="20" Text="Select a report to see the details"/>
+                    <TextBlock Grid.Row="0" FontSize="18" Margin="30 40 0 0" FontFamily="SimSun-ExtB" FontWeight="SemiBold" Text="Select a report to see the details"/>
                 </Grid>
 
                 <!-- Grid for report details -->
@@ -66,32 +66,37 @@
                     </Grid.RowDefinitions>
 
                     <!-- Title -->
-                    <TextBlock Grid.Row="0" FontSize="24" Text="{Binding Tittle}" />
+                    <TextBlock Grid.Row="0" FontSize="20" Text="{Binding Tittle}" Margin="20 20 10 10" FontWeight="Bold" FontFamily="Levenim MT"/>
 
                     <!-- The client -->
-                    <Grid Grid.Row="1" Margin="0 20 0 0">
+                    <Grid Grid.Row="1" Margin="20 50 10 10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="lab" />
+                            <ColumnDefinition Width="Auto"  SharedSizeGroup="lab"/>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="Bold" />
-                        <TextBlock Grid.Column="1" FontWeight="Bold" Text= "{Binding Kunde}" />
+                        <TextBlock Grid.Column="0"  Text="Kunde" FontWeight="SemiBold"  FontSize="14"/>
+                        <TextBlock Grid.Column="1"  Text= "{Binding Kunde}" FontSize="14" />
 
                     </Grid>
 
                     <!-- Status of the report -->
-                    <Grid Grid.Row="2" Margin="0 20 0 0">
+                    <Grid Grid.Row="2" Margin="20 0 10 10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" FontWeight="Bold" Text="Status" />
-                        <TextBlock Grid.Column="1" Text="{Binding Status}" />
+                        <TextBlock Grid.Column="0" FontSize="14"  Text="Status" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="1" Text="{Binding Status}" FontSize="14"/>
                     </Grid>
 
-                   
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 100 150 0">
+                        <Button Command="{Binding EditCommand}" Content="Edit" Style="{StaticResource buttonstyle}" Margin="5" Background="Green"/>
+                        <Button Command="{Binding DeleteCommand}" Content="Delete" Style="{StaticResource buttonstyle}" Margin="5" Background="Red"/>
+                        <Button Command="{Binding GenerateReport}" Content="Generate Report" Style="{StaticResource buttonstyle}" Margin="5" Background="Chocolate"/>
+                    </StackPanel>
 
 
                 </Grid>

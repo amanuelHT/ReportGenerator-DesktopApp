@@ -1,57 +1,58 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Domain.Models;
+using Final_project.Commands;
 using Final_project.Stores;
-using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
     public class ReportDetailsVM : ObservableObject, IDisposable
     {
         private readonly SelectedReportStore _selectedReportStore;
+        private readonly ReportStore _reportStore;
+
         private ReportModel SelectedReport => _selectedReportStore.SelectedReport;
+
 
         public bool HasReportSelected => SelectedReport != null;
         public string Tittle => SelectedReport?.Tittle ?? "Unknown";
         public string Status => SelectedReport?.Status == true ? "Godkjent" : "Ikke Godkjent";
         public string Kunde => SelectedReport?.Kunde ?? "No name";
 
-        // Collection of image URLs
-        public ObservableCollection<string> ImageUrls { get; private set; }
+        public Guid ReportId => SelectedReport?.Id ?? Guid.Empty;
 
-        public ReportDetailsVM(SelectedReportStore selectedReportStore)
+
+
+        public ICommand EditCommand { get; }
+
+        public ICommand GenerateReport { get; }
+
+        public ICommand DeleteCommand { get; }
+
+
+        public ReportDetailsVM(SelectedReportStore selectedReportStore, ReportStore reportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
         {
-            _selectedReportStore = selectedReportStore ?? throw new ArgumentNullException(nameof(selectedReportStore));
+            _selectedReportStore = selectedReportStore;
+            _reportStore = reportStore;
+
             _selectedReportStore.SelectedReportChanged += _selectedReportStore_SelectedReportChanged;
 
-            // Check if SelectedReport is not null before loading images
-            if (_selectedReportStore.SelectedReport != null)
+            EditCommand = new CommunityToolkit.Mvvm.Input.RelayCommand(() =>
+                new OpenEditCommand(ReportId, reportStore, navigationStore, modalNavigation).Execute(null)
+            );
+
+            DeleteCommand = new CommunityToolkit.Mvvm.Input.RelayCommand(() =>
             {
-                LoadImages(_selectedReportStore.SelectedReport.Images);
-            }
+                Guid currentReportId = ReportId; // Capture the current ReportId
+                if (currentReportId != Guid.Empty)
+                {
+                    new DeleteReportCommand(currentReportId, reportStore).Execute(null);
+                }
+            });
         }
 
-        private void LoadImages(IEnumerable<ReportImageModel> images)
-        {
-            // Initialize the ImageUrls collection if it's null
-            if (ImageUrls == null)
-            {
-                ImageUrls = new ObservableCollection<string>();
-            }
-            else
-            {
-                // Clear the existing ImageUrls before loading new images
-                ImageUrls.Clear();
-            }
 
-            // Check if the images collection is null
-            if (images == null) return;
 
-            // Add image URLs to the ImageUrls collection
-            foreach (var image in images)
-            {
-                ImageUrls.Add(image.ImageUrl);
-            }
-        }
 
         public void Dispose()
         {
@@ -64,6 +65,8 @@ namespace Final_project.ViewModels
             OnPropertyChanged(nameof(Tittle));
             OnPropertyChanged(nameof(Status));
             OnPropertyChanged(nameof(Kunde));
+            OnPropertyChanged(nameof(ReportId));
+
 
 
         }

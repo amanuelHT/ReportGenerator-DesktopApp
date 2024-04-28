@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Final_project.Components" xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
+             xmlns:local="clr-namespace:Final_project.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -29,7 +29,7 @@
                 
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource textcolor2}" Offset="0"></GradientStop>
                         <GradientStop Color="{StaticResource textcolor3}" Offset="1"></GradientStop>
                     </LinearGradientBrush>
                 </ListView.Background>

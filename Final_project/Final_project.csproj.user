@@ -140,6 +140,9 @@
     <Page Update="Styles\DropDownstyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\EllipseStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\NavigationButtons.xaml">
       <SubType>Designer</SubType>
     </Page>

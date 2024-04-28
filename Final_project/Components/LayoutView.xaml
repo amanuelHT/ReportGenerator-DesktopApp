@@ -23,8 +23,8 @@
         <Border CornerRadius="10 0 0 10" Grid.Column="0" Opacity="100">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="{StaticResource Cyan100}" Offset="0"></GradientStop>
-                        <GradientStop Color="{StaticResource BlackShade100}" Offset="1"></GradientStop>
+                        <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource textcolor2}" Offset="1"></GradientStop>
                     </LinearGradientBrush>
                 </Border.Background>
                 <local:NavigationBarView DataContext="{Binding NavigationBarVM}" VerticalAlignment="Stretch"/>

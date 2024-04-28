@@ -27,7 +27,7 @@ namespace Final_project.ViewModels
             INavigationService navigationService)
         {
             _navigationStore = navigationStore;
-            ReportDetailsVM = new ReportDetailsVM(selectedReportStore);
+            ReportDetailsVM = new ReportDetailsVM(selectedReportStore, reportStore, navigationStore, modalNavigation);
             ReportListVM = ReportListVM.loadViewModel(reportStore, selectedReportStore, navigationStore, modalNavigation);
 
             AddReportCommand = new OpenAddCommand(modalWindow, modalNavigation, reportStore, navigationStore);

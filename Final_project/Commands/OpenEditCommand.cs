@@ -11,21 +11,20 @@ public class OpenEditCommand : CommandBase
     private readonly NavigationStore _navigationStore;
     private readonly ModalNavigation _modalNavigation;
     private readonly ReportStore _reportStore;
+    private readonly Guid _reportid;
 
-    private readonly ReportListingItemVM _reportListingItemVM;
-
-    public OpenEditCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
+    public OpenEditCommand(Guid reportid, ReportStore reportStore, NavigationStore navigationStore, ModalNavigation modalNavigation)
     {
         _navigationStore = navigationStore;
         _modalNavigation = modalNavigation;
         _reportStore = reportStore;
+        _reportid = reportid;
 
-        _reportListingItemVM = reportListingItemVM;
+
     }
 
     public override async void Execute(object parameter)
     {
-        Guid reportId = _reportListingItemVM.ReportModel.Id;
 
         // Retrieve the full report data with images
         (ReportModel reportData,
@@ -34,7 +33,7 @@ public class OpenEditCommand : CommandBase
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels
-            ) = await _reportStore.GetReportData(reportId);
+            ) = await _reportStore.GetReportData(_reportid);
 
         if (reportData == null)
         {

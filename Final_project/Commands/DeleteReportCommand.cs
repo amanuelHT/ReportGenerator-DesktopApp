@@ -1,40 +1,42 @@
-﻿using Domain.Models;
-using Final_project.Stores;
-using Final_project.ViewModels;
+﻿using Final_project.Stores;
+using System.Windows;
 
 namespace Final_project.Commands
 {
     public class DeleteReportCommand : AsyncCommandBase
     {
-        private readonly ReportListingItemVM _reportListingItemVM;
+        private Guid _reportid;
         private readonly ReportStore _reportStore;
 
-        public DeleteReportCommand(ReportListingItemVM reportListingItemVM, ReportStore reportStore)
+        public DeleteReportCommand(Guid reportid, ReportStore reportStore)
         {
-            _reportListingItemVM = reportListingItemVM;
+            _reportid = reportid;
             _reportStore = reportStore;
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
-            _reportListingItemVM.ErrorMessage = null;
-            _reportListingItemVM.IsDeleting = true;
-
-            ReportModel reportModel = _reportListingItemVM.ReportModel;
 
 
+
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this report?", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirmDelete != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            // Execute the deletion
             try
             {
-                await _reportStore.Delete(reportModel.Id);
+                await _reportStore.Delete(_reportid);
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _reportListingItemVM.ErrorMessage = "Failed to deleter. Please try again later.";
+
+                MessageBox.Show("Failed to delete report: " + ex.Message);
             }
-            finally
-            {
-                _reportListingItemVM.IsDeleting = false;
-            }
+
         }
     }
 

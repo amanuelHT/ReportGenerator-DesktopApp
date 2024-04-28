@@ -21,6 +21,7 @@
 
 
         <boldreports:ReportViewer x:Name="reportViewer" 
+                                  Background="Transparent"
                                   Grid.Row="1" 
                                   HorizontalAlignment="Stretch" 
                                   VerticalAlignment="Stretch" 

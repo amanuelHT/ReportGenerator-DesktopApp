@@ -32,7 +32,7 @@
 
             <TextBlock Grid.Column="0" Text="Reports" Style="{StaticResource PageHeader}" Background="Transparent"/>
 
-            <TextBlock Text="Add a report" Margin="0 30 20 0" Grid.Column="1" />
+            <TextBlock Text="Add a report" Margin="0 30 20 0" Grid.Column="1"  Foreground="{StaticResource TextColor3}"/>
             <Button FontSize="16" Grid.Column="2" HorizontalAlignment="Right" Command="{Binding AddReportCommand}" Style="{StaticResource ButtonSecondary}" Background="Transparent">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

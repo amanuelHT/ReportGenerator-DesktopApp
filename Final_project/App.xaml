@@ -129,6 +129,7 @@
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
                 <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
                 <ResourceDictionary Source="Styles/DropDownstyle.xaml"/>
+                <ResourceDictionary Source="Styles/EllipseStyle.xaml"/>
 
                 
             </ResourceDictionary.MergedDictionaries>
