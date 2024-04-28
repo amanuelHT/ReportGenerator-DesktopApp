@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Final_project.Components" 
+             xmlns:local="clr-namespace:Final_project.Components"    
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:ReportDetailsVM}"
              mc:Ignorable="d" 
@@ -93,9 +94,26 @@
 
 
                     <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 100 150 0">
-                        <Button Command="{Binding EditCommand}" Content="Edit" Style="{StaticResource buttonstyle}" Margin="5" Background="Green"/>
-                        <Button Command="{Binding DeleteCommand}" Content="Delete" Style="{StaticResource buttonstyle}" Margin="5" Background="Red"/>
-                        <Button Command="{Binding GenerateReport}" Content="Generate Report" Style="{StaticResource buttonstyle}" Margin="5" Background="Chocolate"/>
+
+                        <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding EditCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="BookEdit" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}" />
+                                <TextBlock  Style="{StaticResource navtext}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding DeleteCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="Delete" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}"/>
+                                <TextBlock  Style="{StaticResource navtext}" />
+                            </StackPanel>
+                        </Button>
+                        <!--<RadioButton Style="{StaticResource navbuttons}" Command="{Binding GenerateReport}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="TableEdit" Style="{StaticResource navicon}"  Tag="{StaticResource DisabledColor}"/>
+                                <TextBlock Text="Home" Style="{StaticResource navtext}" />
+                            </StackPanel>
+                        </RadioButton>-->
+
                     </StackPanel>
 
 

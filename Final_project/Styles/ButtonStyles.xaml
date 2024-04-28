@@ -5,6 +5,59 @@
                     >
 
 
+
+
+
+    <Style x:Key="buttonsWithIcon" TargetType="Button">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="-5,0,0,5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#71eba8"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="4,0,0,0"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                          RenderTransformOrigin="0.5,0.5">
+                            <ContentPresenter.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Mouse hover effect: enlarge the icon and change foreground -->
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource TextColor4}"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+               
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Style for the icon itself, assuming it's a custom control or a standard element like Path -->
+    <Style x:Key="buttonicons" TargetType="icons:PackIconMaterial">
+        <!--<Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>-->
+        <Setter Property="Background" Value="{Binding Path=Tag, RelativeSource={RelativeSource self}}"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Margin" Value="30,0,20,0"/>
+    </Style>
+
+
+
+
+
+
+
     <Style  x:Key="buttonstyle" TargetType="Button">
         <Setter Property="Background" Value="red" />
         <Setter Property="Foreground" Value="White" />
@@ -68,8 +121,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style
-           x:Key="ButtonSecondary"
+    <Style x:Key="ButtonSecondary"
            BasedOn="{StaticResource {x:Type Button}}"
            TargetType="Button">
         <Setter Property="Foreground" Value="Black" />
@@ -100,6 +152,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="DeleteButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="#FF5050" />
         <Setter Property="Foreground" Value="White" />
