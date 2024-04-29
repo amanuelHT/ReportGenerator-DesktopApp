@@ -20,7 +20,7 @@ namespace Final_project.ViewModels
         {
 
             ICommand submitCommand = new AddReportCommand(
-                modalWindow,
+                modalNavigation,
                 this,
                 reportStore,
                 navigationStore);

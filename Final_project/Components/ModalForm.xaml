@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Final_project.Components"
              xmlns:stores="clr-namespace:Final_project.Stores"
              mc:Ignorable="d" 
+             Background="{StaticResource LinearGradientBrush1}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type stores:CustomModalView}" BasedOn="{StaticResource {x:Type stores:CustomModalView}}">

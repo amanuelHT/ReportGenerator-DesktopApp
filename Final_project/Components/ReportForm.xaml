@@ -4,149 +4,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:components="clr-namespace:Final_project.Components"
-             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ReportFormVM}"
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels"
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
-             xmlns:tables="clr-namespace:Final_project.Tables" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+             xmlns:tables="clr-namespace:Final_project.Tables" 
+             xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="900"
              Background="Transparent"
-            >
+             d:DataContext="{d:DesignInstance Type=viewmodels:ReportFormVM}">
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- Text boxes grid -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-
-
-                <!-- Row definitions -->
+        <!-- Main Content with ScrollViewer -->
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- First TextBoxView -->
-                <components:TextBoxView Grid.Column="0" Text= "{Binding Tittle, UpdateSourceTrigger=PropertyChanged}" Watermark="Enter your title here," />
-                <components:TextBoxView Grid.Column="1" Text= "{Binding Kunde}" Watermark="Enter client name," />
-
-                <components:TextBoxView Grid.Column="0" Grid.Row="1" Text="{Binding Field1}" Watermark="Uia Regnr" />
-                <components:TextBoxView Grid.Column="1" Grid.Row="1" Text="{Binding Field2}" Watermark="Kommentar" />
-
-                <Grid Grid.Row="2" >
+                <!-- Rows for text inputs and date pickers wrapped in Borders with LinearGradient background -->
+                <Border Grid.Row="0" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
                     <StackPanel Orientation="Horizontal">
-                        
-                    <components:TextBoxView   Text="{Binding Field3}" Watermark="Kontrolert av"  />
-                        <DatePicker  SelectedDate="{Binding ReportDate}" Margin="50 60 0 0" />
-                        
+                        <components:TextBoxView Text="{Binding Title}" Watermark="Enter your title here"/>
+                        <components:TextBoxView Text="{Binding Kunde}" Watermark="Enter client name" Margin="100 0 0 0"/>
                     </StackPanel>
-                    
+                </Border>
+
+                <Border Grid.Row="1" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20" >
+                    <StackPanel Orientation="Horizontal">
+                        <components:TextBoxView Text="{Binding Field1}" Watermark="Uia Regnr"/>
+                        <components:TextBoxView Text="{Binding Field2}" Watermark="Kommentar" Margin="100 0 0 0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
+                    <StackPanel Orientation="Horizontal">
+                        <components:TextBoxView Text="{Binding Field3}" Watermark="Kontrolert av"/>
+                        <DatePicker SelectedDate="{Binding ReportDate}" Margin="120 40 30 40"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Additional rows for tables and modal control -->
+                <Grid Grid.Row="3" Margin="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <tables:DataFraOppdragsgiverTableView Grid.Row="0" DataContext="{Binding DataFraOppdragsgiverTableVM}"/>
+                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="1" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}"/>
+                    <modalcontrol:Modal Grid.Row="2" IsOpen="{Binding IsFormOpen}">
+                        <ContentControl Content="{Binding CurrentVM}"/>
+                    </modalcontrol:Modal>
+                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}"/>
+                    <tables:TrykktestingTableView Grid.Row="4" DataContext="{Binding TrykktestingTableVM}"/>
                 </Grid>
-                <components:TextBoxView Grid.Column="0" Grid.Row="3" Text="{Binding Field5}" Watermark="Tester utført av" />
-                <DatePicker Grid.Column="1" Grid.Row="3" Margin="50 50 80 20" SelectedDate="{Binding ReportDate}" />
-
-                <!--<TextBlock Grid.Column="0"  Text="Tittle" FontWeight="Bold" />
-                <TextBox Grid.Column="1" Margin="30 0 0 0" FontWeight="Bold" Text= "{Binding Tittle, UpdateSourceTrigger=PropertyChanged}" />-->
-
             </Grid>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        </ScrollViewer>
 
-                <!-- Status of the report -->
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="Status" />
-                    <RadioButton Content="Godkjent" Margin="10 0 0 0" IsChecked="{Binding IsGodkjent}" />
-                    <RadioButton Content="Ikke Godkjent" Margin="10 0 0 0" IsChecked="{Binding IsIkkeGodkjent}" />
+        <!-- Button at the bottom of the UserControl -->
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding SubmitCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource btntext}" Text="Submit your Report" Foreground="{StaticResource TextColor2}"/>
+                    <icon:PackIconMaterial Kind="FileCheck" Style="{StaticResource buttonicons}" Height="40" Width="47"/>
                 </StackPanel>
-
-                <Grid Grid.Row="1" Margin="-10 0 0 0">
-                    <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
-                </Grid>
-
-
-                <Grid Grid.Row="2" Margin="30">
-                    <Grid.RowDefinitions>
-                        <!-- Define two rows, each taking available space -->
-                        <RowDefinition Height="*"/>   
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Modal Control -->
-                    <modalcontrol:Modal Panel.ZIndex="0" IsOpen="{Binding IsFormOpen}" Grid.Row="0">
-                        <ContentControl Content="{Binding CurrentVM}" />
-                    </modalcontrol:Modal>
-
-                    <!-- Data fra oppdragsgiver Table View in the second row -->
-                    <tables:DataFraOppdragsgiverTableView Grid.Row="1" DataContext="{Binding DataFraOppdragsgiverTableVM}" />
-
-                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="2" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}" />
-
-                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}"  />
-
-
-                    <tables:TrykktestingTableView Grid.Row="4" DataContext="{Binding TrykktestingTableVM}" />
-                </Grid>
-
-
-
-
-                <!--<Grid Grid.Row="3" Margin="30">
-                    <Grid.RowDefinitions>
-                        -->
-                <!-- Define two rows, each taking available space -->
-                <!--
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    -->
-                <!-- Modal Control -->
-                <!--
-                    <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
-                    </modalcontrol:Modal>
-
-                    -->
-                <!-- Data fra oppdragsgiver Table View in the second row -->
-                <!--
-             
-                </Grid>-->
-
-
-                <!-- Buttons -->
-                <WrapPanel Grid.Row="5" >
-                    <Button Margin="0 0 10 0" Command="{Binding CancelCommand}" Content="Cancel" Foreground="Black"/>
-                    <Button Margin="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
-                    <!--<Button Margin="0 0 10 0" Command="{Binding GenerateReport}" Content="Generate report"/>-->
-                </WrapPanel>
-            </Grid>
-
-        </Grid>
-    </ScrollViewer>
+            </Button>
+        </WrapPanel>
+    </Grid>
 </UserControl>

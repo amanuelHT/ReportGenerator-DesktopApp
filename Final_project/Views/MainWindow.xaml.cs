@@ -16,9 +16,11 @@ namespace Final_project
 
         private void panelcontrol_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            WindowInteropHelper helper = new WindowInteropHelper(this);
-            SendMessage(helper.Handle, 161, 2, 0);
+            Window parentWindow = Window.GetWindow(this);
+            WindowInteropHelper helper = new WindowInteropHelper(parentWindow);
+            SendMessage(helper.Handle, 0xA1, 2, 0);
         }
+
 
         private void panelcontrol_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -27,21 +29,21 @@ namespace Final_project
         }
         private void closebtn_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic to close the window here (e.g., using Window.Close())
+
             Window window = Window.GetWindow(this);
             window.Close();
         }
 
         private void minimizeBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic to minimize the window here (e.g., using Window.WindowState)
+
             Window window = Window.GetWindow(this);
             window.WindowState = WindowState.Minimized;
         }
 
         private void maximizeBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic to maximize/normalize the window here (e.g., using Window.WindowState)
+
             Window window = Window.GetWindow(this);
             if (window.WindowState == WindowState.Maximized)
             {

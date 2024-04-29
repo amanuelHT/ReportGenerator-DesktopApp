@@ -40,7 +40,7 @@ namespace Final_project.ViewModels.TablesVM
 
 
         [RelayCommand]
-        private void RemovePrøve(DataEtterKuttingOgSlipingPrøveVM prøve)
+        private void RemoveRecord(DataEtterKuttingOgSlipingPrøveVM prøve)
         {
             if (prøve != null && Prøver.Contains(prøve))
             {

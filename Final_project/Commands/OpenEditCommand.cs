@@ -1,6 +1,5 @@
 ﻿using Domain.Models;
 using Final_project.Commands;
-using Final_project.Components;
 using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
@@ -26,7 +25,7 @@ public class OpenEditCommand : CommandBase
     public override async void Execute(object parameter)
     {
 
-        // Retrieve the full report data with images
+        // Retrieve the full report data of the report
         (ReportModel reportData,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
@@ -37,11 +36,10 @@ public class OpenEditCommand : CommandBase
 
         if (reportData == null)
         {
-            // Handle the case where the report is not found or there's an error loading it.
             return;
         }
 
-        // Add retrieved datas to the report data
+
         reportData.Images = images;
 
         reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
@@ -55,8 +53,9 @@ public class OpenEditCommand : CommandBase
 
         // Create and navigate to the edit report view model
         EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);
-        // Show the window
-        ReportWindowHelper.ShowReportWindow(new EditReportView { DataContext = editReportVM }, "Edit Report");
+
+
+        _modalNavigation.ShowReportWindow(new EditReportView { DataContext = editReportVM }, "Edit Report");
 
 
 

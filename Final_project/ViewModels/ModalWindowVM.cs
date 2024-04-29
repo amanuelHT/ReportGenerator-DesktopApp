@@ -1,8 +1,9 @@
-﻿using Final_project.Views;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Views;
 
-namespace Final_project.Components
+namespace Final_project.ViewModels
 {
-    public static class ReportWindowHelper
+    public class ModalWindowVM : ObservableRecipient
     {
         public static void ShowReportWindow(object viewModel, string title)
         {
@@ -16,5 +17,7 @@ namespace Final_project.Components
             // Show the modal window
             modalWindow.ShowDialog();
         }
+
+
     }
 }

@@ -35,25 +35,14 @@
 
             <TextBlock Text="Add a report" Margin="0 30 20 0" Grid.Column="1"  Foreground="{StaticResource TextColor3}"/>
 
-            <Button Style="{StaticResource buttonsWithIcon}" Grid.Column="2" Command="{Binding DeleteCommand}">
+            <Button Style="{StaticResource buttonsWithIcon}" Grid.Column="2" Command="{Binding AddReportCommand}">
                 <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="PenPlus" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}"/>
                     <TextBlock  Style="{StaticResource navtext}" />
                 </StackPanel>
             </Button>
 
-            <!--<Button FontSize="16" Grid.Column="2" HorizontalAlignment="Right" Command="{Binding AddReportCommand}" Background="Transparent">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Ellipse Width="50" Height="50" Fill="{StaticResource AddActionButtonBrush}" />
-                            <TextBlock Text="+" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Height="56"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>-->
-
+         
 
 
         </Grid>

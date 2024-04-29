@@ -74,14 +74,18 @@ namespace Final_project
                  service.AddSingleton<NavigationStore>();
                  service.AddSingleton<GeneratedReportStore>();
                  service.AddSingleton<ReportStore>();
-                 service.AddSingleton<ModalWindow>();
+
+                 service.AddTransient<ModalWindow>();
 
 
 
                  service.AddSingleton<ImageCollectionVM>();
                  service.AddSingleton<ImageVM>();
                  service.AddSingleton<MainViewModel>();
-                 service.AddSingleton<INavigationService>(s => LoginNavigarionService(s));
+
+
+                 // initial navigation 
+                 service.AddSingleton<INavigationService>(s => HomeNavigationService(s));
 
                  //the reasion we make them transient is we dispose our viewmodel,
                  //if we dispose that means we are not going to use it again, we are going to resolve a new instance
@@ -106,7 +110,7 @@ namespace Final_project
                                );
 
 
-                 service.AddTransient<SettingsVM>(s => new SettingsVM(LoginNavigarionService(s)));
+                 service.AddTransient<SettingsVM>(s => new SettingsVM(SettingsNavigarionService(s)));
 
 
                  //service.AddTransient<UserInfoVM>();

@@ -5,7 +5,7 @@
                     >
 
 
-    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+    <!--<Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
            x:Key="NavigationButtons">
         <Style.Setters>
@@ -34,7 +34,7 @@
                 <Setter Property="Background" Value="#22202f"/>
             </Trigger>
         </Style.Triggers>
-    </Style>
+    </Style>-->
 
 
     <Style TargetType="Button">

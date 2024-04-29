@@ -97,13 +97,13 @@
 
                         <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding EditCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <icon:PackIconMaterial Kind="BookEdit" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}" />
+                                <icon:PackIconMaterial Kind="BookEdit" Style="{StaticResource buttonicons}"  Foreground="{StaticResource IconColor6}" />
                                 <TextBlock  Style="{StaticResource navtext}" />
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding DeleteCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <icon:PackIconMaterial Kind="Delete" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}"/>
+                                <icon:PackIconMaterial Kind="Delete" Style="{StaticResource buttonicons}"  Foreground="{StaticResource TextColor5}"/>
                                 <TextBlock  Style="{StaticResource navtext}" />
                             </StackPanel>
                         </Button>

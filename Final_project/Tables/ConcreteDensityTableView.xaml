@@ -4,33 +4,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:tablesvm="clr-namespace:Final_project.ViewModels.TablesVM" d:DataContext="{d:DesignInstance Type=tablesvm:ConcreteDensityTableVM}"
-             mc:Ignorable="d"
-           
-             Background="Transparent">
-        <Grid>
+            xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+            mc:Ignorable="d"
+            Background="Transparent">
+ 
+    
+    
+    <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- Header Grid -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Laboratory Data" 
+            <TextBlock Text="Concrete Density" 
                        FontSize="16" FontWeight="Bold" 
+                       Foreground="AliceBlue"
                        Margin="10" HorizontalAlignment="Left"
                        VerticalAlignment="Center"/>
 
-                <Button Content="Add New Record" Command="{Binding AddRecordCommand}"
-                    HorizontalAlignment="Right" Margin="10" 
-                    Grid.Column="1"/>
-            </Grid>
 
-            <!-- DataGrid -->
+            <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding AddRecordCommand}"  HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource btntext}" Text="Add New Record" Foreground="{StaticResource TextColor2}"/>
+                    <icon:PackIconMaterial Kind="TableLargePlus" Style="{StaticResource buttonicons}"  />
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+        <!-- DataGrid -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Provnr" Binding="{Binding Provnr}" />

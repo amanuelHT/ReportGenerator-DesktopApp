@@ -4,24 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:components="clr-namespace:Final_project.Components"
+              xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    
   <Grid Margin="10">
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-
-    <Grid Grid.Row="0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Column="0" Text="Upload Images" FontWeight="Bold" VerticalAlignment="Center" />
-        <Button Grid.Column="1" Content="Upload" Command="{Binding UploadImageCommand}" 
-                Padding="10" Background="LightBlue" BorderBrush="DarkBlue" Margin="10,0,0,0" />
-    </Grid>
+      
+      
+    
+            <Button Grid.Row="0" Style="{StaticResource buttonsWithIcon}" Command="{Binding UploadImageCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource btntext}" Text="Upload Images" Foreground="{StaticResource BackgroundColorBrush}"/>
+                    <icon:PackIconMaterial Kind="Image" Style="{StaticResource buttonicons}"  />
+                </StackPanel>
+            </Button>
 
     <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <ItemsControl ItemsSource="{Binding Images}">

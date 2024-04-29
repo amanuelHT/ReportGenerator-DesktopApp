@@ -1,5 +1,4 @@
-﻿using Final_project.Components;
-using Final_project.Stores;
+﻿using Final_project.Stores;
 using Final_project.ViewModels;
 using Final_project.Views;
 using System.Windows.Input;
@@ -39,7 +38,7 @@ namespace Final_project.Commands
                 AddReportVM addReportVM = new AddReportVM(_modalWindow, _modalNavigation, _reportStore, _navigationStore);
 
                 // Show the window
-                ReportWindowHelper.ShowReportWindow(new AddReportView { DataContext = addReportVM }, "Add Report");
+                _modalNavigation.ShowReportWindow(new AddReportView { DataContext = addReportVM }, "Add Report");
             }
             catch (Exception ex)
             {

@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using Final_project.Stores;
 using Final_project.ViewModels;
-using Final_project.Views;
 using Report_Generator_Domain.Models;
 using System.Windows;
 
@@ -12,10 +11,10 @@ namespace Final_project.Commands
         private readonly AddReportVM _addReportVM;
         private readonly ReportStore _reportStore;
         private readonly NavigationStore _navigationStore;
-        private readonly ModalWindow _modalWindow;
+        private readonly ModalNavigation _modalWindow;
 
 
-        public AddReportCommand(ModalWindow modalWindow, AddReportVM addReportVM, ReportStore reportStore, NavigationStore navigationStore)
+        public AddReportCommand(ModalNavigation modalWindow, AddReportVM addReportVM, ReportStore reportStore, NavigationStore navigationStore)
         {
             _modalWindow = modalWindow;
             _addReportVM = addReportVM;
@@ -164,7 +163,12 @@ namespace Final_project.Commands
                 if (success)
                 {
                     MessageBox.Show("Report has been added successfully.");
-                }
+
+
+                };
+
+
+
             }
         }
     }

@@ -1,32 +1,46 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Views;
 
 namespace Final_project.Stores
 {
     public class ModalNavigation
     {
-        public ObservableObject _currentView;
+        private ObservableObject _currentView;
         public ObservableObject CurrentView
         {
-            get { return _currentView; }
+            get => _currentView;
             set
             {
-
-
-                _currentView = value;
-                CurrentViewChanged?.Invoke();
-
+                if (_currentView != value)
+                {
+                    _currentView = value;
+                    CurrentViewChanged?.Invoke();
+                }
             }
         }
 
-
+        public event Action CurrentViewChanged;
 
         public bool IsOpen => CurrentView != null;
 
-        public event Action CurrentViewChanged;
+        public void ShowReportWindow(object viewModel, string title)
+        {
 
-        internal void Close()
+            ModalWindow modalWindow = new ModalWindow
+            {
+                Title = title,
+                DataContext = viewModel
+            };
+
+
+            modalWindow.ShowDialog();
+        }
+
+        public void Close()
         {
             CurrentView = null;
         }
+
+
     }
 }

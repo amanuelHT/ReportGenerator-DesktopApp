@@ -14,6 +14,8 @@ namespace Final_project.ViewModels
         private object createSettingsNavigarionService;
         private readonly INavigationService _navigationService;
 
+        public bool IsLoggedIn => _accountStore.IsLoggedIn;
+        public bool IsLoggedOut => _accountStore.IsLoggedOut;
 
         public ICommand NavigateSettingsCommand { get; }
         public ICommand NavigateAccountCommand { get; }
@@ -22,8 +24,6 @@ namespace Final_project.ViewModels
         public ICommand LogoutCommand { get; }
         public ICommand NavigateReportViewerCommand { get; }
         public ICommand NavigateHomeCommand { get; }
-        public bool IsLoggedIn => _accountStore.IsLoggedIn;
-        public bool IsLoggedOut => _accountStore.IsLoggedOut;
         public ICommand NavigateRoleManagementViewCommand { get; private set; }
         public ICommand NavigateRoleManagementCommand { get; }
         public ICommand NavigateUserInfoCommand { get; }

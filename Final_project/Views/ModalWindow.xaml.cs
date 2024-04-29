@@ -9,6 +9,7 @@ namespace Final_project.Views
         public ModalWindow()
         {
             InitializeComponent();
+
         }
 
 
@@ -25,7 +26,9 @@ namespace Final_project.Views
         {
 
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            //this.DragMove();
         }
+
         private void closebtn_Click(object sender, RoutedEventArgs e)
         {
             // Implement logic to close the window here (e.g., using Window.Close())

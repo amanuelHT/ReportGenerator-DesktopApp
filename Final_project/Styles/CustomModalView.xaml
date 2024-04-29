@@ -16,7 +16,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             UseLayoutRounding="True"
-                            Width="600" Height="400">
+                            Width="700" Height="700">
                             <!-- Set the desired width and height -->
                             <Grid>
                                 <Grid.OpacityMask>
@@ -24,7 +24,7 @@
                                 </Grid.OpacityMask>
                                 <Border
                                     x:Name="border"
-                                    Background="White"
+                                    Background="{StaticResource LinearGradientBrush1}"
                                     CornerRadius="10" />
                                 <ContentControl Content="{TemplateBinding Content}" />
                             </Grid>
