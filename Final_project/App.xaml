@@ -128,9 +128,10 @@
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationButtons.xaml"/>
                 <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
-                <ResourceDictionary Source="Styles/DropDownstyle.xaml"/>
                 <ResourceDictionary Source="Styles/EllipseStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DataGridStyle.xaml"/>
 
+                <!--<ResourceDictionary Source="Styles/DropDownstyle.xaml"/>-->
                 
             </ResourceDictionary.MergedDictionaries>
 

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Final_project.Components" 
              mc:Ignorable="d" 
              x:Name="mytextbox"
-             d:DesignWidth="200" Background="White">
+             d:DesignWidth="200" Background="Transparent">
 
     <StackPanel Margin="20 10">
         <!-- Label or Watermark -->

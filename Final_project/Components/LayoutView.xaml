@@ -20,7 +20,7 @@
             
             
             <!-- Navigation bar in the first column, full height -->
-        <Border CornerRadius="10 0 0 10" Grid.Column="0" Opacity="100">
+        <Border  Grid.Column="0" Opacity="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>

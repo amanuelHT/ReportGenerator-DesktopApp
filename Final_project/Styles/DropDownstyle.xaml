@@ -4,7 +4,7 @@
 
 
 
-    <Style x:Key="dropdown" TargetType="Button">
+    <!--<Style x:Key="dropdown" TargetType="Button">
         <Setter Property="Background" Value="#f0f0f0" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="Padding" Value="20 10" />
@@ -51,5 +51,5 @@
 
     <Style TargetType="Menu">
         <Setter Property="Background" Value="Transparent" />
-    </Style>
+    </Style>-->
 </ResourceDictionary>

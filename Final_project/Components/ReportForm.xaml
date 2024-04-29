@@ -8,10 +8,11 @@
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
              xmlns:tables="clr-namespace:Final_project.Tables" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="900">
-    
-    
-    
+             d:DesignHeight="650" d:DesignWidth="900"
+             Background="Transparent"
+            >
+
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
 
@@ -26,6 +27,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+
+
 
                 <!-- Row definitions -->
                 <Grid.RowDefinitions>
@@ -42,16 +45,22 @@
                 <!-- First TextBoxView -->
                 <components:TextBoxView Grid.Column="0" Text= "{Binding Tittle, UpdateSourceTrigger=PropertyChanged}" Watermark="Enter your title here," />
                 <components:TextBoxView Grid.Column="1" Text= "{Binding Kunde}" Watermark="Enter client name," />
-                
+
                 <components:TextBoxView Grid.Column="0" Grid.Row="1" Text="{Binding Field1}" Watermark="Uia Regnr" />
                 <components:TextBoxView Grid.Column="1" Grid.Row="1" Text="{Binding Field2}" Watermark="Kommentar" />
-             
-                <components:TextBoxView Grid.Column="0" Grid.Row="2" Text="{Binding Field3}" Watermark="Kontrolert av" />
-                <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate="{Binding ReportDate}" />
-             
+
+                <Grid Grid.Row="2" >
+                    <StackPanel Orientation="Horizontal">
+                        
+                    <components:TextBoxView   Text="{Binding Field3}" Watermark="Kontrolert av"  />
+                        <DatePicker  SelectedDate="{Binding ReportDate}" Margin="50 60 0 0" />
+                        
+                    </StackPanel>
+                    
+                </Grid>
                 <components:TextBoxView Grid.Column="0" Grid.Row="3" Text="{Binding Field5}" Watermark="Tester utført av" />
-                <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding ReportDate}" />
-              
+                <DatePicker Grid.Column="1" Grid.Row="3" Margin="50 50 80 20" SelectedDate="{Binding ReportDate}" />
+
                 <!--<TextBlock Grid.Column="0"  Text="Tittle" FontWeight="Bold" />
                 <TextBox Grid.Column="1" Margin="30 0 0 0" FontWeight="Bold" Text= "{Binding Tittle, UpdateSourceTrigger=PropertyChanged}" />-->
 
@@ -59,7 +68,7 @@
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />  
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -80,24 +89,25 @@
                 <Grid Grid.Row="2" Margin="30">
                     <Grid.RowDefinitions>
                         <!-- Define two rows, each taking available space -->
+                        <RowDefinition Height="*"/>   
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/> 
-                        <RowDefinition Height="*"/>  
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Modal Control -->
-                    <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+                    <modalcontrol:Modal Panel.ZIndex="0" IsOpen="{Binding IsFormOpen}" Grid.Row="0">
+                        <ContentControl Content="{Binding CurrentVM}" />
                     </modalcontrol:Modal>
 
                     <!-- Data fra oppdragsgiver Table View in the second row -->
                     <tables:DataFraOppdragsgiverTableView Grid.Row="1" DataContext="{Binding DataFraOppdragsgiverTableVM}" />
 
-                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="2" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}" />    
-                    
-                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}" />
+                    <tables:DataEtterKuttingOgSlipingTableView Grid.Row="2" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}" />
+
+                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}"  />
 
 
                     <tables:TrykktestingTableView Grid.Row="4" DataContext="{Binding TrykktestingTableVM}" />
@@ -108,27 +118,33 @@
 
                 <!--<Grid Grid.Row="3" Margin="30">
                     <Grid.RowDefinitions>
-                        --><!-- Define two rows, each taking available space --><!--
+                        -->
+                <!-- Define two rows, each taking available space -->
+                <!--
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    --><!-- Modal Control --><!--
+                    -->
+                <!-- Modal Control -->
+                <!--
                     <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
                         <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
                     </modalcontrol:Modal>
 
-                    --><!-- Data fra oppdragsgiver Table View in the second row --><!--
+                    -->
+                <!-- Data fra oppdragsgiver Table View in the second row -->
+                <!--
              
                 </Grid>-->
 
 
                 <!-- Buttons -->
-            <WrapPanel Grid.Row="4" Margin="0 10 0 0">
-                <Button Margin="0 0 10 0" Command="{Binding CancelCommand}" Content="Cancel" Foreground="Black"/>
-                <Button Margin="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
-                <!--<Button Margin="0 0 10 0" Command="{Binding GenerateReport}" Content="Generate report"/>-->
-            </WrapPanel>
+                <WrapPanel Grid.Row="5" >
+                    <Button Margin="0 0 10 0" Command="{Binding CancelCommand}" Content="Cancel" Foreground="Black"/>
+                    <Button Margin="0 0 10 0" Command="{Binding SubmitCommand}" Content="Submit" IsEnabled="{Binding CanSubmit}"/>
+                    <!--<Button Margin="0 0 10 0" Command="{Binding GenerateReport}" Content="Generate report"/>-->
+                </WrapPanel>
             </Grid>
 
         </Grid>

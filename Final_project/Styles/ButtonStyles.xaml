@@ -58,7 +58,7 @@
 
 
 
-    <Style  x:Key="buttonstyle" TargetType="Button">
+    <!--<Style  x:Key="buttonstyle" TargetType="Button">
         <Setter Property="Background" Value="red" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{Binding Path=tag , RelativeSource={RelativeSource self}}" />
@@ -68,7 +68,7 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextBlock.TextAlignment" Value="Center" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Template">
+        --><!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border
@@ -118,7 +118,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.7" />
             </Trigger>
-        </Style.Triggers>
+        </Style.Triggers>--><!--
     </Style>
 
     <Style x:Key="ButtonSecondary"
@@ -151,9 +151,9 @@
                 </Trigger.ExitActions>
             </Trigger>
         </Style.Triggers>
-    </Style>
+    </Style>-->
     
-    <Style x:Key="DeleteButtonStyle" TargetType="Button">
+    <Style  TargetType="Button">
         <Setter Property="Background" Value="#FF5050" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="16" />
