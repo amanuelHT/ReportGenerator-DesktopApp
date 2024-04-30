@@ -78,26 +78,18 @@ namespace Final_project.ViewModels.TablesVM
                 Pw,
                 V,
                 Densitet,
-               _reportModelId // Assuming a new unique identifier for each new record
+               _reportModelId
             );
 
 
             // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new ConcreteDensityPrøveVM(newEntry)
             {
-                // If other properties need to be set directly, set them here
-                // Additional properties set up could be placed here if needed
             };
 
-            // Add the new Prøve VM to the collection in DataFraOppdragsgiverTableVM
+
             _concreteDensityTableVM.Prøver.Add(newPrøveVM);
-
-
-
             _modalNavigation.Close();
-            // Optionally, handle modal navigation or UI feedback
-            // _modalNavigation.CloseCurrent(); // Close the modal if that's part of your application flow
-            // You may want to handle additional UI updates or confirmations here
         }
 
 

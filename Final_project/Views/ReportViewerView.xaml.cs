@@ -15,8 +15,6 @@ namespace Final_project.Views
         {
             InitializeComponent();
             this.Loaded += OnGenerateReportClick;
-
-
         }
 
         private void OnGenerateReportClick(object sender, RoutedEventArgs e)
@@ -35,19 +33,19 @@ namespace Final_project.Views
                     DataTable reportDataTable = CreateReportDataTable(viewModel.SelectedReportData);
                     this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet1", Value = reportDataTable });
 
-                    // Handle the images
-                    if (viewModel.ReportImages != null && viewModel.ReportImages.Any())
-                    {
-                        DataTable imagesTable = CreateImagesDataTable(viewModel.ReportImages);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable });
-                    }
-
-
-                    // Handle the trykketesting 
+                    // Handle trykktesting data
                     if (viewModel.TrykktestingModels != null && viewModel.TrykktestingModels.Any())
                     {
                         DataTable tryktable = CreateTrykktestingTable(viewModel.TrykktestingModels);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet2", Value = tryktable }); // Use "DataSet2" here for trykktesting data
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet2", Value = tryktable });
+                    }
+
+
+                    // Handle ConcreteDensityModels data
+                    if (viewModel.ConcreteDensityModels != null && viewModel.ConcreteDensityModels.Any())
+                    {
+                        DataTable concredensity = CreateConcreteDensityDataTable(viewModel.ConcreteDensityModels);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet5", Value = concredensity });
                     }
 
 
@@ -57,7 +55,15 @@ namespace Final_project.Views
 
 
 
-
+                    // Handle the images
+                    if (viewModel.ReportImages != null && viewModel.ReportImages.Any())
+                    {
+                        int splitIndex = (viewModel.ReportImages.Count + 1) / 2; // Calculate the split point
+                        DataTable imagesTable3 = CreateImagesDataTable(viewModel.ReportImages.Take(splitIndex).ToList());
+                        DataTable imagesTable4 = CreateImagesDataTable2(viewModel.ReportImages.Skip(splitIndex).ToList());
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable3 });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet4", Value = imagesTable4 });
+                    }
 
                     this.reportViewer.RefreshReport();
                 }
@@ -68,101 +74,132 @@ namespace Final_project.Views
             }
         }
 
-
         private DataTable CreateTrykktestingTable(ObservableCollection<TrykktestingModel> trykktestingModels)
         {
-            // Create a new DataTable.
             DataTable trykTable = new DataTable("TrykktestingData");
-
-            // Define the columns that correspond to the properties of TrykktestingModel.
             trykTable.Columns.Add("TrykkflateMm", typeof(decimal));
             trykTable.Columns.Add("PalastHastighetMPas", typeof(decimal));
             trykTable.Columns.Add("TrykkfasthetMPa", typeof(decimal));
             trykTable.Columns.Add("TrykkfasthetMPaNSE", typeof(decimal));
 
-            // Iterate over each TrykktestingModel in the collection.
             foreach (var model in trykktestingModels)
             {
-                // Create a new row in the DataTable for each TrykktestingModel.
                 DataRow row = trykTable.NewRow();
-
-                // Set the row's column values to the properties of the TrykktestingModel.
                 row["TrykkflateMm"] = model.TrykkflateMm;
                 row["PalastHastighetMPas"] = model.PalastHastighetMPas;
                 row["TrykkfasthetMPa"] = model.TrykkfasthetMPa;
                 row["TrykkfasthetMPaNSE"] = model.TrykkfasthetMPaNSE;
-
-                // Add the row to the DataTable.
                 trykTable.Rows.Add(row);
             }
 
             return trykTable;
         }
 
-
-
-
         private DataTable CreateReportDataTable(ReportModel reportData)
         {
             DataTable dataTable = new DataTable("SelectedReportData");
-
-            // Reflectively add columns for each property
             foreach (var property in reportData.GetType().GetProperties())
             {
                 dataTable.Columns.Add(property.Name, property.PropertyType);
             }
-
-            // Add a row with values of those properties
             DataRow row = dataTable.NewRow();
             foreach (var property in reportData.GetType().GetProperties())
             {
                 row[property.Name] = property.GetValue(reportData);
             }
             dataTable.Rows.Add(row);
-
             return dataTable;
         }
 
-        private DataTable CreateImagesDataTable(ObservableCollection<ReportImageModel> images)
+        private DataTable CreateImagesDataTable(List<ReportImageModel> images)
         {
             DataTable imagesTable = new DataTable("ReportImages");
-            for (int i = 1; i <= 3; i++)
-            {
-                imagesTable.Columns.Add("Image" + i, typeof(byte[]));
-            }
+            imagesTable.Columns.Add("Name", typeof(string));
+            imagesTable.Columns.Add("Image", typeof(byte[]));
 
-            DataRow newRow = imagesTable.NewRow();
-            for (int i = 0; i < images.Count && i < 3; i++)
+            foreach (var image in images)
             {
-                newRow["Image" + (i + 1)] = GetImageData(images[i].ImageUrl);
+                DataRow row = imagesTable.NewRow();
+                row["Name"] = image.Name;
+                row["Image"] = GetImageData(image.ImageUrl);
+                imagesTable.Rows.Add(row);
             }
-            imagesTable.Rows.Add(newRow);
 
             return imagesTable;
         }
 
+        private DataTable CreateConcreteDensityDataTable(ObservableCollection<ConcreteDensityModel> densities)
+        {
+            DataTable densityTable = new DataTable("ConcreteDensityData");
+            densityTable.Columns.Add("Id", typeof(int));
+            densityTable.Columns.Add("Dato", typeof(DateTime));
+            densityTable.Columns.Add("MasseILuft", typeof(double));
+            densityTable.Columns.Add("MasseIVannbad", typeof(double));
+            densityTable.Columns.Add("Pw", typeof(double));
+            densityTable.Columns.Add("V", typeof(double));
+            densityTable.Columns.Add("Densitet", typeof(double));
 
 
-        private byte[] GetImageData(string imageUrl)
+            foreach (var density in densities)
+            {
+                DataRow row = densityTable.NewRow();
+                row["Id"] = density.Id;
+                row["Dato"] = density.Dato;
+                row["MasseILuft"] = density.MasseILuft;
+                row["MasseIVannbad"] = density.MasseIVannbad;
+                row["Pw"] = density.Pw;
+                row["V"] = density.V;
+                row["Densitet"] = density.Densitet;
+
+                densityTable.Rows.Add(row);
+            }
+
+            return densityTable;
+        }
+
+        private DataTable CreateImagesDataTable2(List<ReportImageModel> images)
+        {
+            DataTable imagesTable = new DataTable("ReportImages2");
+            imagesTable.Columns.Add("Name2", typeof(string));
+            imagesTable.Columns.Add("Image2", typeof(byte[]));
+
+            foreach (var image in images)
+            {
+                DataRow row = imagesTable.NewRow();
+                row["Name2"] = image.Name;
+                row["Image2"] = GetImageData(image.ImageUrl);
+                imagesTable.Rows.Add(row);
+            }
+
+            return imagesTable;
+        }
+
+        private byte[] GetImageData(string imagePath)
         {
             try
             {
-                // Create a Uri from imageUrl
-                var uri = new Uri(imageUrl);
-
-                // Convert the Uri to a local path
-                string localPath = uri.LocalPath;
-
-                // Read the file as a byte array
-                return System.IO.File.ReadAllBytes(localPath);
+                if (Uri.TryCreate(imagePath, UriKind.RelativeOrAbsolute, out Uri uri))
+                {
+                    if (uri.IsFile)
+                    {
+                        string localPath = uri.LocalPath;
+                        return System.IO.File.ReadAllBytes(localPath);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Web URLs are not supported directly.");
+                    }
+                }
+                else
+                {
+                    throw new InvalidOperationException("Invalid image path or URL.");
+                }
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Failed to load image data from URL: {imageUrl}", ex);
+                MessageBox.Show($"Failed to load image data: {ex.Message}");
+                return null;
             }
         }
-
-
-
     }
 }

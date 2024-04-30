@@ -3,20 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Final_project.Components"
+             xmlns:local="clr-namespace:Final_project.Components" 
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:ImageVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Padding="5" Width="120" Height="120">
-            <Image Source="{Binding ImageUri}" Width="100" Height="100" Stretch="UniformToFill"/>
-        </Border>
-
-        <Button Grid.Row="1" Width="120" Height="30" Command="{Binding RemoveImageCommand}" Content="Remove"/>
+    
     </Grid>
 </UserControl>

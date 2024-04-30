@@ -58,10 +58,7 @@ namespace Final_project
                  service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
                  service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
-                 service.AddSingleton<ICreateImageCommand, ImageCreationCommand>();
 
-
-                 service.AddSingleton<IDeleteReportImageCommand, ImageDeletionCommand>();
 
 
 

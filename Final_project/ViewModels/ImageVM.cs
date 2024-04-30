@@ -1,74 +1,66 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Domain.Models;
-using Final_project.Commands;
 using Final_project.Stores;
 
 namespace Final_project.ViewModels
 {
-    public partial class ImageVM : ObservableObject, IDisposable
+    public partial class ImageVM : ObservableObject
     {
         private readonly ImageCollectionVM _imageCollectionVM;
         private readonly ReportStore _reportStore;
-
+        private readonly Guid _reportId;
 
         public ReportImageModel ReportImageModel { get; private set; }
 
-
-        [ObservableProperty]
         private Uri _imageUri;
 
+        public Guid ImageId { get; set; }
+        public string ImageName { get; set; }
 
-        public Guid ImageId { get; private set; }
-        public string ImageName { get; private set; }
 
-        public ImageVM(Guid imageId, string name, string imageUri, ImageCollectionVM imageCollectionVM, ReportStore reportStore)
+
+        public Uri ImageUri
         {
-            ImageId = imageId;
-            ImageName = name;
-            ImageUri = new Uri(imageUri, UriKind.RelativeOrAbsolute);
+            get => _imageUri;
+            set => SetProperty(ref _imageUri, value);
+        }
 
+        public ImageVM(Guid reportid, ImageCollectionVM imageCollectionVM, ReportStore reportStore)
+        {
+            _reportId = reportid;
             _imageCollectionVM = imageCollectionVM;
             _reportStore = reportStore;
 
-            _reportStore.ImageDeleted += ReportStore_ImageDeleted;
+
         }
 
-
-        [RelayCommand]
-        private async Task RemoveImageAsync()
+        public ImageVM(ReportImageModel reportImageModel)
         {
-            try
+            if (reportImageModel != null)
             {
-
-                await _reportStore.DeleteImage(ImageId);
-
-
-                _imageCollectionVM.RemoveImage(this);
-            }
-            catch (Exception)
-            {
-                // Handle exceptions or set error messages if needed
+                ImageId = reportImageModel.Id;
+                ImageName = reportImageModel.Name;
+                ImageUri = new Uri(reportImageModel.ImageUrl, UriKind.RelativeOrAbsolute);
             }
         }
 
-
-
-        private void ReportStore_ImageDeleted(Guid id)
+        public void Submit()
         {
-            ImageVM imageToRemove = _imageCollectionVM.Images.FirstOrDefault(image => image.ImageId == id);
+            var newImage = new ReportImageModel(
+                ImageId == Guid.Empty ? Guid.NewGuid() : ImageId,
+                ImageName,
+                ImageUri.ToString(),
+                _reportId
+            );
 
-            if (imageToRemove != null)
+            var newPrøveVM = new ImageVM(newImage);
+
+            if (ImageId == Guid.Empty)
             {
-                _imageCollectionVM.RemoveImage(imageToRemove);
+                _imageCollectionVM.Images.Add(newPrøveVM);
             }
         }
 
-
-        public void Dispose()
-        {
-            _reportStore.ImageDeleted -= ReportStore_ImageDeleted;
-        }
 
 
 

@@ -18,10 +18,7 @@ namespace Final_project.Stores
         private readonly IDeleteReportCommand _deleteReportCommand;
         private readonly IUpdateReportCommand _updateReportCommand;
         private readonly IGetReportDataCommand _getReportDataCommand;
-        //private readonly IGetReportImageCommand _getReportImageCommand;
-        private readonly IDeleteReportImageCommand _deleteReportImageCommand;
-        //private readonly IGetImageForReportCommand _getImageForReporCommand;
-        private readonly ICreateImageCommand _createImageCommand;
+
 
 
 
@@ -32,12 +29,7 @@ namespace Final_project.Stores
              ICreateReportCommand createReportCommand,
              IDeleteReportCommand deleteReportCommand,
              IUpdateReportCommand updateReportCommand,
-             IGetReportDataCommand getReportDataCommand,
-             //IGetReportImageCommand getReportImageCommand,
-             IDeleteReportImageCommand deleteReportImageCommand,
-            //IGetImageForReportCommand getImageForReportCommand,
-            ICreateImageCommand createImageCommand
-
+             IGetReportDataCommand getReportDataCommand
 
             )
         {
@@ -46,10 +38,7 @@ namespace Final_project.Stores
             _deleteReportCommand = deleteReportCommand;
             _updateReportCommand = updateReportCommand;
             _getReportDataCommand = getReportDataCommand;
-            //_getReportImageCommand = getReportImageCommand;
-            _deleteReportImageCommand = deleteReportImageCommand;
-            //_getImageForReporCommand = getImageForReportCommand;
-            _createImageCommand = createImageCommand;
+
 
 
 
@@ -87,20 +76,6 @@ namespace Final_project.Stores
         }
 
 
-
-        public async Task AddImage(Guid reportModelïd, List<ReportImageModel> reportImageModels)
-        {
-            await _createImageCommand.Execute(reportModelïd, reportImageModels);
-
-            //_reportImagemodel.Add(reportImageModel);
-            //ImageAdded?.Invoke(reportImageModel);
-        }
-
-
-
-
-
-
         public async Task Update(ReportModel reportModel)
         {
 
@@ -121,7 +96,6 @@ namespace Final_project.Stores
         }
 
 
-
         public async Task Delete(Guid id)
         {
             await _deleteReportCommand.Execute(id);
@@ -130,18 +104,6 @@ namespace Final_project.Stores
 
             ReportDeleted?.Invoke(id);
         }
-
-        public async Task DeleteImage(Guid id)
-        {
-            await _deleteReportImageCommand.Execute(id);
-
-            _reportImagemodel.RemoveAll(y => y.Id == id);
-
-            ImageDeleted?.Invoke(id);
-        }
-
-
-
 
 
 
@@ -159,10 +121,9 @@ namespace Final_project.Stores
 
 
 
-        //public async Task<ReportModel> GetImageReportData(Guid reportId)
-        //{
-        //    return await _getReportDataCommand.Execute(reportId);
-        //}
+
+
+
 
 
 

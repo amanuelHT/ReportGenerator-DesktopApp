@@ -34,22 +34,22 @@ namespace Final_project.ViewModels
                 Status = reportModel.Status,
                 Kunde = reportModel.Kunde,
 
-                // Initialize ImageCollectionViewModel with existing images
-                ImageCollectionViewModel = new ImageCollectionVM(reportStore, ReportId)
+
 
 
             };
 
+
+
             // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel
             foreach (var img in reportModel.Images)
             {
-                var imageVM = new ImageVM(img.Id, img.Name, img.ImageUrl, ReportFormVM.ImageCollectionViewModel, reportStore);
+                var imageVM = new ImageVM(img);
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
             }
 
 
 
-            // Assuming reportModel.DataFraOppdragsgiverPrøver is a collection of DataFraOppdragsgiverPrøverModel
             foreach (var prøve in reportModel.DataFraOppdragsgiverPrøver)
             {
                 var prøveVM = new DataFraOppdragsgiverPrøverVM(prøve);

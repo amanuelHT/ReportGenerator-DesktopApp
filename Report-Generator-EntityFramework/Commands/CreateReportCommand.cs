@@ -20,6 +20,13 @@ namespace Report_Generator_EntityFramework.Commands
                 context.ReportModels.Add(reportModel);
 
 
+                // Add associated images to the context
+                foreach (var images in reportModel.Images)
+                {
+                    context.ReportImageModels.Add(images);
+                }
+
+
 
                 // Add associated DataFraOppdragsgiverPrøver to the context
                 foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)

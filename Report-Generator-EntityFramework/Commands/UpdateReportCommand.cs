@@ -7,12 +7,11 @@ namespace Report_Generator_EntityFramework.Commands
     public class UpdateReportCommand : IUpdateReportCommand
     {
         private readonly ReportModelDbContextFactory _contextFactory;
-        private readonly ICreateImageCommand _createImageCommand;
 
-        public UpdateReportCommand(ReportModelDbContextFactory contextFactory, ICreateImageCommand createImageCommand)
+        public UpdateReportCommand(ReportModelDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
-            _createImageCommand = createImageCommand;
+
         }
 
         public async Task Execute(ReportModel reportModel)
@@ -33,15 +32,46 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
 
+
+                    UpdateImages(context, existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
                     UpdateConcreteDensity(context, existingReport, reportModel);
                     Updatetrykketessting(context, existingReport, reportModel);
+
                     // Save changes to the context
                     await context.SaveChangesAsync();
                 }
             }
         }
+        private void UpdateImages(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            foreach (var existingimages in existingReport.Images.ToList())
+            {
+                if (!newReport.Images.Any(p => p.Id == existingimages.Id))
+                {
+                    context.Remove(existingimages);
+                }
+            }
+
+            if (newReport.Images.Any())
+            {
+                foreach (var newImage in newReport.Images)
+                {
+                    if (!existingReport.Images.Any(p => p.Id == newImage.Id))
+                    {
+                        context.Add(newImage);
+                    }
+                }
+            }
+            else
+            {
+                context.RemoveRange(existingReport.Images);
+            }
+
+            context.SaveChanges();
+        }
+
 
         private void UpdatePrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {

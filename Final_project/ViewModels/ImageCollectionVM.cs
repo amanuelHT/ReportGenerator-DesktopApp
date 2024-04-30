@@ -9,30 +9,20 @@ namespace Final_project.ViewModels
 {
     public partial class ImageCollectionVM : ObservableObject
     {
-        public ObservableCollection<ImageVM> Images { get; private set; }
-        public ImageVM _imageVM { get; private set; }
+        private readonly ReportStore _reportStore;
+        private readonly Guid _reportId;
 
+        public ObservableCollection<ImageVM> Images { get; private set; }
 
         public event Action<ImageVM> ImageAdded;
         public event Action<ImageVM> ImageDeleted;
+
         public ImageCollectionVM(ReportStore reportStore, Guid reportId)
         {
+            _reportStore = reportStore;
+            _reportId = reportId;
             Images = new ObservableCollection<ImageVM>();
-
         }
-
-        public void RemoveImage(ImageVM image)
-        {
-            if (Images.Contains(image))
-            {
-                Images.Remove(image);
-                ImageDeleted?.Invoke(image); // Raise the ImageDeleted event
-            }
-        }
-
-
-
-
 
         [RelayCommand]
         private void UploadImage()
@@ -49,10 +39,25 @@ namespace Final_project.ViewModels
                 {
                     Guid imageId = Guid.NewGuid();
                     string name = System.IO.Path.GetFileNameWithoutExtension(filePath);
-                    var imageVM = new ImageVM(imageId, name, filePath, this, null); // Assuming null is okay for reportStore
+                    var imageVM = new ImageVM(_reportId, this, _reportStore)
+                    {
+                        ImageId = imageId,
+                        ImageName = name,
+                        ImageUri = new Uri(filePath, UriKind.Absolute)
+                    };
                     Images.Add(imageVM);
                     ImageAdded?.Invoke(imageVM);
                 }
+            }
+        }
+
+        [RelayCommand]
+        private void RemoveImage(ImageVM imageVM)
+        {
+            if (imageVM != null && Images.Contains(imageVM))
+            {
+                Images.Remove(imageVM);
+                ImageDeleted?.Invoke(imageVM);
             }
         }
     }

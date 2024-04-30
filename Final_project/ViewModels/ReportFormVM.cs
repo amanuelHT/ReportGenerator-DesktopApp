@@ -14,9 +14,13 @@ namespace Final_project.ViewModels
         public bool IsFormOpen => _modalNavigation.IsOpen;
 
         public List<ReportImageModel> Images { get; set; }
+
+        public ImageVM ImageVM { get; set; }
         public ImageCollectionVM ImageCollectionViewModel { get; set; }
+
         public DataFraOppdragsgiverTableVM DataFraOppdragsgiverTableVM { get; set; }
         public DataFraOppdragsgiverPrøverVM DataFraOppdragsgiverPrøverVM { get; }
+
         public DataEtterKuttingOgSlipingTableVM DataEtterKuttingOgSlipingTableVM { get; }
         public DataEtterKuttingOgSlipingPrøveVM DataEtterKuttingOgSlipingPrøveVM { get; }
 
@@ -49,6 +53,7 @@ namespace Final_project.ViewModels
             //AddReportTableCommand = new OpenAddReportTableCommand(modalNavigation, reportStore);
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
+            ImageVM = new ImageVM(reportid, ImageCollectionViewModel, reportStore);
 
             DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, modalNavigation, reportid);
             DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(reportStore, modalNavigation, reportid, DataFraOppdragsgiverTableVM);

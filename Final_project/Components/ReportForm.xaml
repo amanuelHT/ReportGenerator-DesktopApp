@@ -27,12 +27,13 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <!-- Rows for text inputs and date pickers wrapped in Borders with LinearGradient background -->
                 <Border Grid.Row="0" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
                     <StackPanel Orientation="Horizontal">
-                        <components:TextBoxView Text="{Binding Title}" Watermark="Enter your title here"/>
+                        <components:TextBoxView Text="{Binding Tittle}" Watermark="Enter your title here"/>
                         <components:TextBoxView Text="{Binding Kunde}" Watermark="Enter client name" Margin="100 0 0 0"/>
                     </StackPanel>
                 </Border>
@@ -50,9 +51,29 @@
                         <DatePicker SelectedDate="{Binding ReportDate}" Margin="120 40 30 40"/>
                     </StackPanel>
                 </Border>
+                
+                
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Status of the report -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="Wheat"/>
+                        <CheckBox Content="Godkjent" Margin="10 0 0 0" IsChecked="{Binding Status}" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1" Margin="-10 0 0 0">
+                        <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                    </Grid>
+
+                </Grid>
+
 
                 <!-- Additional rows for tables and modal control -->
-                <Grid Grid.Row="3" Margin="30">
+                <Grid Grid.Row="4" Margin="30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -72,7 +93,8 @@
             </Grid>
         </ScrollViewer>
 
-        <!-- Button at the bottom of the UserControl -->
+            
+            <!-- Button at the bottom of the UserControl -->
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding SubmitCommand}">
                 <StackPanel Orientation="Horizontal">

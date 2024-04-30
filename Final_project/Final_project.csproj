@@ -51,10 +51,6 @@
     <None Update="Resources\Report2.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\ReportData.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
-    </None>
     <None Update="Resources\Reports\DataEtterKuttingOgSliping.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -101,11 +97,6 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Resources\ReportData.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ReportData.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
 
