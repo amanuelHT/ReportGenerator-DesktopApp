@@ -25,24 +25,24 @@
 
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
             <ItemsControl ItemsSource="{Binding Images}">
+                <ItemsControl.ItemsPanel>
+                    <!-- Use a WrapPanel with horizontal orientation -->
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Padding="5" Width="120" Height="120">
+                        <!-- Wrap the Image and Button in a StackPanel -->
+                        <StackPanel>
+                            <Border BorderBrush="Gray" BorderThickness="1" Padding="5" Margin="5">
                                 <Image Source="{Binding ImageUri}" Width="100" Height="100" Stretch="UniformToFill"/>
                             </Border>
-
-                            <Button Grid.Row="1" Content="Remove"
-        Command="{Binding DataContext.RemoveImageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-        CommandParameter="{Binding}"
-        Width="120" Height="30" Background="Black" />
-
-                        </Grid>
+                            <Button Content="Remove"
+                                    Command="{Binding DataContext.RemoveImageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                    CommandParameter="{Binding}"
+                                    Width="120" Height="30" Background="Black" />
+                        </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

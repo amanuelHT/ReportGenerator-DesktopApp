@@ -96,13 +96,13 @@
         <!-- Action Buttons -->
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Command="{Binding SubmitCommand}" Margin="0 0 140 0">
+                <Button Command="{Binding CancelCommand}" Margin="0 0 140 0">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="StepBackward" Height="20" Width="20" Foreground="{StaticResource TextColor5}"/>
                         <TextBlock Text="Back" Margin="5 0 0 0" Foreground="{StaticResource TextColor5}"/>
                     </StackPanel>
                 </Button>
-                <Button Command="{Binding CancelCommand}">
+                <Button Command="{Binding SubmitCommand}">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="BookEdit" Height="20" Width="20" Foreground="{StaticResource IconColor1}"/>
                         <TextBlock Text="Submit" Margin="5 0 0 0" Foreground="{StaticResource IconColor3}"/>

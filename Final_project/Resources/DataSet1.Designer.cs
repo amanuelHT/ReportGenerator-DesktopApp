@@ -34,6 +34,8 @@ namespace Final_project.Resources {
         
         private ConcreteDensityModelDataTable tableConcreteDensityModel;
         
+        private DataEtterKuttingOgSlipingModelDataTable tableDataEtterKuttingOgSlipingModel;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace Final_project.Resources {
                 }
                 if ((ds.Tables["ConcreteDensityModel"] != null)) {
                     base.Tables.Add(new ConcreteDensityModelDataTable(ds.Tables["ConcreteDensityModel"]));
+                }
+                if ((ds.Tables["DataEtterKuttingOgSlipingModel"] != null)) {
+                    base.Tables.Add(new DataEtterKuttingOgSlipingModelDataTable(ds.Tables["DataEtterKuttingOgSlipingModel"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace Final_project.Resources {
         public ConcreteDensityModelDataTable ConcreteDensityModel {
             get {
                 return this.tableConcreteDensityModel;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DataEtterKuttingOgSlipingModelDataTable DataEtterKuttingOgSlipingModel {
+            get {
+                return this.tableDataEtterKuttingOgSlipingModel;
             }
         }
         
@@ -227,6 +242,9 @@ namespace Final_project.Resources {
                 if ((ds.Tables["ConcreteDensityModel"] != null)) {
                     base.Tables.Add(new ConcreteDensityModelDataTable(ds.Tables["ConcreteDensityModel"]));
                 }
+                if ((ds.Tables["DataEtterKuttingOgSlipingModel"] != null)) {
+                    base.Tables.Add(new DataEtterKuttingOgSlipingModelDataTable(ds.Tables["DataEtterKuttingOgSlipingModel"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace Final_project.Resources {
                     this.tableConcreteDensityModel.InitVars();
                 }
             }
+            this.tableDataEtterKuttingOgSlipingModel = ((DataEtterKuttingOgSlipingModelDataTable)(base.Tables["DataEtterKuttingOgSlipingModel"]));
+            if ((initTable == true)) {
+                if ((this.tableDataEtterKuttingOgSlipingModel != null)) {
+                    this.tableDataEtterKuttingOgSlipingModel.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace Final_project.Resources {
             base.Tables.Add(this.tableReportImageModel2);
             this.tableConcreteDensityModel = new ConcreteDensityModelDataTable();
             base.Tables.Add(this.tableConcreteDensityModel);
+            this.tableDataEtterKuttingOgSlipingModel = new DataEtterKuttingOgSlipingModelDataTable();
+            base.Tables.Add(this.tableDataEtterKuttingOgSlipingModel);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace Final_project.Resources {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeConcreteDensityModel() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeDataEtterKuttingOgSlipingModel() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace Final_project.Resources {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void ConcreteDensityModelRowChangeEventHandler(object sender, ConcreteDensityModelRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void DataEtterKuttingOgSlipingModelRowChangeEventHandler(object sender, DataEtterKuttingOgSlipingModelRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1830,6 +1865,267 @@ namespace Final_project.Resources {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DataEtterKuttingOgSlipingModelDataTable : global::System.Data.TypedTableBase<DataEtterKuttingOgSlipingModelRow> {
+            
+            private global::System.Data.DataColumn columnIvannbadDato;
+            
+            private global::System.Data.DataColumn columnTestDato;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelDataTable() {
+                this.TableName = "DataEtterKuttingOgSlipingModel";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataEtterKuttingOgSlipingModelDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected DataEtterKuttingOgSlipingModelDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IvannbadDatoColumn {
+                get {
+                    return this.columnIvannbadDato;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TestDatoColumn {
+                get {
+                    return this.columnTestDato;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelRow this[int index] {
+                get {
+                    return ((DataEtterKuttingOgSlipingModelRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataEtterKuttingOgSlipingModelRowChangeEventHandler DataEtterKuttingOgSlipingModelRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataEtterKuttingOgSlipingModelRowChangeEventHandler DataEtterKuttingOgSlipingModelRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataEtterKuttingOgSlipingModelRowChangeEventHandler DataEtterKuttingOgSlipingModelRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataEtterKuttingOgSlipingModelRowChangeEventHandler DataEtterKuttingOgSlipingModelRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddDataEtterKuttingOgSlipingModelRow(DataEtterKuttingOgSlipingModelRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelRow AddDataEtterKuttingOgSlipingModelRow(System.DateTime IvannbadDato, System.DateTime TestDato) {
+                DataEtterKuttingOgSlipingModelRow rowDataEtterKuttingOgSlipingModelRow = ((DataEtterKuttingOgSlipingModelRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        IvannbadDato,
+                        TestDato};
+                rowDataEtterKuttingOgSlipingModelRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataEtterKuttingOgSlipingModelRow);
+                return rowDataEtterKuttingOgSlipingModelRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DataEtterKuttingOgSlipingModelDataTable cln = ((DataEtterKuttingOgSlipingModelDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DataEtterKuttingOgSlipingModelDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnIvannbadDato = base.Columns["IvannbadDato"];
+                this.columnTestDato = base.Columns["TestDato"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnIvannbadDato = new global::System.Data.DataColumn("IvannbadDato", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIvannbadDato);
+                this.columnTestDato = new global::System.Data.DataColumn("TestDato", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestDato);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelRow NewDataEtterKuttingOgSlipingModelRow() {
+                return ((DataEtterKuttingOgSlipingModelRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DataEtterKuttingOgSlipingModelRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DataEtterKuttingOgSlipingModelRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DataEtterKuttingOgSlipingModelRowChanged != null)) {
+                    this.DataEtterKuttingOgSlipingModelRowChanged(this, new DataEtterKuttingOgSlipingModelRowChangeEvent(((DataEtterKuttingOgSlipingModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DataEtterKuttingOgSlipingModelRowChanging != null)) {
+                    this.DataEtterKuttingOgSlipingModelRowChanging(this, new DataEtterKuttingOgSlipingModelRowChangeEvent(((DataEtterKuttingOgSlipingModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DataEtterKuttingOgSlipingModelRowDeleted != null)) {
+                    this.DataEtterKuttingOgSlipingModelRowDeleted(this, new DataEtterKuttingOgSlipingModelRowChangeEvent(((DataEtterKuttingOgSlipingModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DataEtterKuttingOgSlipingModelRowDeleting != null)) {
+                    this.DataEtterKuttingOgSlipingModelRowDeleting(this, new DataEtterKuttingOgSlipingModelRowChangeEvent(((DataEtterKuttingOgSlipingModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveDataEtterKuttingOgSlipingModelRow(DataEtterKuttingOgSlipingModelRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DataEtterKuttingOgSlipingModelDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportModelsRow : global::System.Data.DataRow {
@@ -2411,6 +2707,79 @@ namespace Final_project.Resources {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DataEtterKuttingOgSlipingModelRow : global::System.Data.DataRow {
+            
+            private DataEtterKuttingOgSlipingModelDataTable tableDataEtterKuttingOgSlipingModel;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataEtterKuttingOgSlipingModelRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDataEtterKuttingOgSlipingModel = ((DataEtterKuttingOgSlipingModelDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime IvannbadDato {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDataEtterKuttingOgSlipingModel.IvannbadDatoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IvannbadDato\' in table \'DataEtterKuttingOgSlipingModel\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.IvannbadDatoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime TestDato {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDataEtterKuttingOgSlipingModel.TestDatoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TestDato\' in table \'DataEtterKuttingOgSlipingModel\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.TestDatoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIvannbadDatoNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.IvannbadDatoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIvannbadDatoNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.IvannbadDatoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTestDatoNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.TestDatoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTestDatoNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.TestDatoColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2566,6 +2935,40 @@ namespace Final_project.Resources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ConcreteDensityModelRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class DataEtterKuttingOgSlipingModelRowChangeEvent : global::System.EventArgs {
+            
+            private DataEtterKuttingOgSlipingModelRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelRowChangeEvent(DataEtterKuttingOgSlipingModelRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataEtterKuttingOgSlipingModelRow Row {
                 get {
                     return this.eventRow;
                 }

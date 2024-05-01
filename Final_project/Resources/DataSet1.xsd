@@ -60,6 +60,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DataEtterKuttingOgSlipingModel" msprop:Generator_RowEvHandlerName="DataEtterKuttingOgSlipingModelRowChangeEventHandler" msprop:Generator_RowDeletedName="DataEtterKuttingOgSlipingModelRowDeleted" msprop:Generator_RowDeletingName="DataEtterKuttingOgSlipingModelRowDeleting" msprop:Generator_RowEvArgName="DataEtterKuttingOgSlipingModelRowChangeEvent" msprop:Generator_TablePropName="DataEtterKuttingOgSlipingModel" msprop:Generator_RowChangedName="DataEtterKuttingOgSlipingModelRowChanged" msprop:Generator_RowChangingName="DataEtterKuttingOgSlipingModelRowChanging" msprop:Generator_TableClassName="DataEtterKuttingOgSlipingModelDataTable" msprop:Generator_RowClassName="DataEtterKuttingOgSlipingModelRow" msprop:Generator_TableVarName="tableDataEtterKuttingOgSlipingModel" msprop:Generator_UserTableName="DataEtterKuttingOgSlipingModel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IvannbadDato" msprop:Generator_ColumnPropNameInRow="IvannbadDato" msprop:Generator_ColumnPropNameInTable="IvannbadDatoColumn" msprop:Generator_ColumnVarNameInTable="columnIvannbadDato" msprop:Generator_UserColumnName="IvannbadDato" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TestDato" msprop:Generator_ColumnPropNameInRow="TestDato" msprop:Generator_ColumnPropNameInTable="TestDatoColumn" msprop:Generator_ColumnVarNameInTable="columnTestDato" msprop:Generator_UserColumnName="TestDato" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
