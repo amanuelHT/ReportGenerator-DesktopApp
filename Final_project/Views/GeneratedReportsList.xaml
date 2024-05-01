@@ -5,16 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Views"
              xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="Final_project.Views.GeneratedReportsList"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="790" Width="1296">
     <Grid Background="White">
 
-        <PdfViewer:PdfDocumentView x:Name="pdfViewer" HorizontalAlignment="Left" Margin="348,0,0,0" VerticalAlignment="Center" Height="450" Width="452"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="143.4"/>
+            <RowDefinition Height="459.6"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="UploadButton" Content="Upload file" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" />
-        <Button x:Name="DownloadBUtton" Content="Download" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Click="DownloadButton_Click" />
-        <ListBox x:Name="ReportsListBox" ItemsSource="{Binding Items}"  Margin="10,30,638,225" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single"/>
+        <PdfViewer:PdfDocumentView x:Name="pdfViewer" HorizontalAlignment="Left" Margin="475,30,0,0" VerticalAlignment="Top" Height="675" Width="800" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+
+        <StackPanel Orientation="Horizontal" Margin="750,109,0,28" Grid.Row="2" Height="50">
+            <Button x:Name="DownloadButton" Content="Download" Click="DownloadButton_Click" Background="LightSlateGray" Width="100" Height="30"/>
+            <Rectangle Width="100"/>
+            <Button x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click" Background="LightSlateGray" Margin="0,0,10,0" Width="100" Height="30"/>
+        </StackPanel>
+
+        <Button x:Name="UploadButton" Content="Upload file" Margin="210,282,813,0" VerticalAlignment="Top" Click="UploadButton_Click" Background="LightSlateGray" Height="25" Width="75" Grid.Row="1"/>
+
+        <ListBox x:Name="ReportsListBox" ItemsSource="{Binding Items}"  Margin="98,100,701,203" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Height="300" Grid.RowSpan="2"/>
+
+        <StackPanel Orientation="Horizontal" Margin="30,45,697,48" Height="50" Width="370">
+            <Label Content="Search" FontSize="16"/>
+            <Rectangle Width="10"/>
+            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="35" />
+        </StackPanel>
+
 
     </Grid>
 </UserControl>

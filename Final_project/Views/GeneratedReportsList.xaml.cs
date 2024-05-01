@@ -6,7 +6,7 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-//using static Syncfusion.XlsIO.Implementation.Collections.CollectionBaseEx<T>;
+using Syncfusion.Windows.PdfViewer;
 
 
 namespace Final_project.Views
@@ -26,6 +26,7 @@ namespace Final_project.Views
             InitializeComponent();
             ReportsList();
             DataContext = this;
+            pdfViewer.ZoomMode = ZoomMode.FitWidth;
         }
         private async void ReportsList()
         {
@@ -77,9 +78,13 @@ namespace Final_project.Views
             }
         }
 
-        private async void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void UploadButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Multiselect = true;
+
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
 
             bool? response = openFileDialog.ShowDialog();
 
@@ -117,57 +122,80 @@ namespace Final_project.Views
 
         private async void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                var storage = new FirebaseStorage("hprd-24-040.appspot.com");
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                await storage.Child(PdfFilePath).DeleteAsync();
-
-                FirestoreDb db = FirestoreDb.Create("hprd-24-040");
-
-                CollectionReference collectionRef = db.Collection("reports");
-
-                string ReportTitle = System.IO.Path.GetFileNameWithoutExtension(PdfFilePath);
-                MessageBox.Show(ReportTitle);
-                QuerySnapshot querySnapshot = await collectionRef.WhereEqualTo("title", ReportTitle).GetSnapshotAsync();
-
-                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+                if (result == MessageBoxResult.Yes)
                 {
-                    string documentId = documentSnapshot.Id;
+                    var storage = new FirebaseStorage("hprd-24-040.appspot.com");
 
-                    await collectionRef.Document(documentId).DeleteAsync();
+                    await storage.Child(PdfFilePath).DeleteAsync();
+
+                    FirestoreDb db = FirestoreDb.Create("hprd-24-040");
+
+                    CollectionReference collectionRef = db.Collection("reports");
+
+                    string ReportTitle = System.IO.Path.GetFileNameWithoutExtension(PdfFilePath);
+                    MessageBox.Show(ReportTitle);
+                    QuerySnapshot querySnapshot = await collectionRef.WhereEqualTo("title", ReportTitle).GetSnapshotAsync();
+
+                    foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+                    {
+                        string documentId = documentSnapshot.Id;
+
+                        await collectionRef.Document(documentId).DeleteAsync();
+                    }
+
+                    Items.Clear();
+                    ReportsList();
                 }
-
-                Items.Clear();
-                ReportsList();
             }
+            catch(Exception) {
+                MessageBox.Show("An error occurred while deleting the report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private async void DownloadButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var storage = new FirebaseStorage("hprd-24-040.appspot.com");
-
-            var fileReference = storage.Child(PdfFilePath);
-
-            string downloadUrl = await fileReference.GetDownloadUrlAsync();
-
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
-            saveFileDialog.FileName = System.IO.Path.GetFileName(PdfFilePath);
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                string localFilePath = saveFileDialog.FileName;
+                var storage = new FirebaseStorage("hprd-24-040.appspot.com");
 
-                // Download the file content from the download URL
-                using (var webClient = new WebClient())
+                var fileReference = storage.Child(PdfFilePath);
+
+                string downloadUrl = await fileReference.GetDownloadUrlAsync();
+
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+                saveFileDialog.FileName = System.IO.Path.GetFileName(PdfFilePath);
+                if (saveFileDialog.ShowDialog() == true)
                 {
-                    await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
-                }
+                    string localFilePath = saveFileDialog.FileName;
 
-                Console.WriteLine("File downloaded and saved successfully");
+                    // Download the file content from the download URL
+                    using (var webClient = new WebClient())
+                    {
+                        await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
+                    }
+
+                    Console.WriteLine("File downloaded and saved successfully");
+                }
             }
+            catch (Exception) {
+                MessageBox.Show("An error occurred while downloading the report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchTextBox.Text.ToLower();
+            var filteredItems = Items.Where(item => item.ToLower().Contains(searchText)).ToList();
+
+            ReportsListBox.ItemsSource = filteredItems;
+        }
+
     }
 }
