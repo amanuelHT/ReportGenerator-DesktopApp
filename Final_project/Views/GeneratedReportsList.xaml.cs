@@ -68,7 +68,7 @@ namespace Final_project.Views
                 string pdfFileName = selectedItem + ".pdf";
 
                 PdfFilePath = "reports/" + pdfFileName;
-                MessageBox.Show(PdfFilePath);
+                
                 var task = new FirebaseStorage("hprd-24-040.appspot.com")
                     .Child(PdfFilePath)
                     .GetDownloadUrlAsync();
@@ -93,7 +93,6 @@ namespace Final_project.Views
                 string filepath = openFileDialog.FileName;
                 string filename = System.IO.Path.GetFileName(filepath);
                 string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filepath);
-                MessageBox.Show(filepath);
 
                 var stream = File.Open(filepath, FileMode.Open);
 
