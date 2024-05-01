@@ -30,8 +30,13 @@ namespace Final_project
         private void closebtn_Click(object sender, RoutedEventArgs e)
         {
 
-            Window window = Window.GetWindow(this);
-            window.Close();
+            if (MessageBox.Show("Are you sure you want to quit?",
+                    "Quit",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                System.Windows.Application.Current.Shutdown();
+            }
         }
 
         private void minimizeBtn_Click(object sender, RoutedEventArgs e)

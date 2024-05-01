@@ -22,24 +22,25 @@
         <!-- Navigation bar in the first column, full height -->
         <Border  Grid.Column="0" Opacity="1">
             <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>
-                    <GradientStop Color="{StaticResource textcolor2}" Offset="1"></GradientStop>
-                </LinearGradientBrush>
-            </Border.Background>
-            <local:NavigationBarView DataContext="{Binding NavigationBarVM}" VerticalAlignment="Stretch"/>
-        </Border>
-        <!-- Main content area in the second column -->
-        <Border CornerRadius="0 10 10 0" Grid.Column="1">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                    <GradientStop Color="{StaticResource SecondarybackgroundC1}" Offset="1"></GradientStop>
-                    <GradientStop Color="{StaticResource SecondarybackgroundC2}" Offset="0"></GradientStop>
-                </LinearGradientBrush>
-            </Border.Background>
-            <ContentControl MaxWidth="1000" Margin="20" Content="{Binding ContentViewModel}" />
-        </Border>
-
-    </Grid>
-
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource textcolor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource textcolor2}" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <local:NavigationBarView DataContext="{Binding NavigationBarVM}" VerticalAlignment="Stretch"/>
+            </Border>
+            <!-- Main content area in the second column -->
+            <Border CornerRadius="0 10 10 0" Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{StaticResource SecondarybackgroundC1}" Offset="1"></GradientStop>
+                        <GradientStop Color="{StaticResource SecondarybackgroundC2}" Offset="0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentControl MaxWidth="1400" Margin="20" Content="{Binding ContentViewModel}" />
+            </Border>
+            
+        </Grid>
+   
 </UserControl>
+

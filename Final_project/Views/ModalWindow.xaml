@@ -10,7 +10,8 @@
          WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-         Width="750"     Height="650">
+         Width="750"     Height="650"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Border
             Opacity="1" 
