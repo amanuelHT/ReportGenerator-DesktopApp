@@ -1,30 +1,25 @@
-name: Deploy Report generator
+name : "Deploy Report generator"
 
 on:
   push:
-    tags:
-      - 'Report-generator/v*'
+     tags: 
+         -"Report-generator/v*"
 
-env:
-  PROJECT_PATH: 'Final--project/Final_project/Final_project.csproj'
+env: 
+  PROJECT_PATH: Final--project/Final_project/Final_project.csproj
 
 jobs:
   deploy:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+     runs-on: window-lat&est
+     steps:
+        - uses: action/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0.x'
+        - uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 8.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore "${{ env.PROJECT_PATH }}"
-
-      - name: Build project
-        run: dotnet build "${{ env.PROJECT_PATH }}" -c Release --no-restore
-
-      - name: Publish project
-        run: dotnet publish "${{ env.PROJECT_PATH }}" -c Release --self-contained -r win-x64 -p:PublishSingleFile=true
+        - run: dotnet resotre ${{ env.PROJECT_PATH }}
+  
+        - run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
+        
+        - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true
