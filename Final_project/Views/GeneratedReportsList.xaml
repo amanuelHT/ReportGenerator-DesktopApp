@@ -5,7 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Views"
              xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="Final_project.Views.GeneratedReportsList"
+<<<<<<< HEAD
              mc:Ignorable="d" Height="790" Width="1296">
+=======
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1900">
+>>>>>>> e86ffc1ca0d7dc20f0d0c3f655e1d9af3c287499
     <Grid Background="White">
 
         <Grid.RowDefinitions>
