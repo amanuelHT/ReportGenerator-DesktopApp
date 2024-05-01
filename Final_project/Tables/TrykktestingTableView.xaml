@@ -47,12 +47,15 @@
                     <DataGridTemplateColumn Header="Actions">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                            <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding RemoveRecordCommand}">
-                                <icon:PackIconMaterial Foreground="{StaticResource TextColor5}" Kind="Delete" Style="{StaticResource buttonicons}" Height="14" Width="17"/>
-                            </Button>
 
-                            
-                            </DataTemplate>
+                            <Button Style="{StaticResource buttonsWithIcon}"
+                                    Command="{Binding DataContext.RemovePrøveCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Content="Remove"
+                                    Foreground="{StaticResource DeleteActionButtonBrush}" />
+
+
+                        </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>

@@ -85,7 +85,9 @@
     <!-- Example: Amber -->
     <Color x:Key="DisabledColor">#FFBDBDBD</Color>
     <!-- Example: Grey -->
-    <Color x:Key="AddActionColor">#FF4CAF50</Color>
+    <Color x:Key="AddActionColor">#FF4CA0</Color>
+   
+    <Color x:Key="deleteactioncolor">#FF4CA0</Color>
     <!-- Example: Green -->
     <!-- Solid Color Brushes -->
     <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}" />
@@ -114,6 +116,7 @@
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="{StaticResource BackgroundColor}" />
 
     <SolidColorBrush x:Key="AddActionButtonBrush" Color="{StaticResource AddActionColor}" />
+    <SolidColorBrush x:Key="DeleteActionButtonBrush" Color="{StaticResource deleteactioncolor}" />
 
     <!-- window border color -->
 

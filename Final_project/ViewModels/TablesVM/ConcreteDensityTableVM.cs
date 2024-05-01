@@ -40,7 +40,7 @@ namespace Final_project.ViewModels.TablesVM
 
 
         [RelayCommand]
-        private void RemovePrøve(ConcreteDensityPrøveVM prøve)
+        private void RemoveRecord(ConcreteDensityPrøveVM prøve)
         {
             if (prøve != null && Prøver.Contains(prøve))
             {

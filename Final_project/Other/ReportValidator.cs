@@ -20,6 +20,16 @@ namespace Final_project.Other
                 validationErrors.Add("kunde is missing.");
             }
 
+
+
+            if (reportForm.ImageCollectionViewModel.Images.Count <= 1)
+            {
+                validationErrors.Add("You need to add at least two images.");
+            }
+
+
+
+
             if (reportForm.DataFraOppdragsgiverTableVM.Prøver.Count == 0)
             {
                 validationErrors.Add("DataFraOppdragsgiverTable is missing properties.");
