@@ -50,6 +50,7 @@
             <ComboBox Width="200" SelectedValue="{Binding SelectedRole, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Content" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1">
                     <ComboBoxItem Content="User" />
                     <ComboBoxItem Content="Admin" />
+                    <ComboBoxItem Content="Kunde" />
             </ComboBox>
 
                 <TextBox Width="200" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
