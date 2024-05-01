@@ -91,6 +91,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include=".github\Workflow\DepoloyReportGenerator.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="ReportData.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
