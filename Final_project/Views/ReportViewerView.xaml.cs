@@ -66,6 +66,14 @@ namespace Final_project.Views
                     }
 
 
+                    // Handle DataFraOppdragsgiverPrøverModels data
+                    if (viewModel.DataFraOppdragsgiverPrøverModels != null && viewModel.DataFraOppdragsgiverPrøverModels.Any())
+                    {
+                        DataTable datafraoppdrag = DataFraOppdragsgiverPrøverModelDataTable(viewModel.DataFraOppdragsgiverPrøverModels);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet7", Value = datafraoppdrag });
+                    }
+
+
 
 
 
@@ -248,6 +256,36 @@ namespace Final_project.Views
 
             return customTable;
         }
+
+
+        private DataTable DataFraOppdragsgiverPrøverModelDataTable(ObservableCollection<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels)
+        {
+            DataTable customTable = new DataTable("CustomData");
+            customTable.Columns.Add("Datomottatt", typeof(DateTime));
+            customTable.Columns.Add("Overdekningoppgitt", typeof(string));
+            customTable.Columns.Add("Dmax", typeof(string));
+            customTable.Columns.Add("KjerneImax", typeof(int));
+            customTable.Columns.Add("KjerneImin", typeof(int));
+            customTable.Columns.Add("OverflateOK", typeof(string));
+            customTable.Columns.Add("OverflateUK", typeof(string));
+
+
+            foreach (var model in dataFraOppdragsgiverPrøverModels)
+            {
+                DataRow row = customTable.NewRow();
+                row["Datomottatt"] = model.Datomottatt;
+                row["Overdekningoppgitt"] = model.Overdekningoppgitt;
+                row["Dmax"] = model.Dmax;
+                row["KjerneImax"] = model.KjerneImax;
+                row["KjerneImin"] = model.KjerneImin;
+                row["OverflateOK"] = model.OverflateOK;
+                row["OverflateUK"] = model.OverflateUK;
+                customTable.Rows.Add(row);
+            }
+
+            return customTable;
+        }
+
 
 
     }

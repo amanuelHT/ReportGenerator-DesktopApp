@@ -36,6 +36,8 @@ namespace Final_project.Resources {
         
         private DataEtterKuttingOgSlipingModelDataTable tableDataEtterKuttingOgSlipingModel;
         
+        private DataFraOppdragsgiverPrøverModelDataTable tableDataFraOppdragsgiverPrøverModel;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,6 +83,9 @@ namespace Final_project.Resources {
                 }
                 if ((ds.Tables["DataEtterKuttingOgSlipingModel"] != null)) {
                     base.Tables.Add(new DataEtterKuttingOgSlipingModelDataTable(ds.Tables["DataEtterKuttingOgSlipingModel"]));
+                }
+                if ((ds.Tables["DataFraOppdragsgiverPrøverModel"] != null)) {
+                    base.Tables.Add(new DataFraOppdragsgiverPrøverModelDataTable(ds.Tables["DataFraOppdragsgiverPrøverModel"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -157,6 +162,16 @@ namespace Final_project.Resources {
         public DataEtterKuttingOgSlipingModelDataTable DataEtterKuttingOgSlipingModel {
             get {
                 return this.tableDataEtterKuttingOgSlipingModel;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DataFraOppdragsgiverPrøverModelDataTable DataFraOppdragsgiverPrøverModel {
+            get {
+                return this.tableDataFraOppdragsgiverPrøverModel;
             }
         }
         
@@ -245,6 +260,9 @@ namespace Final_project.Resources {
                 if ((ds.Tables["DataEtterKuttingOgSlipingModel"] != null)) {
                     base.Tables.Add(new DataEtterKuttingOgSlipingModelDataTable(ds.Tables["DataEtterKuttingOgSlipingModel"]));
                 }
+                if ((ds.Tables["DataFraOppdragsgiverPrøverModel"] != null)) {
+                    base.Tables.Add(new DataFraOppdragsgiverPrøverModelDataTable(ds.Tables["DataFraOppdragsgiverPrøverModel"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -314,6 +332,12 @@ namespace Final_project.Resources {
                     this.tableDataEtterKuttingOgSlipingModel.InitVars();
                 }
             }
+            this.tableDataFraOppdragsgiverPrøverModel = ((DataFraOppdragsgiverPrøverModelDataTable)(base.Tables["DataFraOppdragsgiverPrøverModel"]));
+            if ((initTable == true)) {
+                if ((this.tableDataFraOppdragsgiverPrøverModel != null)) {
+                    this.tableDataFraOppdragsgiverPrøverModel.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +360,8 @@ namespace Final_project.Resources {
             base.Tables.Add(this.tableConcreteDensityModel);
             this.tableDataEtterKuttingOgSlipingModel = new DataEtterKuttingOgSlipingModelDataTable();
             base.Tables.Add(this.tableDataEtterKuttingOgSlipingModel);
+            this.tableDataFraOppdragsgiverPrøverModel = new DataFraOppdragsgiverPrøverModelDataTable();
+            base.Tables.Add(this.tableDataFraOppdragsgiverPrøverModel);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -371,6 +397,12 @@ namespace Final_project.Resources {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeDataEtterKuttingOgSlipingModel() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeDataFraOppdragsgiverPrøverModel() {
             return false;
         }
         
@@ -446,6 +478,9 @@ namespace Final_project.Resources {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void DataEtterKuttingOgSlipingModelRowChangeEventHandler(object sender, DataEtterKuttingOgSlipingModelRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void DataFraOppdragsgiverPrøverModelRowChangeEventHandler(object sender, DataFraOppdragsgiverPrøverModelRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1875,6 +1910,24 @@ namespace Final_project.Resources {
             
             private global::System.Data.DataColumn columnTestDato;
             
+            private global::System.Data.DataColumn columnOverflatetilstand;
+            
+            private global::System.Data.DataColumn columnDm;
+            
+            private global::System.Data.DataColumn columnPrøvetykke;
+            
+            private global::System.Data.DataColumn columnDmPrøvetykkeRatio;
+            
+            private global::System.Data.DataColumn columnTrykkfasthetMPa;
+            
+            private global::System.Data.DataColumn columnFasthetSammenligning;
+            
+            private global::System.Data.DataColumn columnFørSliping;
+            
+            private global::System.Data.DataColumn columnEtterSliping;
+            
+            private global::System.Data.DataColumn columnMmTilTopp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DataEtterKuttingOgSlipingModelDataTable() {
@@ -1926,6 +1979,78 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverflatetilstandColumn {
+                get {
+                    return this.columnOverflatetilstand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DmColumn {
+                get {
+                    return this.columnDm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PrøvetykkeColumn {
+                get {
+                    return this.columnPrøvetykke;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DmPrøvetykkeRatioColumn {
+                get {
+                    return this.columnDmPrøvetykkeRatio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TrykkfasthetMPaColumn {
+                get {
+                    return this.columnTrykkfasthetMPa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FasthetSammenligningColumn {
+                get {
+                    return this.columnFasthetSammenligning;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FørSlipingColumn {
+                get {
+                    return this.columnFørSliping;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EtterSlipingColumn {
+                get {
+                    return this.columnEtterSliping;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MmTilToppColumn {
+                get {
+                    return this.columnMmTilTopp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1961,11 +2086,20 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataEtterKuttingOgSlipingModelRow AddDataEtterKuttingOgSlipingModelRow(System.DateTime IvannbadDato, System.DateTime TestDato) {
+            public DataEtterKuttingOgSlipingModelRow AddDataEtterKuttingOgSlipingModelRow(System.DateTime IvannbadDato, System.DateTime TestDato, string Overflatetilstand, double Dm, double Prøvetykke, double DmPrøvetykkeRatio, double TrykkfasthetMPa, string FasthetSammenligning, double FørSliping, double EtterSliping, double MmTilTopp) {
                 DataEtterKuttingOgSlipingModelRow rowDataEtterKuttingOgSlipingModelRow = ((DataEtterKuttingOgSlipingModelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IvannbadDato,
-                        TestDato};
+                        TestDato,
+                        Overflatetilstand,
+                        Dm,
+                        Prøvetykke,
+                        DmPrøvetykkeRatio,
+                        TrykkfasthetMPa,
+                        FasthetSammenligning,
+                        FørSliping,
+                        EtterSliping,
+                        MmTilTopp};
                 rowDataEtterKuttingOgSlipingModelRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataEtterKuttingOgSlipingModelRow);
                 return rowDataEtterKuttingOgSlipingModelRow;
@@ -1990,6 +2124,15 @@ namespace Final_project.Resources {
             internal void InitVars() {
                 this.columnIvannbadDato = base.Columns["IvannbadDato"];
                 this.columnTestDato = base.Columns["TestDato"];
+                this.columnOverflatetilstand = base.Columns["Overflatetilstand"];
+                this.columnDm = base.Columns["Dm"];
+                this.columnPrøvetykke = base.Columns["Prøvetykke"];
+                this.columnDmPrøvetykkeRatio = base.Columns["DmPrøvetykkeRatio"];
+                this.columnTrykkfasthetMPa = base.Columns["TrykkfasthetMPa"];
+                this.columnFasthetSammenligning = base.Columns["FasthetSammenligning"];
+                this.columnFørSliping = base.Columns["FørSliping"];
+                this.columnEtterSliping = base.Columns["EtterSliping"];
+                this.columnMmTilTopp = base.Columns["MmTilTopp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1999,6 +2142,24 @@ namespace Final_project.Resources {
                 base.Columns.Add(this.columnIvannbadDato);
                 this.columnTestDato = new global::System.Data.DataColumn("TestDato", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTestDato);
+                this.columnOverflatetilstand = new global::System.Data.DataColumn("Overflatetilstand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverflatetilstand);
+                this.columnDm = new global::System.Data.DataColumn("Dm", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDm);
+                this.columnPrøvetykke = new global::System.Data.DataColumn("Prøvetykke", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrøvetykke);
+                this.columnDmPrøvetykkeRatio = new global::System.Data.DataColumn("DmPrøvetykkeRatio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDmPrøvetykkeRatio);
+                this.columnTrykkfasthetMPa = new global::System.Data.DataColumn("TrykkfasthetMPa", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTrykkfasthetMPa);
+                this.columnFasthetSammenligning = new global::System.Data.DataColumn("FasthetSammenligning", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFasthetSammenligning);
+                this.columnFørSliping = new global::System.Data.DataColumn("FørSliping", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFørSliping);
+                this.columnEtterSliping = new global::System.Data.DataColumn("EtterSliping", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEtterSliping);
+                this.columnMmTilTopp = new global::System.Data.DataColumn("MmTilTopp", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMmTilTopp);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2085,6 +2246,337 @@ namespace Final_project.Resources {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DataEtterKuttingOgSlipingModelDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DataFraOppdragsgiverPrøverModelDataTable : global::System.Data.TypedTableBase<DataFraOppdragsgiverPrøverModelRow> {
+            
+            private global::System.Data.DataColumn columnDatomottatt;
+            
+            private global::System.Data.DataColumn columnOverdekningoppgitt;
+            
+            private global::System.Data.DataColumn columnDmax;
+            
+            private global::System.Data.DataColumn columnKjerneImax;
+            
+            private global::System.Data.DataColumn columnKjerneImin;
+            
+            private global::System.Data.DataColumn columnOverflateOK;
+            
+            private global::System.Data.DataColumn columnOverflateUK;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelDataTable() {
+                this.TableName = "DataFraOppdragsgiverPrøverModel";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataFraOppdragsgiverPrøverModelDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected DataFraOppdragsgiverPrøverModelDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DatomottattColumn {
+                get {
+                    return this.columnDatomottatt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverdekningoppgittColumn {
+                get {
+                    return this.columnOverdekningoppgitt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DmaxColumn {
+                get {
+                    return this.columnDmax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn KjerneImaxColumn {
+                get {
+                    return this.columnKjerneImax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn KjerneIminColumn {
+                get {
+                    return this.columnKjerneImin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverflateOKColumn {
+                get {
+                    return this.columnOverflateOK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverflateUKColumn {
+                get {
+                    return this.columnOverflateUK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelRow this[int index] {
+                get {
+                    return ((DataFraOppdragsgiverPrøverModelRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataFraOppdragsgiverPrøverModelRowChangeEventHandler DataFraOppdragsgiverPrøverModelRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataFraOppdragsgiverPrøverModelRowChangeEventHandler DataFraOppdragsgiverPrøverModelRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataFraOppdragsgiverPrøverModelRowChangeEventHandler DataFraOppdragsgiverPrøverModelRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataFraOppdragsgiverPrøverModelRowChangeEventHandler DataFraOppdragsgiverPrøverModelRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddDataFraOppdragsgiverPrøverModelRow(DataFraOppdragsgiverPrøverModelRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelRow AddDataFraOppdragsgiverPrøverModelRow(System.DateTime Datomottatt, string Overdekningoppgitt, string Dmax, short KjerneImax, short KjerneImin, string OverflateOK, string OverflateUK) {
+                DataFraOppdragsgiverPrøverModelRow rowDataFraOppdragsgiverPrøverModelRow = ((DataFraOppdragsgiverPrøverModelRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Datomottatt,
+                        Overdekningoppgitt,
+                        Dmax,
+                        KjerneImax,
+                        KjerneImin,
+                        OverflateOK,
+                        OverflateUK};
+                rowDataFraOppdragsgiverPrøverModelRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataFraOppdragsgiverPrøverModelRow);
+                return rowDataFraOppdragsgiverPrøverModelRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DataFraOppdragsgiverPrøverModelDataTable cln = ((DataFraOppdragsgiverPrøverModelDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DataFraOppdragsgiverPrøverModelDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnDatomottatt = base.Columns["Datomottatt"];
+                this.columnOverdekningoppgitt = base.Columns["Overdekningoppgitt"];
+                this.columnDmax = base.Columns["Dmax"];
+                this.columnKjerneImax = base.Columns["KjerneImax"];
+                this.columnKjerneImin = base.Columns["KjerneImin"];
+                this.columnOverflateOK = base.Columns["OverflateOK"];
+                this.columnOverflateUK = base.Columns["OverflateUK"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnDatomottatt = new global::System.Data.DataColumn("Datomottatt", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDatomottatt);
+                this.columnOverdekningoppgitt = new global::System.Data.DataColumn("Overdekningoppgitt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverdekningoppgitt);
+                this.columnDmax = new global::System.Data.DataColumn("Dmax", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDmax);
+                this.columnKjerneImax = new global::System.Data.DataColumn("KjerneImax", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKjerneImax);
+                this.columnKjerneImin = new global::System.Data.DataColumn("KjerneImin", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKjerneImin);
+                this.columnOverflateOK = new global::System.Data.DataColumn("OverflateOK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverflateOK);
+                this.columnOverflateUK = new global::System.Data.DataColumn("OverflateUK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverflateUK);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelRow NewDataFraOppdragsgiverPrøverModelRow() {
+                return ((DataFraOppdragsgiverPrøverModelRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DataFraOppdragsgiverPrøverModelRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DataFraOppdragsgiverPrøverModelRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DataFraOppdragsgiverPrøverModelRowChanged != null)) {
+                    this.DataFraOppdragsgiverPrøverModelRowChanged(this, new DataFraOppdragsgiverPrøverModelRowChangeEvent(((DataFraOppdragsgiverPrøverModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DataFraOppdragsgiverPrøverModelRowChanging != null)) {
+                    this.DataFraOppdragsgiverPrøverModelRowChanging(this, new DataFraOppdragsgiverPrøverModelRowChangeEvent(((DataFraOppdragsgiverPrøverModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DataFraOppdragsgiverPrøverModelRowDeleted != null)) {
+                    this.DataFraOppdragsgiverPrøverModelRowDeleted(this, new DataFraOppdragsgiverPrøverModelRowChangeEvent(((DataFraOppdragsgiverPrøverModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DataFraOppdragsgiverPrøverModelRowDeleting != null)) {
+                    this.DataFraOppdragsgiverPrøverModelRowDeleting(this, new DataFraOppdragsgiverPrøverModelRowChangeEvent(((DataFraOppdragsgiverPrøverModelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveDataFraOppdragsgiverPrøverModelRow(DataFraOppdragsgiverPrøverModelRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DataFraOppdragsgiverPrøverModelDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2756,6 +3248,158 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Overflatetilstand {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataEtterKuttingOgSlipingModel.OverflatetilstandColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Overflatetilstand\' in table \'DataEtterKuttingOgSlipingModel" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.OverflatetilstandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Dm {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.DmColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dm\' in table \'DataEtterKuttingOgSlipingModel\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.DmColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Prøvetykke {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.PrøvetykkeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Prøvetykke\' in table \'DataEtterKuttingOgSlipingModel\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.PrøvetykkeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double DmPrøvetykkeRatio {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.DmPrøvetykkeRatioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DmPrøvetykkeRatio\' in table \'DataEtterKuttingOgSlipingModel" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.DmPrøvetykkeRatioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double TrykkfasthetMPa {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.TrykkfasthetMPaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TrykkfasthetMPa\' in table \'DataEtterKuttingOgSlipingModel\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.TrykkfasthetMPaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FasthetSammenligning {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataEtterKuttingOgSlipingModel.FasthetSammenligningColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FasthetSammenligning\' in table \'DataEtterKuttingOgSlipingMo" +
+                                "del\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.FasthetSammenligningColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double FørSliping {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.FørSlipingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FørSliping\' in table \'DataEtterKuttingOgSlipingModel\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.FørSlipingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double EtterSliping {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.EtterSlipingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EtterSliping\' in table \'DataEtterKuttingOgSlipingModel\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.EtterSlipingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double MmTilTopp {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataEtterKuttingOgSlipingModel.MmTilToppColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MmTilTopp\' in table \'DataEtterKuttingOgSlipingModel\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataEtterKuttingOgSlipingModel.MmTilToppColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIvannbadDatoNull() {
                 return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.IvannbadDatoColumn);
             }
@@ -2776,6 +3420,332 @@ namespace Final_project.Resources {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTestDatoNull() {
                 this[this.tableDataEtterKuttingOgSlipingModel.TestDatoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverflatetilstandNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.OverflatetilstandColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverflatetilstandNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.OverflatetilstandColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDmNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.DmColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDmNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.DmColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPrøvetykkeNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.PrøvetykkeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPrøvetykkeNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.PrøvetykkeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDmPrøvetykkeRatioNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.DmPrøvetykkeRatioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDmPrøvetykkeRatioNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.DmPrøvetykkeRatioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTrykkfasthetMPaNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.TrykkfasthetMPaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTrykkfasthetMPaNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.TrykkfasthetMPaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFasthetSammenligningNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.FasthetSammenligningColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFasthetSammenligningNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.FasthetSammenligningColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFørSlipingNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.FørSlipingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFørSlipingNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.FørSlipingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEtterSlipingNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.EtterSlipingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEtterSlipingNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.EtterSlipingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMmTilToppNull() {
+                return this.IsNull(this.tableDataEtterKuttingOgSlipingModel.MmTilToppColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMmTilToppNull() {
+                this[this.tableDataEtterKuttingOgSlipingModel.MmTilToppColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DataFraOppdragsgiverPrøverModelRow : global::System.Data.DataRow {
+            
+            private DataFraOppdragsgiverPrøverModelDataTable tableDataFraOppdragsgiverPrøverModel;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataFraOppdragsgiverPrøverModelRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDataFraOppdragsgiverPrøverModel = ((DataFraOppdragsgiverPrøverModelDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime Datomottatt {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDataFraOppdragsgiverPrøverModel.DatomottattColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Datomottatt\' in table \'DataFraOppdragsgiverPrøverModel\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.DatomottattColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Overdekningoppgitt {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataFraOppdragsgiverPrøverModel.OverdekningoppgittColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Overdekningoppgitt\' in table \'DataFraOppdragsgiverPrøverMod" +
+                                "el\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.OverdekningoppgittColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Dmax {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataFraOppdragsgiverPrøverModel.DmaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dmax\' in table \'DataFraOppdragsgiverPrøverModel\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.DmaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short KjerneImax {
+                get {
+                    try {
+                        return ((short)(this[this.tableDataFraOppdragsgiverPrøverModel.KjerneImaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KjerneImax\' in table \'DataFraOppdragsgiverPrøverModel\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.KjerneImaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short KjerneImin {
+                get {
+                    try {
+                        return ((short)(this[this.tableDataFraOppdragsgiverPrøverModel.KjerneIminColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KjerneImin\' in table \'DataFraOppdragsgiverPrøverModel\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.KjerneIminColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OverflateOK {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataFraOppdragsgiverPrøverModel.OverflateOKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OverflateOK\' in table \'DataFraOppdragsgiverPrøverModel\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.OverflateOKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OverflateUK {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataFraOppdragsgiverPrøverModel.OverflateUKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OverflateUK\' in table \'DataFraOppdragsgiverPrøverModel\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataFraOppdragsgiverPrøverModel.OverflateUKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDatomottattNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.DatomottattColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDatomottattNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.DatomottattColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverdekningoppgittNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.OverdekningoppgittColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverdekningoppgittNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.OverdekningoppgittColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDmaxNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.DmaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDmaxNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.DmaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsKjerneImaxNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.KjerneImaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetKjerneImaxNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.KjerneImaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsKjerneIminNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.KjerneIminColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetKjerneIminNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.KjerneIminColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverflateOKNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.OverflateOKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverflateOKNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.OverflateOKColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverflateUKNull() {
+                return this.IsNull(this.tableDataFraOppdragsgiverPrøverModel.OverflateUKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverflateUKNull() {
+                this[this.tableDataFraOppdragsgiverPrøverModel.OverflateUKColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2969,6 +3939,40 @@ namespace Final_project.Resources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DataEtterKuttingOgSlipingModelRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class DataFraOppdragsgiverPrøverModelRowChangeEvent : global::System.EventArgs {
+            
+            private DataFraOppdragsgiverPrøverModelRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelRowChangeEvent(DataFraOppdragsgiverPrøverModelRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataFraOppdragsgiverPrøverModelRow Row {
                 get {
                     return this.eventRow;
                 }
