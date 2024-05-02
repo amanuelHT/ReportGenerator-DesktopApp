@@ -16,6 +16,9 @@
     <Compile Update="Components\LayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\MessageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\ModalForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,9 @@
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\KundeServiceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,6 +109,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\LayoutView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\MessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\ModalForm.xaml">
@@ -169,6 +178,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Tables\TrykktestingTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\KundeServiceView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

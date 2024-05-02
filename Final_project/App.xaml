@@ -67,6 +67,14 @@
                 <views:AddReportView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodels:KundeServiceVM}">
+                <views:KundeServiceView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:MessageVM}">
+                <components:MessageView />
+            </DataTemplate>
+
 
             
             

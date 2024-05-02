@@ -60,6 +60,37 @@ public class FirebaseStore
             title
         });
     }
+
+
+    //public async Task SendMessageAsync(UserInfo user, string message)
+    //{
+    //    try
+    //    {
+    //        // Construct a message to send to the user
+    //        var message = new Message()
+    //        {
+    //            Token = user.FcmToken, // Assuming FCM token is stored in the UserInfo object
+    //            Notification = new Notification()
+    //            {
+    //                Title = "New Message",
+    //                Body = message,
+    //            },
+    //        };
+
+    //        // Send the message asynchronously
+    //        var response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
+
+    //        // Handle the response if needed
+    //        Console.WriteLine("Successfully sent message: " + response);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // Handle any exceptions
+    //        Console.WriteLine("Error sending message: " + ex.Message);
+    //    }
+    //}
+
+
     public async Task DeleteReportAsync(string title)
     {
         // Deletes the report document with the specified title from Firestore collection

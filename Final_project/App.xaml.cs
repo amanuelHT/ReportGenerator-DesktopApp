@@ -81,7 +81,7 @@ namespace Final_project
                  service.AddSingleton<ImageCollectionVM>();
                  service.AddSingleton<ImageVM>();
                  service.AddSingleton<MainViewModel>();
-
+                 service.AddSingleton<KundeServiceVM>();
 
                  // initial navigation 
                  service.AddSingleton<INavigationService>(s => HomeNavigationService(s));
@@ -139,9 +139,7 @@ namespace Final_project
 
                  service.AddTransient<GeneratedReportListVM>(s =>
                   new GeneratedReportListVM(
-                      s.GetRequiredService<FirebaseStore>(),
-                       GeneratedRListNavigationService(s),
-                       s.GetRequiredService<ModalNavigation>()));
+                      s.GetRequiredService<FirebaseStore>()));
 
                  service.AddTransient<ReportViewerVM>(s =>
                         new ReportViewerVM(s.GetRequiredService<ReportStore>(),
@@ -216,7 +214,9 @@ namespace Final_project
                        ReportViewerNavigationService(serviceProvider),
                        HomeNavigationService(serviceProvider),
                        RoleManagementNavigationService(serviceProvider),
-                       UserInfoNavigationService(serviceProvider)
+                       UserInfoNavigationService(serviceProvider),
+                      KundeServiceNavigationService(serviceProvider)
+
                        );
         }
 
@@ -226,6 +226,14 @@ namespace Final_project
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<RoleManagementVM>(),
                 () => serviceProvider.GetRequiredService<NavigationBarVM>());
+        }
+
+        private INavigationService KundeServiceNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<KundeServiceVM>(
+                           serviceProvider.GetRequiredService<NavigationStore>(),
+                   () => serviceProvider.GetRequiredService<KundeServiceVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
         }
 
 

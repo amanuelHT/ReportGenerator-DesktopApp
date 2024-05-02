@@ -12,12 +12,15 @@ namespace Final_project.Commands
         private readonly EditReportVM _editReportVM;
         private readonly NavigationStore _navigationStore;
 
-        public EditReportCommand(EditReportVM editReportVM, ReportStore reportStore, NavigationStore navigationStore)
+        public EditReportCommand(ModalNavigation modalNavigation, EditReportVM editReportVM, ReportStore reportStore, NavigationStore navigationStore)
         {
+            ModalNavigation = modalNavigation;
             _editReportVM = editReportVM;
             _reportStore = reportStore;
             _navigationStore = navigationStore;
         }
+
+        public ModalNavigation ModalNavigation { get; }
 
         public override async Task ExecuteAsync(object parameter)
         {
@@ -33,7 +36,7 @@ namespace Final_project.Commands
 
                 await _reportStore.Update(reportModel);
                 MessageBox.Show("Report has been successfully Updated.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                ModalNavigation.Close();
             }
             catch (Exception)
             {

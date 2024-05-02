@@ -25,10 +25,10 @@
             </StackPanel>
         </RadioButton>
 
-        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateSettingsCommand}">
+        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateKundeServiceCommand}">
             <StackPanel Orientation="Horizontal">
-                    <icon:PackIconMaterial Kind="EyeSettings" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
-                <TextBlock Text="Settings" Style="{StaticResource navtext}" />
+                    <icon:PackIconMaterial Kind="HumanEdit" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
+                <TextBlock Text="KundService" Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
 

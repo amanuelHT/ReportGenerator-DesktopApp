@@ -15,6 +15,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove=".github\**" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove=".github\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove=".github\**" />
+    <None Remove="Properties\**" />
+    <Page Remove=".github\**" />
+    <Page Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BoldReports.WPF" Version="5.4.33" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
@@ -84,14 +95,6 @@
     <None Update="Resources\serviceAccountKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".github\Workflow\DepoloyReportGenerator.yml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,6 +8,7 @@ namespace Final_project.ViewModels
         public ReportModel ReportModel { get; private set; }
 
         public string Tittle => ReportModel.Tittle;
+        public bool Status => ReportModel.Status;
 
 
         public ReportStore ReportStore { get; }
@@ -30,6 +31,7 @@ namespace Final_project.ViewModels
         {
             ReportModel = reportModel;
             OnPropertyChanged(nameof(Tittle));
+            OnPropertyChanged(nameof(Status));
         }
     }
 }

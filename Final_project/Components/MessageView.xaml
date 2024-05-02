@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Final_project.Components.MessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Final_project.Components" xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MessageVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="300">
+    
+    <!-- Chat Box (Right Half) -->
+    <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+            <!-- Top Row for List Box -->
+            <RowDefinition Height="*" />
+            <!-- Middle Row for Chat History -->
+            <RowDefinition Height="*" />
+            <!-- Bottom Row for Chat Box -->
+            <RowDefinition Height="Auto" />            <RowDefinition Height="Auto" />
+            
+        </Grid.RowDefinitions>
+
+        <!-- List Box for Chat History -->
+        <ListBox Grid.Row="0" ItemsSource="{Binding Messages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:MessageView />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Chat History -->
+        <ScrollViewer Grid.Row="1">
+            <TextBlock Text="{Binding ChatHistory}" TextWrapping="Wrap" />
+        </ScrollViewer>
+
+        <!-- Chat Box for Input -->
+        <TextBox Grid.Row="2" x:Name="MessageInputBox" Margin="0,10,0,0" Text="{Binding Content, Mode=TwoWay}" />
+
+        <!-- Add Send Button or other controls as needed -->
+        <Button Grid.Row="3" Content="Send" Command="{Binding SendMessageCommand}" />
+    </Grid>
+
+</UserControl>

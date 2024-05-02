@@ -14,7 +14,7 @@ namespace Final_project.ViewModels
         public Guid ReportId { get; private set; }
         public ReportFormVM ReportFormVM { get; private set; }
 
-        public EditReportVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation modalNavigation, NavigationStore navigationStore)
+        public EditReportVM(ReportModel reportModel, ReportStore reportStore, ModalNavigation modalNavigation, NavigationStore navigationStore, ModalNavigation modalWindowVM)
         {
             _reportStore = reportStore;
             if (reportModel == null)
@@ -24,7 +24,7 @@ namespace Final_project.ViewModels
 
             ReportId = reportModel.Id;
 
-            ICommand submitCommand = new EditReportCommand(this, reportStore, navigationStore);
+            ICommand submitCommand = new EditReportCommand(modalWindowVM, this, reportStore, navigationStore);
             ICommand cancelCommand = new CloseModalCommand(navigationStore);
 
             // Pass ReportId to ReportFormVM

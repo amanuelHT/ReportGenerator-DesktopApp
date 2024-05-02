@@ -3,35 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Final_project.Components"
-               xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:ReportListingItemVM}"
+             xmlns:local="clr-namespace:Final_project.Components" 
+             xmlns:conv="clr-namespace:Final_project.Converters"
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" 
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
 
 
+    <UserControl.Resources>
 
-    
+        <conv:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
+
     <Border Padding="10" TextBlock.FontSize="18" Background="Transparent">
-   
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <TextBlock Text="{Binding Tittle}"
-                           Foreground="Black" 
-                          />
-
-              
+                <TextBlock Text="{Binding Tittle}" Foreground="Black" />
             </StackPanel>
 
-          
+         
+            <StackPanel Grid.Column="1">
+
+                <icon:PackIconMaterial x:Name="StatusIcon" Kind="Check" Visibility="{Binding Status, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
         </Grid>
     </Border>
-
 </UserControl>

@@ -36,7 +36,9 @@ namespace Final_project.Commands
                 }
 
                 await _reportStore.Add(reportModel);
+
                 MessageBox.Show("Report has been added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                _modalWindow.Close();
             }
             catch (ValidationException ex)
             {

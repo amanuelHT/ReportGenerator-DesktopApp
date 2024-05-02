@@ -52,7 +52,7 @@ public class OpenEditCommand : CommandBase
 
 
         // Create and navigate to the edit report view model
-        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore);
+        EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore, _modalNavigation);
 
 
         _modalNavigation.ShowReportWindow(new EditReportView { DataContext = editReportVM }, "Edit Report");

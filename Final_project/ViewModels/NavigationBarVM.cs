@@ -18,6 +18,7 @@ namespace Final_project.ViewModels
         public bool IsLoggedOut => _accountStore.IsLoggedOut;
 
         public ICommand NavigateSettingsCommand { get; }
+        public ICommand NavigateKundeServiceCommand { get; }
         public ICommand NavigateAccountCommand { get; }
         public ICommand NavigateLoginCommand { get; }
         public ICommand NavigateGeneratedReportListingCommand { get; }
@@ -37,7 +38,8 @@ namespace Final_project.ViewModels
                 INavigationService reportViewernavigarionService,
                 INavigationService HomeNavigationService,
                 INavigationService roleManagementNavigationService,
-                INavigationService UserInfoNavigationService)
+                INavigationService UserInfoNavigationService,
+                INavigationService navigateKundeServiceCommand)
         {
             _accountStore = accountStore;
             _navigationService = roleManagementNavigationService;
@@ -51,6 +53,9 @@ namespace Final_project.ViewModels
             LogoutCommand = new LogoutCommand(_accountStore);
             NavigateRoleManagementViewCommand = new NavigateCommand(roleManagementNavigationService);
             NavigateUserInfoCommand = new NavigateCommand(UserInfoNavigationService);
+            NavigateKundeServiceCommand = new NavigateCommand(navigateKundeServiceCommand
+
+                 );
 
 
             _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;
