@@ -138,8 +138,10 @@ namespace Final_project
                  //       s.GetRequiredKeyedService<firebaseAuthProvider>()));
 
                  service.AddTransient<GeneratedReportListVM>(s =>
-                  new GeneratedReportListVM(s.GetRequiredService<FirebaseStore>(),
-                     GeneratedRListNavigationService(s)));
+                  new GeneratedReportListVM(
+                      s.GetRequiredService<FirebaseStore>(),
+                       GeneratedRListNavigationService(s),
+                       s.GetRequiredService<ModalNavigation>()));
 
                  service.AddTransient<ReportViewerVM>(s =>
                         new ReportViewerVM(s.GetRequiredService<ReportStore>(),

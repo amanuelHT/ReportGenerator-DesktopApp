@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Final_project.Service;
+using Final_project.Stores;
+using Firebase.Auth;
 using Microsoft.Win32;
+using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
@@ -12,15 +15,23 @@ namespace Final_project.ViewModels
     public partial class GeneratedReportListVM : ObservableObject
     {
         private readonly FirebaseStore _firebaseStore;
+        private readonly ModalNavigation _modalNavigation;
 
         public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
+
+        public ObservableCollection<UserInfo> Users { get; }
+
         public string SelectedItem { get; set; }
         public string PdfFilePath { get; set; }
+        public INavigationService NavigationService { get; }
+        public FirebaseAuthProvider firebaseAuthProvider { get; set; }
 
-
-        public GeneratedReportListVM(FirebaseStore storageService, INavigationService navigationService)
+        public GeneratedReportListVM(FirebaseStore storageService, INavigationService navigationService, ModalNavigation modalNavigation)
         {
             _firebaseStore = storageService;
+            NavigationService = navigationService;
+            _modalNavigation = modalNavigation;
+            Users = new ObservableCollection<UserInfo>();
 
             Initialize();
         }
@@ -33,6 +44,25 @@ namespace Final_project.ViewModels
                 Items.Add(title);
             }
         }
+        [RelayCommand]
+        private async void SendDocument()
+        {
+            // Create an instance of UserInfoVM
+            UserInfoVM userInfoVM = new UserInfoVM(firebaseAuthProvider, NavigationService);
+
+            // Load users into UserInfoVM
+            await userInfoVM.LoadUsersAsync(firebaseAuthProvider);
+
+            // Add users to the Users collection of GeneratedReportListVM
+            foreach (var user in userInfoVM.Users)
+            {
+                Users.Add(user);
+            }
+
+        }
+
+
+
 
         [RelayCommand]
         private async void Upload()

@@ -7,9 +7,7 @@
              xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GeneratedReportListVM}" x:Class="Final_project.Views.GeneratedReportsList"
              mc:Ignorable="d" Height="790" Width="1296"
              Background="Transparent"
-            xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
-           
-               >
+            xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:stores="clr-namespace:Final_project.Stores">
 
 
     <Grid Background="Transparent">
@@ -19,8 +17,9 @@
         </Grid.ColumnDefinitions>
 
         <!-- Left side -->
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Margin="0,0,1066,0" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -38,7 +37,9 @@
             <Button Style="{StaticResource buttonSecondary}" Grid.Row="1" x:Name="UploadButton" Content="Upload file" Command="{Binding UploadCommand}"  Background="LightSlateGray" Margin="0,10,0,0" />
 
             <!-- ListBox -->
-            <ListBox  Style="{StaticResource ListBoxStyle}" Grid.Row="2" x:Name="ReportsListBox" ItemsSource="{Binding Items}" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Margin="0,10,0,0" />
+            <ListBox  Style="{StaticResource ListBoxStyle}" Grid.Row="2" x:Name="ReportsListBox" ItemsSource="{Binding Items}" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Margin="0,40,0,0" />
+            <ListBox ItemsSource="{Binding Users}" DisplayMemberPath="UserName" Grid.Row="3" Foreground="Black"/>
+
         </Grid>
 
         <!-- Right side -->
@@ -69,7 +70,10 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource buttonsWithIcon}" Content="Send file" Command="{Binding SendCommand}" Margin="80,0,0,0" />
+                
+                    
+
+                    <Button Style="{StaticResource buttonsWithIcon}" Content="Send file" Command="{Binding SendDocumentCommand}" Margin="80,0,0,0" />
                 </Grid>
             </StackPanel>
 
