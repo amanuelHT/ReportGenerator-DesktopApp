@@ -33,7 +33,6 @@ namespace Final_project.Views
             {
                 var _viewModel = DataContext as GeneratedReportListVM;
 
-
                 string selectedItem = listBox.SelectedItem.ToString();
                 string pdfFileName = selectedItem + ".pdf";
 
@@ -46,7 +45,13 @@ namespace Final_project.Views
                 string downloadUrl = await task;
                 LoadPDF(downloadUrl);
             }
+            else
+            {
+                // Clear the pdfViewer if no item is selected
+
+            }
         }
+
 
     }
 }

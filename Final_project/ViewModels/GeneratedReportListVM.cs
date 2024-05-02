@@ -69,6 +69,8 @@ namespace Final_project.ViewModels
 
                 Items.Clear();
                 Initialize();
+
+
             }
         }
 
