@@ -138,6 +138,9 @@
     <Page Update="Styles\EllipseStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\ListBoxStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\NavigationButtons.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -130,6 +130,7 @@
                 <ResourceDictionary Source="Styles/CustomModalView.xaml"/>
                 <ResourceDictionary Source="Styles/EllipseStyle.xaml"/>
                 <ResourceDictionary Source="Styles/DataGridStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ListBoxStyling.xaml"/>
 
                 <!--<ResourceDictionary Source="Styles/DropDownstyle.xaml"/>-->
                 
