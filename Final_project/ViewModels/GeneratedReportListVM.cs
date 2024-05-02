@@ -108,20 +108,28 @@ namespace Final_project.ViewModels
         [RelayCommand]
         private async void Download()
         {
-            var downloadUrl = await _firebaseStore.GetDownloadUrlAsync(PdfFilePath);
-
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
-            saveFileDialog.FileName = Path.GetFileName(PdfFilePath);
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                string localFilePath = saveFileDialog.FileName;
-                using (var webClient = new WebClient())
+                var downloadUrl = await _firebaseStore.GetDownloadUrlAsync(PdfFilePath);
+
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+                saveFileDialog.FileName = Path.GetFileName(PdfFilePath);
+                if (saveFileDialog.ShowDialog() == true)
                 {
-                    await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
+                    string localFilePath = saveFileDialog.FileName;
+                    using (var webClient = new WebClient())
+                    {
+                        await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
+                    }
+                    MessageBox.Show("File downloaded and saved successfully");
                 }
-                MessageBox.Show("File downloaded and saved successfully");
             }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while downloading the report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
 
