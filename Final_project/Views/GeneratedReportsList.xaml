@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Final_project.Views"
-             xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="Final_project.Views.GeneratedReportsList"
+             xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GeneratedReportListVM}" x:Class="Final_project.Views.GeneratedReportsList"
              mc:Ignorable="d" Height="790" Width="1296"
                Background="Transparent"
     
@@ -29,11 +29,12 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Search" FontSize="16" Foreground="{StaticResource IconColor5}"/>
                 <Rectangle Width="10"/>
-                <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" />
+                <!--<TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" />-->
+          
             </StackPanel>
 
             <!-- Upload button -->
-            <Button Style="{StaticResource buttonSecondary}" Grid.Row="1" x:Name="UploadButton" Content="Upload file" Click="UploadButton_Click" Background="LightSlateGray" Margin="0,10,0,0" />
+            <Button Style="{StaticResource buttonSecondary}" Grid.Row="1" x:Name="UploadButton" Content="Upload file" Command="{Binding UploadCommand}"  Background="LightSlateGray" Margin="0,10,0,0" />
 
             <!-- ListBox -->
             <ListBox  Style="{StaticResource ListBoxStyle}" Grid.Row="2" x:Name="ReportsListBox" ItemsSource="{Binding Items}" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Margin="0,10,0,0" />
@@ -51,8 +52,8 @@
 
             <!-- Buttons underneath the PDF viewer -->
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                <Button Style="{StaticResource buttonsWithIcon}" x:Name="DownloadButton" Content="Download" Click="DownloadButton_Click" Margin="50,0,170,0" />
-                <Button  Style="{StaticResource buttonsWithIcon}" x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"  Margin="50,0,0,0" />
+                <Button Style="{StaticResource buttonsWithIcon}" x:Name="DownloadButton" Content="Download" Command="{Binding DownloadCommand}" Margin="50,0,170,0" />
+                <Button  Style="{StaticResource buttonsWithIcon}" x:Name="DeleteButton" Content="Delete"  Command="{Binding DeleteCommand}" Margin="50,0,0,0" />
             </StackPanel>
         </Grid>
     </Grid>

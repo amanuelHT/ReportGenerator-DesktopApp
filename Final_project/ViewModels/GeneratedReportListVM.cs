@@ -1,39 +1,98 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Final_project.Commands;
+using CommunityToolkit.Mvvm.Input;
 using Final_project.Service;
-using Final_project.Stores;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.IO;
+using System.Net;
+using System.Windows;
 
 namespace Final_project.ViewModels
 {
-    public class GeneratedReportListVM : ObservableObject
+    public partial class GeneratedReportListVM : ObservableObject
     {
-        private readonly GeneratedReportStore _generatedReportStore;
+        private readonly FirebaseStore _firebaseStore;
 
-        private readonly ObservableCollection<GeneratedReportVM> _generatedReport;
+        public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
+        public string SelectedItem { get; set; }
+        public string PdfFilePath { get; set; }
 
-        public IEnumerable<GeneratedReportVM> GeneratedReport => _generatedReport;
 
-        public ICommand command { get; }
-        public GeneratedReportListVM(GeneratedReportStore peopleStore, INavigationService navigationService)
+        public GeneratedReportListVM(FirebaseStore storageService, INavigationService navigationService)
         {
-            command = new NavigateCommand(navigationService);
+            _firebaseStore = storageService;
 
-            _generatedReportStore = peopleStore;
-
-            _generatedReport = new ObservableCollection<GeneratedReportVM>();
-
-            _generatedReport.Add(new GeneratedReportVM("Report 1"));
-            _generatedReport.Add(new GeneratedReportVM("Report 2"));
-            _generatedReport.Add(new GeneratedReportVM("Report 3"));
-
-            _generatedReportStore.ReportAdded += OnPersonAdded;
+            Initialize();
         }
 
-        private void OnPersonAdded(string name)
+        private async void Initialize()
         {
-            _generatedReport.Add(new GeneratedReportVM(name));
+            var reportTitles = await _firebaseStore.GetReportTitlesAsync();
+            foreach (var title in reportTitles)
+            {
+                Items.Add(title);
+            }
         }
+
+        [RelayCommand]
+        private async void Upload()
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            bool? response = openFileDialog.ShowDialog();
+
+            if (response == true)
+            {
+                string filepath = openFileDialog.FileName;
+                string filename = Path.GetFileName(filepath);
+                string filenameWithoutExtension = Path.GetFileNameWithoutExtension(filepath);
+                var stream = File.Open(filepath, FileMode.Open);
+
+                await _firebaseStore.UploadReportAsync(stream, filename);
+                await _firebaseStore.AddReportAsync(filenameWithoutExtension);
+
+                Items.Clear();
+                Initialize();
+            }
+        }
+
+        [RelayCommand]
+        private async void Delete()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                await _firebaseStore.DeleteReportAsync(PdfFilePath);
+                await _firebaseStore.DeleteReportAsync(Path.GetFileNameWithoutExtension(PdfFilePath));
+
+                Items.Clear();
+                Initialize();
+            }
+        }
+
+
+        [RelayCommand]
+        private async void Download()
+        {
+            var downloadUrl = await _firebaseStore.GetDownloadUrlAsync(PdfFilePath);
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FileName = Path.GetFileName(PdfFilePath);
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string localFilePath = saveFileDialog.FileName;
+                using (var webClient = new WebClient())
+                {
+                    await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
+                }
+                MessageBox.Show("File downloaded and saved successfully");
+            }
+        }
+
+
+
     }
 }

@@ -69,6 +69,8 @@ namespace Final_project
                  service.AddSingleton<ModalNavigation>();
                  service.AddSingleton<AccountStore>();
                  service.AddSingleton<NavigationStore>();
+                 service.AddSingleton<FirebaseStore>();
+
                  service.AddSingleton<GeneratedReportStore>();
                  service.AddSingleton<ReportStore>();
 
@@ -136,7 +138,7 @@ namespace Final_project
                  //       s.GetRequiredKeyedService<firebaseAuthProvider>()));
 
                  service.AddTransient<GeneratedReportListVM>(s =>
-                  new GeneratedReportListVM(s.GetRequiredService<GeneratedReportStore>(),
+                  new GeneratedReportListVM(s.GetRequiredService<FirebaseStore>(),
                      GeneratedRListNavigationService(s)));
 
                  service.AddTransient<ReportViewerVM>(s =>

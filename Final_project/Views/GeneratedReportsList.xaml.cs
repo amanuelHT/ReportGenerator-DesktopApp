@@ -1,49 +1,17 @@
-﻿using Firebase.Storage;
-using Google.Cloud.Firestore;
-using Microsoft.Win32;
-using System.Collections.ObjectModel;
+﻿using Final_project.ViewModels; // Import your view model namespace here
+using Firebase.Storage;
 using System.IO;
 using System.Net;
-using System.Windows;
 using System.Windows.Controls;
-using Syncfusion.Windows.PdfViewer;
-
 
 namespace Final_project.Views
 {
-    /// <summary>
-    /// Interaction logic for GeneratedReportsList.xaml
-    /// </summary>
     public partial class GeneratedReportsList : UserControl
     {
-        public ObservableCollection<string> Items { get; set; } = new ObservableCollection<string>();
-        public string PdfFilePath { get; set; }
-        public CollectionReference collectionRef { get; set; }
-        public QuerySnapshot snapshot;
 
         public GeneratedReportsList()
         {
             InitializeComponent();
-            ReportsList();
-            DataContext = this;
-            pdfViewer.ZoomMode = ZoomMode.FitWidth;
-        }
-        private async void ReportsList()
-        {
-            string path = @"..\..\hprd-24-040-firebase-adminsdk-l7jhz-64ddf61372.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            FirestoreDb db = FirestoreDb.Create("hprd-24-040");
-
-            collectionRef = db.Collection("reports");
-            snapshot = await collectionRef.GetSnapshotAsync();
-
-            foreach (DocumentSnapshot document in snapshot.Documents)
-            {
-                if (document.TryGetValue("title", out object title))
-                {
-                    Items.Add(title.ToString());
-                }
-            }
 
         }
 
@@ -63,137 +31,21 @@ namespace Final_project.Views
         {
             if (sender is ListBox listBox && listBox.SelectedItem != null)
             {
+                var _viewModel = DataContext as GeneratedReportListVM;
+
 
                 string selectedItem = listBox.SelectedItem.ToString();
                 string pdfFileName = selectedItem + ".pdf";
 
-                PdfFilePath = "reports/" + pdfFileName;
-                
+                _viewModel.PdfFilePath = "reports/" + pdfFileName;
+
                 var task = new FirebaseStorage("hprd-24-040.appspot.com")
-                    .Child(PdfFilePath)
+                    .Child(_viewModel.PdfFilePath)
                     .GetDownloadUrlAsync();
 
                 string downloadUrl = await task;
                 LoadPDF(downloadUrl);
             }
-        }
-
-        private async void UploadButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Multiselect = true;
-
-            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
-
-            bool? response = openFileDialog.ShowDialog();
-
-            if (response == true)
-            {
-                string filepath = openFileDialog.FileName;
-                string filename = System.IO.Path.GetFileName(filepath);
-                string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filepath);
-
-                var stream = File.Open(filepath, FileMode.Open);
-
-                var task = new FirebaseStorage("hprd-24-040.appspot.com")
-                    .Child("reports")
-                    .Child(filename)
-                    .PutAsync(stream);
-
-
-                string path = @"..\..\hprd-24-040-firebase-adminsdk-l7jhz-64ddf61372.json";
-                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-                FirestoreDb db = FirestoreDb.Create("hprd-24-040");
-                collectionRef = db.Collection("reports");
-                Google.Cloud.Firestore.DocumentReference document = await collectionRef.AddAsync(new
-                {
-                    title = filenameWithoutExtension,
-                });
-
-                await System.Threading.Tasks.Task.Delay(1000);
-
-                Items.Clear();
-                ReportsList();
-
-            }
-        }
-
-        private async void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    var storage = new FirebaseStorage("hprd-24-040.appspot.com");
-
-                    await storage.Child(PdfFilePath).DeleteAsync();
-
-                    FirestoreDb db = FirestoreDb.Create("hprd-24-040");
-
-                    CollectionReference collectionRef = db.Collection("reports");
-
-                    string ReportTitle = System.IO.Path.GetFileNameWithoutExtension(PdfFilePath);
-                    MessageBox.Show(ReportTitle);
-                    QuerySnapshot querySnapshot = await collectionRef.WhereEqualTo("title", ReportTitle).GetSnapshotAsync();
-
-                    foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
-                    {
-                        string documentId = documentSnapshot.Id;
-
-                        await collectionRef.Document(documentId).DeleteAsync();
-                    }
-
-                    Items.Clear();
-                    ReportsList();
-                }
-            }
-            catch(Exception) {
-                MessageBox.Show("An error occurred while deleting the report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-        }
-
-        private async void DownloadButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                var storage = new FirebaseStorage("hprd-24-040.appspot.com");
-
-                var fileReference = storage.Child(PdfFilePath);
-
-                string downloadUrl = await fileReference.GetDownloadUrlAsync();
-
-                var saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
-                saveFileDialog.FileName = System.IO.Path.GetFileName(PdfFilePath);
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    string localFilePath = saveFileDialog.FileName;
-
-                    // Download the file content from the download URL
-                    using (var webClient = new WebClient())
-                    {
-                        await webClient.DownloadFileTaskAsync(new System.Uri(downloadUrl), localFilePath);
-                    }
-
-                    Console.WriteLine("File downloaded and saved successfully");
-                }
-            }
-            catch (Exception) {
-                MessageBox.Show("An error occurred while downloading the report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-        }
-
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string searchText = SearchTextBox.Text.ToLower();
-            var filteredItems = Items.Where(item => item.ToLower().Contains(searchText)).ToList();
-
-            ReportsListBox.ItemsSource = filteredItems;
         }
 
     }
