@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Components;
 using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
@@ -75,6 +76,7 @@ namespace Final_project
                  service.AddSingleton<ReportStore>();
 
                  service.AddTransient<ModalWindow>();
+                 service.AddTransient<MessageView>();
 
 
 
@@ -82,6 +84,7 @@ namespace Final_project
                  service.AddSingleton<ImageVM>();
                  service.AddSingleton<MainViewModel>();
                  service.AddSingleton<KundeServiceVM>();
+                 service.AddSingleton<MessageVM>();
 
                  // initial navigation 
                  service.AddSingleton<INavigationService>(s => HomeNavigationService(s));
@@ -123,7 +126,7 @@ namespace Final_project
 
 
 
-                 //service.AddTransient<LoginVM>(s => new LoginVM(ResetPasswordNavigarionService(s)));
+                 //service.AddTransient<LoginVM>(s => new LoginVM(LoginNavigarionService(s)));
 
                  service.AddTransient<LoginVM>(s => new LoginVM(
                        s.GetRequiredService<AccountStore>(),
@@ -207,9 +210,9 @@ namespace Final_project
 
             return new NavigationBarVM(
                  serviceProvider.GetRequiredService<AccountStore>(),
-                  LoginNavigarionService(serviceProvider),
                   SettingsNavigarionService(serviceProvider),
                     AccountNavigarionService(serviceProvider),
+                      LoginNavigarionService(serviceProvider),
                        GeneratedRListNavigationService(serviceProvider),
                        ReportViewerNavigationService(serviceProvider),
                        HomeNavigationService(serviceProvider),
@@ -292,14 +295,8 @@ namespace Final_project
         {
             return new LayoutNavigationService<LoginVM>(
               serviceProvider.GetRequiredService<NavigationStore>(),
-                 () => new LoginVM(
-                serviceProvider.GetRequiredService<AccountStore>(),
-                AccountNavigarionService(serviceProvider),
-                serviceProvider.GetRequiredService<FirebaseAuthProvider>(),
-                ResetPasswordNavigarionService(serviceProvider)
-            ),
-            () => CreateNavigationBarViewModel(serviceProvider)
-        );
+                   () => serviceProvider.GetRequiredService<LoginVM>(),
+                  () => serviceProvider.GetRequiredService<NavigationBarVM>());
         }
 
 

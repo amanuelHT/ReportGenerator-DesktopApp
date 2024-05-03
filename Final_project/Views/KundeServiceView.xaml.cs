@@ -24,5 +24,15 @@ namespace Final_project.Views
         {
             InitializeComponent();
         }
+
+        private void MessageView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MessageView_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,31 +1,55 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using Report_Generator_Domain.Models;
+using System.Collections.ObjectModel;
+using System.IO;
 
 namespace Final_project.ViewModels
 {
     public partial class MessageVM : ObservableObject
     {
-
-        // Instance of KundeServiceVM to access the selected user
         private KundeServiceVM _kundeServiceVM;
+        private readonly FirebaseStore _firebaseStore;
+        public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
 
-        public MessageVM(KundeServiceVM kundeServiceVM)
+        public MessageVM(KundeServiceVM kundeServiceVM, FirebaseStore firebaseStore)
         {
             _kundeServiceVM = kundeServiceVM ?? throw new ArgumentNullException(nameof(kundeServiceVM));
+            _firebaseStore = firebaseStore;
+            _kundeServiceVM.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
+                {
+                    // Perform any necessary actions when the selected user changes
+                    // For example, you can update UI or perform validations
+                    OnPropertyChanged(nameof(SelectedUser));
+                }
+            };
         }
 
-        [ObservableProperty]
-        public string _content;
+        public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
 
-        [ObservableProperty]
-        public UserInfo _sender;
 
+        private string _content;
+
+        public string Content
+        {
+            get => _content;
+            set => SetProperty(ref _content, value);
+        }
+
+        private string _fileName;
+
+        public string FileName
+        {
+            get => _fileName;
+            set => SetProperty(ref _fileName, value);
+        }
 
         [RelayCommand]
-        private void SendMessage()
+        private async void SendMessage()
         {
-            // Ensure a user is selected
             if (_kundeServiceVM.SelectedUser == null)
             {
                 // Handle the case where no user is selected
@@ -34,22 +58,52 @@ namespace Final_project.ViewModels
 
             try
             {
-                // Create a new instance of MessageModel with the necessary parameters
-                var message = new MessageModel(Content, Sender, _kundeServiceVM.SelectedUser);
+                // Create a new message model with the file name
+                var message = new MessageModel(Content, _kundeServiceVM.Admin, _kundeServiceVM.SelectedUser.UserId.ToString(), FileName);
 
-                // Logic to send the message
+                // Save the message in Firestore using the FirebaseStore instance
+                await _firebaseStore.SendMessageAsync(message);
 
-                // Once the message is sent, you might want to clear the input box
-                // and update the UI accordingly
-                //MessageInputBox.Text = ""; // Clear the input box
+                // Optionally, you can add the saved message to a local collection for display
+                // messages.Add(message);
 
-                // You might also want to update the chat history immediately
-                // instead of waiting for the next refresh cycle
-                // ChatHistory += $"{_sender.Name}: {_content}\n";
+                // Clear the content and file name after sending the message
+                Content = "";
+                FileName = "";
+
+                // Optionally, you can notify observers that a message has been sent
+                // OnPropertyChanged(nameof(messages));
             }
             catch (Exception ex)
             {
                 // Handle any exceptions that might occur during message sending
+            }
+        }
+
+        [RelayCommand]
+        public async void Upload()
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            bool? response = openFileDialog.ShowDialog();
+
+            if (response == true)
+            {
+                FileName = Path.GetFileName(openFileDialog.FileName); // Store only the file name
+
+                // Open the file stream
+                using (var stream = openFileDialog.OpenFile())
+                {
+                    // Upload the file to Firebase Storage
+                    await _firebaseStore.UploadReportAsync(stream, FileName);
+
+                    // Add the file to the Firestore database
+                    await _firebaseStore.AddReportAsync(FileName);
+                }
+
+                // Clear the items collection
+                Items.Clear();
             }
         }
     }

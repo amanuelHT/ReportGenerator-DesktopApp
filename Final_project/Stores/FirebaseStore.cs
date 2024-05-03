@@ -1,5 +1,6 @@
 ﻿using Firebase.Storage;
 using Google.Cloud.Firestore;
+using Report_Generator_Domain.Models;
 using System.IO;
 
 public class FirebaseStore
@@ -62,33 +63,36 @@ public class FirebaseStore
     }
 
 
-    //public async Task SendMessageAsync(UserInfo user, string message)
-    //{
-    //    try
-    //    {
-    //        // Construct a message to send to the user
-    //        var message = new Message()
-    //        {
-    //            Token = user.FcmToken, // Assuming FCM token is stored in the UserInfo object
-    //            Notification = new Notification()
-    //            {
-    //                Title = "New Message",
-    //                Body = message,
-    //            },
-    //        };
+    public async Task SendMessageAsync(MessageModel messageModel)
+    {
+        try
+        {
+            // Create a reference to the messages collection in Firestore
+            CollectionReference collectionRef = _db.Collection("Messages");
 
-    //        // Send the message asynchronously
-    //        var response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
+            // Create a new document with the message details
+            DocumentReference docRef = await collectionRef.AddAsync(new
+            {
+                Content = messageModel.Content,
+                Sender = messageModel.Sender,
+                Receiver = messageModel.Receiver,
+                Filepath = messageModel.Filepath,
+                Timestamp = DateTime.UtcNow // Optionally, include a timestamp
+            });
 
-    //        // Handle the response if needed
-    //        Console.WriteLine("Successfully sent message: " + response);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // Handle any exceptions
-    //        Console.WriteLine("Error sending message: " + ex.Message);
-    //    }
-    //}
+            // Optionally, you can retrieve the ID of the newly created document
+            string messageId = docRef.Id;
+
+            // Handle the response if needed
+            Console.WriteLine("Successfully sent message with ID: " + messageId);
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions
+            Console.WriteLine("Error sending message: " + ex.Message);
+        }
+    }
+
 
 
     public async Task DeleteReportAsync(string title)

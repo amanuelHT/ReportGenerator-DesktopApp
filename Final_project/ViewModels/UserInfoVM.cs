@@ -37,6 +37,7 @@ namespace Final_project.ViewModels
                 foreach (var doc in usersSnapshot.Documents)
                 {
                     UserInfo userInfo = doc.ConvertTo<UserInfo>();
+                    userInfo.UserId = doc.Id;
                     Users.Add(userInfo);
                 }
             }

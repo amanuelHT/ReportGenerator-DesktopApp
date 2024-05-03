@@ -27,7 +27,7 @@
     <SolidColorBrush x:Key="BorderPrimary" Color="#1c1c1c" />
 
 
-    <Style TargetType="TextBox">
+        <Style TargetType="TextBox">
 
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="11"/>

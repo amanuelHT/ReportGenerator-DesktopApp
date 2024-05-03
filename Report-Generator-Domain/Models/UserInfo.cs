@@ -5,6 +5,10 @@ namespace Report_Generator_Domain.Models
     [FirestoreData]
     public class UserInfo
     {
+
+        [FirestoreProperty]
+        public string UserId { get; set; }
+
         [FirestoreProperty]
         public string FirstName { get; set; }
 

@@ -2,16 +2,19 @@
 {
     public class MessageModel
     {
+        public int Id { get; set; }
         public string Content { get; set; }
-        public UserInfo Sender { get; set; }
-        public UserInfo Receiver { get; set; }
+        public string Sender { get; set; }
+        public string Receiver { get; set; }
+        public string Filepath { get; set; }
 
         // Constructor with parameters
-        public MessageModel(string content, UserInfo sender, UserInfo receiver)
+        public MessageModel(string content, string sender, string receiver, string filepath)
         {
             Content = content;
             Sender = sender;
             Receiver = receiver;
+            Filepath = filepath;
         }
 
     }
