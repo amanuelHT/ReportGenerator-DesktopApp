@@ -20,16 +20,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--<ItemsControl ItemsSource="{Binding FilteredMessages}">
-            <ItemsControl.ItemTemplate>
+        <ListBox ItemsSource="{Binding FilteredMessages}">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Sender}"  Foreground="White"/>
-                        <TextBlock Text="{Binding Content}"  Background="red"/>
+                        <TextBlock Text="{Binding Content}" Foreground="Black"/>
                     </StackPanel>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">

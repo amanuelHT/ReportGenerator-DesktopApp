@@ -16,7 +16,6 @@ namespace Final_project.ViewModels
 
         public ObservableCollection<MessageModel> Messages { get; } = new ObservableCollection<MessageModel>();
 
-        ObservableCollection<MessageModel> FilteredMessages { get; }
 
         public MessageVM(KundeServiceVM kundeServiceVM, FirebaseStore firebaseStore)
         {
@@ -27,7 +26,6 @@ namespace Final_project.ViewModels
 
 
 
-            FilteredMessages = SelectedUser == null ? Messages : new ObservableCollection<MessageModel>(Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString()));
 
 
             _kundeServiceVM.PropertyChanged += (sender, e) =>
@@ -37,6 +35,16 @@ namespace Final_project.ViewModels
                     // Perform any necessary actions when the selected user changes
                     // For example, you can update UI or perform validations
                     OnPropertyChanged(nameof(SelectedUser));
+                }
+            };
+
+
+            _kundeServiceVM.PropertyChanged += async (sender, e) =>
+            {
+                if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
+                {
+                    // Perform filtering whenever the selected user changes
+                    OnPropertyChanged(nameof(FilteredMessages));
                 }
             };
         }
@@ -66,6 +74,18 @@ namespace Final_project.ViewModels
             set => SetProperty(ref _fileName, value);
         }
 
+        public ObservableCollection<MessageModel> FilteredMessages
+        {
+            get
+            {
+                if (SelectedUser == null)
+                    return Messages;
+                else
+                    return new ObservableCollection<MessageModel>(
+                        Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString())
+                    );
+            }
+        }
 
 
         [RelayCommand]
