@@ -21,8 +21,8 @@ namespace Final_project.ViewModels
         // Selected user to whom the message will be sent
         private UserInfo _selectedUser;
 
-        public ObservableCollection<UserInfo> Users { get; } = new ObservableCollection<UserInfo>();
-        public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
+        public ObservableCollection<UserInfo> Users { get; }
+        //public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
 
 
         public string Admin
@@ -51,6 +51,8 @@ namespace Final_project.ViewModels
         public string Reciver => SelectedUser.UserId.ToString();
         public string Role => SelectedUser?.Role;
 
+
+
         public ModalNavigation ModalNavigation { get; }
 
         public KundeServiceVM(FirebaseStore firebaseStore, FirebaseAuthProvider firebaseAuthProvider, INavigationService roleManagementNavigationService)
@@ -59,19 +61,30 @@ namespace Final_project.ViewModels
             _firebaseStore = firebaseStore;
             _userInfoVM = new UserInfoVM(firebaseAuthProvider, roleManagementNavigationService);
             MessageVM = new MessageVM(this, firebaseStore);
-            LoadUsersAsync(firebaseAuthProvider);
+            Users = new ObservableCollection<UserInfo>();
+            LoadUsersAsync();
+
+
+
+
         }
 
-        private async Task LoadUsersAsync(FirebaseAuthProvider firebaseAuthProvider)
+        private async Task LoadUsersAsync()
         {
             try
             {
-                await _userInfoVM.LoadUsersAsync(firebaseAuthProvider);
-                foreach (var user in _userInfoVM.Users)
+                var loadedUsers = await _firebaseStore.LoadUsersAsync();
+
+                // Clear existing users before adding the loaded users
+                Users.Clear();
+
+                // Add loaded users to the Users collection
+                foreach (var user in loadedUsers)
                 {
                     Users.Add(user);
                 }
 
+                // Update the Admin property
                 Admin = GetAdminUserId();
             }
             catch (Exception ex)
@@ -105,7 +118,7 @@ namespace Final_project.ViewModels
                 await _firebaseStore.UploadReportAsync(stream, filename);
                 await _firebaseStore.AddReportAsync(filenameWithoutExtension);
 
-                Items.Clear();
+                //Items.Clear();
             }
         }
     }

@@ -11,12 +11,25 @@ namespace Final_project.ViewModels
     {
         private KundeServiceVM _kundeServiceVM;
         private readonly FirebaseStore _firebaseStore;
+
         public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
+
+        public ObservableCollection<MessageModel> Messages { get; } = new ObservableCollection<MessageModel>();
+
+        ObservableCollection<MessageModel> FilteredMessages { get; }
 
         public MessageVM(KundeServiceVM kundeServiceVM, FirebaseStore firebaseStore)
         {
             _kundeServiceVM = kundeServiceVM ?? throw new ArgumentNullException(nameof(kundeServiceVM));
             _firebaseStore = firebaseStore;
+
+            LoadMessages();
+
+
+
+            FilteredMessages = SelectedUser == null ? Messages : new ObservableCollection<MessageModel>(Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString()));
+
+
             _kundeServiceVM.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
@@ -28,7 +41,13 @@ namespace Final_project.ViewModels
             };
         }
 
+
+
+
+
         public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
+
+
 
 
         private string _content;
@@ -46,6 +65,8 @@ namespace Final_project.ViewModels
             get => _fileName;
             set => SetProperty(ref _fileName, value);
         }
+
+
 
         [RelayCommand]
         private async void SendMessage()
@@ -79,6 +100,35 @@ namespace Final_project.ViewModels
                 // Handle any exceptions that might occur during message sending
             }
         }
+
+        private async Task LoadMessages()
+        {
+            try
+            {
+                var loadmessages = await _firebaseStore.LoadMessages();
+
+                // Clear existing users before adding the loaded users
+                Messages.Clear();
+
+                // Add loaded users to the Users collection
+                foreach (var message in loadmessages)
+                {
+                    Messages.Add(message);
+                }
+
+                // Update the Admin property
+
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+            }
+        }
+
+
+
+
+
 
         [RelayCommand]
         public async void Upload()

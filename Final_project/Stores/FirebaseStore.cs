@@ -1,6 +1,8 @@
-﻿using Firebase.Storage;
+﻿using Final_project.Stores;
+using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Report_Generator_Domain.Models;
+using System.Collections.ObjectModel;
 using System.IO;
 
 public class FirebaseStore
@@ -107,6 +109,61 @@ public class FirebaseStore
             DocumentReference docRef = collectionRef.Document(documentId); // Construct the document reference
             await docRef.DeleteAsync();
         }
+    }
+
+    public async Task<ObservableCollection<UserInfo>> LoadUsersAsync()
+    {
+        // Create an empty ObservableCollection to store user information
+        ObservableCollection<UserInfo> usersCollection = new ObservableCollection<UserInfo>();
+
+        // Reference the "users" collection in Firestore
+        CollectionReference usersRef = FirestoreHelper.Database.Collection("users");
+
+        // Asynchronously retrieve a snapshot of the collection
+        QuerySnapshot usersSnapshot = await usersRef.GetSnapshotAsync();
+
+        // Loop through each document in the snapshot
+        foreach (var doc in usersSnapshot.Documents)
+        {
+            // Convert the document data to a UserInfo object
+            UserInfo userInfo = doc.ConvertTo<UserInfo>();
+
+            // Set the UserId property of the UserInfo object to the document's ID
+            userInfo.UserId = doc.Id;
+
+            // Add the UserInfo object to the ObservableCollection
+            usersCollection.Add(userInfo);
+        }
+
+        // Return the populated ObservableCollection containing user information
+        return usersCollection;
+    }
+    public async Task<ObservableCollection<MessageModel>> LoadMessages()
+    {
+        // Create an empty ObservableCollection to store user information
+        ObservableCollection<MessageModel> usersCollection = new ObservableCollection<MessageModel>();
+
+        // Reference the "users" collection in Firestore
+        CollectionReference usersRef = FirestoreHelper.Database.Collection("Messages");
+
+        // Asynchronously retrieve a snapshot of the collection
+        QuerySnapshot usersSnapshot = await usersRef.GetSnapshotAsync();
+
+        // Loop through each document in the snapshot
+        foreach (var doc in usersSnapshot.Documents)
+        {
+            // Convert the document data to a UserInfo object
+            MessageModel message = doc.ConvertTo<MessageModel>();
+
+            // Set the UserId property of the UserInfo object to the document's ID
+            message.Id = doc.Id;
+
+            // Add the UserInfo object to the ObservableCollection
+            usersCollection.Add(message);
+        }
+
+        // Return the populated ObservableCollection containing user information
+        return usersCollection;
     }
 
 
