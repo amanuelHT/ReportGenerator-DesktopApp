@@ -40,6 +40,12 @@ namespace Final_project.ViewModels
             }
         }
 
+        public List<string> SearchItems(string searchText)
+        {
+            var filteredItems = Items.Where(item => item.ToLower().Contains(searchText)).ToList();
+
+            return filteredItems;
+        }
 
 
 

@@ -52,6 +52,15 @@ namespace Final_project.Views
             }
         }
 
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var _viewModel = DataContext as GeneratedReportListVM;
+            string searchText = SearchTextBox.Text.ToLower();
+
+            var filteredItems = _viewModel.SearchItems(searchText);
+
+            ReportsListBox.ItemsSource = filteredItems;
+        }
 
     }
 }
