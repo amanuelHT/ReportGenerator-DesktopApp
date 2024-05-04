@@ -28,12 +28,16 @@ namespace Report_Generator_EntityFramework.Commands
 
 
 
-                // Add associated DataFraOppdragsgiverPrøver to the context
                 foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)
                 {
                     context.DataFraOppdragsgiverPrøverModels.Add(prøver);
-                }
 
+                    // Here we should add the TrykktestingModel related to each DataFraOppdragsgiverPrøverModel
+                    foreach (var trykktesting in prøver.TrykktestingModel)
+                    {
+                        context.trykktestingModels.Add(trykktesting);
+                    }
+                }
 
                 // Add associated DataFraOppdragsgiverPrøver to the context
                 foreach (var prøver in reportModel.DataEtterKuttingOgSlipingModel)
@@ -47,11 +51,6 @@ namespace Report_Generator_EntityFramework.Commands
                     context.concreteDensityModels.Add(density);
                 }
 
-
-                foreach (var trykktesting in reportModel.TrykktestingModel)
-                {
-                    context.trykktestingModels.Add(trykktesting);
-                }
 
                 // Save changes to the database
                 await context.SaveChangesAsync();

@@ -195,10 +195,10 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("PalastHastighetMPas")
+                    b.Property<Guid>("DataFraOpdragsgiverId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ReportModelId")
+                    b.Property<decimal>("PalastHastighetMPas")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("TrykkfasthetMPa")
@@ -212,7 +212,7 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReportModelId");
+                    b.HasIndex("DataFraOpdragsgiverId");
 
                     b.ToTable("trykktestingModels");
                 });
@@ -263,13 +263,13 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
                 {
-                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                    b.HasOne("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", "DataFraOppdragsgiverPrøverModel")
                         .WithMany("TrykktestingModel")
-                        .HasForeignKey("ReportModelId")
+                        .HasForeignKey("DataFraOpdragsgiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ReportModel");
+                    b.Navigation("DataFraOppdragsgiverPrøverModel");
                 });
 
             modelBuilder.Entity("Domain.Models.ReportModel", b =>
@@ -281,7 +281,10 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("DataFraOppdragsgiverPrøver");
 
                     b.Navigation("Images");
+                });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", b =>
+                {
                     b.Navigation("TrykktestingModel");
                 });
 #pragma warning restore 612, 618

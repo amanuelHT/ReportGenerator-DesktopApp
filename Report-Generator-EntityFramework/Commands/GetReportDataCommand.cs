@@ -14,7 +14,7 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task<(ReportModel report,
+        public async Task<(ReportModel report, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
@@ -27,8 +27,11 @@ namespace Report_Generator_EntityFramework.Commands
                 var report = await context.ReportModels
                     .FirstOrDefaultAsync(report => report.Id == reportId);
 
+                var datafraoppdraggiver = await context.DataFraOppdragsgiverPrøverModels
+                   .FirstOrDefaultAsync(prøve => prøve.ReportModelId == reportId);
+
                 if (report == null)
-                    return (null, null, null, null, null, null);
+                    return (null, null, null, null, null, null, null);
 
                 var images = await context.ReportImageModels
                     .Where(image => image.ReportModelId == reportId)
@@ -49,11 +52,11 @@ namespace Report_Generator_EntityFramework.Commands
 
 
                 var TrykktestingModel = await context.trykktestingModels
-                    .Where(trykk => trykk.ReportModelId == reportId)
+                    .Where(trykk => trykk.DataFraOpdragsgiverId == reportId)
                     .ToListAsync();
 
 
-                return (report, images, prøve, kutingprøve, concretdensity, TrykktestingModel);
+                return (report, datafraoppdraggiver, images, prøve, kutingprøve, concretdensity, TrykktestingModel);
             }
         }
     }

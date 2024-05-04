@@ -52,9 +52,9 @@ namespace Report_Generator_EntityFramework
                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TrykktestingModel>()
-               .HasOne(prøver => prøver.ReportModel)
+               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
                .WithMany(table => table.TrykktestingModel)
-               .HasForeignKey(prøver => prøver.ReportModelId)
+               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
                .OnDelete(DeleteBehavior.Cascade);
         }
     }

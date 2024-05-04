@@ -48,7 +48,7 @@ namespace Final_project.ViewModels.TablesVM
                 PalastHastighetMPas = model.PalastHastighetMPas;
                 TrykkfasthetMPa = model.TrykkfasthetMPa;
                 TrykkfasthetMPaNSE = model.TrykkfasthetMPaNSE;
-                _reportModelId = model.ReportModelId;
+                _reportModelId = model.DataFraOpdragsgiverId;
             }
         }
 

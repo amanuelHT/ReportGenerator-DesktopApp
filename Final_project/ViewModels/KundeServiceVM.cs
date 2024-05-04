@@ -44,6 +44,10 @@ namespace Final_project.ViewModels
             }
         }
 
+
+
+
+
         public bool IsUserSelected => SelectedUser != null;
 
         public string FirstName => SelectedUser?.FirstName;
@@ -69,6 +73,9 @@ namespace Final_project.ViewModels
 
         }
 
+
+
+
         private async Task LoadUsersAsync()
         {
             try
@@ -92,7 +99,6 @@ namespace Final_project.ViewModels
                 // Handle any exceptions
             }
         }
-
 
         private string GetAdminUserId()
         {

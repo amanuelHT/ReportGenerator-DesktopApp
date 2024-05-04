@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace Final_project.ViewModels
@@ -17,6 +18,9 @@ namespace Final_project.ViewModels
         public ObservableCollection<MessageModel> Messages { get; } = new ObservableCollection<MessageModel>();
 
 
+
+
+
         public MessageVM(KundeServiceVM kundeServiceVM, FirebaseStore firebaseStore)
         {
             _kundeServiceVM = kundeServiceVM ?? throw new ArgumentNullException(nameof(kundeServiceVM));
@@ -27,26 +31,20 @@ namespace Final_project.ViewModels
 
 
 
-
-            _kundeServiceVM.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
-                {
-                    // Perform any necessary actions when the selected user changes
-                    // For example, you can update UI or perform validations
-                    OnPropertyChanged(nameof(SelectedUser));
-                }
-            };
-
-
             _kundeServiceVM.PropertyChanged += async (sender, e) =>
             {
                 if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
                 {
-                    // Perform filtering whenever the selected user changes
-                    OnPropertyChanged(nameof(FilteredMessages));
+                    // Output all messages to the console
+                    Debug.WriteLine("All Messages:");
+                    foreach (var message in Messages)
+                    {
+                        Debug.WriteLine($"Message Content: {message.Content}");
+                        // Output other message properties as needed
+                    }
                 }
             };
+
         }
 
 
@@ -85,6 +83,9 @@ namespace Final_project.ViewModels
                         Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString())
                     );
             }
+
+
+
         }
 
 

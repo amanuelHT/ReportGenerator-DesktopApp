@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_Generator_EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class initalmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -133,15 +133,15 @@ namespace Report_Generator_EntityFramework.Migrations
                     PalastHastighetMPas = table.Column<decimal>(type: "TEXT", nullable: false),
                     TrykkfasthetMPa = table.Column<decimal>(type: "TEXT", nullable: false),
                     TrykkfasthetMPaNSE = table.Column<decimal>(type: "TEXT", nullable: false),
-                    ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    DataFraOpdragsgiverId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_trykktestingModels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_trykktestingModels_ReportModels_ReportModelId",
-                        column: x => x.ReportModelId,
-                        principalTable: "ReportModels",
+                        name: "FK_trykktestingModels_DataFraOppdragsgiverPrøverModels_DataFraOpdragsgiverId",
+                        column: x => x.DataFraOpdragsgiverId,
+                        principalTable: "DataFraOppdragsgiverPrøverModels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -167,9 +167,9 @@ namespace Report_Generator_EntityFramework.Migrations
                 column: "ReportModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_trykktestingModels_ReportModelId",
+                name: "IX_trykktestingModels_DataFraOpdragsgiverId",
                 table: "trykktestingModels",
-                column: "ReportModelId");
+                column: "DataFraOpdragsgiverId");
         }
 
         /// <inheritdoc />
@@ -182,13 +182,13 @@ namespace Report_Generator_EntityFramework.Migrations
                 name: "DataEtterKuttingOgSlipingModels");
 
             migrationBuilder.DropTable(
-                name: "DataFraOppdragsgiverPrøverModels");
-
-            migrationBuilder.DropTable(
                 name: "ReportImageModels");
 
             migrationBuilder.DropTable(
                 name: "trykktestingModels");
+
+            migrationBuilder.DropTable(
+                name: "DataFraOppdragsgiverPrøverModels");
 
             migrationBuilder.DropTable(
                 name: "ReportModels");

@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
+using Report_Generator_Domain.Models;
 
 namespace Report_Generator_EntityFramework.Commands
 {
@@ -20,10 +21,11 @@ namespace Report_Generator_EntityFramework.Commands
             {
                 var existingReport = await context.ReportModels
                     .Include(r => r.Images) // Include images for updating
-                    .Include(r => r.DataFraOppdragsgiverPrøver) // Include prøver for updating
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                     .ThenInclude(p => p.TrykktestingModel)
                     .Include(r => r.DataEtterKuttingOgSlipingModel)
                      .Include(r => r.ConcreteDensityModel)
-                     .Include(r => r.TrykktestingModel)
+
                     .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
                 if (existingReport != null)
@@ -37,7 +39,7 @@ namespace Report_Generator_EntityFramework.Commands
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
                     UpdateConcreteDensity(context, existingReport, reportModel);
-                    Updatetrykketessting(context, existingReport, reportModel);
+                    //Updatetrykketessting(context, existingReport, reportModel);
 
                     // Save changes to the context
                     await context.SaveChangesAsync();
@@ -75,32 +77,50 @@ namespace Report_Generator_EntityFramework.Commands
 
         private void UpdatePrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
+            // Implementation here needs to handle TrykktestingModel as nested entities
             foreach (var existingPrøve in existingReport.DataFraOppdragsgiverPrøver.ToList())
             {
-                if (!newReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == existingPrøve.Id))
+                var newPrøve = newReport.DataFraOppdragsgiverPrøver.FirstOrDefault(p => p.Id == existingPrøve.Id);
+                if (newPrøve != null)
+                {
+                    // Update TrykktestingModel within each prøve
+                    UpdateTrykktestingModels(context, existingPrøve, newPrøve);
+                }
+                else
                 {
                     context.Remove(existingPrøve);
                 }
             }
 
-            if (newReport.DataFraOppdragsgiverPrøver.Any())
+            foreach (var newPrøve in newReport.DataFraOppdragsgiverPrøver)
             {
-                foreach (var newPrøve in newReport.DataFraOppdragsgiverPrøver)
+                if (!existingReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == newPrøve.Id))
                 {
-                    if (!existingReport.DataFraOppdragsgiverPrøver.Any(p => p.Id == newPrøve.Id))
-                    {
-                        context.Add(newPrøve);
-                    }
+                    context.Add(newPrøve);
                 }
-            }
-            else
-            {
-                context.RemoveRange(existingReport.DataFraOppdragsgiverPrøver);
             }
 
             context.SaveChanges();
         }
 
+        private void UpdateTrykktestingModels(DbContext context, DataFraOppdragsgiverPrøverModel existingPrøve, DataFraOppdragsgiverPrøverModel newPrøve)
+        {
+            foreach (var existingTrykktesting in existingPrøve.TrykktestingModel.ToList())
+            {
+                if (!newPrøve.TrykktestingModel.Any(t => t.Id == existingTrykktesting.Id))
+                {
+                    context.Remove(existingTrykktesting);
+                }
+            }
+
+            foreach (var newTrykktesting in newPrøve.TrykktestingModel)
+            {
+                if (!existingPrøve.TrykktestingModel.Any(t => t.Id == newTrykktesting.Id))
+                {
+                    context.Add(newTrykktesting);
+                }
+            }
+        }
 
         private void UpdateEtterKuttingPrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
@@ -161,38 +181,38 @@ namespace Report_Generator_EntityFramework.Commands
 
 
 
-        private void Updatetrykketessting(DbContext context, ReportModel existingReport, ReportModel newReport)
-        {
-            // Remove existing prøver that are not present in the newReport
-            foreach (var existingPrøve in existingReport.TrykktestingModel.ToList())
-            {
-                if (!newReport.TrykktestingModel.Any(p => p.Id == existingPrøve.Id))
-                {
-                    context.Remove(existingPrøve);
-                }
-            }
+        //private void Updatetrykketessting(DbContext context, ReportModel existingReport, ReportModel newReport)
+        //{
+        //    // Remove existing prøver that are not present in the newReport
+        //    foreach (var existingPrøve in existingReport.TrykktestingModel.ToList())
+        //    {
+        //        if (!newReport.TrykktestingModel.Any(p => p.Id == existingPrøve.Id))
+        //        {
+        //            context.Remove(existingPrøve);
+        //        }
+        //    }
 
-            // Check if the newReport has any prøver, and remove all existing if no new prøver are provided
-            if (newReport.TrykktestingModel.Any())
-            {
-                // Add new prøver from newReport, only if there are any
-                foreach (var newPrøve in newReport.TrykktestingModel)
-                {
-                    if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
-                    {
-                        context.Add(newPrøve);
-                    }
-                }
-            }
-            else
-            {
-                // If newReport has no prøver, remove all existing ones
-                context.RemoveRange(existingReport.TrykktestingModel);
-            }
+        //    // Check if the newReport has any prøver, and remove all existing if no new prøver are provided
+        //    if (newReport.TrykktestingModel.Any())
+        //    {
+        //        // Add new prøver from newReport, only if there are any
+        //        foreach (var newPrøve in newReport.TrykktestingModel)
+        //        {
+        //            if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
+        //            {
+        //                context.Add(newPrøve);
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // If newReport has no prøver, remove all existing ones
+        //        context.RemoveRange(existingReport.TrykktestingModel);
+        //    }
 
-            // Save changes to the database after updates
-            context.SaveChanges();
-        }
+        //    // Save changes to the database after updates
+        //    context.SaveChanges();
+        //}
 
     }
 }

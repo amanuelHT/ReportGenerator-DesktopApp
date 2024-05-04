@@ -45,25 +45,42 @@ namespace Final_project.Other
 
             if (reportForm.DataFraOppdragsgiverTableVM != null)
             {
-                foreach (var prøve in reportForm.DataFraOppdragsgiverTableVM.Prøver)
+                foreach (var prøveVM in reportForm.DataFraOppdragsgiverTableVM.Prøver)
                 {
-                    if (prøve != null)
+                    if (prøveVM != null)
                     {
                         DataFraOppdragsgiverPrøverModel prøverModel = new DataFraOppdragsgiverPrøverModel(
                             Guid.NewGuid(),
-                            prøve.Datomottatt,
-                            prøve.Overdekningoppgitt,
-                            prøve.Dmax,
-                            prøve.KjerneImax,
-                            prøve.KjerneImin,
-                            prøve.OverflateOK,
-                            prøve.OverflateUK,
+                            prøveVM.Datomottatt,
+                            prøveVM.Overdekningoppgitt,
+                            prøveVM.Dmax,
+                            prøveVM.KjerneImax,
+                            prøveVM.KjerneImin,
+                            prøveVM.OverflateOK,
+                            prøveVM.OverflateUK,
                             reportModel.Id
                         );
+
+                        foreach (var trykktesting in reportForm.TrykktestingTableVM.Trykketester)
+                        {
+                            if (trykktesting != null)
+                            {
+                                TrykktestingModel trykktestingModel = new TrykktestingModel(
+                                    Guid.NewGuid(),
+                                    trykktesting.TrykkflateMm,
+                                    trykktesting.PalastHastighetMPas,
+                                    trykktesting.TrykkfasthetMPa,
+                                    trykktesting.TrykkfasthetMPaNSE,
+                                    reportModel.Id
+                                );
+                                prøverModel.TrykktestingModel.Add(trykktestingModel);
+                            }
+                        }
                         reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
                     }
                 }
             }
+
 
             if (reportForm.DataEtterKuttingOgSlipingTableVM != null)
             {
@@ -113,25 +130,7 @@ namespace Final_project.Other
                 }
             }
 
-            // Create TrykktestingTable
-            if (reportForm.TrykktestingTableVM != null)
-            {
-                foreach (var trykktesting in reportForm.TrykktestingTableVM.Trykketester)
-                {
-                    if (trykktesting != null)
-                    {
-                        TrykktestingModel trykktestingModel = new TrykktestingModel(
-                            Guid.NewGuid(),
-                            trykktesting.TrykkflateMm,
-                            trykktesting.PalastHastighetMPas,
-                            trykktesting.TrykkfasthetMPa,
-                            trykktesting.TrykkfasthetMPaNSE,
-                            reportModel.Id
-                        );
-                        reportModel.TrykktestingModel.Add(trykktestingModel);
-                    }
-                }
-            }
+
 
             return reportModel;
         }

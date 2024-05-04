@@ -54,8 +54,15 @@ namespace Final_project.ViewModels
             {
                 var prøveVM = new DataFraOppdragsgiverPrøverVM(prøve);
                 ReportFormVM.DataFraOppdragsgiverTableVM.Prøver.Add(prøveVM);
-            }
 
+                // Convert each nested TrykktestingModel to TrykktestingPrøveVM
+                foreach (var trykktestingModel in prøve.TrykktestingModel)
+                {
+                    var trykktesting = new TrykktestingPrøveVM(trykktestingModel);
+                    ReportFormVM.TrykktestingTableVM.Trykketester.Add(trykktesting);
+
+                }
+            }
 
             foreach (var prøve in reportModel.DataEtterKuttingOgSlipingModel)
             {
@@ -69,11 +76,7 @@ namespace Final_project.ViewModels
                 ReportFormVM.ConcreteDensityTableVM.Prøver.Add(densityPrøveVM);
             }
 
-            foreach (var trykktestingModel in reportModel.TrykktestingModel)
-            {
-                var trykktesting = new TrykktestingPrøveVM(trykktestingModel);
-                ReportFormVM.TrykktestingTableVM.Trykketester.Add(trykktesting);
-            }
+
         }
     }
 }

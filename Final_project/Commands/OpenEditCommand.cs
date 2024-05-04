@@ -26,7 +26,7 @@ public class OpenEditCommand : CommandBase
     {
 
         // Retrieve the full report data of the report
-        (ReportModel reportData,
+        (ReportModel reportData, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
             List<ReportImageModel> images,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
@@ -48,7 +48,7 @@ public class OpenEditCommand : CommandBase
 
         reportData.ConcreteDensityModel = concreteDensityModels;
 
-        reportData.TrykktestingModel = trykktestingModels;
+        DataFraOppdragsgiverPrøverModel.TrykktestingModel = trykktestingModels;
 
 
         // Create and navigate to the edit report view model

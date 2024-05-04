@@ -22,7 +22,7 @@ namespace Domain.Models
 
         public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
 
-        public List<TrykktestingModel> TrykktestingModel { get; set; }
+
 
 
 
@@ -36,7 +36,6 @@ namespace Domain.Models
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
             DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
             ConcreteDensityModel = new List<ConcreteDensityModel>();
-            TrykktestingModel = new List<TrykktestingModel>();
 
 
         }
