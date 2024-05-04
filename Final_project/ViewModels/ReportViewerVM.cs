@@ -53,7 +53,7 @@ namespace Final_project.ViewModels
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
-            List<Test> tests,
+            List<TestModel> tests,
             List<verktøy> verktøyer) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)

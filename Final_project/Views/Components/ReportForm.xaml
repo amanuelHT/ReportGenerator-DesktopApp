@@ -8,7 +8,7 @@
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
              xmlns:tables="clr-namespace:Final_project.Tables" 
              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
-             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:components1="clr-namespace:Final_project.Views.Components" xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM"
              mc:Ignorable="d" 
              Background="Transparent"
              d:DataContext="{d:DesignInstance Type=viewmodels:ReportFormVM}">
@@ -55,19 +55,32 @@
                 
                 <Grid Grid.Row="3">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />  
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!-- Status of the report -->
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="Wheat"/>
-                        <CheckBox Content="Godkjent" Margin="10 0 0 0" IsChecked="{Binding Status}" />
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20 10 0 0">
+                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="{StaticResource TextColor1}"/>
+                        <CheckBox Content="Godkjent / ikke Godkjent" Margin="30 0 0 30" IsChecked="{Binding Status}"  Foreground="{StaticResource TextColor3}"/>
                     </StackPanel>
 
-                    <Grid Grid.Row="1" Margin="-10 0 0 0">
+           
+
+                    <Grid Grid.Row="1" Margin="20 20 0 0">
+                        <components1:TestView DataContext="{Binding TestVM}" HorizontalAlignment="Left" />
+                    </Grid>
+                    
+                        <Grid Grid.Row="1" Margin="20 20 0 0">
+                        <components1:VerktøyView DataContext="{Binding Verktøy}" HorizontalAlignment="Left" />
+                    </Grid>
+                    
+                    
+                     <Grid Grid.Row="2" Margin="20 20 0 0">
                         <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
                     </Grid>
+                    
 
                 </Grid>
 

@@ -12,7 +12,7 @@ namespace Report_Generator_Domain.Commands
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
-            List<Test> tests,
+            List<TestModel> tests,
             List<verktøy> verktøyer
             )> Execute(Guid reportId);
     }

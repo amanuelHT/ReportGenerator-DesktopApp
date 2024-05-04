@@ -13,7 +13,7 @@ namespace Domain.Models
 
         // Collection of ReportImageModel
         public List<ReportImageModel> Images { get; set; }
-        public List<Test> Test { get; set; }
+        public List<TestModel> Test { get; set; }
         public List<verktøy> Verktøy { get; set; }
         public List<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøver { get; set; }
 
@@ -28,7 +28,7 @@ namespace Domain.Models
             Kunde = kunde;
 
             Images = new List<ReportImageModel>();
-            Test = new List<Test>();
+            Test = new List<TestModel>();
             Verktøy = new List<verktøy>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
 

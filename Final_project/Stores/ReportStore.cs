@@ -114,7 +114,7 @@ namespace Final_project.Stores
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
-            List<Test> tests,
+            List<TestModel> tests,
             List<verktøy> verktøyer
             )> GetReportData(Guid reportId)
         {

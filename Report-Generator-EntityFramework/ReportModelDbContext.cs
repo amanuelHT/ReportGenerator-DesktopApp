@@ -21,7 +21,7 @@ namespace Report_Generator_EntityFramework
         public DbSet<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; set; }
         public DbSet<ConcreteDensityModel> concreteDensityModels { get; set; }
         public DbSet<TrykktestingModel> trykktestingModels { get; set; }
-        public DbSet<Test> tests { get; set; }
+        public DbSet<TestModel> tests { get; set; }
         public DbSet<verktøy> verktøies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(image => image.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Test>()
+            modelBuilder.Entity<TestModel>()
                 .HasOne(test => test.ReportModel)
                 .WithMany(report => report.Test)
                 .HasForeignKey(test => test.ReportModelId)

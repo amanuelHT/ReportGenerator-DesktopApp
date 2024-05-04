@@ -33,7 +33,7 @@ public class OpenEditCommand : CommandBase
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
-            List<Test> tests,
+            List<TestModel> tests,
             List<verktøy> verktøyer
             ) = await _reportStore.GetReportData(_reportid);
 

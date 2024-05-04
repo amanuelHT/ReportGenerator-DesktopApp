@@ -7,64 +7,76 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Components\ImageCollectionView.xaml.cs">
+    <Compile Update="Views\Components\ImageCollectionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ImageView.xaml.cs">
+    <Compile Update="Views\Components\ImageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\LayoutView.xaml.cs">
+    <Compile Update="Views\Components\LayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\MessageView.xaml.cs">
+    <Compile Update="Views\Components\MessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ModalForm.xaml.cs">
+    <Compile Update="Views\Components\ModalForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\NavigationBarView.xaml.cs">
+    <Compile Update="Views\Components\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ReportDetailsView.xaml.cs">
+    <Compile Update="Views\Components\ReportDetailsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ReportForm.xaml.cs">
+    <Compile Update="Views\Components\ReportForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ReportListItemV.xaml.cs">
+    <Compile Update="Views\Components\ReportListItemV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\ReportListView.xaml.cs">
+    <Compile Update="Views\Components\ReportListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\TextBoxView.xaml.cs">
+    <Compile Update="Views\Components\TestCollectionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\Upload images.xaml.cs">
+    <Compile Update="Views\Components\TestView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\ConcreteDensityPrøveView.xaml.cs">
+    <Compile Update="Views\Components\TextBoxView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\ConcreteDensityTableView.xaml.cs">
+    <Compile Update="Views\Components\Upload images.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml.cs">
+    <Compile Update="Views\Components\VerktøyCollectionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\DataEtterKuttingOgSlipingTableView.xaml.cs">
+    <Compile Update="Views\Components\VerktøyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\DataFraOppdragsgiverPrøverView.xaml.cs">
+    <Compile Update="Views\Tables\ConcreteDensityPrøveView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\DataFraOppdragsgiverTableView.xaml.cs">
+    <Compile Update="Views\Tables\ConcreteDensityTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\TrykktestingPrøveView.xaml.cs">
+    <Compile Update="Views\Tables\DataEtterKuttingOgSlipingPrøveView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Tables\TrykktestingTableView.xaml.cs">
+    <Compile Update="Views\Tables\DataEtterKuttingOgSlipingTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Tables\DataFraOppdragsgiverPrøverView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Tables\DataFraOppdragsgiverTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Tables\TrykktestingPrøveView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Tables\TrykktestingTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\AccountView.xaml.cs">
@@ -102,40 +114,46 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Components\ImageCollectionView.xaml">
+    <Page Update="Views\Components\ImageCollectionView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ImageView.xaml">
+    <Page Update="Views\Components\ImageView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\LayoutView.xaml">
+    <Page Update="Views\Components\LayoutView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\MessageView.xaml">
+    <Page Update="Views\Components\MessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ModalForm.xaml">
+    <Page Update="Views\Components\ModalForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\NavigationBarView.xaml">
+    <Page Update="Views\Components\NavigationBarView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ReportDetailsView.xaml">
+    <Page Update="Views\Components\ReportDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ReportForm.xaml">
+    <Page Update="Views\Components\ReportForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ReportListItemV.xaml">
+    <Page Update="Views\Components\ReportListItemV.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\ReportListView.xaml">
+    <Page Update="Views\Components\ReportListView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\TextBoxView.xaml">
+    <Page Update="Views\Components\TestCollectionView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\Upload images.xaml">
+    <Page Update="Views\Components\TestView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Components\TextBoxView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Components\Upload images.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\CustomModalView.xaml">
@@ -156,28 +174,34 @@
     <Page Update="Styles\UiColors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\ConcreteDensityPrøveView.xaml">
+    <Page Update="Views\Components\VerktøyCollectionView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\ConcreteDensityTableView.xaml">
+    <Page Update="Views\Components\VerktøyView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\DataEtterKuttingOgSlipingPrøveView.xaml">
+    <Page Update="Views\Tables\ConcreteDensityPrøveView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\DataEtterKuttingOgSlipingTableView.xaml">
+    <Page Update="Views\Tables\ConcreteDensityTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\DataFraOppdragsgiverPrøverView.xaml">
+    <Page Update="Views\Tables\DataEtterKuttingOgSlipingPrøveView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\DataFraOppdragsgiverTableView.xaml">
+    <Page Update="Views\Tables\DataEtterKuttingOgSlipingTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\TrykktestingPrøveView.xaml">
+    <Page Update="Views\Tables\DataFraOppdragsgiverPrøverView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Tables\TrykktestingTableView.xaml">
+    <Page Update="Views\Tables\DataFraOppdragsgiverTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Tables\TrykktestingPrøveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Tables\TrykktestingTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\KundeServiceView.xaml">

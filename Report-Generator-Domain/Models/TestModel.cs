@@ -2,15 +2,15 @@
 
 namespace Report_Generator_Domain.Models
 {
-    public class Test
+    public class TestModel
     {
 
         public ReportModel ReportModel { get; set; }
         public Guid ReportModelId { get; set; }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public Test(Guid reportModelId, int id, string name)
+        public TestModel(Guid id, string name, Guid reportModelId)
         {
             ReportModelId = reportModelId;
             Id = id;

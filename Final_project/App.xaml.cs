@@ -86,6 +86,8 @@ namespace Final_project
                  service.AddSingleton<MainViewModel>();
                  service.AddSingleton<KundeServiceVM>();
                  service.AddSingleton<MessageVM>();
+                 service.AddSingleton<TestVM>();
+                 service.AddSingleton<TestCollectionVM>();
 
                  // initial navigation 
                  service.AddSingleton<INavigationService>(s => HomeNavigationService(s));
