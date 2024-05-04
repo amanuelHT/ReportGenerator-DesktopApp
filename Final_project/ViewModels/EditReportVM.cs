@@ -2,6 +2,7 @@
 using Domain.Models;
 using Final_project.Commands;
 using Final_project.Stores;
+using Final_project.ViewModels.ReportComponentsVM;
 using Final_project.ViewModels.TablesVM;
 using System.Windows.Input;
 
@@ -41,7 +42,7 @@ namespace Final_project.ViewModels
 
 
 
-            // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel
+
             foreach (var img in reportModel.Images)
             {
                 var imageVM = new ImageVM(img);
@@ -55,26 +56,33 @@ namespace Final_project.ViewModels
                 var prøveVM = new DataFraOppdragsgiverPrøverVM(prøve);
                 ReportFormVM.DataFraOppdragsgiverTableVM.Prøver.Add(prøveVM);
 
-                // Convert each nested TrykktestingModel to TrykktestingPrøveVM
+
+
                 foreach (var trykktestingModel in prøve.TrykktestingModel)
                 {
                     var trykktesting = new TrykktestingPrøveVM(trykktestingModel);
                     ReportFormVM.TrykktestingTableVM.Trykketester.Add(trykktesting);
 
                 }
+
+
+                foreach (var densityModel in prøve.ConcreteDensityModel)
+                {
+                    var densityPrøveVM = new ConcreteDensityPrøveVM(densityModel);
+                    ReportFormVM.ConcreteDensityTableVM.Prøver.Add(densityPrøveVM);
+                }
+
+
+                foreach (var dataEtterKuttingOgSlipingModel in prøve.DataEtterKuttingOgSlipingModel)
+                {
+                    var dataEtterKuttingOgSlipingprøveVM = new DataEtterKuttingOgSlipingPrøveVM(dataEtterKuttingOgSlipingModel);
+                    ReportFormVM.DataEtterKuttingOgSlipingTableVM.Prøver.Add(dataEtterKuttingOgSlipingprøveVM);
+                }
+
             }
 
-            foreach (var prøve in reportModel.DataEtterKuttingOgSlipingModel)
-            {
-                var prøveVM = new DataEtterKuttingOgSlipingPrøveVM(prøve);
-                ReportFormVM.DataEtterKuttingOgSlipingTableVM.Prøver.Add(prøveVM);
-            }
 
-            foreach (var densityModel in reportModel.ConcreteDensityModel)
-            {
-                var densityPrøveVM = new ConcreteDensityPrøveVM(densityModel);
-                ReportFormVM.ConcreteDensityTableVM.Prøver.Add(densityPrøveVM);
-            }
+
 
 
         }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Final_project.Commands;
 using Final_project.Stores;
+using Final_project.ViewModels.ReportComponentsVM;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
 

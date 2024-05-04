@@ -57,7 +57,7 @@ namespace Final_project.ViewModels.TablesVM
                 Pw = model.Pw;
                 V = model.V;
                 Densitet = model.Densitet;
-                _reportModelId = model.ReportModelId;
+                _reportModelId = model.DataFraOpdragsgiverId;
             }
         }
 

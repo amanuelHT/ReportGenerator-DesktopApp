@@ -1,6 +1,4 @@
-﻿using Domain.Models;
-
-namespace Report_Generator_Domain.Models
+﻿namespace Report_Generator_Domain.Models
 {
     public class ConcreteDensityModel
     {
@@ -12,10 +10,11 @@ namespace Report_Generator_Domain.Models
         public double V { get; set; }  // Assuming V is a decimal (double)
         public double Densitet { get; set; }  // Assuming Densitet is a decimal (double)
 
-        public Guid ReportModelId { get; set; } // Foreign key
-        public ReportModel ReportModel { get; set; } // Navigation property
+        public Guid DataFraOpdragsgiverId { get; set; }
 
-        public ConcreteDensityModel(int id, DateTime dato, double masseILuft, double masseIVannbad, double pw, double v, double densitet, Guid reportModelId)
+        public DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel { get; set; }
+
+        public ConcreteDensityModel(int id, DateTime dato, double masseILuft, double masseIVannbad, double pw, double v, double densitet, Guid dataFraOpdragsgiverId)
         {
             Id = id;
             Dato = dato;
@@ -24,7 +23,7 @@ namespace Report_Generator_Domain.Models
             Pw = pw;
             V = v;
             Densitet = densitet;
-            ReportModelId = reportModelId;
+            DataFraOpdragsgiverId = dataFraOpdragsgiverId;
         }
 
 

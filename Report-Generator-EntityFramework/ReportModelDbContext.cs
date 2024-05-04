@@ -21,6 +21,8 @@ namespace Report_Generator_EntityFramework
         public DbSet<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; set; }
         public DbSet<ConcreteDensityModel> concreteDensityModels { get; set; }
         public DbSet<TrykktestingModel> trykktestingModels { get; set; }
+        public DbSet<Test> tests { get; set; }
+        public DbSet<verktøy> verktøies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +33,18 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(image => image.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Test>()
+                .HasOne(test => test.ReportModel)
+                .WithMany(report => report.Test)
+                .HasForeignKey(test => test.ReportModelId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<verktøy>()
+                .HasOne(verktøy => verktøy.ReportModel)
+                .WithMany(report => report.Verktøy)
+                .HasForeignKey(verktøy => verktøy.ReportModelId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             // Define foreign key relationship between DataFraOppdragsgiverPrøverModel and DataFraOppdragsgiverTableModel
             modelBuilder.Entity<DataFraOppdragsgiverPrøverModel>()
                 .HasOne(prøver => prøver.ReportModel)
@@ -38,22 +52,22 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(prøver => prøver.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<DataEtterKuttingOgSlipingModel>()
-               .HasOne(prøver => prøver.ReportModel)
-               .WithMany(table => table.DataEtterKuttingOgSlipingModel)
-               .HasForeignKey(prøver => prøver.ReportModelId)
-               .OnDelete(DeleteBehavior.Cascade);
-
 
             modelBuilder.Entity<ConcreteDensityModel>()
-               .HasOne(prøver => prøver.ReportModel)
+               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
                .WithMany(table => table.ConcreteDensityModel)
-               .HasForeignKey(prøver => prøver.ReportModelId)
+               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TrykktestingModel>()
                .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
                .WithMany(table => table.TrykktestingModel)
+               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<DataEtterKuttingOgSlipingModel>()
+               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
+               .WithMany(table => table.DataEtterKuttingOgSlipingModel)
                .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
                .OnDelete(DeleteBehavior.Cascade);
         }

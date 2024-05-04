@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Domain.Models;
 using Final_project.Stores;
+using Final_project.ViewModels.ReportComponentsVM;
 using Final_project.ViewModels.TablesVM;
 using System.Windows.Input;
 

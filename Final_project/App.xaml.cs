@@ -3,6 +3,7 @@ using Final_project.Components;
 using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.ViewModels.ReportComponentsVM;
 using Final_project.Views;
 using Firebase.Auth;
 using Microsoft.EntityFrameworkCore;

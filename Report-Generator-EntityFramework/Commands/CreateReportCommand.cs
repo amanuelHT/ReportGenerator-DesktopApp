@@ -27,6 +27,18 @@ namespace Report_Generator_EntityFramework.Commands
                 }
 
 
+                foreach (var tests in reportModel.Test)
+                {
+                    context.tests.Add(tests);
+                }
+
+
+                foreach (var verktøy in reportModel.Verktøy)
+                {
+                    context.verktøies.Add(verktøy);
+                }
+
+
 
                 foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)
                 {
@@ -37,19 +49,23 @@ namespace Report_Generator_EntityFramework.Commands
                     {
                         context.trykktestingModels.Add(trykktesting);
                     }
-                }
 
-                // Add associated DataFraOppdragsgiverPrøver to the context
-                foreach (var prøver in reportModel.DataEtterKuttingOgSlipingModel)
-                {
-                    context.DataEtterKuttingOgSlipingModels.Add(prøver);
-                }
+                    foreach (var density in prøver.ConcreteDensityModel)
+                    {
+                        context.concreteDensityModels.Add(density);
+                    }
 
 
-                foreach (var density in reportModel.ConcreteDensityModel)
-                {
-                    context.concreteDensityModels.Add(density);
+                    foreach (var dataEtterKuttingOgSlipingModel in prøver.DataEtterKuttingOgSlipingModel)
+                    {
+                        context.DataEtterKuttingOgSlipingModels.Add(dataEtterKuttingOgSlipingModel);
+                    }
+
                 }
+
+
+
+
 
 
                 // Save changes to the database

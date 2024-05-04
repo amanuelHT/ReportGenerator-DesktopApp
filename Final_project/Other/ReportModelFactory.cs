@@ -76,59 +76,58 @@ namespace Final_project.Other
                                 prøverModel.TrykktestingModel.Add(trykktestingModel);
                             }
                         }
+
+
+
+                        foreach (var prøve in reportForm.ConcreteDensityTableVM.Prøver)
+                        {
+                            if (prøve != null)
+                            {
+                                ConcreteDensityModel concreteDensityModel = new ConcreteDensityModel(
+                                    prøve.Provnr,
+                                    prøve.Dato,
+                                    prøve.MasseILuft,
+                                    prøve.MasseIVannbad,
+                                    prøve.Pw,
+                                    prøve.V,
+                                    prøve.Densitet,
+                                    reportModel.Id
+                                );
+                                prøverModel.ConcreteDensityModel.Add(concreteDensityModel);
+                            }
+                        }
+
+                        foreach (var prøve in reportForm.DataEtterKuttingOgSlipingTableVM.Prøver)
+                        {
+                            if (prøve != null)
+                            {
+                                DataEtterKuttingOgSlipingModel dataEtterKuttingOgSlipingModel = new DataEtterKuttingOgSlipingModel(
+                                    Guid.NewGuid(),
+                                    prøve.IvannbadDato,
+                                    prøve.TestDato,
+                                    prøve.Overflatetilstand,
+                                    prøve.Dm,
+                                    prøve.Prøvetykke,
+                                    prøve.DmPrøvetykkeRatio,
+                                    prøve.TrykkfasthetMPa,
+                                    prøve.FasthetSammenligning,
+                                    prøve.FørSliping,
+                                    prøve.EtterSliping,
+                                    prøve.MmTilTopp,
+                                    reportModel.Id
+                                );
+                                prøverModel.DataEtterKuttingOgSlipingModel.Add(dataEtterKuttingOgSlipingModel);
+                            }
+                        }
+
                         reportModel.DataFraOppdragsgiverPrøver.Add(prøverModel);
                     }
                 }
             }
 
 
-            if (reportForm.DataEtterKuttingOgSlipingTableVM != null)
-            {
-                foreach (var prøve in reportForm.DataEtterKuttingOgSlipingTableVM.Prøver)
-                {
-                    if (prøve != null)
-                    {
-                        DataEtterKuttingOgSlipingModel prøverModel = new DataEtterKuttingOgSlipingModel(
-                            Guid.NewGuid(),
-                            prøve.IvannbadDato,
-                            prøve.TestDato,
-                            prøve.Overflatetilstand,
-                            prøve.Dm,
-                            prøve.Prøvetykke,
-                            prøve.DmPrøvetykkeRatio,
-                            prøve.TrykkfasthetMPa,
-                            prøve.FasthetSammenligning,
-                            prøve.FørSliping,
-                            prøve.EtterSliping,
-                            prøve.MmTilTopp,
-                            reportModel.Id
-                        );
-                        reportModel.DataEtterKuttingOgSlipingModel.Add(prøverModel);
-                    }
-                }
-            }
 
-            // Create ConcreteDensityTable
-            if (reportForm.ConcreteDensityTableVM != null)
-            {
-                foreach (var prøve in reportForm.ConcreteDensityTableVM.Prøver)
-                {
-                    if (prøve != null)
-                    {
-                        ConcreteDensityModel concreteDensityModel = new ConcreteDensityModel(
-                            prøve.Provnr,
-                            prøve.Dato,
-                            prøve.MasseILuft,
-                            prøve.MasseIVannbad,
-                            prøve.Pw,
-                            prøve.V,
-                            prøve.Densitet,
-                            reportModel.Id
-                        );
-                        reportModel.ConcreteDensityModel.Add(concreteDensityModel);
-                    }
-                }
-            }
+
 
 
 

@@ -69,6 +69,9 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid>("DataFraOpdragsgiverId")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("Dato")
                         .HasColumnType("TEXT");
 
@@ -84,15 +87,12 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<double>("Pw")
                         .HasColumnType("REAL");
 
-                    b.Property<Guid>("ReportModelId")
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("V")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReportModelId");
+                    b.HasIndex("DataFraOpdragsgiverId");
 
                     b.ToTable("concreteDensityModels");
                 });
@@ -101,6 +101,9 @@ namespace Report_Generator_EntityFramework.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("DataFraOpdragsgiverId")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Dm")
@@ -132,9 +135,6 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<double>("Prøvetykke")
                         .HasColumnType("REAL");
 
-                    b.Property<Guid>("ReportModelId")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("TestDato")
                         .HasColumnType("TEXT");
 
@@ -143,7 +143,7 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReportModelId");
+                    b.HasIndex("DataFraOpdragsgiverId");
 
                     b.ToTable("DataEtterKuttingOgSlipingModels");
                 });
@@ -230,24 +230,24 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_Domain.Models.ConcreteDensityModel", b =>
                 {
-                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                    b.HasOne("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", "DataFraOppdragsgiverPrøverModel")
                         .WithMany("ConcreteDensityModel")
-                        .HasForeignKey("ReportModelId")
+                        .HasForeignKey("DataFraOpdragsgiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ReportModel");
+                    b.Navigation("DataFraOppdragsgiverPrøverModel");
                 });
 
             modelBuilder.Entity("Report_Generator_Domain.Models.DataEtterKuttingOgSlipingModel", b =>
                 {
-                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                    b.HasOne("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", "DataFraOppdragsgiverPrøverModel")
                         .WithMany("DataEtterKuttingOgSlipingModel")
-                        .HasForeignKey("ReportModelId")
+                        .HasForeignKey("DataFraOpdragsgiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ReportModel");
+                    b.Navigation("DataFraOppdragsgiverPrøverModel");
                 });
 
             modelBuilder.Entity("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", b =>
@@ -274,10 +274,6 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Domain.Models.ReportModel", b =>
                 {
-                    b.Navigation("ConcreteDensityModel");
-
-                    b.Navigation("DataEtterKuttingOgSlipingModel");
-
                     b.Navigation("DataFraOppdragsgiverPrøver");
 
                     b.Navigation("Images");
@@ -285,6 +281,10 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_Domain.Models.DataFraOppdragsgiverPrøverModel", b =>
                 {
+                    b.Navigation("ConcreteDensityModel");
+
+                    b.Navigation("DataEtterKuttingOgSlipingModel");
+
                     b.Navigation("TrykktestingModel");
                 });
 #pragma warning restore 612, 618

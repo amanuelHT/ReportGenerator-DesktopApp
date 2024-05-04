@@ -13,15 +13,9 @@ namespace Domain.Models
 
         // Collection of ReportImageModel
         public List<ReportImageModel> Images { get; set; }
-
+        public List<Test> Test { get; set; }
+        public List<verktøy> Verktøy { get; set; }
         public List<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøver { get; set; }
-
-
-        public List<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModel { get; set; }
-
-
-        public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
-
 
 
 
@@ -32,10 +26,11 @@ namespace Domain.Models
             Tittle = tittle;
             Status = status;
             Kunde = kunde;
+
             Images = new List<ReportImageModel>();
+            Test = new List<Test>();
+            Verktøy = new List<verktøy>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
-            DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
-            ConcreteDensityModel = new List<ConcreteDensityModel>();
 
 
         }

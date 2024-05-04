@@ -27,7 +27,7 @@ namespace Final_project.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true; // You can add conditions here if needed
+            return true;
         }
 
         public void Execute(object parameter)
@@ -42,7 +42,7 @@ namespace Final_project.Commands
             }
             catch (Exception ex)
             {
-                // Handle any exceptions here
+
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }

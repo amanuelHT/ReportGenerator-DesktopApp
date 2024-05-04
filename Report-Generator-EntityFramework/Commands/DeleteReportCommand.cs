@@ -14,22 +14,16 @@ namespace Report_Generator_EntityFramework.Commands
 
         public async Task Execute(Guid id)
         {
-            using (ReportModelDbContext context = _contextFactory.Create())
+            using (var context = _contextFactory.Create())
             {
                 // Find the report model by its ID
                 var reportModel = await context.ReportModels
-                    .Include(report => report.Images) // Include related images
                     .FirstOrDefaultAsync(report => report.Id == id);
 
                 if (reportModel != null)
                 {
-                    // Remove all associated images
-                    context.ReportImageModels.RemoveRange(reportModel.Images);
-
-                    // Remove the report model itself
+                    // remove the report model and save changes
                     context.ReportModels.Remove(reportModel);
-
-                    // Save changes to the database
                     await context.SaveChangesAsync();
                 }
             }

@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Domain.Models; // Ensure this namespace contains all your domain models
+using Microsoft.EntityFrameworkCore; // Necessary for EF Core operations like Include
 using Report_Generator_Domain.Commands;
 using Report_Generator_Domain.Models;
 
@@ -14,49 +14,58 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task<(ReportModel report, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
-            List<ReportImageModel> images,
+        public async Task<(
+             ReportModel report, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
-            List<TrykktestingModel> trykktestingModels
+            List<TrykktestingModel> trykktestingModels,
+            List<Test> tests,
+            List<verktøy> verktøyer
             )> Execute(Guid reportId)
         {
-            using (ReportModelDbContext context = _contextFactory.Create())
+            using (var context = _contextFactory.Create())
             {
                 var report = await context.ReportModels
-                    .FirstOrDefaultAsync(report => report.Id == reportId);
+                    .Include(r => r.Images)
+                    .Include(r => r.Verktøy)
+                    .Include(r => r.Test)
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                       .ThenInclude(s => s.ConcreteDensityModel)
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                       .ThenInclude(s => s.TrykktestingModel)
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                       .ThenInclude(s => s.DataEtterKuttingOgSlipingModel)
 
-                var datafraoppdraggiver = await context.DataFraOppdragsgiverPrøverModels
-                   .FirstOrDefaultAsync(prøve => prøve.ReportModelId == reportId);
+                       .FirstOrDefaultAsync(r => r.Id == reportId);
 
                 if (report == null)
-                    return (null, null, null, null, null, null, null);
+                    return (null, null, null, null, null, null, null, null, null);
 
-                var images = await context.ReportImageModels
-                    .Where(image => image.ReportModelId == reportId)
-                    .ToListAsync();
+                var images = report.Images.ToList();
+                var tests = report.Test.ToList();
+                var verktøies = report.Verktøy.ToList();
+                var dataFraOppdragsgiverPrøverModels = report.DataFraOppdragsgiverPrøver.ToList();
 
-                var prøve = await context.DataFraOppdragsgiverPrøverModels
-                    .Where(prøve => prøve.ReportModelId == reportId)
-                    .ToListAsync();
+                var concreteDensityModels = dataFraOppdragsgiverPrøverModels.SelectMany(d => d.ConcreteDensityModel).ToList();
+                var trykktestingModels = dataFraOppdragsgiverPrøverModels.SelectMany(t => t.TrykktestingModel).ToList();
+                var dataEtterKuttingOgSlipingModels = dataFraOppdragsgiverPrøverModels.SelectMany(d => d.DataEtterKuttingOgSlipingModel).ToList();
 
-                var kutingprøve = await context.DataEtterKuttingOgSlipingModels
-                    .Where(prøve => prøve.ReportModelId == reportId)
-                    .ToListAsync();
+                var dataFraOppdragsgiverPrøverModel = dataFraOppdragsgiverPrøverModels.FirstOrDefault();
 
-                var concretdensity = await context.concreteDensityModels
-                    .Where(density => density.ReportModelId == reportId)
-                    .ToListAsync();
+                return (
+                    report,
+                    dataFraOppdragsgiverPrøverModel,
+                    dataFraOppdragsgiverPrøverModels,
+                    images,
+                    dataEtterKuttingOgSlipingModels,
+                    concreteDensityModels,
+                    trykktestingModels,
+                    tests,
+                    verktøies
 
-
-
-                var TrykktestingModel = await context.trykktestingModels
-                    .Where(trykk => trykk.DataFraOpdragsgiverId == reportId)
-                    .ToListAsync();
-
-
-                return (report, datafraoppdraggiver, images, prøve, kutingprøve, concretdensity, TrykktestingModel);
+                );
             }
         }
     }
