@@ -8,7 +8,10 @@
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
              xmlns:tables="clr-namespace:Final_project.Tables" 
              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
-             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:components1="clr-namespace:Final_project.Views.Components" xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM"
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" 
+             xmlns:components1="clr-namespace:Final_project.Views.Components" 
+             xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM" 
+             xmlns:stores="clr-namespace:Final_project.Stores"
              mc:Ignorable="d" 
              Background="Transparent"
              d:DataContext="{d:DesignInstance Type=viewmodels:ReportFormVM}">
@@ -19,8 +22,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+
+      <!--<stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+     <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+ </stores:CustomModalView>-->
         <!-- Main Content with ScrollViewer -->
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" 
+    PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -105,16 +113,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <tables:DataFraOppdragsgiverTableView Grid.Row="0" DataContext="{Binding DataFraOppdragsgiverTableVM}"/>
+                    <tables:DataFraOppdragsgiverTableView Grid.Row="0" DataContext="{Binding DataFraOppdragsgiverTableVM}"   
+                                                          PreviewMouseWheel="ChildControl_PreviewMouseWheel"/>
                     <tables:DataEtterKuttingOgSlipingTableView Grid.Row="1" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}"/>
-                    <modalcontrol:Modal Grid.Row="2" IsOpen="{Binding IsFormOpen}">
-                        <ContentControl Content="{Binding CurrentVM}"/>
-                    </modalcontrol:Modal>
-                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}"/>
-                    <tables:TrykktestingTableView Grid.Row="4" DataContext="{Binding TrykktestingTableVM}"/>
+                    <tables:ConcreteDensityTableView Grid.Row="2" DataContext="{Binding ConcreteDensityTableVM}"/>
+                    <tables:TrykktestingTableView Grid.Row="3" DataContext="{Binding TrykktestingTableVM}"/>
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -129,5 +134,9 @@
                 </StackPanel>
             </Button>
         </WrapPanel>
+
+        <modalcontrol:Modal IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.RowSpan="2" Background="Black" Opacity="0.8">
+            <ContentControl Content="{Binding CurrentVM}" />
+        </modalcontrol:Modal>
     </Grid>
 </UserControl>

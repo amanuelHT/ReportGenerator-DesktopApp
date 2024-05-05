@@ -48,9 +48,9 @@
         </Grid>
 
 
-        <stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <!--<stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
-        </stores:CustomModalView>
+        </stores:CustomModalView>-->
 
         <!-- Main Content -->
         <Grid Grid.Row="1">

@@ -7,6 +7,7 @@
     xmlns:tablesvm="clr-namespace:Final_project.ViewModels.TablesVM"
              xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              mc:Ignorable="d"
+             Background="Transparent"
              d:DataContext="{d:DesignInstance Type=tablesvm:ConcreteDensityPrøveVM}"
              d:DesignHeight="450" d:DesignWidth="800">
 
