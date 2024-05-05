@@ -13,7 +13,7 @@ namespace Report_Generator_Domain.Commands
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
             List<TestModel> tests,
-            List<verktøy> verktøyer
+            List<verktøyModel> verktøyer
             )> Execute(Guid reportId);
     }
 }

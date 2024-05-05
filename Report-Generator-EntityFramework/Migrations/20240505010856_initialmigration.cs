@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_Generator_EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,6 +64,44 @@ namespace Report_Generator_EntityFramework.Migrations
                     table.PrimaryKey("PK_ReportImageModels", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ReportImageModels_ReportModels_ReportModelId",
+                        column: x => x.ReportModelId,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tests",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tests_ReportModels_ReportModelId",
+                        column: x => x.ReportModelId,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "verktøies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ReportModelId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_verktøies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_verktøies_ReportModels_ReportModelId",
                         column: x => x.ReportModelId,
                         principalTable: "ReportModels",
                         principalColumn: "Id",
@@ -167,9 +205,19 @@ namespace Report_Generator_EntityFramework.Migrations
                 column: "ReportModelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tests_ReportModelId",
+                table: "tests",
+                column: "ReportModelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_trykktestingModels_DataFraOpdragsgiverId",
                 table: "trykktestingModels",
                 column: "DataFraOpdragsgiverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_verktøies_ReportModelId",
+                table: "verktøies",
+                column: "ReportModelId");
         }
 
         /// <inheritdoc />
@@ -185,7 +233,13 @@ namespace Report_Generator_EntityFramework.Migrations
                 name: "ReportImageModels");
 
             migrationBuilder.DropTable(
+                name: "tests");
+
+            migrationBuilder.DropTable(
                 name: "trykktestingModels");
+
+            migrationBuilder.DropTable(
+                name: "verktøies");
 
             migrationBuilder.DropTable(
                 name: "DataFraOppdragsgiverPrøverModels");

@@ -3,13 +3,12 @@ using CommunityToolkit.Mvvm.Input;
 using Final_project.Commands;
 using Final_project.Stores;
 using Report_Generator_Domain.Models;
-using System.Windows.Input;
 
 namespace Final_project.ViewModels.TablesVM
 {
     public partial class DataFraOppdragsgiverPrøverVM : ObservableObject
     {
-        private readonly ReportStore _reportStore;
+
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
 
@@ -35,17 +34,19 @@ namespace Final_project.ViewModels.TablesVM
         [ObservableProperty]
         private string overflateUK;
 
+        public DataFraOppdragsgiverTableVM _dataFraOppdragsgiverTableVM { get; }
+
         // Constructor for new entries
         public DataFraOppdragsgiverPrøverVM(
-            ReportStore reportStore,
+
             ModalNavigation modalNavigation,
             Guid reportid,
             DataFraOppdragsgiverTableVM dataFraOppdragsgiverTableVM)
         {
-            _reportStore = reportStore;
+
             _modalNavigation = modalNavigation;
             _reportModelId = reportid;
-            SubmitCommand = new SubmitDataFraOppgavegiverCommand(this, reportStore, _reportModelId, dataFraOppdragsgiverTableVM, modalNavigation);
+            _dataFraOppdragsgiverTableVM = dataFraOppdragsgiverTableVM;
         }
 
         // Constructor to populate from an existing model
@@ -64,8 +65,7 @@ namespace Final_project.ViewModels.TablesVM
             }
         }
 
-        // Commands to handle UI actions
-        public ICommand SubmitCommand { get; }
+
 
 
         [RelayCommand]
@@ -74,5 +74,50 @@ namespace Final_project.ViewModels.TablesVM
             _modalNavigation.Close();
         }
 
+
+
+        [RelayCommand]
+        public virtual void Submit()
+        {
+            var _viewModel = this;
+
+            // Create a new entry model using the current state of the ViewModel
+            var newEntry = new DataFraOppdragsgiverPrøverModel(
+                     Guid.NewGuid(),
+                    _viewModel.Datomottatt,
+                    _viewModel.Overdekningoppgitt,
+                    _viewModel.Dmax,
+                    _viewModel.KjerneImax,
+                    _viewModel.KjerneImin,
+                    _viewModel.OverflateOK,
+                    _viewModel.OverflateUK,
+                    _reportModelId
+        );
+
+            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
+            var newPrøveVM = new DataFraOppdragsgiverPrøverVM(newEntry)
+            {
+                // If other properties need to be set directly, set them here
+                // Additional properties set up could be placed here if needed
+            };
+
+            // Add the new Prøve VM to the collection in DataFraOppdragsgiverTableVM
+            _dataFraOppdragsgiverTableVM.Prøver.Add(newPrøveVM);
+
+            // Optionally, clear or reset the ViewModel's properties if needed for a new entry
+            _viewModel.Datomottatt = DateTime.Now; // Reset to current time or a default value
+            _viewModel.Overdekningoppgitt = "";
+            _viewModel.Dmax = "";
+            _viewModel.KjerneImax = 0;
+            _viewModel.KjerneImin = 0;
+            _viewModel.OverflateOK = "";
+            _viewModel.OverflateUK = "";
+
+            _modalNavigation.Close();
+            // Optionally, handle modal navigation or UI feedback
+            // _modalNavigation.CloseCurrent(); // Close the modal if that's part of your application flow
+            // You may want to handle additional UI updates or confirmations here
+        }
     }
 }
+

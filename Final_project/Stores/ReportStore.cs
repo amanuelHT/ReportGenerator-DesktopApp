@@ -115,7 +115,7 @@ namespace Final_project.Stores
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
             List<TestModel> tests,
-            List<verktøy> verktøyer
+            List<verktøyModel> verktøyer
             )> GetReportData(Guid reportId)
         {
             return await _getReportDataCommand.Execute(reportId);

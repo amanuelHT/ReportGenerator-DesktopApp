@@ -34,7 +34,7 @@ public class OpenEditCommand : CommandBase
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
             List<TestModel> tests,
-            List<verktøy> verktøyer
+            List<verktøyModel> verktøyer
             ) = await _reportStore.GetReportData(_reportid);
 
         if (reportData == null)

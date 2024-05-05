@@ -12,9 +12,9 @@ namespace Report_Generator_Domain.Models
         public string Name { get; set; }
         public TestModel(Guid id, string name, Guid reportModelId)
         {
-            ReportModelId = reportModelId;
             Id = id;
             Name = name;
+            ReportModelId = reportModelId;
         }
     }
 }

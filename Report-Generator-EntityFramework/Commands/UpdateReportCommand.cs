@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Report_Generator_Domain.Commands;
 using Report_Generator_Domain.Models;
 
+
+
 namespace Report_Generator_EntityFramework.Commands
 {
     public class UpdateReportCommand : IUpdateReportCommand
@@ -12,7 +14,6 @@ namespace Report_Generator_EntityFramework.Commands
         public UpdateReportCommand(ReportModelDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
-
         }
 
         public async Task Execute(ReportModel reportModel)
@@ -21,9 +22,11 @@ namespace Report_Generator_EntityFramework.Commands
             {
                 var existingReport = await context.ReportModels
                    .Include(r => r.Images)
+                   .Include(r => r.Test)
+                   .Include(r => r.Verktøy)
                    .Include(r => r.DataFraOppdragsgiverPrøver)
                         .ThenInclude(p => p.TrykktestingModel)
-                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                   .Include(r => r.DataFraOppdragsgiverPrøver)
                         .ThenInclude(t => t.ConcreteDensityModel)
                    .Include(r => r.DataFraOppdragsgiverPrøver)
                         .ThenInclude(r => r.DataEtterKuttingOgSlipingModel)
@@ -35,44 +38,72 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
 
-
                     UpdateImages(context, existingReport, reportModel);
+                    UpdateTests(context, existingReport, reportModel);
+                    UpdateVerktøy(context, existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
-
-
 
                     await context.SaveChangesAsync();
                 }
             }
         }
+
         private void UpdateImages(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            foreach (var existingimages in existingReport.Images.ToList())
+            foreach (var existingImage in existingReport.Images.ToList())
             {
-                if (!newReport.Images.Any(p => p.Id == existingimages.Id))
+                if (!newReport.Images.Any(p => p.Id == existingImage.Id))
                 {
-                    context.Remove(existingimages);
+                    context.Remove(existingImage);
                 }
             }
 
-            if (newReport.Images.Any())
+            foreach (var newImage in newReport.Images)
             {
-                foreach (var newImage in newReport.Images)
+                if (!existingReport.Images.Any(p => p.Id == newImage.Id))
                 {
-                    if (!existingReport.Images.Any(p => p.Id == newImage.Id))
-                    {
-                        context.Add(newImage);
-                    }
+                    context.Add(newImage);
                 }
             }
-            else
-            {
-                context.RemoveRange(existingReport.Images);
-            }
-
-            context.SaveChanges();
         }
 
+        private void UpdateTests(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            foreach (var existingTest in existingReport.Test.ToList())
+            {
+                if (!newReport.Test.Any(p => p.Id == existingTest.Id))
+                {
+                    context.Remove(existingTest);
+                }
+            }
+
+            foreach (var newTest in newReport.Test)
+            {
+                if (!existingReport.Test.Any(p => p.Id == newTest.Id))
+                {
+                    context.Add(newTest);
+                }
+            }
+        }
+
+        private void UpdateVerktøy(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            foreach (var existingVerktøy in existingReport.Verktøy.ToList())
+            {
+                if (!newReport.Verktøy.Any(p => p.Id == existingVerktøy.Id))
+                {
+                    context.Remove(existingVerktøy);
+                }
+            }
+
+            foreach (var newVerktøy in newReport.Verktøy)
+            {
+                if (!existingReport.Verktøy.Any(p => p.Id == newVerktøy.Id))
+                {
+                    context.Add(newVerktøy);
+                }
+            }
+        }
 
         private void UpdatePrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
@@ -81,11 +112,9 @@ namespace Report_Generator_EntityFramework.Commands
                 var newPrøve = newReport.DataFraOppdragsgiverPrøver.FirstOrDefault(p => p.Id == existingPrøve.Id);
                 if (newPrøve != null)
                 {
-
                     UpdateTrykktestingModels(context, existingPrøve, newPrøve);
                     UpdateConcreteDensity(context, existingPrøve, newPrøve);
-                    UpdateConcreteDensity(context, existingPrøve, newPrøve);
-
+                    UpdateEtterKuttingPrøver(context, existingPrøve, newPrøve);
                 }
                 else
                 {
@@ -100,8 +129,6 @@ namespace Report_Generator_EntityFramework.Commands
                     context.Add(newPrøve);
                 }
             }
-
-            context.SaveChanges();
         }
 
         private void UpdateTrykktestingModels(DbContext context, DataFraOppdragsgiverPrøverModel existingPrøve, DataFraOppdragsgiverPrøverModel newPrøve)
@@ -129,7 +156,7 @@ namespace Report_Generator_EntityFramework.Commands
             {
                 if (!newPrøve.ConcreteDensityModel.Any(p => p.Id == existingConcreteDensity.Id))
                 {
-                    context.Remove(existingPrøve);
+                    context.Remove(existingConcreteDensity);
                 }
             }
 
@@ -148,22 +175,23 @@ namespace Report_Generator_EntityFramework.Commands
             {
                 if (!newPrøve.DataEtterKuttingOgSlipingModel.Any(p => p.Id == existingEtterKuttingPrøver.Id))
                 {
-                    context.Remove(existingPrøve);
+                    context.Remove(existingEtterKuttingPrøver);
                 }
             }
 
-
-            foreach (var newEtterKuttingPrøver in newPrøve.ConcreteDensityModel)
+            foreach (var newEtterKuttingPrøver in newPrøve.DataEtterKuttingOgSlipingModel)
             {
-                if (!existingPrøve.ConcreteDensityModel.Any(t => t.Id == newEtterKuttingPrøver.Id))
+                if (!existingPrøve.DataEtterKuttingOgSlipingModel.Any(t => t.Id == newEtterKuttingPrøver.Id))
                 {
                     context.Add(newEtterKuttingPrøver);
                 }
             }
         }
-
-
-
-
     }
 }
+
+
+
+
+
+

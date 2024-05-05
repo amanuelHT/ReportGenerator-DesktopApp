@@ -14,7 +14,7 @@ namespace Domain.Models
         // Collection of ReportImageModel
         public List<ReportImageModel> Images { get; set; }
         public List<TestModel> Test { get; set; }
-        public List<verktøy> Verktøy { get; set; }
+        public List<verktøyModel> Verktøy { get; set; }
         public List<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøver { get; set; }
 
 
@@ -29,7 +29,7 @@ namespace Domain.Models
 
             Images = new List<ReportImageModel>();
             Test = new List<TestModel>();
-            Verktøy = new List<verktøy>();
+            Verktøy = new List<verktøyModel>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
 
 

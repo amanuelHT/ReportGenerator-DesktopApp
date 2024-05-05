@@ -22,7 +22,7 @@ namespace Report_Generator_EntityFramework
         public DbSet<ConcreteDensityModel> concreteDensityModels { get; set; }
         public DbSet<TrykktestingModel> trykktestingModels { get; set; }
         public DbSet<TestModel> tests { get; set; }
-        public DbSet<verktøy> verktøies { get; set; }
+        public DbSet<verktøyModel> verktøies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,7 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(test => test.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<verktøy>()
+            modelBuilder.Entity<verktøyModel>()
                 .HasOne(verktøy => verktøy.ReportModel)
                 .WithMany(report => report.Verktøy)
                 .HasForeignKey(verktøy => verktøy.ReportModelId)

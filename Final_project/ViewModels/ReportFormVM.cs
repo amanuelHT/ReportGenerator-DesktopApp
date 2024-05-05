@@ -19,6 +19,15 @@ namespace Final_project.ViewModels
         public ImageVM ImageVM { get; set; }
         public ImageCollectionVM ImageCollectionViewModel { get; set; }
 
+
+
+        public TestVM TestVM { get; set; }
+        public TestCollectionVM TestCollectionVM { get; set; }
+
+        public VerktøyVM VerktøyVM { get; set; }
+        public VerktøyCollectionVM VerktøyCollectionVM { get; set; }
+
+
         public DataFraOppdragsgiverTableVM DataFraOppdragsgiverTableVM { get; set; }
         public DataFraOppdragsgiverPrøverVM DataFraOppdragsgiverPrøverVM { get; }
 
@@ -57,7 +66,7 @@ namespace Final_project.ViewModels
             ImageVM = new ImageVM(reportid, ImageCollectionViewModel, reportStore);
 
             DataFraOppdragsgiverTableVM = new DataFraOppdragsgiverTableVM(reportStore, modalNavigation, reportid);
-            DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(reportStore, modalNavigation, reportid, DataFraOppdragsgiverTableVM);
+            DataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(modalNavigation, reportid, DataFraOppdragsgiverTableVM);
 
 
             DataEtterKuttingOgSlipingTableVM = new DataEtterKuttingOgSlipingTableVM(modalNavigation, reportid);
@@ -70,6 +79,12 @@ namespace Final_project.ViewModels
 
             TrykktestingTableVM = new TrykktestingTableVM(modalNavigation, reportid);
             TrykktestingPrøveVM = new TrykktestingPrøveVM(modalNavigation, reportid, TrykktestingTableVM);
+
+            TestCollectionVM = new TestCollectionVM(reportid);
+            TestVM = new TestVM(reportid, TestCollectionVM);
+
+            VerktøyCollectionVM = new VerktøyCollectionVM(reportid);
+            VerktøyVM = new VerktøyVM(VerktøyCollectionVM, reportid);
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
         }

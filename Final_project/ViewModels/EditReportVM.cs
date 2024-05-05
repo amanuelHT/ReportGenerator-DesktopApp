@@ -49,6 +49,18 @@ namespace Final_project.ViewModels
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
             }
 
+            foreach (var test in reportModel.Test)
+            {
+                var testVM = new TestVM(test);
+                ReportFormVM.TestCollectionVM.tests.Add(testVM);
+            }
+
+            foreach (var ver in reportModel.Verktøy)
+            {
+                var verktøyVM = new VerktøyVM(ver);
+                ReportFormVM.VerktøyCollectionVM.verktøyVMs.Add(verktøyVM);
+            }
+
 
 
             foreach (var prøve in reportModel.DataFraOppdragsgiverPrøver)

@@ -54,7 +54,7 @@ namespace Final_project.ViewModels
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
             List<TestModel> tests,
-            List<verktøy> verktøyer) = await _reportStore.GetReportData(_selectedReport.Id);
+            List<verktøyModel> verktøyer) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

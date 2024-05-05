@@ -22,7 +22,7 @@ namespace Report_Generator_EntityFramework.Commands
             List<ConcreteDensityModel> concreteDensityModels,
             List<TrykktestingModel> trykktestingModels,
             List<TestModel> tests,
-            List<verktøy> verktøyer
+            List<verktøyModel> verktøyer
             )> Execute(Guid reportId)
         {
             using (var context = _contextFactory.Create())

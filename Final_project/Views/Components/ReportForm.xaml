@@ -55,7 +55,8 @@
                 
                 <Grid Grid.Row="3">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />  
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
@@ -69,20 +70,32 @@
            
 
                     <Grid Grid.Row="1" Margin="20 20 0 0">
-                        <components1:TestView DataContext="{Binding TestVM}" HorizontalAlignment="Left" />
+                              <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                        <components1:TestView Grid.Column="0" DataContext="{Binding TestVM}" HorizontalAlignment="Left" />
+                        <components1:TestCollectionView Grid.Column="1" DataContext="{Binding TestCollectionVM}" HorizontalAlignment="Left" />
+
                     </Grid>
+
+
+                        <Grid  Grid.Row="2" Margin="20 30 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <components1:VerktøyView DataContext="{Binding VerktøyVM}" HorizontalAlignment="Left" Grid.Column="0" />
+                            <components1:VerktøyCollectionView DataContext="{Binding VerktøyCollectionVM}" HorizontalAlignment="Left" Grid.Column="1" />
+                        </Grid>
+
+
                     
-                        <Grid Grid.Row="1" Margin="20 20 0 0">
-                        <components1:VerktøyView DataContext="{Binding Verktøy}" HorizontalAlignment="Left" />
-                    </Grid>
-                    
-                    
-                     <Grid Grid.Row="2" Margin="20 20 0 0">
-                        <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                        <components:ImageCollectionView Margin="20 20 0 0" Grid.Row="3" DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
                     </Grid>
                     
 
-                </Grid>
 
 
                 <!-- Additional rows for tables and modal control -->

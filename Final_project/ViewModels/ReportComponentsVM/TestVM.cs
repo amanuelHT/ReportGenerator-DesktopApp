@@ -14,7 +14,6 @@ namespace Final_project.ViewModels.ReportComponentsVM
         private readonly Guid _reportModelId;
 
 
-        // Constructor for new entries
         public TestVM(Guid reportid, TestCollectionVM testCollectionVM)
         {
 
@@ -30,6 +29,7 @@ namespace Final_project.ViewModels.ReportComponentsVM
         {
             if (model != null)
             {
+
                 Name = model.Name;
                 _reportModelId = model.ReportModelId;
             }
@@ -43,9 +43,9 @@ namespace Final_project.ViewModels.ReportComponentsVM
         [RelayCommand]
         public void Submit()
         {
-            // Create a new entry model using the current state of the ViewModel
+
             var newEntry = new TestModel(
-                Guid.NewGuid(),
+               Guid.NewGuid(),
                 Name,
                _reportModelId
             );
