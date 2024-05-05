@@ -17,6 +17,15 @@ namespace Domain.Models
         public List<verktøyModel> Verktøy { get; set; }
         public List<DataFraOppdragsgiverPrøverModel> DataFraOppdragsgiverPrøver { get; set; }
 
+        public List<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModel { get; set; }
+
+
+        public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
+
+        public List<TrykktestingModel> TrykktestingModel { get; set; }
+
+
+
 
 
 
@@ -31,7 +40,9 @@ namespace Domain.Models
             Test = new List<TestModel>();
             Verktøy = new List<verktøyModel>();
             DataFraOppdragsgiverPrøver = new List<DataFraOppdragsgiverPrøverModel>();
-
+            DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
+            ConcreteDensityModel = new List<ConcreteDensityModel>();
+            TrykktestingModel = new List<TrykktestingModel>();
 
         }
     }

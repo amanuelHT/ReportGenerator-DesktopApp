@@ -11,8 +11,9 @@ namespace Final_project.ViewModels.TablesVM
 
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
+        public Guid? _dataId;
 
-        // Properties based on the model fields
+
         [ObservableProperty]
         private DateTime datomottatt;
 
@@ -36,7 +37,7 @@ namespace Final_project.ViewModels.TablesVM
 
         public DataFraOppdragsgiverTableVM _dataFraOppdragsgiverTableVM { get; }
 
-        // Constructor for new entries
+
         public DataFraOppdragsgiverPrøverVM(
 
             ModalNavigation modalNavigation,
@@ -80,10 +81,11 @@ namespace Final_project.ViewModels.TablesVM
         public virtual void Submit()
         {
             var _viewModel = this;
+            Guid newId = _dataId ?? Guid.NewGuid();
 
             // Create a new entry model using the current state of the ViewModel
             var newEntry = new DataFraOppdragsgiverPrøverModel(
-                     Guid.NewGuid(),
+                     newId,
                     _viewModel.Datomottatt,
                     _viewModel.Overdekningoppgitt,
                     _viewModel.Dmax,
@@ -94,29 +96,16 @@ namespace Final_project.ViewModels.TablesVM
                     _reportModelId
         );
 
+
             // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new DataFraOppdragsgiverPrøverVM(newEntry)
             {
-                // If other properties need to be set directly, set them here
-                // Additional properties set up could be placed here if needed
+
             };
 
-            // Add the new Prøve VM to the collection in DataFraOppdragsgiverTableVM
             _dataFraOppdragsgiverTableVM.Prøver.Add(newPrøveVM);
-
-            // Optionally, clear or reset the ViewModel's properties if needed for a new entry
-            _viewModel.Datomottatt = DateTime.Now; // Reset to current time or a default value
-            _viewModel.Overdekningoppgitt = "";
-            _viewModel.Dmax = "";
-            _viewModel.KjerneImax = 0;
-            _viewModel.KjerneImin = 0;
-            _viewModel.OverflateOK = "";
-            _viewModel.OverflateUK = "";
-
             _modalNavigation.Close();
-            // Optionally, handle modal navigation or UI feedback
-            // _modalNavigation.CloseCurrent(); // Close the modal if that's part of your application flow
-            // You may want to handle additional UI updates or confirmations here
+
         }
     }
 }

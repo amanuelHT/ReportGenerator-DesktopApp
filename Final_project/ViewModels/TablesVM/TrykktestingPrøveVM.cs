@@ -11,6 +11,8 @@ namespace Final_project.ViewModels.TablesVM
 
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
+        public Guid TrykktestingId;
+
         private readonly TrykktestingTableVM _trykktestingTableVM;
 
 
@@ -48,7 +50,7 @@ namespace Final_project.ViewModels.TablesVM
                 PalastHastighetMPas = model.PalastHastighetMPas;
                 TrykkfasthetMPa = model.TrykkfasthetMPa;
                 TrykkfasthetMPaNSE = model.TrykkfasthetMPaNSE;
-                _reportModelId = model.DataFraOpdragsgiverId;
+                _reportModelId = model.ReportModelId;
             }
         }
 

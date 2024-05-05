@@ -26,47 +26,42 @@ namespace Report_Generator_EntityFramework.Commands
                     context.ReportImageModels.Add(images);
                 }
 
-
                 foreach (var tests in reportModel.Test)
                 {
                     context.tests.Add(tests);
                 }
 
-
-                foreach (var verktøy in reportModel.Verktøy)
+                foreach (var verk in reportModel.Verktøy)
                 {
-                    context.verktøies.Add(verktøy);
+                    context.verktøies.Add(verk);
                 }
 
 
 
+                // Add associated DataFraOppdragsgiverPrøver to the context
                 foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)
                 {
                     context.DataFraOppdragsgiverPrøverModels.Add(prøver);
-
-                    // Here we should add the TrykktestingModel related to each DataFraOppdragsgiverPrøverModel
-                    foreach (var trykktesting in prøver.TrykktestingModel)
-                    {
-                        context.trykktestingModels.Add(trykktesting);
-                    }
-
-                    foreach (var density in prøver.ConcreteDensityModel)
-                    {
-                        context.concreteDensityModels.Add(density);
-                    }
-
-
-                    foreach (var dataEtterKuttingOgSlipingModel in prøver.DataEtterKuttingOgSlipingModel)
-                    {
-                        context.DataEtterKuttingOgSlipingModels.Add(dataEtterKuttingOgSlipingModel);
-                    }
-
                 }
 
 
+                // Add associated DataFraOppdragsgiverPrøver to the context
+                foreach (var prøver in reportModel.DataEtterKuttingOgSlipingModel)
+                {
+                    context.DataEtterKuttingOgSlipingModels.Add(prøver);
+                }
 
 
+                foreach (var density in reportModel.ConcreteDensityModel)
+                {
+                    context.concreteDensityModels.Add(density);
+                }
 
+
+                foreach (var trykktesting in reportModel.TrykktestingModel)
+                {
+                    context.trykktestingModels.Add(trykktesting);
+                }
 
                 // Save changes to the database
                 await context.SaveChangesAsync();

@@ -1,4 +1,9 @@
-﻿namespace Report_Generator_Domain.Models
+﻿
+
+
+using Domain.Models;
+
+namespace Report_Generator_Domain.Models
 {
     public class DataEtterKuttingOgSlipingModel
     {
@@ -16,12 +21,11 @@
         public double EtterSliping { get; set; }
         public double MmTilTopp { get; set; }
 
-        public Guid DataFraOpdragsgiverId { get; set; }
+        public Guid ReportModelId { get; set; } // Foreign key
+        public ReportModel ReportModel { get; set; } // Navigation property
 
-        public DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel { get; set; }
 
-
-        public DataEtterKuttingOgSlipingModel(Guid id, DateTime ivannbadDato, DateTime testDato, string overflatetilstand, double dm, double prøvetykke, double dmPrøvetykkeRatio, double trykkfasthetMPa, string fasthetSammenligning, double førSliping, double etterSliping, double mmTilTopp, Guid dataFraOpdragsgiverId)
+        public DataEtterKuttingOgSlipingModel(Guid id, DateTime ivannbadDato, DateTime testDato, string overflatetilstand, double dm, double prøvetykke, double dmPrøvetykkeRatio, double trykkfasthetMPa, string fasthetSammenligning, double førSliping, double etterSliping, double mmTilTopp, Guid reportModelId)
         {
             Id = id;
             IvannbadDato = ivannbadDato;
@@ -35,7 +39,7 @@
             FørSliping = førSliping;
             EtterSliping = etterSliping;
             MmTilTopp = mmTilTopp;
-            DataFraOpdragsgiverId = dataFraOpdragsgiverId;
+            ReportModelId = reportModelId;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Report_Generator_EntityFramework.Commands
         }
 
         public async Task<(
-             ReportModel report, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
+             ReportModel report,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
@@ -28,35 +28,32 @@ namespace Report_Generator_EntityFramework.Commands
             using (var context = _contextFactory.Create())
             {
                 var report = await context.ReportModels
-                    .Include(r => r.Images)
-                    .Include(r => r.Verktøy)
+                     .Include(r => r.Images)
                     .Include(r => r.Test)
+                    .Include(r => r.Verktøy)
                     .Include(r => r.DataFraOppdragsgiverPrøver)
-                       .ThenInclude(s => s.ConcreteDensityModel)
-                    .Include(r => r.DataFraOppdragsgiverPrøver)
-                       .ThenInclude(s => s.TrykktestingModel)
-                    .Include(r => r.DataFraOppdragsgiverPrøver)
-                       .ThenInclude(s => s.DataEtterKuttingOgSlipingModel)
+                    .Include(r => r.DataEtterKuttingOgSlipingModel)
+                     .Include(r => r.ConcreteDensityModel)
+                     .Include(r => r.TrykktestingModel)
 
                        .FirstOrDefaultAsync(r => r.Id == reportId);
 
                 if (report == null)
-                    return (null, null, null, null, null, null, null, null, null);
+                    return (null, null, null, null, null, null, null, null);
 
                 var images = report.Images.ToList();
                 var tests = report.Test.ToList();
                 var verktøies = report.Verktøy.ToList();
                 var dataFraOppdragsgiverPrøverModels = report.DataFraOppdragsgiverPrøver.ToList();
-
-                var concreteDensityModels = dataFraOppdragsgiverPrøverModels.SelectMany(d => d.ConcreteDensityModel).ToList();
-                var trykktestingModels = dataFraOppdragsgiverPrøverModels.SelectMany(t => t.TrykktestingModel).ToList();
-                var dataEtterKuttingOgSlipingModels = dataFraOppdragsgiverPrøverModels.SelectMany(d => d.DataEtterKuttingOgSlipingModel).ToList();
+                var concreteDensityModels = report.ConcreteDensityModel.ToList();
+                var trykktestingModels = report.TrykktestingModel.ToList();
+                var dataEtterKuttingOgSlipingModels = report.DataEtterKuttingOgSlipingModel.ToList();
 
                 var dataFraOppdragsgiverPrøverModel = dataFraOppdragsgiverPrøverModels.FirstOrDefault();
 
                 return (
                     report,
-                    dataFraOppdragsgiverPrøverModel,
+
                     dataFraOppdragsgiverPrøverModels,
                     images,
                     dataEtterKuttingOgSlipingModels,

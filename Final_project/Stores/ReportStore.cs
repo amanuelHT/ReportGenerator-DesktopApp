@@ -108,7 +108,7 @@ namespace Final_project.Stores
 
 
         public async Task<(
-             ReportModel report, DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel,
+             ReportModel report,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,

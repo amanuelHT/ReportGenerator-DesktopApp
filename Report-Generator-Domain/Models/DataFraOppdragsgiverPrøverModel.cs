@@ -20,14 +20,6 @@ namespace Report_Generator_Domain.Models
         public ReportModel ReportModel { get; set; } // Navigation property
 
 
-        public List<TrykktestingModel> TrykktestingModel { get; set; }
-
-        public List<ConcreteDensityModel> ConcreteDensityModel { get; set; }
-
-
-        public List<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModel { get; set; }
-
-
 
 
         public DataFraOppdragsgiverPrøverModel(Guid id, DateTime datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
@@ -41,11 +33,6 @@ namespace Report_Generator_Domain.Models
             OverflateOK = overflateOK;
             OverflateUK = overflateUK;
             ReportModelId = reportModelId;
-
-
-            TrykktestingModel = new List<TrykktestingModel>();
-            ConcreteDensityModel = new List<ConcreteDensityModel>();
-            DataEtterKuttingOgSlipingModel = new List<DataEtterKuttingOgSlipingModel>();
 
 
 

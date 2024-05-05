@@ -52,23 +52,23 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(prøver => prøver.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<DataEtterKuttingOgSlipingModel>()
+                       .HasOne(prøver => prøver.ReportModel)
+                       .WithMany(table => table.DataEtterKuttingOgSlipingModel)
+                       .HasForeignKey(prøver => prøver.ReportModelId)
+                       .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<ConcreteDensityModel>()
-               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
+               .HasOne(prøver => prøver.ReportModel)
                .WithMany(table => table.ConcreteDensityModel)
-               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
+               .HasForeignKey(prøver => prøver.ReportModelId)
                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TrykktestingModel>()
-               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
+               .HasOne(prøver => prøver.ReportModel)
                .WithMany(table => table.TrykktestingModel)
-               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
-               .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<DataEtterKuttingOgSlipingModel>()
-               .HasOne(prøver => prøver.DataFraOppdragsgiverPrøverModel)
-               .WithMany(table => table.DataEtterKuttingOgSlipingModel)
-               .HasForeignKey(prøver => prøver.DataFraOpdragsgiverId)
+               .HasForeignKey(prøver => prøver.ReportModelId)
                .OnDelete(DeleteBehavior.Cascade);
         }
     }

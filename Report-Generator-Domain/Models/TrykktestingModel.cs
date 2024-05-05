@@ -1,4 +1,8 @@
-﻿namespace Report_Generator_Domain.Models
+﻿
+
+using Domain.Models;
+
+namespace Report_Generator_Domain.Models
 {
     public class TrykktestingModel
     {
@@ -7,17 +11,17 @@
         public decimal PalastHastighetMPas { get; set; }
         public decimal TrykkfasthetMPa { get; set; }
         public decimal TrykkfasthetMPaNSE { get; set; }
-        public Guid DataFraOpdragsgiverId { get; set; }
-
-        public DataFraOppdragsgiverPrøverModel DataFraOppdragsgiverPrøverModel { get; set; }
-        public TrykktestingModel(Guid id, decimal trykkflateMm, decimal palastHastighetMPas, decimal trykkfasthetMPa, decimal trykkfasthetMPaNSE, Guid dataFraOpdragsgiverId)
+        public Guid ReportModelId { get; set; } // Moved to last as per your request
+        public ReportModel ReportModel { get; set; } // Navigation property
+        // Constructor
+        public TrykktestingModel(Guid id, decimal trykkflateMm, decimal palastHastighetMPas, decimal trykkfasthetMPa, decimal trykkfasthetMPaNSE, Guid reportModelId)
         {
             Id = id;
             TrykkflateMm = trykkflateMm;
             PalastHastighetMPas = palastHastighetMPas;
             TrykkfasthetMPa = trykkfasthetMPa;
             TrykkfasthetMPaNSE = trykkfasthetMPaNSE;
-            DataFraOpdragsgiverId = dataFraOpdragsgiverId;
+            ReportModelId = reportModelId;
 
         }
     }
