@@ -22,17 +22,20 @@ namespace Final_project.ViewModels
 
             LoadMessages();
 
-            // Subscribe to property changes in KundeServiceVM to refresh messages
-            _kundeServiceVM.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
-                {
-                    // Notify the UI to update filtered messages
-                    OnPropertyChanged(nameof(FilteredMessages));
-                }
-            };
+            _kundeServiceVM.PropertyChanged += SubscribeToSelectedUserChanges;
+
         }
 
+
+
+
+        private void SubscribeToSelectedUserChanges(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
+            {
+                OnPropertyChanged(nameof(FilteredMessages)); // Notify the UI to update filtered messages
+            }
+        }
         public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
 
 
@@ -82,22 +85,23 @@ namespace Final_project.ViewModels
 
 
 
-
+        [ObservableProperty]
         private string _content;
 
-        public string Content
-        {
-            get => _content;
-            set => SetProperty(ref _content, value);
-        }
+        //public string Content
+        //{
+        //    get => _content;
+        //    set => SetProperty(ref _content, value);
+        //}
 
+        [ObservableProperty]
         private string _fileName;
 
-        public string FileName
-        {
-            get => _fileName;
-            set => SetProperty(ref _fileName, value);
-        }
+        //public string FileName
+        //{
+        //    get => _fileName;
+        //    set => SetProperty(ref _fileName, value);
+        //}
 
 
 
@@ -105,10 +109,8 @@ namespace Final_project.ViewModels
         [RelayCommand]
         private async void SendMessage()
         {
-            // Ensure that a user is selected before proceeding
             if (_kundeServiceVM.SelectedUser == null)
             {
-                //show.WriteLine("No user selected.");
                 return;
             }
 
@@ -124,34 +126,21 @@ namespace Final_project.ViewModels
                     Timestamp = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow)
                 };
 
-                // Send the message via FirebaseStore
-                await _firebaseStore.SendMessageAsync(message);
 
-                // Add the message to the Messages collection
+                await _firebaseStore.SendMessageAsync(message);
                 Messages.Add(message);
 
-                // Notify the UI to update filtered messages
                 OnPropertyChanged(nameof(FilteredMessages));
 
-                // Clear fields after sending
                 this.Content = string.Empty;
                 this.FileName = string.Empty;
 
-                Console.WriteLine("Message sent successfully.");
             }
             catch (Exception ex)
             {
-                // Log or handle the exception if message sending fails
                 Console.WriteLine($"Error sending message: {ex.Message}");
             }
         }
-
-
-
-
-
-
-
 
 
         [RelayCommand]
@@ -164,20 +153,20 @@ namespace Final_project.ViewModels
 
             if (response == true)
             {
-                FileName = Path.GetFileName(openFileDialog.FileName); // Store only the file name
 
-                // Open the file stream
-                using (var stream = openFileDialog.OpenFile())
-                {
-                    // Upload the file to Firebase Storage
-                    await _firebaseStore.UploadReportAsync(stream, FileName);
+                string filepath = openFileDialog.FileName;
+                string filename = Path.GetFileName(filepath);
+                string filenameWithoutExtension = Path.GetFileNameWithoutExtension(filepath);
+                var stream = File.Open(filepath, FileMode.Open);
 
-                    // Add the file to the Firestore database
-                    await _firebaseStore.AddReportAsync(FileName);
-                }
 
-                // Clear the items collection
-                //Items.Clear();
+
+                await _firebaseStore.UploadReportMessageAsync(stream, filename);
+
+                FileName = filenameWithoutExtension;
+
+
+
             }
         }
     }

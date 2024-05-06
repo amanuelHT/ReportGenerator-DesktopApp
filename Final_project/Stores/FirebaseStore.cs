@@ -7,25 +7,15 @@ using System.IO;
 
 public class FirebaseStore
 {
-    private readonly FirebaseStorage _storage;
     private readonly FirestoreDb _db;
+    private readonly FirebaseStorage _storage;
 
     public FirebaseStore()
     {
-        // Set the path to the JSON credentials file
-        string path = @"..\..\hprd-24-040-firebase-adminsdk-l7jhz-64ddf61372.json";
-
-        // Set the environment variable for Google Application Credentials
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-        // Create a FirestoreDb instance with the specified project ID
-        _db = FirestoreDb.Create("hprd-24-040");
-
-        // Create a FirebaseStorage instance with the specified bucket name
-        _storage = new FirebaseStorage("hprd-24-040.appspot.com");
+        // Access Firestore and Firebase Storage instances via FirestoreHelper
+        _db = FirestoreHelper.Database;
+        _storage = FirestoreHelper.Storage;
     }
-
-
 
 
     public async Task UploadReportAsync(Stream stream, string filename)
@@ -33,6 +23,14 @@ public class FirebaseStore
 
         await _storage
             .Child("reports")
+            .Child(filename)
+            .PutAsync(stream);
+    }
+    public async Task UploadReportMessageAsync(Stream stream, string filename)
+    {
+
+        await _storage
+            .Child("Messages")
             .Child(filename)
             .PutAsync(stream);
     }
@@ -79,7 +77,7 @@ public class FirebaseStore
                 Sender = messageModel.Sender,
                 Receiver = messageModel.Receiver,
                 Filepath = messageModel.Filepath,
-                Timestamp = DateTime.UtcNow // Optionally, include a timestamp
+                Timestamp = DateTime.UtcNow
             });
 
             // Optionally, you can retrieve the ID of the newly created document

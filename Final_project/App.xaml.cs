@@ -44,7 +44,7 @@ namespace Final_project
                  string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                  service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                  service.AddSingleton<ReportModelDbContextFactory>();
-                 Stores.FirestoreHelper.InitializeFirestore();
+                 Stores.FirestoreHelper.InitializeFirestoreAndStorage();
 
                  service.AddSingleton<Func<Type, ObservableObject>>(serviceProvider => type =>
                  (ObservableObject)serviceProvider.GetRequiredService(type));

@@ -57,10 +57,12 @@
                                                    Foreground="Gray"
                                                    Margin="0,2,0,0"/>
                                     </StackPanel>
+                                      
                                 </Border>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
@@ -70,7 +72,10 @@
                 <TextBox x:Name="MessageInputBox"
                          Text="{Binding Content, Mode=TwoWay}"
                          Width="200"
-                         Height="30"
+                         FontSize="16"
+                         FontFamily="Calibri"
+                         Foreground="Black"
+                         Height="40"
                          Margin="40,0,10,0" />
 
                 <Button Command="{Binding SendMessageCommand}"
