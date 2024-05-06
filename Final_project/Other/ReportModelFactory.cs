@@ -22,6 +22,7 @@ namespace Final_project.Other
                 reportForm.Tittle,
                 reportForm.Status,
                 reportForm.Kunde
+
             );
 
 

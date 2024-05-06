@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Final_project.ViewModels
 {
-    public class LoginVM : ObservableObject
+    public partial class LoginVM : ObservableObject
     {
         private NavigationStore _navigationStore;
         private readonly FirebaseAuthProvider _firebaseAuthProvider;
@@ -17,28 +17,12 @@ namespace Final_project.ViewModels
         public ICommand LogInCommand { get; }
 
 
-
+        [ObservableProperty]
         private string _username;
-        public string Username
-        {
-            get { return _username; }
-            set
-            {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
-            }
-        }
 
+        [ObservableProperty]
         private string _password;
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
+
 
         public LoginVM(AccountStore accountStore,
             INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider, INavigationService ResetPasswordNavigarionService)

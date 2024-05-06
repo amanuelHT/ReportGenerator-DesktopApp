@@ -23,9 +23,9 @@
         </Grid.RowDefinitions>
 
 
-      <!--<stores:CustomModalView Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+      <viewmodels:CustomModalVM Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
      <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
- </stores:CustomModalView>-->
+ </viewmodels:CustomModalVM>
         <!-- Main Content with ScrollViewer -->
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" 
     PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
@@ -135,8 +135,8 @@
             </Button>
         </WrapPanel>
 
-        <modalcontrol:Modal IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.RowSpan="2" Background="Black" Opacity="0.8">
+        <!--<modalcontrol:Modal IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.RowSpan="2" Background="Black" Opacity="0.8">
             <ContentControl Content="{Binding CurrentVM}" />
-        </modalcontrol:Modal>
+        </modalcontrol:Modal>-->
     </Grid>
 </UserControl>

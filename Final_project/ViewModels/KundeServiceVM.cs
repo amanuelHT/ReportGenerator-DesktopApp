@@ -15,35 +15,20 @@ namespace Final_project.ViewModels
     {
         private UserInfoVM _userInfoVM;
         private readonly FirebaseStore _firebaseStore;
-        private string _admin;
+
 
         public MessageVM MessageVM { get; private set; }
 
-        // Selected user to whom the message will be sent
-        private UserInfo _selectedUser;
 
         public ObservableCollection<UserInfo> Users { get; }
-        //public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
+
+        [ObservableProperty]
+        private string _admin;
+
+        [ObservableProperty]
+        private UserInfo _selectedUser;
 
 
-        public string Admin
-        {
-            get => _admin;
-            set => SetProperty(ref _admin, value);
-        }
-
-        public UserInfo SelectedUser
-        {
-            get => _selectedUser;
-            set
-            {
-                SetProperty(ref _selectedUser, value);
-                OnPropertyChanged(nameof(IsUserSelected));
-                OnPropertyChanged(nameof(FirstName));
-                OnPropertyChanged(nameof(LastName));
-                OnPropertyChanged(nameof(Role));
-            }
-        }
 
 
 
@@ -82,11 +67,10 @@ namespace Final_project.ViewModels
             {
                 // Load all users from Firebase
                 var loadedUsers = await _firebaseStore.LoadUsersAsync();
-
-                // Clear existing users before adding the loaded ones
                 Users.Clear();
 
-                // Get the Admin user's ID for internal purposes
+
+                // Get the Admin user's ID 
                 Admin = loadedUsers.FirstOrDefault(user => user.Role == "Admin")?.UserId;
 
                 // Add only non-admin users to the Users collection
@@ -97,7 +81,7 @@ namespace Final_project.ViewModels
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that may occur
+
                 Debug.WriteLine($"Error loading users: {ex.Message}");
             }
         }

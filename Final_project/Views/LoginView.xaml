@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title of the login page -->
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,20" Text="Welcome Back" />
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,20" Text="Velkommen" />
 
         <!-- Input fields for username and password -->
         <StackPanel Grid.Row="1" >

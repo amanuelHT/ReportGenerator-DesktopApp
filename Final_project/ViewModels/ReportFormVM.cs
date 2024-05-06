@@ -10,6 +10,7 @@ namespace Final_project.ViewModels
     public partial class ReportFormVM : ObservableObject, IDisposable
     {
         private readonly ModalNavigation _modalNavigation;
+        public TestUtførtAvVM TestUtførtAvVM { get; set; }
 
         public ObservableObject CurrentVM => _modalNavigation.CurrentView;
         public bool IsFormOpen => _modalNavigation.IsOpen;

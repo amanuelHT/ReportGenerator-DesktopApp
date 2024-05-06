@@ -40,6 +40,7 @@ namespace Final_project.ViewModels
 
 
 
+
         public ObservableCollection<MessageModel> FilteredMessages
         {
             get
@@ -60,7 +61,7 @@ namespace Final_project.ViewModels
             {
                 var loadmessages = await _firebaseStore.LoadMessages();
 
-                // Clear existing messages before adding the loaded ones
+
                 Messages.Clear();
 
                 // Add loaded messages to the Messages collection
@@ -72,9 +73,10 @@ namespace Final_project.ViewModels
                 // Update filtered messages
                 OnPropertyChanged(nameof(FilteredMessages));
             }
+
             catch (Exception ex)
             {
-                // Handle any exceptions
+
                 Debug.WriteLine($"Error loading messages: {ex.Message}");
             }
         }
@@ -88,20 +90,10 @@ namespace Final_project.ViewModels
         [ObservableProperty]
         private string _content;
 
-        //public string Content
-        //{
-        //    get => _content;
-        //    set => SetProperty(ref _content, value);
-        //}
+
 
         [ObservableProperty]
         private string _fileName;
-
-        //public string FileName
-        //{
-        //    get => _fileName;
-        //    set => SetProperty(ref _fileName, value);
-        //}
 
 
 

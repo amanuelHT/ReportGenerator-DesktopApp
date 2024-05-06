@@ -30,6 +30,7 @@ namespace Report_Generator_EntityFramework.Queries
                         report.Status,
                         report.Kunde
 
+
                     )).ToList();
                 }
             }

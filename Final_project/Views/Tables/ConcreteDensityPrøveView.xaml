@@ -17,7 +17,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Inputs Grid -->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -25,74 +24,23 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>              
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Inputs defined here -->
+            <components:TextBoxView Grid.Row="0" Text="{Binding Provnr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Prøvenr:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding Provnr, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-            </Grid>
+            <components:TextBoxView Grid.Row="1" Text="{Binding Dato, Mode=TwoWay}" Watermark="Dato mottatt:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Dato mottatt:" FontWeight="Bold" Margin="5" />
-                <DatePicker Grid.Column="1" SelectedDate="{Binding Dato, Mode=TwoWay}" Margin="5" />
-            </Grid>
+            <components:TextBoxView Grid.Row="2" Text="{Binding MasseILuft, UpdateSourceTrigger=PropertyChanged}" Watermark="Masse i luft:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Masse i luft:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding MasseILuft, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-            </Grid>
+            <components:TextBoxView Grid.Row="3" Text="{Binding MasseIVannbad, UpdateSourceTrigger=PropertyChanged}" Watermark="Masse i vannbad:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Masse i vannbad:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding MasseIVannbad, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-            </Grid>
+            <components:TextBoxView Grid.Row="4" Text="{Binding Pw, UpdateSourceTrigger=PropertyChanged}" Watermark="Pw:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Pw:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding Pw, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-            </Grid>
+            <components:TextBoxView Grid.Row="5" Text="{Binding V, UpdateSourceTrigger=PropertyChanged}" Watermark="V:" FontWeight="Bold" Margin="5"/>
 
-            <Grid Grid.Row="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="V:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding V, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-            </Grid>
-
-            <Grid Grid.Row="6">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Densitet:" FontWeight="Bold" Margin="5" />
-                <TextBox Grid.Column="1" Text="{Binding Densitet, Mode=OneWay}"  />
-            </Grid>
+            <components:TextBoxView Grid.Row="6" Text="{Binding Densitet, Mode=OneWay}" Watermark="Densitet:" FontWeight="Bold" Margin="5"/>
         </Grid>
 
         <!-- Action Buttons -->

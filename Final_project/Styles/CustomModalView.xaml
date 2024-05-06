@@ -19,7 +19,7 @@
                             VerticalAlignment="Center"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            Width="800" Height="600">
+                            Width="500" Height="600">
                             <!-- Adjust to desired size -->
 
                             <Grid>
@@ -29,34 +29,25 @@
 
                                 <Border
                                     x:Name="border"
-                                    Background="{StaticResource LinearGradientBrush1}"
+                                    Background="{StaticResource LinearGradientBrush4}"
                                     CornerRadius="12"
                                     Padding="25">
 
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
 
-                                        <Border Grid.Row="0" Background="DarkSlateGray" CornerRadius="12,12,0,0">
-                                            <DockPanel>
-                                                <TextBlock DockPanel.Dock="Left"
-                                                           Text="Styled Modal Title"
-                                                           FontSize="22"
-                                                           FontWeight="Bold"
-                                                           Foreground="White"
-                                                           Margin="12" />
-                                            </DockPanel>
-                                        </Border>
+                                            <ContentControl Grid.Row="1" Content="{TemplateBinding Content}" Margin="0,12,0,12" />
 
-                                        <ContentControl Grid.Row="1" Content="{TemplateBinding Content}" Margin="0,12,0,12" />
-
-                                        <Border Grid.Row="2" Background="DarkSlateGray" CornerRadius="0,0,12,12">
-                                            <!-- Optional Footer -->
-                                        </Border>
-                                    </Grid>
+                                            <Border Grid.Row="2" Background="DarkSlateGray" CornerRadius="0,0,12,12">
+                                                <!-- Optional Footer -->
+                                            </Border>
+                                        </Grid>
+                                    </ScrollViewer>
                                 </Border>
                             </Grid>
                         </Border>
