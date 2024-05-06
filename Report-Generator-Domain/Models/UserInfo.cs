@@ -20,5 +20,19 @@ namespace Report_Generator_Domain.Models
 
         [FirestoreProperty]
         public string Role { get; set; }
+
+        public string RoleColor
+        {
+            get
+            {
+                // Customize the color based on role
+                return Role switch
+                {
+                    "Kunde" => "#ffc0cb",
+                    "User" => "#ffd700",
+                    _ => "#23c3eb"
+                };
+            }
+        }
     }
 }

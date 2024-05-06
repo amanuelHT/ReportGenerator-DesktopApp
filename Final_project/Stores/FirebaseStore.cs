@@ -140,30 +140,32 @@ public class FirebaseStore
     }
     public async Task<ObservableCollection<MessageModel>> LoadMessages()
     {
-        // Create an empty ObservableCollection to store user information
-        ObservableCollection<MessageModel> usersCollection = new ObservableCollection<MessageModel>();
+        ObservableCollection<MessageModel> messages = new ObservableCollection<MessageModel>();
 
-        // Reference the "users" collection in Firestore
-        CollectionReference usersRef = FirestoreHelper.Database.Collection("Messages");
-
-        // Asynchronously retrieve a snapshot of the collection
-        QuerySnapshot usersSnapshot = await usersRef.GetSnapshotAsync();
-
-        // Loop through each document in the snapshot
-        foreach (var doc in usersSnapshot.Documents)
+        try
         {
-            // Convert the document data to a UserInfo object
-            MessageModel message = doc.ConvertTo<MessageModel>();
+            CollectionReference messagesRef = FirestoreHelper.Database.Collection("Messages");
+            QuerySnapshot snapshot = await messagesRef.GetSnapshotAsync();
 
-            // Set the UserId property of the UserInfo object to the document's ID
-            message.Id = doc.Id;
+            foreach (var doc in snapshot.Documents)
+            {
+                MessageModel message = doc.ConvertTo<MessageModel>();
+                message.Id = doc.Id;
 
-            // Add the UserInfo object to the ObservableCollection
-            usersCollection.Add(message);
+                // Add the UserInfo object to the ObservableCollection
+                messages.Add(message);
+
+            }
+
         }
 
-        // Return the populated ObservableCollection containing user information
-        return usersCollection;
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading messages: {ex.Message}");
+        }
+
+        return messages;
     }
 
 

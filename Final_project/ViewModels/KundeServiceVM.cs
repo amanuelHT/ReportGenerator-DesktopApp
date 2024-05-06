@@ -6,6 +6,7 @@ using Firebase.Auth;
 using Microsoft.Win32;
 using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace Final_project.ViewModels
@@ -47,7 +48,6 @@ namespace Final_project.ViewModels
 
 
 
-
         public bool IsUserSelected => SelectedUser != null;
 
         public string FirstName => SelectedUser?.FirstName;
@@ -80,30 +80,30 @@ namespace Final_project.ViewModels
         {
             try
             {
+                // Load all users from Firebase
                 var loadedUsers = await _firebaseStore.LoadUsersAsync();
 
-                // Clear existing users before adding the loaded users
+                // Clear existing users before adding the loaded ones
                 Users.Clear();
 
-                // Add loaded users to the Users collection
-                foreach (var user in loadedUsers)
+                // Get the Admin user's ID for internal purposes
+                Admin = loadedUsers.FirstOrDefault(user => user.Role == "Admin")?.UserId;
+
+                // Add only non-admin users to the Users collection
+                foreach (var user in loadedUsers.Where(user => user.Role != "Admin"))
                 {
                     Users.Add(user);
                 }
-
-                // Update the Admin property
-                Admin = GetAdminUserId();
             }
             catch (Exception ex)
             {
-                // Handle any exceptions
+                // Handle any exceptions that may occur
+                Debug.WriteLine($"Error loading users: {ex.Message}");
             }
         }
 
-        private string GetAdminUserId()
-        {
-            return Users.FirstOrDefault(user => user.Role == "Admin")?.UserId;
-        }
+
+
 
         [RelayCommand]
         public async void Upload()

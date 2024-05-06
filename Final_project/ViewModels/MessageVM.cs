@@ -10,16 +10,10 @@ namespace Final_project.ViewModels
 {
     public partial class MessageVM : ObservableObject
     {
-        private KundeServiceVM _kundeServiceVM;
+        private readonly KundeServiceVM _kundeServiceVM;
         private readonly FirebaseStore _firebaseStore;
 
-        public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
-
         public ObservableCollection<MessageModel> Messages { get; } = new ObservableCollection<MessageModel>();
-
-
-
-
 
         public MessageVM(KundeServiceVM kundeServiceVM, FirebaseStore firebaseStore)
         {
@@ -28,30 +22,63 @@ namespace Final_project.ViewModels
 
             LoadMessages();
 
-
-
-
-            _kundeServiceVM.PropertyChanged += async (sender, e) =>
+            // Subscribe to property changes in KundeServiceVM to refresh messages
+            _kundeServiceVM.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
                 {
-                    // Output all messages to the console
-                    Debug.WriteLine("All Messages:");
-                    foreach (var message in Messages)
-                    {
-                        Debug.WriteLine($"Message Content: {message.Content}");
-                        // Output other message properties as needed
-                    }
+                    // Notify the UI to update filtered messages
+                    OnPropertyChanged(nameof(FilteredMessages));
                 }
             };
+        }
 
+        public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
+
+
+
+        public ObservableCollection<MessageModel> FilteredMessages
+        {
+            get
+            {
+                // If no user is selected, return an empty collection initially
+                if (SelectedUser == null)
+                    return new ObservableCollection<MessageModel>();
+                else
+                    return new ObservableCollection<MessageModel>(
+                        Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString())
+                    );
+            }
+        }
+
+        private async Task LoadMessages()
+        {
+            try
+            {
+                var loadmessages = await _firebaseStore.LoadMessages();
+
+                // Clear existing messages before adding the loaded ones
+                Messages.Clear();
+
+                // Add loaded messages to the Messages collection
+                foreach (var message in loadmessages)
+                {
+                    Messages.Add(message);
+                }
+
+                // Update filtered messages
+                OnPropertyChanged(nameof(FilteredMessages));
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Debug.WriteLine($"Error loading messages: {ex.Message}");
+            }
         }
 
 
 
 
-
-        public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
 
 
 
@@ -72,79 +99,55 @@ namespace Final_project.ViewModels
             set => SetProperty(ref _fileName, value);
         }
 
-        public ObservableCollection<MessageModel> FilteredMessages
-        {
-            get
-            {
-                if (SelectedUser == null)
-                    return Messages;
-                else
-                    return new ObservableCollection<MessageModel>(
-                        Messages.Where(m => m.Receiver == SelectedUser.UserId.ToString())
-                    );
-            }
 
-
-
-        }
 
 
         [RelayCommand]
         private async void SendMessage()
         {
+            // Ensure that a user is selected before proceeding
             if (_kundeServiceVM.SelectedUser == null)
             {
-                // Handle the case where no user is selected
+                //show.WriteLine("No user selected.");
                 return;
             }
 
             try
             {
-                // Create a new message model with the file name
-                var message = new MessageModel(Content, _kundeServiceVM.Admin, _kundeServiceVM.SelectedUser.UserId.ToString(), FileName);
+                // Create the message model
+                var message = new MessageModel
+                {
+                    Content = this.Content,
+                    Sender = _kundeServiceVM.Admin,
+                    Receiver = _kundeServiceVM.SelectedUser.UserId,
+                    Filepath = this.FileName,
+                    Timestamp = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow)
+                };
 
-                // Save the message in Firestore using the FirebaseStore instance
+                // Send the message via FirebaseStore
                 await _firebaseStore.SendMessageAsync(message);
 
-                // Optionally, you can add the saved message to a local collection for display
-                // messages.Add(message);
+                // Add the message to the Messages collection
+                Messages.Add(message);
 
-                // Clear the content and file name after sending the message
-                Content = "";
-                FileName = "";
+                // Notify the UI to update filtered messages
+                OnPropertyChanged(nameof(FilteredMessages));
 
-                // Optionally, you can notify observers that a message has been sent
-                // OnPropertyChanged(nameof(messages));
+                // Clear fields after sending
+                this.Content = string.Empty;
+                this.FileName = string.Empty;
+
+                Console.WriteLine("Message sent successfully.");
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that might occur during message sending
+                // Log or handle the exception if message sending fails
+                Console.WriteLine($"Error sending message: {ex.Message}");
             }
         }
 
-        private async Task LoadMessages()
-        {
-            try
-            {
-                var loadmessages = await _firebaseStore.LoadMessages();
 
-                // Clear existing users before adding the loaded users
-                Messages.Clear();
 
-                // Add loaded users to the Users collection
-                foreach (var message in loadmessages)
-                {
-                    Messages.Add(message);
-                }
-
-                // Update the Admin property
-
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions
-            }
-        }
 
 
 
@@ -174,7 +177,7 @@ namespace Final_project.ViewModels
                 }
 
                 // Clear the items collection
-                Items.Clear();
+                //Items.Clear();
             }
         }
     }

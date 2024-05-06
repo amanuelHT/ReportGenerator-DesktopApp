@@ -19,9 +19,6 @@
     <Compile Update="Views\Components\MessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Components\ModalForm.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\Components\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -124,9 +121,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Components\MessageView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Components\ModalForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Components\NavigationBarView.xaml">
