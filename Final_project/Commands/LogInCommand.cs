@@ -8,10 +8,8 @@ using UserInfo = Report_Generator_Domain.Models.UserInfo;
 
 namespace Final_project.Commands
 {
-
     public class LogInCommand : AsyncCommandBase
     {
-
         private readonly LoginVM _login;
         private readonly AccountStore _accountStore;
         private readonly FirebaseAuthProvider _firebaseAuthProvider;
@@ -31,7 +29,7 @@ namespace Final_project.Commands
             {
                 var auth = await _firebaseAuthProvider.SignInWithEmailAndPasswordAsync(_login.Username, _login.Password);
 
-                // Add a step here to retrieve the role from Firestore
+                // Retrieve the role from Firestore
                 var userDocument = await FirestoreHelper.Database
                   .Collection("users")
                   .Document(auth.User.LocalId)
@@ -40,23 +38,33 @@ namespace Final_project.Commands
                 if (userDocument.Exists)
                 {
                     var userInfo = userDocument.ConvertTo<UserInfo>();
-                    Account account = new Account()
+
+                    // Check if user has the correct role
+                    if (userInfo.Role == "Admin" || userInfo.Role == "User")
                     {
-                        Email = auth.User.Email,
-                        Username = auth.User.Email,
-                        Role = userInfo.Role
-                    };
+                        Account account = new Account()
+                        {
+                            Email = auth.User.Email,
+                            Username = auth.User.Email,
+                            Role = userInfo.Role
+                        };
 
-                    _accountStore.CurrentAccount = account;
-
-                    _navigationService.Navigate();
-
+                        _accountStore.CurrentAccount = account;
+                        _navigationService.Navigate();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Access Denied: User does not have the necessary permissions.", "Authorization Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("User data not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("LogIn failed", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("LogIn failed: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
