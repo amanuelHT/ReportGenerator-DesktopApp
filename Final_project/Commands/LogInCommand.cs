@@ -1,12 +1,9 @@
 ﻿using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
-using Report_Generator_Domain.Models;
 using Firebase.Auth;
-using System;
-using System.Threading.Tasks;
+using Report_Generator_Domain.Models;
 using System.Windows;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using UserInfo = Report_Generator_Domain.Models.UserInfo;
 
 namespace Final_project.Commands
@@ -51,8 +48,8 @@ namespace Final_project.Commands
                     };
 
                     _accountStore.CurrentAccount = account;
-               
-                _navigationService.Navigate();
+
+                    _navigationService.Navigate();
 
                 }
 
