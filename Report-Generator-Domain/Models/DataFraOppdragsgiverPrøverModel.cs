@@ -19,7 +19,9 @@ namespace Report_Generator_Domain.Models
         public Guid ReportModelId { get; set; } // Foreign key
         public ReportModel ReportModel { get; set; } // Navigation property
 
-        // Adjusted constructor to initialize TableModelId
+
+
+
         public DataFraOppdragsgiverPrøverModel(Guid id, DateTime datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
         {
             Id = id;
@@ -31,6 +33,11 @@ namespace Report_Generator_Domain.Models
             OverflateOK = overflateOK;
             OverflateUK = overflateUK;
             ReportModelId = reportModelId;
+
+
+
+
+
         }
 
     }

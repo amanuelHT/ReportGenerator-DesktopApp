@@ -3,6 +3,7 @@ using Final_project.Components;
 using Final_project.Service;
 using Final_project.Stores;
 using Final_project.ViewModels;
+using Final_project.ViewModels.ReportComponentsVM;
 using Final_project.Views;
 using Firebase.Auth;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +44,7 @@ namespace Final_project
                  string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                  service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                  service.AddSingleton<ReportModelDbContextFactory>();
-                 Stores.FirestoreHelper.InitializeFirestore();
+                 Stores.FirestoreHelper.InitializeFirestoreAndStorage();
 
                  service.AddSingleton<Func<Type, ObservableObject>>(serviceProvider => type =>
                  (ObservableObject)serviceProvider.GetRequiredService(type));
@@ -85,6 +86,8 @@ namespace Final_project
                  service.AddSingleton<MainViewModel>();
                  service.AddSingleton<KundeServiceVM>();
                  service.AddSingleton<MessageVM>();
+                 service.AddSingleton<TestVM>();
+                 service.AddSingleton<TestCollectionVM>();
 
                  // initial navigation 
                  service.AddSingleton<INavigationService>(s => HomeNavigationService(s));

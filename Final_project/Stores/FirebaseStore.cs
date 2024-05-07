@@ -1,29 +1,21 @@
-﻿using Firebase.Storage;
+﻿using Final_project.Stores;
+using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Report_Generator_Domain.Models;
+using System.Collections.ObjectModel;
 using System.IO;
 
 public class FirebaseStore
 {
-    private readonly FirebaseStorage _storage;
     private readonly FirestoreDb _db;
+    private readonly FirebaseStorage _storage;
 
     public FirebaseStore()
     {
-        // Set the path to the JSON credentials file
-        string path = @"..\..\hprd-24-040-firebase-adminsdk-l7jhz-64ddf61372.json";
-
-        // Set the environment variable for Google Application Credentials
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-        // Create a FirestoreDb instance with the specified project ID
-        _db = FirestoreDb.Create("hprd-24-040");
-
-        // Create a FirebaseStorage instance with the specified bucket name
-        _storage = new FirebaseStorage("hprd-24-040.appspot.com");
+        // Access Firestore and Firebase Storage instances via FirestoreHelper
+        _db = FirestoreHelper.Database;
+        _storage = FirestoreHelper.Storage;
     }
-
-
 
 
     public async Task UploadReportAsync(Stream stream, string filename)
@@ -31,6 +23,14 @@ public class FirebaseStore
 
         await _storage
             .Child("reports")
+            .Child(filename)
+            .PutAsync(stream);
+    }
+    public async Task UploadReportMessageAsync(Stream stream, string filename)
+    {
+
+        await _storage
+            .Child("Messages")
             .Child(filename)
             .PutAsync(stream);
     }
@@ -77,7 +77,7 @@ public class FirebaseStore
                 Sender = messageModel.Sender,
                 Receiver = messageModel.Receiver,
                 Filepath = messageModel.Filepath,
-                Timestamp = DateTime.UtcNow // Optionally, include a timestamp
+                Timestamp = DateTime.UtcNow
             });
 
             // Optionally, you can retrieve the ID of the newly created document
@@ -107,6 +107,63 @@ public class FirebaseStore
             DocumentReference docRef = collectionRef.Document(documentId); // Construct the document reference
             await docRef.DeleteAsync();
         }
+    }
+
+    public async Task<ObservableCollection<UserInfo>> LoadUsersAsync()
+    {
+        // Create an empty ObservableCollection to store user information
+        ObservableCollection<UserInfo> usersCollection = new ObservableCollection<UserInfo>();
+
+        // Reference the "users" collection in Firestore
+        CollectionReference usersRef = FirestoreHelper.Database.Collection("users");
+
+        // Asynchronously retrieve a snapshot of the collection
+        QuerySnapshot usersSnapshot = await usersRef.GetSnapshotAsync();
+
+        // Loop through each document in the snapshot
+        foreach (var doc in usersSnapshot.Documents)
+        {
+            // Convert the document data to a UserInfo object
+            UserInfo userInfo = doc.ConvertTo<UserInfo>();
+
+            // Set the UserId property of the UserInfo object to the document's ID
+            userInfo.UserId = doc.Id;
+
+            // Add the UserInfo object to the ObservableCollection
+            usersCollection.Add(userInfo);
+        }
+
+        // Return the populated ObservableCollection containing user information
+        return usersCollection;
+    }
+    public async Task<ObservableCollection<MessageModel>> LoadMessages()
+    {
+        ObservableCollection<MessageModel> messages = new ObservableCollection<MessageModel>();
+
+        try
+        {
+            CollectionReference messagesRef = FirestoreHelper.Database.Collection("Messages");
+            QuerySnapshot snapshot = await messagesRef.GetSnapshotAsync();
+
+            foreach (var doc in snapshot.Documents)
+            {
+                MessageModel message = doc.ConvertTo<MessageModel>();
+                message.Id = doc.Id;
+
+                // Add the UserInfo object to the ObservableCollection
+                messages.Add(message);
+
+            }
+
+        }
+
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading messages: {ex.Message}");
+        }
+
+        return messages;
     }
 
 

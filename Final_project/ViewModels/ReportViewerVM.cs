@@ -48,11 +48,13 @@ namespace Final_project.ViewModels
             if (_selectedReport == null) return;
 
             (ReportModel reportData,
-                List<ReportImageModel> images,
-                List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
-                List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-                List<ConcreteDensityModel> concreteDensityModels,
-                List<TrykktestingModel> trykktestingModels) = await _reportStore.GetReportData(_selectedReport.Id);
+            List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<ReportImageModel> images,
+            List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
+            List<ConcreteDensityModel> concreteDensityModels,
+            List<TrykktestingModel> trykktestingModels,
+            List<TestModel> tests,
+            List<verktøyModel> verktøyer) = await _reportStore.GetReportData(_selectedReport.Id);
 
             if (reportData != null)
             {

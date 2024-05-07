@@ -1,14 +1,15 @@
-﻿using System.Windows;
+﻿
+using System.Windows;
 using System.Windows.Controls;
 
-namespace Final_project.Stores
+namespace Final_project.ViewModels
 {
-    public class CustomModalView : ContentControl
+    public class CustomModalVM : ContentControl
     {
-        static CustomModalView()
+        static CustomModalVM()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomModalView), new FrameworkPropertyMetadata(typeof(CustomModalView)));
-            IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(CustomModalView), new PropertyMetadata(false));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomModalVM), new FrameworkPropertyMetadata(typeof(CustomModalVM)));
+            IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(CustomModalVM), new PropertyMetadata(false));
         }
 
         // Define the IsOpen property
@@ -22,7 +23,7 @@ namespace Final_project.Stores
         public static readonly DependencyProperty IsOpenProperty;
 
         public static readonly DependencyProperty ShowCloseButtonProperty =
-            DependencyProperty.Register("ShowCloseButton", typeof(bool), typeof(CustomModalView), new PropertyMetadata(true));
+            DependencyProperty.Register("ShowCloseButton", typeof(bool), typeof(CustomModalVM), new PropertyMetadata(true));
 
         public bool ShowCloseButton
         {

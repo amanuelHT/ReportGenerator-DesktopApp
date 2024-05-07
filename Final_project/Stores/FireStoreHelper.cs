@@ -1,17 +1,19 @@
-﻿using Google.Cloud.Firestore;
+﻿using Firebase.Storage;
+using Google.Cloud.Firestore;
 using System.IO;
 
 
 namespace Final_project.Stores
 {
-    internal static class FirestoreHelper
+    public static class FirestoreHelper
     {
         public static FirestoreDb Database { get; private set; }
+        public static FirebaseStorage Storage { get; private set; }
 
         // Call this method early in your application startup process.
-        public static void InitializeFirestore()
+        public static void InitializeFirestoreAndStorage()
         {
-            // Adjust the path as necessary, e.g., if it's in the output directory
+            // Path to the JSON credentials file
             var serviceAccountPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/serviceAccountKey.json");
 
             if (!File.Exists(serviceAccountPath))
@@ -19,8 +21,14 @@ namespace Final_project.Stores
                 throw new FileNotFoundException("The service account key file was not found.", serviceAccountPath);
             }
 
+            // Set the environment variable for Google Application Credentials
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", serviceAccountPath);
+
+            // Create FirestoreDb instance
             Database = FirestoreDb.Create("hprd-24-040");
+
+            // Create FirebaseStorage instance
+            Storage = new FirebaseStorage("hprd-24-040.appspot.com");
         }
     }
 }

@@ -3,17 +3,17 @@ using CommunityToolkit.Mvvm.Input;
 using Final_project.Commands;
 using Final_project.Stores;
 using Report_Generator_Domain.Models;
-using System.Windows.Input;
 
 namespace Final_project.ViewModels.TablesVM
 {
     public partial class DataFraOppdragsgiverPrøverVM : ObservableObject
     {
-        private readonly ReportStore _reportStore;
+
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
+        public Guid? _dataId;
 
-        // Properties based on the model fields
+
         [ObservableProperty]
         private DateTime datomottatt;
 
@@ -35,17 +35,19 @@ namespace Final_project.ViewModels.TablesVM
         [ObservableProperty]
         private string overflateUK;
 
-        // Constructor for new entries
+        public DataFraOppdragsgiverTableVM _dataFraOppdragsgiverTableVM { get; }
+
+
         public DataFraOppdragsgiverPrøverVM(
-            ReportStore reportStore,
+
             ModalNavigation modalNavigation,
             Guid reportid,
             DataFraOppdragsgiverTableVM dataFraOppdragsgiverTableVM)
         {
-            _reportStore = reportStore;
+
             _modalNavigation = modalNavigation;
             _reportModelId = reportid;
-            SubmitCommand = new SubmitDataFraOppgavegiverCommand(this, reportStore, _reportModelId, dataFraOppdragsgiverTableVM, modalNavigation);
+            _dataFraOppdragsgiverTableVM = dataFraOppdragsgiverTableVM;
         }
 
         // Constructor to populate from an existing model
@@ -64,8 +66,7 @@ namespace Final_project.ViewModels.TablesVM
             }
         }
 
-        // Commands to handle UI actions
-        public ICommand SubmitCommand { get; }
+
 
 
         [RelayCommand]
@@ -74,5 +75,38 @@ namespace Final_project.ViewModels.TablesVM
             _modalNavigation.Close();
         }
 
+
+
+        [RelayCommand]
+        public virtual void Submit()
+        {
+            var _viewModel = this;
+            Guid newId = _dataId ?? Guid.NewGuid();
+
+            // Create a new entry model using the current state of the ViewModel
+            var newEntry = new DataFraOppdragsgiverPrøverModel(
+                     newId,
+                    _viewModel.Datomottatt,
+                    _viewModel.Overdekningoppgitt,
+                    _viewModel.Dmax,
+                    _viewModel.KjerneImax,
+                    _viewModel.KjerneImin,
+                    _viewModel.OverflateOK,
+                    _viewModel.OverflateUK,
+                    _reportModelId
+        );
+
+
+            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
+            var newPrøveVM = new DataFraOppdragsgiverPrøverVM(newEntry)
+            {
+
+            };
+
+            _dataFraOppdragsgiverTableVM.Prøver.Add(newPrøveVM);
+            _modalNavigation.Close();
+
+        }
     }
 }
+

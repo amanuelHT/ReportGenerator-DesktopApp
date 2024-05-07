@@ -11,6 +11,8 @@ namespace Final_project.ViewModels.TablesVM
 
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
+        public Guid TrykktestingId;
+
         private readonly TrykktestingTableVM _trykktestingTableVM;
 
 

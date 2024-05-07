@@ -22,6 +22,7 @@ namespace Final_project.Other
                 reportForm.Tittle,
                 reportForm.Status,
                 reportForm.Kunde
+
             );
 
 
@@ -41,6 +42,42 @@ namespace Final_project.Other
                     }
                 }
             }
+            if (reportForm.VerktøyCollectionVM != null)
+            {
+                foreach (var verktøy1 in reportForm.VerktøyCollectionVM.verktøyVMs)
+                {
+                    if (verktøy1 != null)
+                    {
+                        verktøyModel verktøyModel = new verktøyModel(
+                           Guid.NewGuid(),
+                            verktøy1.Name,
+                            reportModel.Id
+
+                            );
+                        reportModel.Verktøy.Add(verktøyModel);
+
+
+                    }
+                }
+            }
+
+
+            if (reportForm.TestCollectionVM != null)
+            {
+                foreach (var test in reportForm.TestCollectionVM.tests)
+                {
+                    if (test != null)
+                    {
+                        TestModel testModel = new TestModel(
+                               Guid.NewGuid(),
+                               test.Name,
+                               reportModel.Id
+                        );
+                        reportModel.Test.Add(testModel);
+                    }
+                }
+            }
+
 
 
             if (reportForm.DataFraOppdragsgiverTableVM != null)

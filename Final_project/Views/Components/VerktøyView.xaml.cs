@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Final_project.Components
+namespace Final_project.Views.Components
 {
     /// <summary>
-    /// Interaction logic for ModalForm.xaml
+    /// Interaction logic for VerktøyView.xaml
     /// </summary>
-    public partial class ModalForm : UserControl
+    public partial class VerktøyView : UserControl
     {
-        public ModalForm()
+        public VerktøyView()
         {
             InitializeComponent();
         }

@@ -20,39 +20,6 @@ namespace Report_Generator_EntityFramework.Commands
                 context.ReportModels.Add(reportModel);
 
 
-                // Add associated images to the context
-                foreach (var images in reportModel.Images)
-                {
-                    context.ReportImageModels.Add(images);
-                }
-
-
-
-                // Add associated DataFraOppdragsgiverPrøver to the context
-                foreach (var prøver in reportModel.DataFraOppdragsgiverPrøver)
-                {
-                    context.DataFraOppdragsgiverPrøverModels.Add(prøver);
-                }
-
-
-                // Add associated DataFraOppdragsgiverPrøver to the context
-                foreach (var prøver in reportModel.DataEtterKuttingOgSlipingModel)
-                {
-                    context.DataEtterKuttingOgSlipingModels.Add(prøver);
-                }
-
-
-                foreach (var density in reportModel.ConcreteDensityModel)
-                {
-                    context.concreteDensityModels.Add(density);
-                }
-
-
-                foreach (var trykktesting in reportModel.TrykktestingModel)
-                {
-                    context.trykktestingModels.Add(trykktesting);
-                }
-
                 // Save changes to the database
                 await context.SaveChangesAsync();
             }

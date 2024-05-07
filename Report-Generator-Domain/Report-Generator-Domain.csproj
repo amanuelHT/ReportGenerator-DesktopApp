@@ -8,12 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Cloud.Firestore" Version="3.6.0" />
-    <PackageReference Include="Syncfusion.Grid.WPF" Version="25.1.41" />
+    <Compile Remove="DataSet\**" />
+    <EmbeddedResource Remove="DataSet\**" />
+    <None Remove="DataSet\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataSet\" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.6.0" />
+    <PackageReference Include="Syncfusion.Grid.WPF" Version="25.1.41" />
   </ItemGroup>
 
 </Project>

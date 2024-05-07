@@ -11,7 +11,7 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240422153223_initialmigration")]
+    [Migration("20240505111204_initialmigration")]
     partial class initialmigration
     {
         /// <inheritdoc />
@@ -192,6 +192,26 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("DataFraOppdragsgiverPrøverModels");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.TestModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ReportModelId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportModelId");
+
+                    b.ToTable("tests");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -218,6 +238,26 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.HasIndex("ReportModelId");
 
                     b.ToTable("trykktestingModels");
+                });
+
+            modelBuilder.Entity("Report_Generator_Domain.Models.verktøyModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ReportModelId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportModelId");
+
+                    b.ToTable("verktøies");
                 });
 
             modelBuilder.Entity("Domain.Models.ReportImageModel", b =>
@@ -264,10 +304,32 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.TestModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                        .WithMany("Test")
+                        .HasForeignKey("ReportModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReportModel");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
                 {
                     b.HasOne("Domain.Models.ReportModel", "ReportModel")
                         .WithMany("TrykktestingModel")
+                        .HasForeignKey("ReportModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReportModel");
+                });
+
+            modelBuilder.Entity("Report_Generator_Domain.Models.verktøyModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "ReportModel")
+                        .WithMany("Verktøy")
                         .HasForeignKey("ReportModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -285,7 +347,11 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.Navigation("Images");
 
+                    b.Navigation("Test");
+
                     b.Navigation("TrykktestingModel");
+
+                    b.Navigation("Verktøy");
                 });
 #pragma warning restore 612, 618
         }

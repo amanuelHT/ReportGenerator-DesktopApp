@@ -30,4 +30,3 @@ namespace Report_Generator_Domain.Models
 
     }
 }
-

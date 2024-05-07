@@ -6,7 +6,7 @@
              xmlns:views="clr-namespace:Final_project.Views"
              xmlns:components="clr-namespace:Final_project.Components"
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
-             xmlns:tables="clr-namespace:Final_project.Tables">
+             xmlns:tables="clr-namespace:Final_project.Tables" xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM" xmlns:components1="clr-namespace:Final_project.Views.Components">
 
               <!--xmlns:table="clr-namespace: Final_project.TablesView"--> 
 
@@ -129,7 +129,24 @@
                 <components:ImageCollectionView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type TypeName=reportcomponentsvm:VerktøyVM}">
+                <components1:VerktøyView/>
+            </DataTemplate>
 
+            <DataTemplate DataType="{x:Type TypeName=reportcomponentsvm:VerktøyCollectionVM}">
+                <components1:VerktøyCollectionView/>
+            </DataTemplate>
+     
+            <DataTemplate DataType="{x:Type TypeName=reportcomponentsvm:TestVM}">
+                <components1:TestView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type TypeName=reportcomponentsvm:TestCollectionVM}">
+                <components1:TestCollectionView/>
+            </DataTemplate>
+
+
+      
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/UiColors.xaml"/>
                 <ResourceDictionary Source="Styles/TextBlockStyles.xaml" />

@@ -7,8 +7,8 @@
         public string ImageUrl { get; set; }
 
         // Property to represent the association with ReportModel
-        public Guid ReportModelId { get; set; } // Foreign key
-        public ReportModel ReportModel { get; set; } // Navigation property
+        public Guid ReportModelId { get; set; }
+        public ReportModel ReportModel { get; set; }
 
         public ReportImageModel(Guid id, string name, string imageUrl, Guid reportModelId)
         {

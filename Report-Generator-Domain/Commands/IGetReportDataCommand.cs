@@ -6,12 +6,14 @@ namespace Report_Generator_Domain.Commands
     public interface IGetReportDataCommand
     {
         Task<(
-            ReportModel report,
-            List<ReportImageModel> images,
+             ReportModel report,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
-             List<ConcreteDensityModel> concreteDensityModels,
-            List<TrykktestingModel> trykktestingModels
+            List<ConcreteDensityModel> concreteDensityModels,
+            List<TrykktestingModel> trykktestingModels,
+            List<TestModel> tests,
+            List<verktøyModel> verktøyer
             )> Execute(Guid reportId);
     }
 }

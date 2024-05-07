@@ -6,6 +6,7 @@ using Firebase.Auth;
 using Microsoft.Win32;
 using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace Final_project.ViewModels
@@ -14,35 +15,23 @@ namespace Final_project.ViewModels
     {
         private UserInfoVM _userInfoVM;
         private readonly FirebaseStore _firebaseStore;
-        private string _admin;
+
 
         public MessageVM MessageVM { get; private set; }
 
-        // Selected user to whom the message will be sent
+
+        public ObservableCollection<UserInfo> Users { get; }
+
+        [ObservableProperty]
+        private string _admin;
+
+        [ObservableProperty]
         private UserInfo _selectedUser;
 
-        public ObservableCollection<UserInfo> Users { get; } = new ObservableCollection<UserInfo>();
-        public ObservableCollection<string> Items { get; } = new ObservableCollection<string>();
 
 
-        public string Admin
-        {
-            get => _admin;
-            set => SetProperty(ref _admin, value);
-        }
 
-        public UserInfo SelectedUser
-        {
-            get => _selectedUser;
-            set
-            {
-                SetProperty(ref _selectedUser, value);
-                OnPropertyChanged(nameof(IsUserSelected));
-                OnPropertyChanged(nameof(FirstName));
-                OnPropertyChanged(nameof(LastName));
-                OnPropertyChanged(nameof(Role));
-            }
-        }
+
 
         public bool IsUserSelected => SelectedUser != null;
 
@@ -50,6 +39,8 @@ namespace Final_project.ViewModels
         public string LastName => SelectedUser?.LastName;
         public string Reciver => SelectedUser.UserId.ToString();
         public string Role => SelectedUser?.Role;
+
+
 
         public ModalNavigation ModalNavigation { get; }
 
@@ -59,32 +50,44 @@ namespace Final_project.ViewModels
             _firebaseStore = firebaseStore;
             _userInfoVM = new UserInfoVM(firebaseAuthProvider, roleManagementNavigationService);
             MessageVM = new MessageVM(this, firebaseStore);
-            LoadUsersAsync(firebaseAuthProvider);
+            Users = new ObservableCollection<UserInfo>();
+            LoadUsersAsync();
+
+
+
+
         }
 
-        private async Task LoadUsersAsync(FirebaseAuthProvider firebaseAuthProvider)
+
+
+
+        private async Task LoadUsersAsync()
         {
             try
             {
-                await _userInfoVM.LoadUsersAsync(firebaseAuthProvider);
-                foreach (var user in _userInfoVM.Users)
+                // Load all users from Firebase
+                var loadedUsers = await _firebaseStore.LoadUsersAsync();
+                Users.Clear();
+
+
+                // Get the Admin user's ID 
+                Admin = loadedUsers.FirstOrDefault(user => user.Role == "Admin")?.UserId;
+
+                // Add only non-admin users to the Users collection
+                foreach (var user in loadedUsers.Where(user => user.Role != "Admin"))
                 {
                     Users.Add(user);
                 }
-
-                Admin = GetAdminUserId();
             }
             catch (Exception ex)
             {
-                // Handle any exceptions
+
+                Debug.WriteLine($"Error loading users: {ex.Message}");
             }
         }
 
 
-        private string GetAdminUserId()
-        {
-            return Users.FirstOrDefault(user => user.Role == "Admin")?.UserId;
-        }
+
 
         [RelayCommand]
         public async void Upload()
@@ -105,7 +108,7 @@ namespace Final_project.ViewModels
                 await _firebaseStore.UploadReportAsync(stream, filename);
                 await _firebaseStore.AddReportAsync(filenameWithoutExtension);
 
-                Items.Clear();
+                //Items.Clear();
             }
         }
     }

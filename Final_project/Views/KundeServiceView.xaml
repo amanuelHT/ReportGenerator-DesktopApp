@@ -8,34 +8,40 @@
              xmlns:components="clr-namespace:Final_project.Components" 
              xmlns:conv="clr-namespace:Final_project.Converters"
              d:DataContext="{d:DesignInstance Type=viewmodels:KundeServiceVM}"
+              xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              mc:Ignorable="d" 
              Background="Transparent"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
         <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+           <DataTemplate x:Key="UserTemplate">
+                <Border 
+            x:Name="border" 
+            BorderBrush="Transparent" 
+            BorderThickness="1" 
+            CornerRadius="5" 
+            Background="Transparent">
+                   
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+                        <icon:PackIconMaterial Margin="0 5 0 0"
+                                    Kind="AccountCircle" 
+                                    FontSize="20" 
+                                    Foreground="{Binding RoleColor}"/>
+                        <TextBlock Text="{Binding FirstName}"  Margin="20 0 0 0"
+                              FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextColor2}"/>
+                        <TextBlock Text="{Binding LastName}" Margin="20 0 0 0" 
+                              FontSize="18" Foreground="{StaticResource TextColor2}"/>
+                    </StackPanel>
 
-        <!-- DataTemplate for ListBoxItem -->
-        <DataTemplate x:Key="UserTemplate">
-            <Border BorderBrush="Transparent" BorderThickness="0,0,0,1" Margin="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding FirstName}" Style="{StaticResource btntext}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding LastName}" Style="{StaticResource btntext}" Grid.Column="1"/>
-                    <TextBlock Text="{Binding Role}" Style="{StaticResource btntext}" Grid.Column="2"/>
-                </Grid>
-            </Border>
-        </DataTemplate>
-    </UserControl.Resources>
+                </Border>
+            </DataTemplate>
+        </UserControl.Resources>
+
 
     <Grid>
-        <!-- Create two columns in the Grid -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="260" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -43,7 +49,12 @@
         <ListBox Grid.Column="0" ItemsSource="{Binding Users}" 
                  ItemTemplate="{StaticResource UserTemplate}"
                  SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
-                 BorderThickness="0"/>
+                 BorderThickness="0"
+                 Background="Transparent"/>
+            
+            
+            
+            
 
         <!-- Right Half: MessageView -->
         <components:MessageView DataContext="{Binding MessageVM}"  Grid.Column="1" />

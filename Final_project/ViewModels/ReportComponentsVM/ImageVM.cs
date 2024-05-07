@@ -2,7 +2,7 @@
 using Domain.Models;
 using Final_project.Stores;
 
-namespace Final_project.ViewModels
+namespace Final_project.ViewModels.ReportComponentsVM
 {
     public partial class ImageVM : ObservableObject
     {

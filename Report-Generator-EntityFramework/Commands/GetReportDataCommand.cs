@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Domain.Models; // Ensure this namespace contains all your domain models
+using Microsoft.EntityFrameworkCore; // Necessary for EF Core operations like Include
 using Report_Generator_Domain.Commands;
 using Report_Generator_Domain.Models;
 
@@ -14,46 +14,55 @@ namespace Report_Generator_EntityFramework.Commands
             _contextFactory = contextFactory;
         }
 
-        public async Task<(ReportModel report,
-            List<ReportImageModel> images,
+        public async Task<(
+             ReportModel report,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
-            List<TrykktestingModel> trykktestingModels
+            List<TrykktestingModel> trykktestingModels,
+            List<TestModel> tests,
+            List<verktøyModel> verktøyer
             )> Execute(Guid reportId)
         {
-            using (ReportModelDbContext context = _contextFactory.Create())
+            using (var context = _contextFactory.Create())
             {
                 var report = await context.ReportModels
-                    .FirstOrDefaultAsync(report => report.Id == reportId);
+                     .Include(r => r.Images)
+                    .Include(r => r.Test)
+                    .Include(r => r.Verktøy)
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
+                    .Include(r => r.DataEtterKuttingOgSlipingModel)
+                     .Include(r => r.ConcreteDensityModel)
+                     .Include(r => r.TrykktestingModel)
+
+                       .FirstOrDefaultAsync(r => r.Id == reportId);
 
                 if (report == null)
-                    return (null, null, null, null, null, null);
+                    return (null, null, null, null, null, null, null, null);
 
-                var images = await context.ReportImageModels
-                    .Where(image => image.ReportModelId == reportId)
-                    .ToListAsync();
+                var images = report.Images.ToList();
+                var tests = report.Test.ToList();
+                var verktøies = report.Verktøy.ToList();
+                var dataFraOppdragsgiverPrøverModels = report.DataFraOppdragsgiverPrøver.ToList();
+                var concreteDensityModels = report.ConcreteDensityModel.ToList();
+                var trykktestingModels = report.TrykktestingModel.ToList();
+                var dataEtterKuttingOgSlipingModels = report.DataEtterKuttingOgSlipingModel.ToList();
 
-                var prøve = await context.DataFraOppdragsgiverPrøverModels
-                    .Where(prøve => prøve.ReportModelId == reportId)
-                    .ToListAsync();
+                var dataFraOppdragsgiverPrøverModel = dataFraOppdragsgiverPrøverModels.FirstOrDefault();
 
-                var kutingprøve = await context.DataEtterKuttingOgSlipingModels
-                    .Where(prøve => prøve.ReportModelId == reportId)
-                    .ToListAsync();
+                return (
+                    report,
 
-                var concretdensity = await context.concreteDensityModels
-                    .Where(density => density.ReportModelId == reportId)
-                    .ToListAsync();
+                    dataFraOppdragsgiverPrøverModels,
+                    images,
+                    dataEtterKuttingOgSlipingModels,
+                    concreteDensityModels,
+                    trykktestingModels,
+                    tests,
+                    verktøies
 
-
-
-                var TrykktestingModel = await context.trykktestingModels
-                    .Where(trykk => trykk.ReportModelId == reportId)
-                    .ToListAsync();
-
-
-                return (report, images, prøve, kutingprøve, concretdensity, TrykktestingModel);
+                );
             }
         }
     }

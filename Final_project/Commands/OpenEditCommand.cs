@@ -26,12 +26,15 @@ public class OpenEditCommand : CommandBase
     {
 
         // Retrieve the full report data of the report
-        (ReportModel reportData,
-            List<ReportImageModel> images,
+        (
+             ReportModel reportData,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
+            List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
             List<ConcreteDensityModel> concreteDensityModels,
-            List<TrykktestingModel> trykktestingModels
+            List<TrykktestingModel> trykktestingModels,
+            List<TestModel> tests,
+            List<verktøyModel> verktøyer
             ) = await _reportStore.GetReportData(_reportid);
 
         if (reportData == null)
@@ -41,6 +44,8 @@ public class OpenEditCommand : CommandBase
 
 
         reportData.Images = images;
+        reportData.Test = tests;
+        reportData.Verktøy = verktøyer;
 
         reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
 

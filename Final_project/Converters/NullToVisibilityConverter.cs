@@ -8,7 +8,6 @@ namespace Final_project.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // If the value is null, return Visibility.Collapsed; otherwise, return Visibility.Visible
             return value == null ? Visibility.Collapsed : Visibility.Visible;
         }
 

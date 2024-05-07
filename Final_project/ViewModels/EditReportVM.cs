@@ -2,6 +2,7 @@
 using Domain.Models;
 using Final_project.Commands;
 using Final_project.Stores;
+using Final_project.ViewModels.ReportComponentsVM;
 using Final_project.ViewModels.TablesVM;
 using System.Windows.Input;
 
@@ -46,6 +47,19 @@ namespace Final_project.ViewModels
             {
                 var imageVM = new ImageVM(img);
                 ReportFormVM.ImageCollectionViewModel.Images.Add(imageVM);
+            }
+
+
+            foreach (var test in reportModel.Test)
+            {
+                var testVM = new TestVM(test);
+                ReportFormVM.TestCollectionVM.tests.Add(testVM);
+            }
+
+            foreach (var verktøy in reportModel.Verktøy)
+            {
+                var verktøyVM = new VerktøyVM(verktøy);
+                ReportFormVM.VerktøyCollectionVM.verktøyVMs.Add(verktøyVM);
             }
 
 

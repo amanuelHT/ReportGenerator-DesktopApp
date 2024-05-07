@@ -11,65 +11,69 @@ namespace Report_Generator_EntityFramework.Commands
         public UpdateReportCommand(ReportModelDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
-
         }
 
         public async Task Execute(ReportModel reportModel)
         {
             using (var context = _contextFactory.Create())
             {
+                // Fetch the existing report including all related entities
                 var existingReport = await context.ReportModels
-                    .Include(r => r.Images) // Include images for updating
-                    .Include(r => r.DataFraOppdragsgiverPrøver) // Include prøver for updating
+                    .Include(r => r.Images)
+                    .Include(r => r.Test)
+                    .Include(r => r.Verktøy)
+                    .Include(r => r.DataFraOppdragsgiverPrøver)
                     .Include(r => r.DataEtterKuttingOgSlipingModel)
                      .Include(r => r.ConcreteDensityModel)
                      .Include(r => r.TrykktestingModel)
+
                     .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
                 if (existingReport != null)
                 {
+                    // Update primary fields of the main report
                     existingReport.Tittle = reportModel.Tittle;
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
 
-
-                    UpdateImages(context, existingReport, reportModel);
+                    // Update related collections
+                    UpdateImages(existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
+                    UpdateVerktøy(context, existingReport, reportModel);
+                    UpdateTest(context, existingReport, reportModel);
                     UpdateEtterKuttingPrøver(context, existingReport, reportModel);
                     UpdateConcreteDensity(context, existingReport, reportModel);
                     Updatetrykketessting(context, existingReport, reportModel);
 
-                    // Save changes to the context
+
+                    // Save all changes to the database
                     await context.SaveChangesAsync();
                 }
             }
         }
-        private void UpdateImages(DbContext context, ReportModel existingReport, ReportModel newReport)
+
+
+
+
+        private void UpdateImages(ReportModel existingReport, ReportModel newReport)
         {
-            foreach (var existingimages in existingReport.Images.ToList())
+            // Remove any images not in the new model
+            var imagesToRemove = existingReport.Images
+                .Where(existingImage => !newReport.Images.Any(newImage => newImage.Id == existingImage.Id))
+                .ToList();
+            foreach (var image in imagesToRemove)
             {
-                if (!newReport.Images.Any(p => p.Id == existingimages.Id))
-                {
-                    context.Remove(existingimages);
-                }
+                existingReport.Images.Remove(image);
             }
 
-            if (newReport.Images.Any())
+            // Add new images from the updated model
+            foreach (var newImage in newReport.Images)
             {
-                foreach (var newImage in newReport.Images)
+                if (!existingReport.Images.Any(existingImage => existingImage.Id == newImage.Id))
                 {
-                    if (!existingReport.Images.Any(p => p.Id == newImage.Id))
-                    {
-                        context.Add(newImage);
-                    }
+                    existingReport.Images.Add(newImage);
                 }
             }
-            else
-            {
-                context.RemoveRange(existingReport.Images);
-            }
-
-            context.SaveChanges();
         }
 
 
@@ -101,7 +105,6 @@ namespace Report_Generator_EntityFramework.Commands
             context.SaveChanges();
         }
 
-
         private void UpdateEtterKuttingPrøver(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
             foreach (var existingPrøve in existingReport.DataEtterKuttingOgSlipingModel.ToList())
@@ -125,6 +128,64 @@ namespace Report_Generator_EntityFramework.Commands
             else
             {
                 context.RemoveRange(existingReport.DataEtterKuttingOgSlipingModel);
+            }
+
+            context.SaveChanges();
+        }
+
+
+        private void UpdateVerktøy(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            foreach (var existingverktøy in existingReport.Verktøy.ToList())
+            {
+                if (!newReport.Verktøy.Any(p => p.Id == existingverktøy.Id))
+                {
+                    context.Remove(existingverktøy);
+                }
+            }
+
+            if (newReport.Verktøy.Any())
+            {
+                foreach (var newVerktøy in newReport.Verktøy)
+                {
+                    if (!existingReport.Verktøy.Any(p => p.Id == newVerktøy.Id))
+                    {
+                        context.Add(newVerktøy);
+                    }
+                }
+            }
+            else
+            {
+                context.RemoveRange(existingReport.Verktøy);
+            }
+
+            context.SaveChanges();
+        }
+
+
+        private void UpdateTest(DbContext context, ReportModel existingReport, ReportModel newReport)
+        {
+            foreach (var existingTest in existingReport.Test.ToList())
+            {
+                if (!newReport.Test.Any(p => p.Id == existingTest.Id))
+                {
+                    context.Remove(existingTest);
+                }
+            }
+
+            if (newReport.Test.Any())
+            {
+                foreach (var newTest in newReport.Test)
+                {
+                    if (!existingReport.Test.Any(p => p.Id == newTest.Id))
+                    {
+                        context.Add(newTest);
+                    }
+                }
+            }
+            else
+            {
+                context.RemoveRange(existingReport.Test);
             }
 
             context.SaveChanges();

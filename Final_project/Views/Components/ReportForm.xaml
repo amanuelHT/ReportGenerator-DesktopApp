@@ -8,7 +8,10 @@
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
              xmlns:tables="clr-namespace:Final_project.Tables" 
              xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
-             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+             xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" 
+             xmlns:components1="clr-namespace:Final_project.Views.Components" 
+             xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM" 
+             xmlns:stores="clr-namespace:Final_project.Stores"
              mc:Ignorable="d" 
              Background="Transparent"
              d:DataContext="{d:DesignInstance Type=viewmodels:ReportFormVM}">
@@ -19,8 +22,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+
+      <viewmodels:CustomModalVM Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+     <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+ </viewmodels:CustomModalVM>
         <!-- Main Content with ScrollViewer -->
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" 
+    PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -56,20 +64,46 @@
                 <Grid Grid.Row="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!-- Status of the report -->
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="Wheat"/>
-                        <CheckBox Content="Godkjent" Margin="10 0 0 0" IsChecked="{Binding Status}" />
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20 10 0 0">
+                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="{StaticResource TextColor1}"/>
+                        <CheckBox Content="Godkjent / ikke Godkjent" Margin="30 0 0 30" IsChecked="{Binding Status}"  Foreground="{StaticResource TextColor3}"/>
                     </StackPanel>
 
-                    <Grid Grid.Row="1" Margin="-10 0 0 0">
-                        <components:ImageCollectionView DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+           
+
+                    <Grid Grid.Row="1" Margin="20 20 0 0">
+                              <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                        <components1:TestView Grid.Column="0" DataContext="{Binding TestVM}" HorizontalAlignment="Left" />
+                        <components1:TestCollectionView Grid.Column="1" DataContext="{Binding TestCollectionVM}" HorizontalAlignment="Left" />
+
                     </Grid>
 
-                </Grid>
+
+                        <Grid  Grid.Row="2" Margin="20 30 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <components1:VerktøyView DataContext="{Binding VerktøyVM}" HorizontalAlignment="Left" Grid.Column="0" />
+                            <components1:VerktøyCollectionView DataContext="{Binding VerktøyCollectionVM}" HorizontalAlignment="Left" Grid.Column="1" />
+                        </Grid>
+
+
+                    
+                        <components:ImageCollectionView Margin="20 20 0 0" Grid.Row="3" DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                    </Grid>
+                    
+
 
 
                 <!-- Additional rows for tables and modal control -->
@@ -79,16 +113,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <tables:DataFraOppdragsgiverTableView Grid.Row="0" DataContext="{Binding DataFraOppdragsgiverTableVM}"/>
+                    <tables:DataFraOppdragsgiverTableView Grid.Row="0" DataContext="{Binding DataFraOppdragsgiverTableVM}"   
+                                                          PreviewMouseWheel="ChildControl_PreviewMouseWheel"/>
                     <tables:DataEtterKuttingOgSlipingTableView Grid.Row="1" DataContext="{Binding DataEtterKuttingOgSlipingTableVM}"/>
-                    <modalcontrol:Modal Grid.Row="2" IsOpen="{Binding IsFormOpen}">
-                        <ContentControl Content="{Binding CurrentVM}"/>
-                    </modalcontrol:Modal>
-                    <tables:ConcreteDensityTableView Grid.Row="3" DataContext="{Binding ConcreteDensityTableVM}"/>
-                    <tables:TrykktestingTableView Grid.Row="4" DataContext="{Binding TrykktestingTableVM}"/>
+                    <tables:ConcreteDensityTableView Grid.Row="2" DataContext="{Binding ConcreteDensityTableVM}"/>
+                    <tables:TrykktestingTableView Grid.Row="3" DataContext="{Binding TrykktestingTableVM}"/>
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -103,5 +134,9 @@
                 </StackPanel>
             </Button>
         </WrapPanel>
+
+        <!--<modalcontrol:Modal IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.RowSpan="2" Background="Black" Opacity="0.8">
+            <ContentControl Content="{Binding CurrentVM}" />
+        </modalcontrol:Modal>-->
     </Grid>
 </UserControl>

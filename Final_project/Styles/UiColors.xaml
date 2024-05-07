@@ -62,8 +62,18 @@
 
     <!-- Gradient for the second TextBox -->
     <LinearGradientBrush x:Key="LinearGradientBrush2" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#B8DBFF" Offset="0"/>
+        <GradientStop Color="#14121c" Offset="0"/>
+        <GradientStop Color="{StaticResource SecondarybackgroundC1}" Offset="0.4"/>
         <GradientStop Color="#3A8EDB" Offset="1"/>
+    </LinearGradientBrush>
+    
+    
+    <LinearGradientBrush x:Key="LinearGradientBrush4" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#14121c" Offset="0"/>
+    
+        <GradientStop Color="#FF6200EE" Offset="0.4"/>
+
+        <GradientStop Color="#FF212121" Offset="1"/>
     </LinearGradientBrush>
 
     <!-- Gradient for the third TextBox/DatePicker -->

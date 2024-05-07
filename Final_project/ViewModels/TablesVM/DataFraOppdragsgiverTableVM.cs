@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using Final_project.Commands;
 using Final_project.Stores;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace Final_project.ViewModels.TablesVM
 {
@@ -15,25 +14,24 @@ namespace Final_project.ViewModels.TablesVM
         private readonly DataFraOppdragsgiverPrøverVM _pr;
         public ObservableCollection<DataFraOppdragsgiverPrøverVM> Prøver { get; }
 
-        public ICommand AddPrøveCommand { get; }
-
+        public ModalNavigation _mmodalNavigation { get; }
 
         public DataFraOppdragsgiverTableVM(ReportStore reportStore, ModalNavigation modalNavigation, Guid reportId)
         {
             _reportStore = reportStore;
+            _mmodalNavigation = modalNavigation;
             _reportId = reportId;
 
 
 
             Prøver = new ObservableCollection<DataFraOppdragsgiverPrøverVM>();
-            AddPrøveCommand = new OpenAddReportTableCommand(modalNavigation, reportStore, this, reportId);
-
-
-
-            //_pr = new DataFraOppdragsgiverPrøverVM(reportStore, reportId, this);
-
 
         }
+
+
+
+
+
 
 
 
@@ -44,6 +42,15 @@ namespace Final_project.ViewModels.TablesVM
             {
                 Prøver.Remove(prøve);
             }
+        }
+
+
+        [RelayCommand]
+        private void AddPrøve(DataFraOppdragsgiverPrøverVM prøve)
+        {
+            DataFraOppdragsgiverPrøverVM dataFraOppdragsgiverPrøverVM = new DataFraOppdragsgiverPrøverVM(_mmodalNavigation, _reportId, this);
+            _mmodalNavigation.CurrentView = dataFraOppdragsgiverPrøverVM;
+
         }
 
 
