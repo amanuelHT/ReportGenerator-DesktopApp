@@ -2,8 +2,8 @@
 
 namespace Final_project.Service
 {
-    //to support multiple parameters, create an object to hold all the parameters
-    //and use that object as the tparameter type
+
+
     public class ParameterNavigationService<TParameter, TViewModel>
             where TViewModel : ObservableRecipient
     {

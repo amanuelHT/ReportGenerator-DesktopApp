@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:boldreports="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf" 
-             xmlns:viewmodels="clr-namespace:Final_project.ViewModels">
+             xmlns:viewmodels="clr-namespace:Final_project.ViewModels" xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -12,42 +12,46 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel  Grid.Row="0" 
-                  Orientation="Horizontal" HorizontalAlignment="Stretch" >
-            
-        <!-- Move the ComboBox to the left -->
-        <ComboBox x:Name="cmbReportSelection" 
-                  Background="White"
-                  SelectedIndex="0"
-                  Margin="5" 
-                  Width="150">
-                <ComboBoxItem Content="Template 2" Tag="Report2.rdlc"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <ComboBoxItem Content="Template 1" Tag="Report1.rdlc"/>
-        </ComboBox>
-
-        <!-- Existing Button and ComboBox -->
-        <Button Content="Generate Report" 
-                FontSize="16" 
-                HorizontalAlignment="Right" 
-                Margin="0,0,10,0"  
-                Click="OnGenerateReportClick"/>
-
-        <ComboBox x:Name="reportsComboBox" 
+            <ComboBox x:Name="reportsComboBox" 
                   ItemsSource="{Binding AvailableReports}" 
                   SelectedItem="{Binding SelectedReport}"
+                  FontFamily="Batang"
+                  FontSize="14"
                   DisplayMemberPath="Tittle"
                   Margin="5" 
-                  Width="150"/>
+                  Width="150"
+                  Height="30"
+                  Grid.Column="0"/>
+            
 
-        </StackPanel>
+            <Button   Click="OnGenerateReportClick" Style="{StaticResource buttonsWithIcon}" Grid.Column="2" Command="{Binding AddReportCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Style="{StaticResource navtext}" Text="Generate Report"  Foreground="LightGreen"/>
+                    <icon:PackIconMaterial Kind="CursorDefaultClick" Style="{StaticResource buttonicons}"  Tag="{StaticResource Yellow100}"/>
+                </StackPanel>
+            </Button>
+
+
+
+
+
+        </Grid>
         
-        <boldreports:ReportViewer x:Name="reportViewer" 
-                                  Background="Transparent"
-                                  Grid.Row="1" 
-                                     Grid.ColumnSpan="2" 
-                                  HorizontalAlignment="Stretch" 
-                                    VerticalAlignment="Stretch" 
-                                   Margin="5"/>
+       <boldreports:ReportViewer x:Name="reportViewer" 
+                          Background="Transparent"
+                          Grid.Row="1" 
+                          Grid.ColumnSpan="2" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch" 
+                          Margin="5"
+                         />
+
     </Grid>
 </UserControl>

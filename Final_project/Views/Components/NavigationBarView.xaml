@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="200"
             >
 
-    <UserControl.Resources>
+    <UserControl.Resources> 
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
@@ -28,7 +28,7 @@
         <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateKundeServiceCommand}">
             <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="HumanEdit" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
-                <TextBlock Text="KundService" Style="{StaticResource navtext}" />
+                <TextBlock Text="Customer service" Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
 
@@ -42,7 +42,7 @@
         <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateGeneratedReportListingCommand}" >
             <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="FileDocument" Style="{StaticResource navicon}" Tag="{StaticResource SecondaryColor}"/>
-                <TextBlock Text="Generated Reports" Style="{StaticResource navtext}" />
+                <TextBlock Text="Report storage " Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
 

@@ -22,67 +22,60 @@ namespace Final_project.Views
 
 
                 var x = new RowTablesCreatorForReportViewer();
-                var viewModel = DataContext as ReportViewerVM;
-
-
-                ComboBoxItem selectedReportItem = cmbReportSelection.SelectedItem as ComboBoxItem;
-
-
-                string selectedReportPath = selectedReportItem.Tag.ToString();
-                string fullReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\", selectedReportPath);
 
 
 
-                this.reportViewer.ReportPath = fullReportPath;
+
+                var ReportViewerViewModel = DataContext as ReportViewerVM;
+
+                this.reportViewer.ReportPath = System.IO.Path.Combine(Environment.CurrentDirectory, @"Resources\Report1.rdlc");
                 this.reportViewer.ProcessingMode = BoldReports.UI.Xaml.ProcessingMode.Local;
                 this.reportViewer.DataSources.Clear();
 
 
-
                 // Handle the report data
-                if (viewModel.SelectedReportData != null)
+                if (ReportViewerViewModel.SelectedReportData != null)
                 {
-                    DataTable reportDataTable = x.CreateReportDataTable(viewModel.SelectedReportData);
+                    DataTable reportDataTable = x.CreateReportDataTable(ReportViewerViewModel.SelectedReportData);
                     this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet1", Value = reportDataTable });
 
 
                     // Handle trykktesting data
-                    if (viewModel.TrykktestingModels != null && viewModel.TrykktestingModels.Any())
+                    if (ReportViewerViewModel.TrykktestingModels != null && ReportViewerViewModel.TrykktestingModels.Any())
                     {
-                        DataTable tryktable = x.CreateTrykktestingTable(viewModel.TrykktestingModels);
+                        DataTable tryktable = x.CreateTrykktestingTable(ReportViewerViewModel.TrykktestingModels);
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet2", Value = tryktable });
                     }
 
-                    if (viewModel.ReportImages != null && viewModel.ReportImages.Any())
+                    // Handle images data
+                    if (ReportViewerViewModel.ReportImages != null && ReportViewerViewModel.ReportImages.Any())
                     {
-                        int splitIndex = (viewModel.ReportImages.Count + 1) / 2; // Calculate the split point
-                        DataTable imagesTable3 = x.CreateImagesDataTable(viewModel.ReportImages.Take(splitIndex).ToList());
-                        DataTable imagesTable4 = x.CreateImagesDataTable2(viewModel.ReportImages.Skip(splitIndex).ToList());
+                        int splitIndex = (ReportViewerViewModel.ReportImages.Count + 1) / 2; // Calculate the split point
+                        DataTable imagesTable3 = x.CreateImagesDataTable(ReportViewerViewModel.ReportImages.Take(splitIndex).ToList());
+                        DataTable imagesTable4 = x.CreateImagesDataTable2(ReportViewerViewModel.ReportImages.Skip(splitIndex).ToList());
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable3 });
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet4", Value = imagesTable4 });
                     }
 
-
                     // Handle ConcreteDensityModels data
-                    if (viewModel.ConcreteDensityModels != null && viewModel.ConcreteDensityModels.Any())
+                    if (ReportViewerViewModel.ConcreteDensityModels != null && ReportViewerViewModel.ConcreteDensityModels.Any())
                     {
-                        DataTable concredensity = x.CreateConcreteDensityDataTable(viewModel.ConcreteDensityModels);
+                        DataTable concredensity = x.CreateConcreteDensityDataTable(ReportViewerViewModel.ConcreteDensityModels);
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet5", Value = concredensity });
                     }
 
-
                     // Handle DataEtterKuttingOgSlipingModels data
-                    if (viewModel.DataEtterKuttingOgSlipingModels != null && viewModel.DataEtterKuttingOgSlipingModels.Any())
+                    if (ReportViewerViewModel.DataEtterKuttingOgSlipingModels != null && ReportViewerViewModel.DataEtterKuttingOgSlipingModels.Any())
                     {
-                        DataTable dataetterkutting = x.DataEtterKuttingOgSlipingModelDataTable(viewModel.DataEtterKuttingOgSlipingModels);
+                        DataTable dataetterkutting = x.DataEtterKuttingOgSlipingModelDataTable(ReportViewerViewModel.DataEtterKuttingOgSlipingModels);
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet6", Value = dataetterkutting });
                     }
 
 
                     // Handle DataFraOppdragsgiverPrøverModels data
-                    if (viewModel.DataFraOppdragsgiverPrøverModels != null && viewModel.DataFraOppdragsgiverPrøverModels.Any())
+                    if (ReportViewerViewModel.DataFraOppdragsgiverPrøverModels != null && ReportViewerViewModel.DataFraOppdragsgiverPrøverModels.Any())
                     {
-                        DataTable datafraoppdrag = x.DataFraOppdragsgiverPrøverModelDataTable(viewModel.DataFraOppdragsgiverPrøverModels);
+                        DataTable datafraoppdrag = x.DataFraOppdragsgiverPrøverModelDataTable(ReportViewerViewModel.DataFraOppdragsgiverPrøverModels);
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet7", Value = datafraoppdrag });
                     }
 

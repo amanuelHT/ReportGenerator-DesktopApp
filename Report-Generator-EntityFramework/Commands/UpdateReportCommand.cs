@@ -37,7 +37,7 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.Kunde = reportModel.Kunde;
 
                     // Update related collections
-                    UpdateImages(existingReport, reportModel);
+                    UpdateImages(context, existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateVerktøy(context, existingReport, reportModel);
                     UpdateTest(context, existingReport, reportModel);
@@ -54,26 +54,32 @@ namespace Report_Generator_EntityFramework.Commands
 
 
 
-
-        private void UpdateImages(ReportModel existingReport, ReportModel newReport)
+        private void UpdateImages(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove any images not in the new model
-            var imagesToRemove = existingReport.Images
-                .Where(existingImage => !newReport.Images.Any(newImage => newImage.Id == existingImage.Id))
-                .ToList();
-            foreach (var image in imagesToRemove)
+            foreach (var existingImage in existingReport.Images.ToList())
             {
-                existingReport.Images.Remove(image);
-            }
-
-            // Add new images from the updated model
-            foreach (var newImage in newReport.Images)
-            {
-                if (!existingReport.Images.Any(existingImage => existingImage.Id == newImage.Id))
+                if (!newReport.Images.Any(p => p.Id == existingImage.Id))
                 {
-                    existingReport.Images.Add(newImage);
+                    context.Remove(existingImage);
                 }
             }
+
+            if (newReport.Images.Any())
+            {
+                foreach (var newImage in newReport.Images)
+                {
+                    if (!existingReport.Images.Any(p => p.Id == newImage.Id))
+                    {
+                        context.Add(newImage);
+                    }
+                }
+            }
+            else
+            {
+                context.RemoveRange(existingReport.Images);
+            }
+
+            context.SaveChanges();
         }
 
 
