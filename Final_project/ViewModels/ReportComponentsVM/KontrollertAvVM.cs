@@ -1,17 +1,19 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using Report_Generator_Domain.Models;
 
 namespace Final_project.ViewModels.ReportComponentsVM
 {
-    public partial class TestUtførtAvVM : ObservableObject
+    public partial class KontrollertAvVM : ObservableObject
     {
         private readonly Guid _reportModelid;
         private readonly Guid _testUtførtAvVMID;
 
         private readonly ReportFormVM _reportFormVM;
-        TestUtførtAvVM testUtførtAvVMData { get; set; }
 
-        public TestUtførtAvVM(Guid reportModelid, ReportFormVM reportFormVM)
+
+        public KontrollertAvVM(Guid reportModelid, ReportFormVM reportFormVM)
         {
             _reportModelid = reportModelid;
             reportFormVM = reportFormVM;
@@ -29,7 +31,8 @@ namespace Final_project.ViewModels.ReportComponentsVM
         [ObservableProperty]
         private string _department;
 
-        public TestUtførtAvVM(TestUtførtAvModel model)
+
+        public KontrollertAvVM(KontrollertAvførtAvModel model)
         {
             if (model != null)
             {
@@ -42,11 +45,5 @@ namespace Final_project.ViewModels.ReportComponentsVM
                 _reportModelid = model.ID;
             }
         }
-
-
-
-
-
-
     }
 }

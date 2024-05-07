@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_Generator_EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class initialmigration : Migration
+    public partial class INITIALMIGRATION : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,10 @@ namespace Report_Generator_EntityFramework.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Tittle = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Kunde = table.Column<string>(type: "TEXT", nullable: false)
+                    Kunde = table.Column<string>(type: "TEXT", nullable: false),
+                    AvvikFraStandarder = table.Column<string>(type: "TEXT", nullable: false),
+                    MotattDato = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Kommentarer = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,6 +108,28 @@ namespace Report_Generator_EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "KontrollertAvførtAvModels",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Department = table.Column<string>(type: "TEXT", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Position = table.Column<string>(type: "TEXT", nullable: false),
+                    ReportModelID = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KontrollertAvførtAvModels", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_KontrollertAvførtAvModels_ReportModels_ReportModelID",
+                        column: x => x.ReportModelID,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReportImageModels",
                 columns: table => new
                 {
@@ -138,6 +163,28 @@ namespace Report_Generator_EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_tests_ReportModels_ReportModelId",
                         column: x => x.ReportModelId,
+                        principalTable: "ReportModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TestUtførtAvModels",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Department = table.Column<string>(type: "TEXT", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Position = table.Column<string>(type: "TEXT", nullable: false),
+                    ReportModelID = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TestUtførtAvModels", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TestUtførtAvModels_ReportModels_ReportModelID",
+                        column: x => x.ReportModelID,
                         principalTable: "ReportModels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -200,6 +247,12 @@ namespace Report_Generator_EntityFramework.Migrations
                 column: "ReportModelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_KontrollertAvførtAvModels_ReportModelID",
+                table: "KontrollertAvførtAvModels",
+                column: "ReportModelID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ReportImageModels_ReportModelId",
                 table: "ReportImageModels",
                 column: "ReportModelId");
@@ -208,6 +261,12 @@ namespace Report_Generator_EntityFramework.Migrations
                 name: "IX_tests_ReportModelId",
                 table: "tests",
                 column: "ReportModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TestUtførtAvModels_ReportModelID",
+                table: "TestUtførtAvModels",
+                column: "ReportModelID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_trykktestingModels_ReportModelId",
@@ -233,10 +292,16 @@ namespace Report_Generator_EntityFramework.Migrations
                 name: "DataFraOppdragsgiverPrøverModels");
 
             migrationBuilder.DropTable(
+                name: "KontrollertAvførtAvModels");
+
+            migrationBuilder.DropTable(
                 name: "ReportImageModels");
 
             migrationBuilder.DropTable(
                 name: "tests");
+
+            migrationBuilder.DropTable(
+                name: "TestUtførtAvModels");
 
             migrationBuilder.DropTable(
                 name: "trykktestingModels");

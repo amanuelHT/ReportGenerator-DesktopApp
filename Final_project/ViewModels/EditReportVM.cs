@@ -34,12 +34,26 @@ namespace Final_project.ViewModels
                 Tittle = reportModel.Tittle,
                 Status = reportModel.Status,
                 Kunde = reportModel.Kunde,
+                AvvikFraStandarder = reportModel.AvvikFraStandarder,
+                MotattDato = reportModel.MotattDato,
+                Kommentarer = reportModel.Kommentarer,
+
 
 
 
 
             };
 
+
+            if (reportModel.TestUtførtAvModel != null)
+            {
+                ReportFormVM.TestUtførtAvVM = new TestUtførtAvVM(reportModel.TestUtførtAvModel);
+            }
+
+            if (reportModel.KontrollertAvførtAvModel != null)
+            {
+                ReportFormVM.KontrollertAvVM = new KontrollertAvVM(reportModel.KontrollertAvførtAvModel);
+            }
 
 
             // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel

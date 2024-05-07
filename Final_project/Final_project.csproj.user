@@ -13,6 +13,9 @@
     <Compile Update="Views\Components\ImageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Components\KontrollertAvView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Components\LayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Components\TestCollectionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Components\TesterUtførtAvView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Components\TestView.xaml.cs">
@@ -117,6 +123,9 @@
     <Page Update="Views\Components\ImageView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Components\KontrollertAvView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Components\LayoutView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -139,6 +148,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Components\TestCollectionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Components\TesterUtførtAvView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Components\TestView.xaml">

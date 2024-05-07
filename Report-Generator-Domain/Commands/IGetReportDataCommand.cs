@@ -6,7 +6,7 @@ namespace Report_Generator_Domain.Commands
     public interface IGetReportDataCommand
     {
         Task<(
-             ReportModel report,
+             ReportModel report, TestUtførtAvModel testUtførtAvModel, KontrollertAvførtAvModel KontrollertAvførtAvModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,

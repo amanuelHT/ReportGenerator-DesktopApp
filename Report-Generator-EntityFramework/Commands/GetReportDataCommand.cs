@@ -15,7 +15,7 @@ namespace Report_Generator_EntityFramework.Commands
         }
 
         public async Task<(
-             ReportModel report,
+             ReportModel report, TestUtførtAvModel testUtførtAvModel, KontrollertAvførtAvModel KontrollertAvførtAvModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
@@ -35,13 +35,17 @@ namespace Report_Generator_EntityFramework.Commands
                     .Include(r => r.DataEtterKuttingOgSlipingModel)
                      .Include(r => r.ConcreteDensityModel)
                      .Include(r => r.TrykktestingModel)
+                     .Include(r => r.TestUtførtAvModel)
+                     .Include(r => r.KontrollertAvførtAvModel)
 
                        .FirstOrDefaultAsync(r => r.Id == reportId);
 
                 if (report == null)
-                    return (null, null, null, null, null, null, null, null);
+                    return (null, null, null, null, null, null, null, null, null, null);
 
                 var images = report.Images.ToList();
+                var testUtførtAvModel = report.TestUtførtAvModel;
+                var kontrollertav = report.KontrollertAvførtAvModel;
                 var tests = report.Test.ToList();
                 var verktøies = report.Verktøy.ToList();
                 var dataFraOppdragsgiverPrøverModels = report.DataFraOppdragsgiverPrøver.ToList();
@@ -53,7 +57,8 @@ namespace Report_Generator_EntityFramework.Commands
 
                 return (
                     report,
-
+                    testUtførtAvModel,
+                    kontrollertav,
                     dataFraOppdragsgiverPrøverModels,
                     images,
                     dataEtterKuttingOgSlipingModels,

@@ -16,7 +16,6 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (ReportModelDbContext context = _contextFactory.Create())
             {
-                // Add the report model to the context
                 context.ReportModels.Add(reportModel);
 
 

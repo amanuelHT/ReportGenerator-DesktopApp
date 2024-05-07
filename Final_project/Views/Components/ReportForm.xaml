@@ -23,14 +23,15 @@
         </Grid.RowDefinitions>
 
 
-      <viewmodels:CustomModalVM Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-     <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
- </viewmodels:CustomModalVM>
+        <viewmodels:CustomModalVM Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
+        </viewmodels:CustomModalVM>
         <!-- Main Content with ScrollViewer -->
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" 
     PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -53,15 +54,35 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
-                    <StackPanel Orientation="Horizontal">
-                        <components:TextBoxView Text="{Binding Field3}" Watermark="Kontrolert av"/>
-                        <DatePicker SelectedDate="{Binding ReportDate}" Margin="120 40 30 40"/>
+                <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                          
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Text="Kontrollert av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
+
+                        <components1:KontrollertAvView DataContext="{Binding KontrollertAvVM}"/>
                     </StackPanel>
                 </Border>
-                
-                
-                <Grid Grid.Row="3">
+
+                <Border Grid.Row="3" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                          
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Text="tester ut ført av av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
+
+                        <components1:TesterUtførtAvView DataContext="{Binding TestUtførtAvVM}"/>
+                    </StackPanel>
+                </Border>
+
+
+
+                <Grid Grid.Row="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -75,39 +96,39 @@
                         <CheckBox Content="Godkjent / ikke Godkjent" Margin="30 0 0 30" IsChecked="{Binding Status}"  Foreground="{StaticResource TextColor3}"/>
                     </StackPanel>
 
-           
+
 
                     <Grid Grid.Row="1" Margin="20 20 0 0">
-                              <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <components1:TestView Grid.Column="0" DataContext="{Binding TestVM}" HorizontalAlignment="Left" />
                         <components1:TestCollectionView Grid.Column="1" DataContext="{Binding TestCollectionVM}" HorizontalAlignment="Left" />
 
                     </Grid>
 
 
-                        <Grid  Grid.Row="2" Margin="20 30 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                    <Grid  Grid.Row="2" Margin="20 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                            <components1:VerktøyView DataContext="{Binding VerktøyVM}" HorizontalAlignment="Left" Grid.Column="0" />
-                            <components1:VerktøyCollectionView DataContext="{Binding VerktøyCollectionVM}" HorizontalAlignment="Left" Grid.Column="1" />
-                        </Grid>
-
-
-                    
-                        <components:ImageCollectionView Margin="20 20 0 0" Grid.Row="3" DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                        <components1:VerktøyView DataContext="{Binding VerktøyVM}" HorizontalAlignment="Left" Grid.Column="0" />
+                        <components1:VerktøyCollectionView DataContext="{Binding VerktøyCollectionVM}" HorizontalAlignment="Left" Grid.Column="1" />
                     </Grid>
-                    
+
+
+
+                    <components:ImageCollectionView Margin="20 20 0 0" Grid.Row="3" DataContext="{Binding ImageCollectionViewModel}" HorizontalAlignment="Left" />
+                </Grid>
+
 
 
 
                 <!-- Additional rows for tables and modal control -->
-                <Grid Grid.Row="4" Margin="30">
+                <Grid Grid.Row="5" Margin="30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -124,8 +145,8 @@
             </Grid>
         </ScrollViewer>
 
-            
-            <!-- Button at the bottom of the UserControl -->
+
+        <!-- Button at the bottom of the UserControl -->
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding SubmitCommand}">
                 <StackPanel Orientation="Horizontal">

@@ -27,7 +27,7 @@ public class OpenEditCommand : CommandBase
 
         // Retrieve the full report data of the report
         (
-             ReportModel reportData,
+             ReportModel reportData, TestUtførtAvModel testUtførtAvModel, KontrollertAvførtAvModel KontrollertAvførtAvModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,
@@ -46,6 +46,10 @@ public class OpenEditCommand : CommandBase
         reportData.Images = images;
         reportData.Test = tests;
         reportData.Verktøy = verktøyer;
+
+        reportData.TestUtførtAvModel = testUtførtAvModel;
+
+        reportData.KontrollertAvførtAvModel = KontrollertAvførtAvModel;
 
         reportData.DataFraOppdragsgiverPrøver = dataFraOppdragsgiverPrøverModels;
 

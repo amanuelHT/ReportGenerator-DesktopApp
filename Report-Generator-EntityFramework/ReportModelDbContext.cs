@@ -23,15 +23,31 @@ namespace Report_Generator_EntityFramework
         public DbSet<TrykktestingModel> trykktestingModels { get; set; }
         public DbSet<TestModel> tests { get; set; }
         public DbSet<verktøyModel> verktøies { get; set; }
-
+        public DbSet<TestUtførtAvModel> TestUtførtAvModels { get; set; }
+        public DbSet<KontrollertAvførtAvModel> KontrollertAvførtAvModels { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<ReportModel>()
+                .HasOne(report => report.TestUtførtAvModel)  // Change to TestUtførtAvModel
+                .WithOne(test => test.Report)                // Assuming Report is the navigation property in TestUtførtAvModel pointing back to ReportModel
+                .HasForeignKey<TestUtførtAvModel>(test => test.ReportModelID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ReportModel>()
+                .HasOne(report => report.KontrollertAvførtAvModel)
+                .WithOne(kontrollertAv => kontrollertAv.Report)
+                .HasForeignKey<KontrollertAvførtAvModel>(kontrollertAv => kontrollertAv.ReportModelID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+
             // Define foreign key relationship between ReportModel and ReportImageModel
             modelBuilder.Entity<ReportImageModel>()
-                .HasOne(image => image.ReportModel)
-                .WithMany(report => report.Images)
-                .HasForeignKey(image => image.ReportModelId)
-                .OnDelete(DeleteBehavior.Cascade);
+                    .HasOne(image => image.ReportModel)
+                    .WithMany(report => report.Images)
+                    .HasForeignKey(image => image.ReportModelId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TestModel>()
                 .HasOne(test => test.ReportModel)

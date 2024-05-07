@@ -47,7 +47,7 @@ namespace Final_project.ViewModels
         {
             if (_selectedReport == null) return;
 
-            (ReportModel reportData,
+            (ReportModel reportData, TestUtførtAvModel testUtførtAvModel, KontrollertAvførtAvModel KontrollertAvførtAvModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
             List<ReportImageModel> images,
             List<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels,

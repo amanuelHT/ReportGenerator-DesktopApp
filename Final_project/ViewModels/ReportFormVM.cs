@@ -11,6 +11,7 @@ namespace Final_project.ViewModels
     {
         private readonly ModalNavigation _modalNavigation;
         public TestUtførtAvVM TestUtførtAvVM { get; set; }
+        public KontrollertAvVM KontrollertAvVM { get; set; }
 
         public ObservableObject CurrentVM => _modalNavigation.CurrentView;
         public bool IsFormOpen => _modalNavigation.IsOpen;
@@ -51,6 +52,16 @@ namespace Final_project.ViewModels
         [ObservableProperty]
         private string _kunde;
 
+        [ObservableProperty]
+        private string _avvikFraStandarder;
+
+        [ObservableProperty]
+        private DateTime _motattDato;
+
+        [ObservableProperty]
+        private string _kommentarer;
+
+
         public ICommand AddReportTableCommand { get; }
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
@@ -86,6 +97,10 @@ namespace Final_project.ViewModels
 
             VerktøyCollectionVM = new VerktøyCollectionVM(reportid);
             VerktøyVM = new VerktøyVM(VerktøyCollectionVM, reportid);
+
+            TestUtførtAvVM = new TestUtførtAvVM(reportid, this);
+            KontrollertAvVM = new KontrollertAvVM(reportid, this);
+
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
         }

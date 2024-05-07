@@ -26,17 +26,51 @@ namespace Report_Generator_EntityFramework.Commands
                     .Include(r => r.DataEtterKuttingOgSlipingModel)
                      .Include(r => r.ConcreteDensityModel)
                      .Include(r => r.TrykktestingModel)
+                      .Include(r => r.TestUtførtAvModel)
+                      .Include(r => r.KontrollertAvførtAvModel)
 
                     .FirstOrDefaultAsync(r => r.Id == reportModel.Id);
 
                 if (existingReport != null)
                 {
-                    // Update primary fields of the main report
+
                     existingReport.Tittle = reportModel.Tittle;
                     existingReport.Status = reportModel.Status;
                     existingReport.Kunde = reportModel.Kunde;
+                    existingReport.AvvikFraStandarder = reportModel.AvvikFraStandarder;
+                    existingReport.MotattDato = reportModel.MotattDato;
+                    existingReport.Kommentarer = reportModel.Kommentarer;
 
-                    // Update related collections
+
+                    if (existingReport.TestUtførtAvModel != null)
+                    {
+                        existingReport.TestUtførtAvModel.Name = reportModel.TestUtførtAvModel.Name;
+                        existingReport.TestUtførtAvModel.Department = reportModel.TestUtførtAvModel.Department;
+                        existingReport.TestUtførtAvModel.Date = reportModel.TestUtførtAvModel.Date;
+                        existingReport.TestUtførtAvModel.Position = reportModel.TestUtførtAvModel.Position;
+                    }
+                    else
+                    {
+                        existingReport.TestUtførtAvModel = reportModel.TestUtførtAvModel;
+                    }
+
+
+
+                    if (existingReport.KontrollertAvførtAvModel != null)
+                    {
+                        existingReport.KontrollertAvførtAvModel.Name = reportModel.KontrollertAvførtAvModel.Name;
+                        existingReport.KontrollertAvførtAvModel.Department = reportModel.KontrollertAvførtAvModel.Department;
+                        existingReport.KontrollertAvførtAvModel.Date = reportModel.KontrollertAvførtAvModel.Date;
+                        existingReport.KontrollertAvførtAvModel.Position = reportModel.KontrollertAvførtAvModel.Position;
+                    }
+                    else
+                    {
+                        existingReport.KontrollertAvførtAvModel = reportModel.KontrollertAvførtAvModel;
+                    }
+
+
+
+                    //// Update related collections
                     UpdateImages(context, existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateVerktøy(context, existingReport, reportModel);

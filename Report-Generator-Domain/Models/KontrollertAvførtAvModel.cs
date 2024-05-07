@@ -2,8 +2,9 @@
 
 namespace Report_Generator_Domain.Models
 {
-    public class TestUtførtAvModel
+    public class KontrollertAvførtAvModel
     {
+
         public Guid ID { get; set; }
         public string Name { get; set; }
         public string Department { get; set; }
@@ -12,12 +13,12 @@ namespace Report_Generator_Domain.Models
         public Guid ReportModelID { get; set; }
         public ReportModel Report { get; set; }
 
-        public TestUtførtAvModel()
+        public KontrollertAvførtAvModel()
         {
             // Parameterless constructor required by Entity Framework
         }
 
-        public TestUtførtAvModel(Guid id, string name, string department, DateTime date, string position, Guid reportModelID)
+        public KontrollertAvførtAvModel(Guid id, string name, string department, DateTime date, string position, Guid reportModelID)
         {
             ID = id;
             Name = name;

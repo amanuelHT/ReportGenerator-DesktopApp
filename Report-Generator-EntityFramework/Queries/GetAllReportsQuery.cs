@@ -28,7 +28,11 @@ namespace Report_Generator_EntityFramework.Queries
                         report.Id,
                         report.Tittle,
                         report.Status,
-                        report.Kunde
+                        report.Kunde,
+                        report.AvvikFraStandarder,
+                        report.MotattDato,
+                        report.Kommentarer
+
 
 
                     )).ToList();

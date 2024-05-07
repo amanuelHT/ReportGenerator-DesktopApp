@@ -11,8 +11,8 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240505111204_initialmigration")]
-    partial class initialmigration
+    [Migration("20240507122541_INITIALMIGRATION")]
+    partial class INITIALMIGRATION
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,8 +50,19 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("AvvikFraStandarder")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Kommentarer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Kunde")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("MotattDato")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
@@ -192,6 +203,38 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.ToTable("DataFraOppdragsgiverPrøverModels");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.KontrollertAvførtAvModel", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ReportModelID")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ReportModelID")
+                        .IsUnique();
+
+                    b.ToTable("KontrollertAvførtAvModels");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.TestModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -210,6 +253,38 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.HasIndex("ReportModelId");
 
                     b.ToTable("tests");
+                });
+
+            modelBuilder.Entity("Report_Generator_Domain.Models.TestUtførtAvModel", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ReportModelID")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ReportModelID")
+                        .IsUnique();
+
+                    b.ToTable("TestUtførtAvModels");
                 });
 
             modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
@@ -304,6 +379,17 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Navigation("ReportModel");
                 });
 
+            modelBuilder.Entity("Report_Generator_Domain.Models.KontrollertAvførtAvModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "Report")
+                        .WithOne("KontrollertAvførtAvModel")
+                        .HasForeignKey("Report_Generator_Domain.Models.KontrollertAvførtAvModel", "ReportModelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Report");
+                });
+
             modelBuilder.Entity("Report_Generator_Domain.Models.TestModel", b =>
                 {
                     b.HasOne("Domain.Models.ReportModel", "ReportModel")
@@ -313,6 +399,17 @@ namespace Report_Generator_EntityFramework.Migrations
                         .IsRequired();
 
                     b.Navigation("ReportModel");
+                });
+
+            modelBuilder.Entity("Report_Generator_Domain.Models.TestUtførtAvModel", b =>
+                {
+                    b.HasOne("Domain.Models.ReportModel", "Report")
+                        .WithOne("TestUtførtAvModel")
+                        .HasForeignKey("Report_Generator_Domain.Models.TestUtførtAvModel", "ReportModelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Report");
                 });
 
             modelBuilder.Entity("Report_Generator_Domain.Models.TrykktestingModel", b =>
@@ -347,7 +444,13 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.Navigation("Images");
 
+                    b.Navigation("KontrollertAvførtAvModel")
+                        .IsRequired();
+
                     b.Navigation("Test");
+
+                    b.Navigation("TestUtførtAvModel")
+                        .IsRequired();
 
                     b.Navigation("TrykktestingModel");
 

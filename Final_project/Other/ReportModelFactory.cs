@@ -21,9 +21,44 @@ namespace Final_project.Other
                 id,
                 reportForm.Tittle,
                 reportForm.Status,
-                reportForm.Kunde
+                reportForm.Kunde,
+               "adsdfs",
+                DateTime.Now,
+                "reportForm.Kommentarer"
+
 
             );
+
+
+            if (reportForm.TestUtførtAvVM != null)
+            {
+                TestUtførtAvModel testUtførtAvModel = new TestUtførtAvModel(
+                    Guid.NewGuid(),
+                    reportForm.TestUtførtAvVM.Name,
+                    reportForm.TestUtførtAvVM.Department,
+                    reportForm.TestUtførtAvVM.Date,
+                    reportForm.TestUtførtAvVM.Position,
+                   reportModel.Id
+                );
+
+                reportModel.TestUtførtAvModel = testUtførtAvModel;
+            }
+
+            if (reportForm.KontrollertAvVM != null)
+            {
+                KontrollertAvførtAvModel kontrollert = new KontrollertAvførtAvModel(
+                    Guid.NewGuid(),
+                    reportForm.KontrollertAvVM.Name,
+                    reportForm.KontrollertAvVM.Department,
+                    reportForm.KontrollertAvVM.Date,
+                    reportForm.KontrollertAvVM.Position,
+                   reportModel.Id
+                );
+
+                reportModel.KontrollertAvførtAvModel = kontrollert;
+            }
+
+
 
 
             if (reportForm.ImageCollectionViewModel != null)
@@ -61,7 +96,6 @@ namespace Final_project.Other
                 }
             }
 
-
             if (reportForm.TestCollectionVM != null)
             {
                 foreach (var test in reportForm.TestCollectionVM.tests)
@@ -78,9 +112,7 @@ namespace Final_project.Other
                 }
             }
 
-
-
-            if (reportForm.DataFraOppdragsgiverTableVM != null)
+            if (reportForm != null && reportForm.DataFraOppdragsgiverTableVM != null)
             {
                 foreach (var prøve in reportForm.DataFraOppdragsgiverTableVM.Prøver)
                 {
@@ -128,7 +160,6 @@ namespace Final_project.Other
                 }
             }
 
-            // Create ConcreteDensityTable
             if (reportForm.ConcreteDensityTableVM != null)
             {
                 foreach (var prøve in reportForm.ConcreteDensityTableVM.Prøver)
@@ -150,7 +181,6 @@ namespace Final_project.Other
                 }
             }
 
-            // Create TrykktestingTable
             if (reportForm.TrykktestingTableVM != null)
             {
                 foreach (var trykktesting in reportForm.TrykktestingTableVM.Trykketester)
