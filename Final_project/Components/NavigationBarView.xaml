@@ -25,7 +25,8 @@
             </StackPanel>
         </RadioButton>
 
-        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateKundeServiceCommand}">
+        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateKundeServiceCommand}" 
+                     Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="HumanEdit" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
                 <TextBlock Text="KundService" Style="{StaticResource navtext}" />
@@ -39,9 +40,10 @@
             </StackPanel>
         </RadioButton>
 
-        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateGeneratedReportListingCommand}" >
+        <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateGeneratedReportListingCommand}" 
+                     Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel Orientation="Horizontal">
-                    <icon:PackIconMaterial Kind="FileDocument" Style="{StaticResource navicon}" Tag="{StaticResource SecondaryColor}"/>
+                    <icon:PackIconMaterial Kind="FileDocument" Style="{StaticResource navicon}" Tag="{StaticResource SecondaryColor}"/> 
                 <TextBlock Text="Generated Reports" Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
@@ -53,7 +55,8 @@
             </StackPanel>
         </RadioButton>
 
-        <RadioButton Style="{StaticResource navbuttons}" Command="{Binding NavigateAccountCommand}" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <RadioButton Style="{StaticResource navbuttons}" Command="{Binding NavigateAccountCommand}" 
+                     Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="AccountBox" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
                 <TextBlock Text="Account" Style="{StaticResource navtext}" />
