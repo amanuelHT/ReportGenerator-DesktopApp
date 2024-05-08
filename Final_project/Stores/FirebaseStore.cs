@@ -26,11 +26,12 @@ public class FirebaseStore
             .Child(filename)
             .PutAsync(stream);
     }
-    public async Task UploadReportMessageAsync(Stream stream, string filename)
+    public async Task UploadReportMessageAsync(Stream stream, string filename, string id)
     {
 
         await _storage
             .Child("Messages")
+            .Child(id)
             .Child(filename)
             .PutAsync(stream);
     }

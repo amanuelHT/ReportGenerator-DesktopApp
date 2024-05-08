@@ -31,7 +31,8 @@ namespace Report_Generator_EntityFramework.Queries
                         report.Kunde,
                         report.AvvikFraStandarder,
                         report.MotattDato,
-                        report.Kommentarer
+                        report.Kommentarer,
+                        report.UiaRegnr
 
 
 

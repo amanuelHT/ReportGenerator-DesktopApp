@@ -61,6 +61,9 @@ namespace Final_project.ViewModels
         [ObservableProperty]
         private string _kommentarer;
 
+        [ObservableProperty]
+        private int _uiaRegnr;
+
 
         public ICommand AddReportTableCommand { get; }
         public ICommand SubmitCommand { get; }

@@ -21,7 +21,8 @@ namespace Report_Generator_EntityFramework.Migrations
                     Kunde = table.Column<string>(type: "TEXT", nullable: false),
                     AvvikFraStandarder = table.Column<string>(type: "TEXT", nullable: false),
                     MotattDato = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Kommentarer = table.Column<string>(type: "TEXT", nullable: false)
+                    Kommentarer = table.Column<string>(type: "TEXT", nullable: false),
+                    UiaRegnr = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

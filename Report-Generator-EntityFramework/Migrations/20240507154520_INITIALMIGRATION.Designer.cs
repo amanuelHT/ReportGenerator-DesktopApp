@@ -11,7 +11,7 @@ using Report_Generator_EntityFramework;
 namespace Report_Generator_EntityFramework.Migrations
 {
     [DbContext(typeof(ReportModelDbContext))]
-    [Migration("20240507122541_INITIALMIGRATION")]
+    [Migration("20240507154520_INITIALMIGRATION")]
     partial class INITIALMIGRATION
     {
         /// <inheritdoc />
@@ -71,6 +71,9 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<string>("Tittle")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("UiaRegnr")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

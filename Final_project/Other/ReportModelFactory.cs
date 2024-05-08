@@ -22,9 +22,10 @@ namespace Final_project.Other
                 reportForm.Tittle,
                 reportForm.Status,
                 reportForm.Kunde,
-               "adsdfs",
-                DateTime.Now,
-                "reportForm.Kommentarer"
+                reportForm.AvvikFraStandarder,
+                reportForm.MotattDato,
+                reportForm.Kommentarer,
+                reportForm.UiaRegnr
 
 
             );

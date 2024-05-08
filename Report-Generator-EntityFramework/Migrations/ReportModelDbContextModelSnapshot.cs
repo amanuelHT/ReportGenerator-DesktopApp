@@ -69,6 +69,9 @@ namespace Report_Generator_EntityFramework.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UiaRegnr")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("ReportModels");

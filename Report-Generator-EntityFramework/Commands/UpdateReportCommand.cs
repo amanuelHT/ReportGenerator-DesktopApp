@@ -40,6 +40,7 @@ namespace Report_Generator_EntityFramework.Commands
                     existingReport.AvvikFraStandarder = reportModel.AvvikFraStandarder;
                     existingReport.MotattDato = reportModel.MotattDato;
                     existingReport.Kommentarer = reportModel.Kommentarer;
+                    existingReport.UiaRegnr = reportModel.UiaRegnr;
 
 
                     if (existingReport.TestUtførtAvModel != null)

@@ -153,7 +153,7 @@ namespace Final_project.ViewModels
 
 
 
-                await _firebaseStore.UploadReportMessageAsync(stream, filename);
+                await _firebaseStore.UploadReportMessageAsync(stream, filename, SelectedUser.UserId);
 
                 FileName = filenameWithoutExtension;
 

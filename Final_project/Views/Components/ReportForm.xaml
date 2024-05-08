@@ -26,63 +26,66 @@
         <viewmodels:CustomModalVM Panel.ZIndex="1" IsOpen="{Binding IsFormOpen}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl Margin="50, 25" Content="{Binding CurrentVM}" />
         </viewmodels:CustomModalVM>
-        <!-- Main Content with ScrollViewer -->
+    
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" 
     PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <Grid>
+           
+ <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/> 
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
-                <!-- Rows for text inputs and date pickers wrapped in Borders with LinearGradient background -->
-                <Border Grid.Row="0" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
-                    <StackPanel Orientation="Horizontal">
-                        <components:TextBoxView Text="{Binding Tittle}" Watermark="Enter your title here"/>
-                        <components:TextBoxView Text="{Binding Kunde}" Watermark="Enter client name" Margin="100 0 0 0"/>
+     
+     
+                <Border Grid.Row="0" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20" >
+                    <StackPanel Orientation="Horizontal" >
+                        <components:TextBoxView Text="{Binding MotattDato}" Watermark="Enter Mottat dato" />
+                        <components:TextBoxView Text="{Binding UiaRegnr}" Watermark="Enter Uia Regnr" Margin="100 0 0 0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="1" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20" >
-                    <StackPanel Orientation="Horizontal">
-                        <components:TextBoxView Text="{Binding Field1}" Watermark="Uia Regnr"/>
-                        <components:TextBoxView Text="{Binding Field2}" Watermark="Kommentar" Margin="100 0 0 0"/>
+                <Border Grid.Row="1" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20">
+                    <StackPanel Orientation="Horizontal" >
+                        <components:TextBoxView Text="{Binding Tittle}" Watermark="title"/>
+                        <components:TextBoxView Text="{Binding Kunde}" Watermark="kunde" Margin="100 0 0 0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="20">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                          
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <StackPanel>
-                        <TextBlock Text="Kontrollert av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
-
-                        <components1:KontrollertAvView DataContext="{Binding KontrollertAvVM}"/>
+                <Border Grid.Row="2"  Opacity="1"  CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20" >
+                    <StackPanel Orientation="Horizontal">
+                        <components:TextBoxView Text="{Binding Kommentarer}" Watermark="Kommentar" />
+                        <components:TextBoxView Text="{Binding AvvikFraStandarder}" Watermark="Avvik fra standard" Margin="100 0 0 0"/>
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Row="3" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="20">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                          
                         </LinearGradientBrush>
                     </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="tester ut ført av av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
+                        <TextBlock Text="Kontrollert av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
+                        <components1:KontrollertAvView DataContext="{Binding KontrollertAvVM}"/>
+                    </StackPanel>
+                </Border>
 
+                <Border Grid.Row="4" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Text="Tester utført av" Opacity="1" Background="{StaticResource LinearGradientBrush2}" Margin="10" Padding="10" TextAlignment="Center"/>
                         <components1:TesterUtførtAvView DataContext="{Binding TestUtførtAvVM}"/>
                     </StackPanel>
                 </Border>
 
-
-
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -128,7 +131,7 @@
 
 
                 <!-- Additional rows for tables and modal control -->
-                <Grid Grid.Row="5" Margin="30">
+                <Grid Grid.Row="6" Margin="30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>

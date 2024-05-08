@@ -17,6 +17,7 @@ namespace Domain.Models
         public string AvvikFraStandarder { get; set; }
         public DateTime MotattDato { get; set; }
         public string Kommentarer { get; set; }
+        public int UiaRegnr { get; set; }
 
 
 
@@ -40,7 +41,7 @@ namespace Domain.Models
 
 
 
-        public ReportModel(Guid id, string tittle, bool status, string kunde, string avvikFraStandarder, DateTime motattDato, string kommentarer)
+        public ReportModel(Guid id, string tittle, bool status, string kunde, string avvikFraStandarder, DateTime motattDato, string kommentarer, int uiaRegnr)
         {
             Id = id;
             Tittle = tittle;
@@ -49,6 +50,7 @@ namespace Domain.Models
             AvvikFraStandarder = avvikFraStandarder;
             MotattDato = motattDato;
             Kommentarer = kommentarer;
+            UiaRegnr = uiaRegnr;
 
 
 

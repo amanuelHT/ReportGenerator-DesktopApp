@@ -32,6 +32,7 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
                 Name = model.Name;
                 _reportModelId = model.ReportModelId;
+
             }
         }
 
