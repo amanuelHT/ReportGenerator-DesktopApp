@@ -23,8 +23,9 @@
           CanUserAddRows="False"
           CanUserDeleteRows="False"
           IsReadOnly="True"
-          Margin="10"
+          Margin="0"
           BorderThickness="1"
+          FontSize="15"
           BorderBrush="#FFCCCCCC"
           GridLinesVisibility="Horizontal">
             <DataGrid.Columns>
@@ -38,18 +39,22 @@
                 <DataGridTemplateColumn Width="Auto" Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
                                 <ToggleButton x:Name="btnOpenMenu" Content="..."/>
                                 <Popup IsOpen="{Binding IsChecked, ElementName=btnOpenMenu, Mode=TwoWay}"
                                Placement="Bottom" StaysOpen="False">
-                                    <Border Background="White" Padding="5" CornerRadius="5">
+                                   
                                         <StackPanel>
-                                            <!--<Button Content="Edit" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        <Border Background="Blue" Padding="10"   Margin="0,0,0,15"  CornerRadius="5">
+                                            <Button Content="Edit" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                             CommandParameter="{Binding}"/>
-                                            <Button Content="Delete" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                            CommandParameter="{Binding}"/>-->
-                                        </StackPanel>
-                                    </Border>
+                                        </Border>
+                                        <Border Background="Red" Padding="5" CornerRadius="5">
+                                            <Button  Content="Delete" Command ="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>
+                                        </Border>
+                                    </StackPanel>
+                                 
                                 </Popup>
                             </StackPanel>
                         </DataTemplate>
@@ -60,12 +65,17 @@
         </DataGrid>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Add a new user"
-                    FontSize="14"
-                    Padding="10"
-                    Margin="0,20,0,0"
-                    Command="{Binding NavigateRoleManagement}"/>
-             <!--Replace with your actual command and style--> 
+            <Button FontSize="20"
+            Padding="10"
+            Margin="10,5,10,10"
+            Command="{Binding NavigateRoleManagement}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" Height="66">
+                        <TextBlock Text="Add a new user: " FontSize="20"  Margin="5,20,5,3" VerticalAlignment="Center"/>
+                        <TextBlock Text="+" FontWeight="Bold" FontSize="50" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -59,9 +59,10 @@
 
 
                 <!-- Buttons are arranged horizontally at the bottom -->
-            <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30" Grid.Column="1" Grid.RowSpan="2">
-                <Button Command="{Binding SaveCommand}" Content="Save" Margin="5" />
-                <Button Command="{Binding CancelCommand}" Content="Clear" Margin="5" />
+                <StackPanel  Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30" Grid.Column="1" Grid.RowSpan="2">
+                    <Button Command="{Binding SaveCommand}" Content="Save" Background="Blue" Margin="5" />
+                    <Button Command="{Binding CancelCommand}" Content="Clear" Background="Blue" Margin="5" />
+
             </StackPanel>
 
      

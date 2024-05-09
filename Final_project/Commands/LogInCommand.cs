@@ -62,9 +62,9 @@ namespace Final_project.Commands
                     MessageBox.Show("User data not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show("LogIn failed: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("LogIn failed: InvalidEmailAddress");
             }
         }
     }
