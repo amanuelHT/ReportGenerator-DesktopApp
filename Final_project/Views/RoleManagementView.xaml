@@ -68,6 +68,9 @@
             <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30" Grid.Column="1" Grid.RowSpan="2">
                     <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="5" Style="{StaticResource buttonSecondary}" Background="Aquamarine"/>
                 <Button Command="{Binding SaveCommand}" Content="Save" Margin="5" Style="{StaticResource buttonSecondary}"/>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </StackPanel>
 
