@@ -44,7 +44,7 @@
      
                 <Border Grid.Row="0" Opacity="1" CornerRadius="20" Background="{StaticResource LinearGradientBrush1}" Margin="20" >
                     <StackPanel Orientation="Horizontal" >
-                        <components:TextBoxView Text="{Binding MotattDato}" Watermark="Enter Mottat dato" />
+                        <DatePicker SelectedDate="{Binding MotattDato}" Style="{StaticResource CustomDatePickerStyle}" Margin="5,28,0,9" />
                         <components:TextBoxView Text="{Binding UiaRegnr}" Watermark="Enter Uia Regnr" Margin="100 0 0 0"/>
                     </StackPanel>
                 </Border>

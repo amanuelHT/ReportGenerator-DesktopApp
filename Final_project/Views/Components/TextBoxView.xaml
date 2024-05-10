@@ -9,11 +9,9 @@
              d:DesignWidth="200" Background="Transparent">
 
     <StackPanel Margin="20 10">
-        <!-- Label or Watermark -->
         <TextBlock Text="{Binding ElementName=mytextbox, Path=Watermark}"
                    Foreground="White" FontSize="13" Margin="0 0 0 8"/>
 
-        <!-- Input Field -->
         <Grid>
             <TextBox Text="{Binding ElementName=mytextbox, Path=Text}"
                      x:Name="textbox"

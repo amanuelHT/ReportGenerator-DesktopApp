@@ -13,7 +13,8 @@ namespace Final_project.Commands
         private readonly LoginVM _login;
         private readonly AccountStore _accountStore;
         private readonly FirebaseAuthProvider _firebaseAuthProvider;
-        public INavigationService _navigationService { get; }
+        private readonly HomeVM _homeVM;
+        private readonly INavigationService _navigationService;
 
         public LogInCommand(LoginVM login, AccountStore accountStore, INavigationService navigationService, FirebaseAuthProvider firebaseAuthProvider)
         {
@@ -21,6 +22,7 @@ namespace Final_project.Commands
             _accountStore = accountStore;
             _navigationService = navigationService;
             _firebaseAuthProvider = firebaseAuthProvider;
+
         }
 
         public override async Task ExecuteAsync(object parameter)
@@ -31,18 +33,18 @@ namespace Final_project.Commands
 
                 // Retrieve the role from Firestore
                 var userDocument = await FirestoreHelper.Database
-                  .Collection("users")
-                  .Document(auth.User.LocalId)
-                  .GetSnapshotAsync();
+                    .Collection("users")
+                    .Document(auth.User.LocalId)
+                    .GetSnapshotAsync();
 
                 if (userDocument.Exists)
                 {
                     var userInfo = userDocument.ConvertTo<UserInfo>();
 
-                    // Check if user has the correct role
+                    // Check if the user has the correct role
                     if (userInfo.Role == "Admin" || userInfo.Role == "User")
                     {
-                        Account account = new Account()
+                        Account account = new Account
                         {
                             Email = auth.User.Email,
                             Username = auth.User.Email,
@@ -50,7 +52,7 @@ namespace Final_project.Commands
                         };
 
                         _accountStore.CurrentAccount = account;
-                        _navigationService.Navigate();
+                        _navigationService.Navigate(); // Navigate to the home view after a successful login
                     }
                     else
                     {
@@ -62,9 +64,9 @@ namespace Final_project.Commands
                     MessageBox.Show("User data not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
-                MessageBox.Show("LogIn failed: InvalidEmailAddress");
+                MessageBox.Show("Login failed: Invalid credentials or other error.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

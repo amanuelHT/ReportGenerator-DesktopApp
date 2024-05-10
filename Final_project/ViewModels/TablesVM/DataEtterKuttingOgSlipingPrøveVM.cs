@@ -9,17 +9,14 @@ namespace Final_project.ViewModels.TablesVM
 {
     public partial class DataEtterKuttingOgSlipingPrøveVM : ObservableObject
     {
-        // The 'ObservableProperty' attribute will create a backing field, 
-        // a property, and will raise PropertyChanged notifications.
-
         [ObservableProperty]
         private Guid prøvenr;
 
         [ObservableProperty]
-        private DateTime ivannbadDato;
+        private DateOnly ivannbadDato;
 
         [ObservableProperty]
-        private DateTime testDato;
+        private DateOnly testDato;
 
         [ObservableProperty]
         private string overflatetilstand;

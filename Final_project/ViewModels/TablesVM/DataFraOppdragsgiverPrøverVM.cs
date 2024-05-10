@@ -15,7 +15,7 @@ namespace Final_project.ViewModels.TablesVM
 
 
         [ObservableProperty]
-        private DateTime datomottatt;
+        private DateOnly datomottatt;
 
         [ObservableProperty]
         private string overdekningoppgitt;

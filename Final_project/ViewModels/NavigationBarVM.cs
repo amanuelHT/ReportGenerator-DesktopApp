@@ -50,7 +50,7 @@ namespace Final_project.ViewModels
             NavigateGeneratedReportListingCommand = new NavigateCommand(generatedReportListingNavigationService);
             NavigateReportViewerCommand = new NavigateCommand(reportViewernavigarionService);
             NavigateHomeCommand = new NavigateCommand(HomeNavigationService);
-            LogoutCommand = new LogoutCommand(_accountStore);
+            LogoutCommand = new LogoutCommand(_accountStore, HomeNavigationService);
             NavigateRoleManagementViewCommand = new NavigateCommand(roleManagementNavigationService);
             NavigateUserInfoCommand = new NavigateCommand(UserInfoNavigationService);
             NavigateKundeServiceCommand = new NavigateCommand(navigateKundeServiceCommand

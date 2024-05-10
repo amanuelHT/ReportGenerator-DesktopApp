@@ -27,19 +27,6 @@ namespace Final_project.ViewModels
         private string _lastName;
 
 
-        //private string _birthDate;
-        //public string BirthDate
-        //{
-        //    get => _birthDate;
-        //    set
-        //    {
-        //        if (_birthDate != value)
-        //        {
-        //            _birthDate = value;
-        //            OnPropertyChanged(nameof(BirthDate));
-        //        }
-        //    }
-        //}
 
         private DateTime? _birthDate;
         public DateTime? BirthDate

@@ -27,6 +27,68 @@ namespace Final_project.Other
             return dataTable;
         }
 
+
+
+        public DataTable CreateKontrollertAvTable(KontrollertAvførtAvModel kontrollertAvførtAvModels)
+        {
+            DataTable dataTable = new DataTable("kontrollertAvførtAvModels");
+            if (kontrollertAvførtAvModels != null)
+            {
+                foreach (var property in kontrollertAvførtAvModels.GetType().GetProperties())
+                {
+                    dataTable.Columns.Add(property.Name, property.PropertyType);
+                }
+                DataRow row = dataTable.NewRow();
+                foreach (var property in kontrollertAvførtAvModels.GetType().GetProperties())
+                {
+                    row[property.Name] = property.GetValue(kontrollertAvførtAvModels) ?? DBNull.Value;
+
+                }
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+
+
+        }
+
+        public DataTable CreateTestUtførtAvTable(TestUtførtAvModel testUtførtAvModels)
+        {
+            DataTable dataTable = new DataTable("TestUtførtAvModel");
+            if (testUtførtAvModels != null)
+            {
+                foreach (var property in testUtførtAvModels.GetType().GetProperties())
+                {
+                    dataTable.Columns.Add(property.Name, property.PropertyType);
+                }
+                DataRow row = dataTable.NewRow();
+                foreach (var property in testUtførtAvModels.GetType().GetProperties())
+                {
+                    row[property.Name] = property.GetValue(testUtførtAvModels) ?? DBNull.Value;
+                }
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //Image handling 
         public DataTable CreateImagesDataTable2(List<ReportImageModel> images)
         {
@@ -208,5 +270,7 @@ namespace Final_project.Other
 
             return customTable;
         }
+
+
     }
 }

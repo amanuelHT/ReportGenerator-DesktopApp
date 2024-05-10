@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
              xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM"
-             xmlns:local="clr-namespace:Final_project.Views.Components"
+             xmlns:local="clr-namespace:Final_project.Views.Components" xmlns:components="clr-namespace:Final_project.Components"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=reportcomponentsvm:TestVM}">
@@ -16,11 +16,10 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Bind TextBox Text to a ViewModel property -->
-        <TextBox Grid.Column="0" Text="{Binding Name}" Margin="0,0,10,0"/>
-
+        <components:TextBoxView Grid.Column="0" Text="{Binding Name}" Watermark="Benyttet utstyr:"  Margin="0,0,10,0"/>
+        
         <!-- Bind Button Command to a ViewModel command -->
-        <Button Grid.Column="1" Command="{Binding SubmitCommand}">
+        <Button Grid.Column="1" Command="{Binding SubmitCommand}" Margin="10 30 0 0">
             <StackPanel Orientation="Horizontal">
                 <icon:PackIconMaterial Kind="send" Height="20" Width="20" Foreground="{StaticResource IconColor1}"/>
              
