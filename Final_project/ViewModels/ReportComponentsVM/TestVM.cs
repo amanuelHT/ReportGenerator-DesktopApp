@@ -60,6 +60,8 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
             _testCollectionVM.tests.Add(newtest);
 
+            Name = "";
+
         }
 
     }

@@ -35,7 +35,6 @@ namespace Final_project.ViewModels
         public ObservableCollection<ConcreteDensityModel> ConcreteDensityModels { get; private set; }
 
 
-
         public ReportViewerVM(ReportStore reportStore, INavigationService generatedReportNavigationService)
         {
             _reportStore = reportStore;

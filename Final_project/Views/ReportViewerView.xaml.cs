@@ -37,14 +37,14 @@ namespace Final_project.Views
                 if (ReportViewerViewModel.SelectedReportData != null)
                 {
                     DataTable reportDataTable = x.CreateReportDataTable(ReportViewerViewModel.SelectedReportData);
-                    this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet1", Value = reportDataTable });
+                    this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportModels", Value = reportDataTable });
 
 
                     // Handle trykktesting data
                     if (ReportViewerViewModel.TrykktestingModels != null && ReportViewerViewModel.TrykktestingModels.Any())
                     {
                         DataTable tryktable = x.CreateTrykktestingTable(ReportViewerViewModel.TrykktestingModels);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet2", Value = tryktable });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "TrykktestingModel", Value = tryktable });
                     }
 
                     // Handle images data
@@ -53,22 +53,22 @@ namespace Final_project.Views
                         int splitIndex = (ReportViewerViewModel.ReportImages.Count + 1) / 2; // Calculate the split point
                         DataTable imagesTable3 = x.CreateImagesDataTable(ReportViewerViewModel.ReportImages.Take(splitIndex).ToList());
                         DataTable imagesTable4 = x.CreateImagesDataTable2(ReportViewerViewModel.ReportImages.Skip(splitIndex).ToList());
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet3", Value = imagesTable3 });
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet4", Value = imagesTable4 });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportImageModel", Value = imagesTable3 });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportImageModel2", Value = imagesTable4 });
                     }
 
                     // Handle ConcreteDensityModels data
                     if (ReportViewerViewModel.ConcreteDensityModels != null && ReportViewerViewModel.ConcreteDensityModels.Any())
                     {
                         DataTable concredensity = x.CreateConcreteDensityDataTable(ReportViewerViewModel.ConcreteDensityModels);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet5", Value = concredensity });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ConcreteDensityModel", Value = concredensity });
                     }
 
                     // Handle DataEtterKuttingOgSlipingModels data
                     if (ReportViewerViewModel.DataEtterKuttingOgSlipingModels != null && ReportViewerViewModel.DataEtterKuttingOgSlipingModels.Any())
                     {
                         DataTable dataetterkutting = x.DataEtterKuttingOgSlipingModelDataTable(ReportViewerViewModel.DataEtterKuttingOgSlipingModels);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet6", Value = dataetterkutting });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataEtterKuttingOgSlipingModel", Value = dataetterkutting });
                     }
 
 
@@ -76,7 +76,7 @@ namespace Final_project.Views
                     if (ReportViewerViewModel.DataFraOppdragsgiverPrøverModels != null && ReportViewerViewModel.DataFraOppdragsgiverPrøverModels.Any())
                     {
                         DataTable datafraoppdrag = x.DataFraOppdragsgiverPrøverModelDataTable(ReportViewerViewModel.DataFraOppdragsgiverPrøverModels);
-                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataSet7", Value = datafraoppdrag });
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "DataFraOppdragsgiverPrøverModel", Value = datafraoppdrag });
                     }
 
                     this.reportViewer.RefreshReport();

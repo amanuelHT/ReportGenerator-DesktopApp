@@ -497,6 +497,14 @@ namespace Final_project.Resources {
             
             private global::System.Data.DataColumn columnKunde;
             
+            private global::System.Data.DataColumn columnAvvikFraStandarder;
+            
+            private global::System.Data.DataColumn columnMotattDato;
+            
+            private global::System.Data.DataColumn columnKommentarer;
+            
+            private global::System.Data.DataColumn columnUiaRegnr;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReportModelsDataTable() {
@@ -564,6 +572,38 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AvvikFraStandarderColumn {
+                get {
+                    return this.columnAvvikFraStandarder;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MotattDatoColumn {
+                get {
+                    return this.columnMotattDato;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn KommentarerColumn {
+                get {
+                    return this.columnKommentarer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UiaRegnrColumn {
+                get {
+                    return this.columnUiaRegnr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -599,13 +639,17 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportModelsRow AddReportModelsRow(System.Guid Id, string Tittle, bool Status, string Kunde) {
+            public ReportModelsRow AddReportModelsRow(System.Guid Id, string Tittle, bool Status, string Kunde, string AvvikFraStandarder, System.DateTime MotattDato, string Kommentarer, short UiaRegnr) {
                 ReportModelsRow rowReportModelsRow = ((ReportModelsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         Tittle,
                         Status,
-                        Kunde};
+                        Kunde,
+                        AvvikFraStandarder,
+                        MotattDato,
+                        Kommentarer,
+                        UiaRegnr};
                 rowReportModelsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportModelsRow);
                 return rowReportModelsRow;
@@ -632,6 +676,10 @@ namespace Final_project.Resources {
                 this.columnTittle = base.Columns["Tittle"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnKunde = base.Columns["Kunde"];
+                this.columnAvvikFraStandarder = base.Columns["AvvikFraStandarder"];
+                this.columnMotattDato = base.Columns["MotattDato"];
+                this.columnKommentarer = base.Columns["Kommentarer"];
+                this.columnUiaRegnr = base.Columns["UiaRegnr"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -645,6 +693,14 @@ namespace Final_project.Resources {
                 base.Columns.Add(this.columnStatus);
                 this.columnKunde = new global::System.Data.DataColumn("Kunde", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKunde);
+                this.columnAvvikFraStandarder = new global::System.Data.DataColumn("AvvikFraStandarder", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAvvikFraStandarder);
+                this.columnMotattDato = new global::System.Data.DataColumn("MotattDato", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMotattDato);
+                this.columnKommentarer = new global::System.Data.DataColumn("Kommentarer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKommentarer);
+                this.columnUiaRegnr = new global::System.Data.DataColumn("UiaRegnr", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUiaRegnr);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2697,6 +2753,70 @@ namespace Final_project.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AvvikFraStandarder {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportModels.AvvikFraStandarderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AvvikFraStandarder\' in table \'ReportModels\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportModels.AvvikFraStandarderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime MotattDato {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportModels.MotattDatoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MotattDato\' in table \'ReportModels\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportModels.MotattDatoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Kommentarer {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportModels.KommentarerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kommentarer\' in table \'ReportModels\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportModels.KommentarerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short UiaRegnr {
+                get {
+                    try {
+                        return ((short)(this[this.tableReportModels.UiaRegnrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UiaRegnr\' in table \'ReportModels\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportModels.UiaRegnrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableReportModels.IdColumn);
             }
@@ -2741,6 +2861,54 @@ namespace Final_project.Resources {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetKundeNull() {
                 this[this.tableReportModels.KundeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAvvikFraStandarderNull() {
+                return this.IsNull(this.tableReportModels.AvvikFraStandarderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAvvikFraStandarderNull() {
+                this[this.tableReportModels.AvvikFraStandarderColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMotattDatoNull() {
+                return this.IsNull(this.tableReportModels.MotattDatoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMotattDatoNull() {
+                this[this.tableReportModels.MotattDatoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsKommentarerNull() {
+                return this.IsNull(this.tableReportModels.KommentarerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetKommentarerNull() {
+                this[this.tableReportModels.KommentarerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUiaRegnrNull() {
+                return this.IsNull(this.tableReportModels.UiaRegnrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUiaRegnrNull() {
+                this[this.tableReportModels.UiaRegnrColumn] = global::System.Convert.DBNull;
             }
         }
         
