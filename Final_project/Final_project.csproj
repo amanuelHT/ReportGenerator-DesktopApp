@@ -68,7 +68,7 @@
     <None Update="Resources\Reports\DataEtterKuttingOgSliping.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Reports\DataFraOppdraggsgiver.rdlc">
+    <None Update="Resources\DataFraOppdraggsgiver.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Reports\DataOmOppdrag.rdlc">

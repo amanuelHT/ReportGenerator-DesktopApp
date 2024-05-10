@@ -9,7 +9,7 @@ namespace Report_Generator_Domain.Models
 
         public Guid Id { get; set; }
 
-        public DateOnly Datomottatt { get; set; }
+        public DateTime Datomottatt { get; set; }
         public string Overdekningoppgitt { get; set; }
         public string Dmax { get; set; }
         public int KjerneImax { get; set; }
@@ -22,7 +22,7 @@ namespace Report_Generator_Domain.Models
 
 
 
-        public DataFraOppdragsgiverPrøverModel(Guid id, DateOnly datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
+        public DataFraOppdragsgiverPrøverModel(Guid id, DateTime datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
         {
             Id = id;
             Datomottatt = datomottatt;

@@ -54,8 +54,20 @@ namespace Final_project.Views
 
 
 
+                    if (ReportViewerViewModel.TestModels != null && ReportViewerViewModel.TestModels.Any())
+                    {
+                        DataTable tests = x.CreateTestModelsTable(ReportViewerViewModel.TestModels);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "TestModel", Value = tests });
+                    }
 
-                    // Handle trykktesting data
+
+                    if (ReportViewerViewModel.VerktøyModels != null && ReportViewerViewModel.VerktøyModels.Any())
+                    {
+                        DataTable verktøy = x.CreateVerktøyModelsTable(ReportViewerViewModel.VerktøyModels);
+                        this.reportViewer.DataSources.Add(new ReportDataSource { Name = "verktøyModel", Value = verktøy });
+                    }
+
+
                     if (ReportViewerViewModel.TrykktestingModels != null && ReportViewerViewModel.TrykktestingModels.Any())
                     {
                         DataTable tryktable = x.CreateTrykktestingTable(ReportViewerViewModel.TrykktestingModels);

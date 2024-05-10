@@ -20,7 +20,7 @@ namespace Final_project.Other
                 DataRow row = dataTable.NewRow();
                 foreach (var property in reportData.GetType().GetProperties())
                 {
-                    row[property.Name] = property.GetValue(reportData) ?? DBNull.Value; // Handle null values
+                    row[property.Name] = property.GetValue(reportData) ?? DBNull.Value;
                 }
                 dataTable.Rows.Add(row);
             }
@@ -271,6 +271,36 @@ namespace Final_project.Other
             return customTable;
         }
 
+        internal DataTable CreateTestModelsTable(ObservableCollection<TestModel> testModels)
+        {
+            DataTable customTable = new DataTable("CustomData");
+            customTable.Columns.Add("Name", typeof(string));
 
+            foreach (var model in testModels)
+            {
+                DataRow row = customTable.NewRow();
+                row["Name"] = model.Name;
+
+                customTable.Rows.Add(row);
+            }
+
+            return customTable;
+        }
+
+        internal DataTable CreateVerktøyModelsTable(ObservableCollection<verktøyModel> verktøyModels)
+        {
+            DataTable customTable = new DataTable("CustomData");
+            customTable.Columns.Add("Name", typeof(string));
+
+            foreach (var model in verktøyModels)
+            {
+                DataRow row = customTable.NewRow();
+                row["Name"] = model.Name;
+
+                customTable.Rows.Add(row);
+            }
+
+            return customTable;
+        }
     }
 }
