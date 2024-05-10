@@ -13,11 +13,15 @@ namespace Domain.Models
         public string Kunde { get; set; }
 
 
-
         public string AvvikFraStandarder { get; set; }
-        public DateTime MotattDato { get; set; }
+        public DateOnly MotattDato { get; set; }
+
+
+
         public string Kommentarer { get; set; }
         public int UiaRegnr { get; set; }
+
+
 
 
 
@@ -41,7 +45,7 @@ namespace Domain.Models
 
 
 
-        public ReportModel(Guid id, string tittle, bool status, string kunde, string avvikFraStandarder, DateTime motattDato, string kommentarer, int uiaRegnr)
+        public ReportModel(Guid id, string tittle, bool status, string kunde, string avvikFraStandarder, DateOnly motattDato, string kommentarer, int uiaRegnr)
         {
             Id = id;
             Tittle = tittle;

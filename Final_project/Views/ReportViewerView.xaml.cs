@@ -40,6 +40,21 @@ namespace Final_project.Views
                     this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportModels", Value = reportDataTable });
 
 
+
+
+
+
+                    DataTable testutførtav = x.CreateTestUtførtAvTable(ReportViewerViewModel.TestUtførtAvModels);
+                    this.reportViewer.DataSources.Add(new ReportDataSource { Name = "TestUtførtAvModel", Value = testutførtav });
+
+
+                    DataTable kontrollertav = x.CreateKontrollertAvTable(ReportViewerViewModel.KontrollertAvførtAvModels);
+                    this.reportViewer.DataSources.Add(new ReportDataSource { Name = "KontrollertAvførtAvModel", Value = kontrollertav });
+
+
+
+
+
                     // Handle trykktesting data
                     if (ReportViewerViewModel.TrykktestingModels != null && ReportViewerViewModel.TrykktestingModels.Any())
                     {

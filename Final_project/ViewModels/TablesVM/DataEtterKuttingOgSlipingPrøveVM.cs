@@ -16,10 +16,10 @@ namespace Final_project.ViewModels.TablesVM
         private Guid prøvenr;
 
         [ObservableProperty]
-        private DateTime ivannbadDato;
+        private DateOnly ivannbadDato;
 
         [ObservableProperty]
-        private DateTime testDato;
+        private DateOnly testDato;
 
         [ObservableProperty]
         private string overflatetilstand;

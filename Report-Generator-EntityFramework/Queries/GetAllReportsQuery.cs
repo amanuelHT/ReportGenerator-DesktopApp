@@ -41,8 +41,8 @@ namespace Report_Generator_EntityFramework.Queries
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message); // Log the exception
-                return Enumerable.Empty<ReportModel>(); // Return an empty collection or handle as needed
+                Debug.WriteLine(ex.Message);
+                return Enumerable.Empty<ReportModel>();
             }
         }
     }

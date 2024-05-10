@@ -26,10 +26,6 @@ namespace Final_project.Other
                 validationErrors.Add("Avvik fra standarder mangler.");
             }
 
-            if (reportModel.MotattDato == default(DateTime))
-            {
-                validationErrors.Add("Mottaksdato mangler.");
-            }
 
             if (string.IsNullOrEmpty(reportModel.Kommentarer))
             {
@@ -118,10 +114,10 @@ namespace Final_project.Other
                 validationErrors.Add("KontrollertAvVM mangler Avdeling .");
             }
 
-            //if (reportForm.KontrollertAvVM.Date == default(DateTime))
-            //{
-            //    validationErrors.Add("Dato i KontrollertAvVM  mangler eller er ugyldig.");
-            //}
+            if (reportForm.KontrollertAvVM.Date == default(DateTime))
+            {
+                validationErrors.Add("Dato i KontrollertAvVM  mangler eller er ugyldig.");
+            }
 
             if (string.IsNullOrEmpty(reportForm.KontrollertAvVM.Position))
             {

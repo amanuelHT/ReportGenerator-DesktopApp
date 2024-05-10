@@ -19,10 +19,10 @@
               <xs:element name="Tittle" msprop:Generator_ColumnPropNameInTable="TittleColumn" msprop:Generator_ColumnPropNameInRow="Tittle" msprop:Generator_UserColumnName="Tittle" msprop:Generator_ColumnVarNameInTable="columnTittle" type="xs:string" minOccurs="0" />
               <xs:element name="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_UserColumnName="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" type="xs:boolean" minOccurs="0" />
               <xs:element name="Kunde" msprop:Generator_ColumnPropNameInTable="KundeColumn" msprop:Generator_ColumnPropNameInRow="Kunde" msprop:Generator_UserColumnName="Kunde" msprop:Generator_ColumnVarNameInTable="columnKunde" type="xs:string" minOccurs="0" />
-              <xs:element name="AvvikFraStandarder" msprop:Generator_ColumnPropNameInRow="AvvikFraStandarder" msprop:Generator_ColumnPropNameInTable="AvvikFraStandarderColumn" msprop:Generator_ColumnVarNameInTable="columnAvvikFraStandarder" msprop:Generator_UserColumnName="AvvikFraStandarder" type="xs:string" minOccurs="0" />
-              <xs:element name="MotattDato" msprop:Generator_ColumnPropNameInRow="MotattDato" msprop:Generator_ColumnPropNameInTable="MotattDatoColumn" msprop:Generator_ColumnVarNameInTable="columnMotattDato" msprop:Generator_UserColumnName="MotattDato" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Kommentarer" msprop:Generator_ColumnPropNameInRow="Kommentarer" msprop:Generator_ColumnPropNameInTable="KommentarerColumn" msprop:Generator_ColumnVarNameInTable="columnKommentarer" msprop:Generator_UserColumnName="Kommentarer" type="xs:string" minOccurs="0" />
-              <xs:element name="UiaRegnr" msprop:Generator_ColumnPropNameInRow="UiaRegnr" msprop:Generator_ColumnPropNameInTable="UiaRegnrColumn" msprop:Generator_ColumnVarNameInTable="columnUiaRegnr" msprop:Generator_UserColumnName="UiaRegnr" type="xs:short" minOccurs="0" />
+              <xs:element name="AvvikFraStandarder" msprop:Generator_UserColumnName="AvvikFraStandarder" msprop:Generator_ColumnPropNameInTable="AvvikFraStandarderColumn" msprop:Generator_ColumnPropNameInRow="AvvikFraStandarder" msprop:Generator_ColumnVarNameInTable="columnAvvikFraStandarder" type="xs:string" minOccurs="0" />
+              <xs:element name="MotattDato" msprop:Generator_UserColumnName="MotattDato" msprop:Generator_ColumnPropNameInTable="MotattDatoColumn" msprop:Generator_ColumnPropNameInRow="MotattDato" msprop:Generator_ColumnVarNameInTable="columnMotattDato" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Kommentarer" msprop:Generator_UserColumnName="Kommentarer" msprop:Generator_ColumnPropNameInTable="KommentarerColumn" msprop:Generator_ColumnPropNameInRow="Kommentarer" msprop:Generator_ColumnVarNameInTable="columnKommentarer" type="xs:string" minOccurs="0" />
+              <xs:element name="UiaRegnr" msprop:Generator_UserColumnName="UiaRegnr" msprop:Generator_ColumnPropNameInTable="UiaRegnrColumn" msprop:Generator_ColumnPropNameInRow="UiaRegnr" msprop:Generator_ColumnVarNameInTable="columnUiaRegnr" type="xs:short" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -91,6 +91,26 @@
               <xs:element name="KjerneImin" msprop:Generator_ColumnPropNameInTable="KjerneIminColumn" msprop:Generator_ColumnPropNameInRow="KjerneImin" msprop:Generator_UserColumnName="KjerneImin" msprop:Generator_ColumnVarNameInTable="columnKjerneImin" type="xs:short" minOccurs="0" />
               <xs:element name="OverflateOK" msprop:Generator_ColumnPropNameInTable="OverflateOKColumn" msprop:Generator_ColumnPropNameInRow="OverflateOK" msprop:Generator_UserColumnName="OverflateOK" msprop:Generator_ColumnVarNameInTable="columnOverflateOK" type="xs:string" minOccurs="0" />
               <xs:element name="OverflateUK" msprop:Generator_ColumnPropNameInTable="OverflateUKColumn" msprop:Generator_ColumnPropNameInRow="OverflateUK" msprop:Generator_UserColumnName="OverflateUK" msprop:Generator_ColumnVarNameInTable="columnOverflateUK" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KontrollertAvførtAvModel" msprop:Generator_RowEvHandlerName="KontrollertAvførtAvModelRowChangeEventHandler" msprop:Generator_RowDeletedName="KontrollertAvførtAvModelRowDeleted" msprop:Generator_RowDeletingName="KontrollertAvførtAvModelRowDeleting" msprop:Generator_RowEvArgName="KontrollertAvførtAvModelRowChangeEvent" msprop:Generator_TablePropName="KontrollertAvførtAvModel" msprop:Generator_RowChangedName="KontrollertAvførtAvModelRowChanged" msprop:Generator_RowChangingName="KontrollertAvførtAvModelRowChanging" msprop:Generator_TableClassName="KontrollertAvførtAvModelDataTable" msprop:Generator_RowClassName="KontrollertAvførtAvModelRow" msprop:Generator_TableVarName="tableKontrollertAvførtAvModel" msprop:Generator_UserTableName="KontrollertAvførtAvModel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Department" msprop:Generator_ColumnPropNameInRow="Department" msprop:Generator_ColumnPropNameInTable="DepartmentColumn" msprop:Generator_ColumnVarNameInTable="columnDepartment" msprop:Generator_UserColumnName="Department" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_UserColumnName="Date" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Position" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnVarNameInTable="columnPosition" msprop:Generator_UserColumnName="Position" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TestUtførtAvModel" msprop:Generator_RowEvHandlerName="TestUtførtAvModelRowChangeEventHandler" msprop:Generator_RowDeletedName="TestUtførtAvModelRowDeleted" msprop:Generator_RowDeletingName="TestUtførtAvModelRowDeleting" msprop:Generator_RowEvArgName="TestUtførtAvModelRowChangeEvent" msprop:Generator_TablePropName="TestUtførtAvModel" msprop:Generator_RowChangedName="TestUtførtAvModelRowChanged" msprop:Generator_RowChangingName="TestUtførtAvModelRowChanging" msprop:Generator_TableClassName="TestUtførtAvModelDataTable" msprop:Generator_RowClassName="TestUtførtAvModelRow" msprop:Generator_TableVarName="tableTestUtførtAvModel" msprop:Generator_UserTableName="TestUtførtAvModel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Department" msprop:Generator_ColumnPropNameInRow="Department" msprop:Generator_ColumnPropNameInTable="DepartmentColumn" msprop:Generator_ColumnVarNameInTable="columnDepartment" msprop:Generator_UserColumnName="Department" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_UserColumnName="Date" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Position" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnVarNameInTable="columnPosition" msprop:Generator_UserColumnName="Position" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
