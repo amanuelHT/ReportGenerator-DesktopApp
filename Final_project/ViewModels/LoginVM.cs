@@ -24,13 +24,13 @@ namespace Final_project.ViewModels
         private string _password;
 
 
-        public LoginVM(AccountStore accountStore,
-            INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider, INavigationService ResetPasswordNavigarionService)
+        public LoginVM(AccountStore accountStore, INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider, INavigationService resetPasswordNavigationService, INavigationService homeNavigationService)
         {
+            // Initialize LogInCommand to navigate to the home view
+            LogInCommand = new LogInCommand(this, accountStore, homeNavigationService, firebaseAuthProvider);
 
-
-            LogInCommand = new LogInCommand(this, accountStore, accountNavigationService, firebaseAuthProvider);
-            NavigateResetPassword = new NavigateCommand(ResetPasswordNavigarionService);
+            // Initialize NavigateResetPassword to navigate to the reset password view
+            NavigateResetPassword = new NavigateCommand(resetPasswordNavigationService);
         }
     }
 }

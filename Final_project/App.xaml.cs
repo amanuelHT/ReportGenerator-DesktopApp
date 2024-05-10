@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Final_project.Commands;
 using Final_project.Components;
 using Final_project.Service;
 using Final_project.Stores;
@@ -57,11 +58,10 @@ namespace Final_project
                  //                //Queries and commands for database services
                  service.AddSingleton<IGetAllReportsQuery, GetAllReportsQuery>();
                  service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
-                 service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
+                 service.AddSingleton<IDeleteReportCommand, Report_Generator_EntityFramework.Commands.DeleteReportCommand>();
                  service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
-                 service.AddSingleton<IGetReportDataCommand, GetReportDataCommand>();
 
-
+                 service.AddSingleton<IGetReportQuery, GetReportQuery>();
 
 
 
@@ -121,7 +121,12 @@ namespace Final_project
                  //service.AddTransient<UserInfoVM>();
 
 
-                 service.AddTransient<UserInfoVM>(s => new UserInfoVM(firebaseAuthProvider, RoleManagementNavigationService(s)));
+                 // Register UserInfoVM with all required dependencies
+                 service.AddTransient<UserInfoVM>(s => new UserInfoVM(
+                     firebaseAuthProvider,
+                     RoleManagementNavigationService(s),
+                     s.GetRequiredService<FirebaseStore>()
+                 ));
 
                  service.AddTransient<AccountVM>(s =>
                         new AccountVM(s.GetRequiredService<AccountStore>(),
@@ -135,13 +140,12 @@ namespace Final_project
                        s.GetRequiredService<AccountStore>(),
                        AccountNavigarionService(s),
                        s.GetRequiredService<FirebaseAuthProvider>(),
-                       ResetPasswordNavigarionService(s)));
-                 // Notice how each service is retrieved inside the lambda
-
-                 //service.AddTransient<LoginVM>(s =>
-                 //       new LoginVM(s.GetRequiredService<AccountStore>(),
-                 //       AccountNavigarionService(s),
-                 //       s.GetRequiredKeyedService<firebaseAuthProvider>()));
+                       ResetPasswordNavigarionService(s),
+                       HomeNavigationService(s)));
+                 service.AddSingleton(s => new LogoutCommand(
+      s.GetRequiredService<AccountStore>(),
+      HomeNavigationService(s) // The navigation service that goes to the home page
+  ));
 
                  service.AddTransient<GeneratedReportListVM>(s =>
                   new GeneratedReportListVM(
@@ -297,6 +301,7 @@ namespace Final_project
         private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<LoginVM>(
+
               serviceProvider.GetRequiredService<NavigationStore>(),
                    () => serviceProvider.GetRequiredService<LoginVM>(),
                   () => serviceProvider.GetRequiredService<NavigationBarVM>());

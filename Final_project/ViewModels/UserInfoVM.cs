@@ -1,51 +1,87 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Final_project.Commands;
 using Final_project.Service;
-using Final_project.Stores;
 using Firebase.Auth;
-using Google.Cloud.Firestore;
 using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 
 
 namespace Final_project.ViewModels
 {
 
-    // ViewModelBase should implement INotifyPropertyChanged
+
     public partial class UserInfoVM : ObservableObject
     {
+        private readonly FirebaseStore _firebaseStore;
 
         public ICommand NavigateRoleManagement { get; }
         public ObservableCollection<UserInfo> Users { get; }
 
-        public UserInfoVM(FirebaseAuthProvider firebaseAuthProvider, INavigationService RoleManagementNavigationService)
+        public UserInfoVM(FirebaseAuthProvider firebaseAuthProvider, INavigationService RoleManagementNavigationService, FirebaseStore firebaseStore)
         {
+            _firebaseStore = firebaseStore;
             Users = new ObservableCollection<UserInfo>();
-            LoadUsersAsync(firebaseAuthProvider);
+            LoadUsersAsync();
             NavigateRoleManagement = new NavigateCommand(RoleManagementNavigationService);
 
         }
 
-        public async Task LoadUsersAsync(FirebaseAuthProvider firebaseAuthProvider)
+
+
+
+        private async Task LoadUsersAsync()
         {
             try
             {
-                // Assuming FirestoreHelper.Database has already been initialized
-                CollectionReference usersRef = FirestoreHelper.Database.Collection("users");
-                QuerySnapshot usersSnapshot = await usersRef.GetSnapshotAsync();
-                foreach (var doc in usersSnapshot.Documents)
+
+                var loadedUsers = await _firebaseStore.LoadUsersAsync();
+                Users.Clear();
+
+
+
+                foreach (var user in loadedUsers.Where(user => user.Role != "Admin"))
                 {
-                    UserInfo userInfo = doc.ConvertTo<UserInfo>();
-                    userInfo.UserId = doc.Id;
-                    Users.Add(userInfo);
+
+                    Users.Add(user);
                 }
             }
             catch (Exception ex)
             {
-                // Handle any exceptions, possibly logging them or informing the user
+
+                Debug.WriteLine($"Error loading users: {ex.Message}");
             }
         }
+
+
+
+
+
+        [RelayCommand]
+        public void Delete(UserInfo userInfo)
+        {
+            if (userInfo != null && Users.Contains(userInfo))
+            {
+
+                MessageBoxResult result = MessageBox.Show(
+                    $"Are you sure you want to delete the user '{userInfo.FirstName + userInfo.LastName}'?",
+                    "Confirm Delete",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    _firebaseStore.DeleteUserAsync(userInfo.UserId).Wait();
+                    Users.Remove(userInfo);
+                }
+            }
+        }
+
 
 
 

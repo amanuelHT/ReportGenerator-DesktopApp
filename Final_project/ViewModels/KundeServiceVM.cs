@@ -48,7 +48,7 @@ namespace Final_project.ViewModels
         {
 
             _firebaseStore = firebaseStore;
-            _userInfoVM = new UserInfoVM(firebaseAuthProvider, roleManagementNavigationService);
+            _userInfoVM = new UserInfoVM(firebaseAuthProvider, roleManagementNavigationService, firebaseStore);
             MessageVM = new MessageVM(this, firebaseStore);
             Users = new ObservableCollection<UserInfo>();
             LoadUsersAsync();

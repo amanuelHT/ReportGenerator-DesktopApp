@@ -14,11 +14,10 @@ namespace Final_project.Stores
         public IEnumerable<ReportImageModel> ReportImageModels => _reportImagemodel;
 
         private readonly IGetAllReportsQuery _query;
+        private readonly IGetReportQuery _getReportQuery;
         private readonly ICreateReportCommand _createReportCommand;
         private readonly IDeleteReportCommand _deleteReportCommand;
         private readonly IUpdateReportCommand _updateReportCommand;
-        private readonly IGetReportDataCommand _getReportDataCommand;
-
 
 
 
@@ -29,7 +28,7 @@ namespace Final_project.Stores
              ICreateReportCommand createReportCommand,
              IDeleteReportCommand deleteReportCommand,
              IUpdateReportCommand updateReportCommand,
-             IGetReportDataCommand getReportDataCommand
+             IGetReportQuery getReportQuery
 
             )
         {
@@ -37,7 +36,7 @@ namespace Final_project.Stores
             _createReportCommand = createReportCommand;
             _deleteReportCommand = deleteReportCommand;
             _updateReportCommand = updateReportCommand;
-            _getReportDataCommand = getReportDataCommand;
+            _getReportQuery = getReportQuery;
 
 
 
@@ -118,7 +117,7 @@ namespace Final_project.Stores
             List<verktøyModel> verktøyer
             )> GetReportData(Guid reportId)
         {
-            return await _getReportDataCommand.Execute(reportId);
+            return await _getReportQuery.Execute(reportId);
         }
 
 
