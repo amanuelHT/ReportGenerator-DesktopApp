@@ -52,7 +52,7 @@
         <RadioButton Style="{StaticResource navbuttons}" Command="{Binding NavigateUserInfoCommand}" Visibility="{Binding RoleManagementVisibility}">
             <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="AccountCircle" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
-                <TextBlock Text="User Info" Style="{StaticResource navtext}" />
+                <TextBlock Text="User management" Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
 
