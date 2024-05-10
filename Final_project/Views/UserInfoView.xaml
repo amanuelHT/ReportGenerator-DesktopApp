@@ -65,8 +65,8 @@
             Command="{Binding NavigateRoleManagement}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" Height="66">
-                        <TextBlock Text="Add a new user: " FontSize="20"  Margin="5,20,5,3" VerticalAlignment="Center"/>
-                        <TextBlock Text="+" FontWeight="Bold" FontSize="50" VerticalAlignment="Center"/>
+                        <TextBlock Text="Add a new user: " FontSize="20" Style="{StaticResource navtext}" Foreground="White"/>
+                        <icon:PackIconMaterial Kind="PencilPlus" Style="{StaticResource navicon}" Foreground="{StaticResource IconColor1}" Margin="20"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
