@@ -24,6 +24,7 @@
                 <RowDefinition Height="Auto" />
                 
             </Grid.RowDefinitions>
+            <components:TextBoxView Grid.Row="0" Text="{Binding Prøvenr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr" FontWeight="Bold" Margin="5"/>
 
             <components:TextBoxView Grid.Row="0" Text="{Binding TrykkflateMm, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkflate (mm):" FontWeight="Bold"  />
             <components:TextBoxView Grid.Row="1" Text="{Binding PalastHastighetMPas, UpdateSourceTrigger=PropertyChanged}" Watermark="Pålasthastighet (MPas):" FontWeight="Bold" Margin="5" />

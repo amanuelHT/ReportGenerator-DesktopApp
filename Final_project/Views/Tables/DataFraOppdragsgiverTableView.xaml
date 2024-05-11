@@ -40,6 +40,8 @@
         <!-- DataGrid -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="prøvenr" Binding="{Binding prøvenr}" />
+
                 <DataGridTextColumn Header="Mottatt Dato" 
                                     Binding="{Binding Datomottatt, StringFormat={}{0:yyyy-MM-dd}}" />
                 <DataGridTextColumn Header="Overdekning Oppgitt" 

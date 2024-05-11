@@ -39,7 +39,6 @@
 
         </Grid>
 
-        <!-- DataGrid -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Provnr" Binding="{Binding Provnr}" />

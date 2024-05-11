@@ -29,7 +29,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <DatePicker Grid.Row="0" SelectedDate="{Binding Datomottatt, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="0" Text="{Binding Prøvenr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr" FontWeight="Bold" Margin="5"/>
+
+
+            <components:TextBoxView Grid.Row="0" Text="{Binding Datomottatt, UpdateSourceTrigger=PropertyChanged}" Watermark="Dato" FontWeight="Bold" Margin="5"/>
 
             <components:TextBoxView Grid.Row="1" Text="{Binding Overdekningoppgitt, UpdateSourceTrigger=PropertyChanged}" Watermark="Overdekning Oppgitt:" FontWeight="Bold" Margin="5"/>
 

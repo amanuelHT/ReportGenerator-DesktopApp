@@ -27,7 +27,7 @@
         <components:TextBoxView Grid.Row="0" Grid.Column="1" Text="{Binding Position }" Watermark="Position"/>
 
         <components:TextBoxView Grid.Row="1" Grid.Column="0" Text="{Binding Department}" Watermark="Department"/>
-        <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date }" Style="{StaticResource CustomDatePickerStyle}" Margin="95,48,0,9" />
+        <components:TextBoxView  Grid.Row="1" Grid.Column="1" Text="{Binding Date }" Watermark="Date" />
 
     </Grid>
 
