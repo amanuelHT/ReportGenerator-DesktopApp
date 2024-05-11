@@ -42,13 +42,8 @@
             <TextBlock Text="Password" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="5" Grid.Column="0"/>
             <TextBlock Text="Repeat password" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="6" Grid.Column="0"/>
 
-            <!-- Inputs -->
-<<<<<<< HEAD
-            <TextBox Width="200" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
-=======
-            <TextBlock Width="200" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
->>>>>>> ae0afc78790a9223b38bddc113ed338edab931bf
-            <TextBox Width="200" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                <TextBox Width="200" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                <TextBox Width="200" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
             
             <DatePicker Width="200" SelectedDate="{Binding BirthDate}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
             <ComboBox Width="200" SelectedValue="{Binding SelectedRole, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Content" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1">
