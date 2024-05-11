@@ -11,18 +11,12 @@
              Background="Yellow"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    
-
-
         <Grid >
               <TextBlock FontSize="33"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Top"
                          Text="Setting" Margin="0,20,0,0"/>
 
-
-
-        <!-- Add login form elements here -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
             <Button  FontSize="23" Content="Go to Login" Command="{Binding NavigateLogin}"/>
         </StackPanel>

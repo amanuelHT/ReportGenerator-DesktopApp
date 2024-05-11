@@ -14,14 +14,12 @@
         <ListView ItemsSource="{Binding verktøyVMs}" Background="Transparent" Foreground="White" Margin="0 30 0 0" BorderThickness="0">
             <ListView.View>
                 <GridView>
-                    <!-- Hide GridView Headers -->
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
 
-                    <!-- Column Definitions -->
                     <GridViewColumn Header="Test Name" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Actions" Width="50">
                         <GridViewColumn.CellTemplate>

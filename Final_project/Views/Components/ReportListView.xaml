@@ -9,7 +9,6 @@
 
 
     <Grid>
-      
             <Grid>
                 <Grid.OpacityMask>
                     <VisualBrush Visual="{Binding ElementName=border}" />

@@ -33,7 +33,6 @@ namespace Final_project.ViewModels.TablesVM
         [ObservableProperty]
         private double densitet;
 
-        // Constructor for new entries
         public ConcreteDensityPrøveVM(
             ModalNavigation modalNavigation,
             Guid reportid,
@@ -45,7 +44,6 @@ namespace Final_project.ViewModels.TablesVM
             _concreteDensityTableVM = concreteDensityTableVM;
         }
 
-        // Constructor to populate from an existing model
         public ConcreteDensityPrøveVM(ConcreteDensityModel model)
         {
             if (model != null)
@@ -63,13 +61,11 @@ namespace Final_project.ViewModels.TablesVM
 
         // Commands to handle UI actions
 
-
-
-
         [RelayCommand]
         public void Submit()
         {
-            // Create a new entry model using the current state of the ViewModel
+            // Create a new entry model
+            // using the current state of the ViewModel
             var newEntry = new ConcreteDensityModel(
                 Provnr,
                 Dato,
@@ -82,7 +78,6 @@ namespace Final_project.ViewModels.TablesVM
             );
 
 
-            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new ConcreteDensityPrøveVM(newEntry)
             {
             };

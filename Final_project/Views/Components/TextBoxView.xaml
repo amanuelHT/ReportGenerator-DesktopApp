@@ -22,7 +22,6 @@
                      BorderThickness="0"
                      Padding="10"
                      Width="200"/>
-            <!-- Add your TextBox style here -->
         </Grid>
     </StackPanel>
 </UserControl>

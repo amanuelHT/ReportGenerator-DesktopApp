@@ -22,7 +22,6 @@
         <Style TargetType="ListViewItem">
             <Setter Property="Focusable" Value="False"/>
             <Setter Property="IsHitTestVisible" Value="True"/>
-            <!-- Keeps scrolling enabled -->
         </Style>
     </UserControl.Resources>
 

@@ -24,9 +24,6 @@ namespace Final_project.Stores
             }
         }
 
-
-
-
         public ReportModel SelectedReport
         {
             get { return _selectedReport; }
@@ -36,10 +33,6 @@ namespace Final_project.Stores
                 OnSelectedReportChanged();
             }
         }
-
-
-
-
 
         public event Action SelectedReportChanged;
 

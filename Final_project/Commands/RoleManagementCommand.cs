@@ -16,25 +16,15 @@ public class RoleManagementCommand : AsyncCommandBase
     }
 
 
-
-  
-
     public override async Task ExecuteAsync(object parameter)
     {
       
 
-        // Ensure password validation happens first
         if (_viewModel.Password != _viewModel.RepeatPassword)
         {
             _viewModel.SetMessage("Passwords do not match.", false);
             return;
         }
-
-        //if (!ValidateInputs())
-        //{
-        //    _viewModel.SetMessage("Invalid input.", false);
-        //    return;
-        //}
 
 
         if (!ValidateInputs())
@@ -45,10 +35,9 @@ public class RoleManagementCommand : AsyncCommandBase
 
         try
         {
-            // Try to create a new user with email and password
+           
             var authLink = await _firebaseAuthProvider.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
 
-            // If user creation is successful, set the additional data in Firestore
             var additionalUserData = new
             {
                 FirstName = _viewModel.FirstName,
@@ -64,17 +53,14 @@ public class RoleManagementCommand : AsyncCommandBase
         }
         catch (FirebaseAuthException faex) when (faex.Reason == AuthErrorReason.EmailExists)
         {
-            // If email exists, set the message and do not proceed with creating Firestore data
             _viewModel.SetMessage("Registration failed: Email already exists.", false);
         }
         catch (FirebaseAuthException faex)
         {
-            // Handle other FirebaseAuth exceptions
             _viewModel.SetMessage($"Registration failed: {faex.Reason}", false);
         }
         catch (Exception ex)
         {
-            // Handle any other types of exceptions
             _viewModel.SetMessage("Registration failed. Please try again later.", false);
         }
     }

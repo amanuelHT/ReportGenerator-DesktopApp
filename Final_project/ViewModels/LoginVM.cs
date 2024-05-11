@@ -26,10 +26,8 @@ namespace Final_project.ViewModels
 
         public LoginVM(AccountStore accountStore, INavigationService accountNavigationService, FirebaseAuthProvider firebaseAuthProvider, INavigationService resetPasswordNavigationService, INavigationService homeNavigationService)
         {
-            // Initialize LogInCommand to navigate to the home view
             LogInCommand = new LogInCommand(this, accountStore, homeNavigationService, firebaseAuthProvider);
 
-            // Initialize NavigateResetPassword to navigate to the reset password view
             NavigateResetPassword = new NavigateCommand(resetPasswordNavigationService);
         }
     }

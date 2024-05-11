@@ -43,7 +43,7 @@ namespace Final_project.ViewModels
 
             DeleteCommand = new CommunityToolkit.Mvvm.Input.RelayCommand(() =>
             {
-                Guid currentReportId = ReportId; // Capture the current ReportId
+                Guid currentReportId = ReportId;
                 if (currentReportId != Guid.Empty)
                 {
                     new DeleteReportCommand(currentReportId, reportStore).Execute(null);

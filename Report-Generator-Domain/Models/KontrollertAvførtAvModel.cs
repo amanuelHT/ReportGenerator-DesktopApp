@@ -15,7 +15,8 @@ namespace Report_Generator_Domain.Models
 
         public KontrollertAvførtAvModel()
         {
-            // Parameterless constructor required by Entity Framework
+            // Parameterless constructor
+            // required by Entity Framework
         }
 
         public KontrollertAvførtAvModel(Guid id, string name, string department, DateTime date, string position, Guid reportModelID)

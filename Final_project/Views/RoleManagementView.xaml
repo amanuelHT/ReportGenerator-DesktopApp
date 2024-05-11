@@ -32,8 +32,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-            <!-- Each label-input pair is placed in a stack panel for better control over spacing -->
-            <!-- Labels -->
             <TextBlock Text="First Name" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="0" Grid.Column="0" />
             <TextBlock Text="Last Name" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="1" Grid.Column="0"/>
             <TextBlock Text="Birthdate" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="2" Grid.Column="0"/>
@@ -42,12 +40,7 @@
             <TextBlock Text="Password" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="5" Grid.Column="0"/>
             <TextBlock Text="Repeat password" VerticalAlignment="Center" Margin="10,10,10,0" Grid.Row="6" Grid.Column="0"/>
 
-            <!-- Inputs -->
-<<<<<<< HEAD
             <TextBox Width="200" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
-=======
-            <TextBlock Width="200" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
->>>>>>> ae0afc78790a9223b38bddc113ed338edab931bf
             <TextBox Width="200" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
             
             <DatePicker Width="200" SelectedDate="{Binding BirthDate}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
@@ -61,7 +54,6 @@
             <components:BindablePasswordBox Width="200" Password="{Binding Password, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
             <components:BindablePasswordBox Width="200" Password="{Binding RepeatPassword, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" />
 
-                <!-- Buttons are arranged horizontally at the bottom -->
                 <StackPanel  Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,10,30" Grid.Column="1" Grid.RowSpan="2">
                     <Button Command="{Binding SaveCommand}" Content="Save" FontSize="13" Background="Blue" Margin="0,12,35,5" Width="63" Height="26" />
                     <Button Command="{Binding CancelCommand}" Content="Clear" Background="IndianRed" FontSize="13" Margin="0,12,10,5" Width="53" Height="29"  />

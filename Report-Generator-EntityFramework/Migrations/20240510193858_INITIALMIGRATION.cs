@@ -8,7 +8,6 @@ namespace Report_Generator_EntityFramework.Migrations
     /// <inheritdoc />
     public partial class INITIALMIGRATION : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -280,7 +279,6 @@ namespace Report_Generator_EntityFramework.Migrations
                 column: "ReportModelId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

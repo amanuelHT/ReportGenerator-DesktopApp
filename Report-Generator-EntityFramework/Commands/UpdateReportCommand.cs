@@ -17,7 +17,6 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (var context = _contextFactory.Create())
             {
-                // Fetch the existing report including all related entities
                 var existingReport = await context.ReportModels
                     .Include(r => r.Images)
                     .Include(r => r.Test)
@@ -71,7 +70,6 @@ namespace Report_Generator_EntityFramework.Commands
 
 
 
-                    //// Update related collections
                     UpdateImages(context, existingReport, reportModel);
                     UpdatePrøver(context, existingReport, reportModel);
                     UpdateVerktøy(context, existingReport, reportModel);
@@ -81,7 +79,6 @@ namespace Report_Generator_EntityFramework.Commands
                     Updatetrykketessting(context, existingReport, reportModel);
 
 
-                    // Save all changes to the database
                     await context.SaveChangesAsync();
                 }
             }
@@ -265,7 +262,6 @@ namespace Report_Generator_EntityFramework.Commands
 
         private void Updatetrykketessting(DbContext context, ReportModel existingReport, ReportModel newReport)
         {
-            // Remove existing prøver that are not present in the newReport
             foreach (var existingPrøve in existingReport.TrykktestingModel.ToList())
             {
                 if (!newReport.TrykktestingModel.Any(p => p.Id == existingPrøve.Id))
@@ -274,10 +270,8 @@ namespace Report_Generator_EntityFramework.Commands
                 }
             }
 
-            // Check if the newReport has any prøver, and remove all existing if no new prøver are provided
             if (newReport.TrykktestingModel.Any())
             {
-                // Add new prøver from newReport, only if there are any
                 foreach (var newPrøve in newReport.TrykktestingModel)
                 {
                     if (!existingReport.TrykktestingModel.Any(p => p.Id == newPrøve.Id))
@@ -288,11 +282,9 @@ namespace Report_Generator_EntityFramework.Commands
             }
             else
             {
-                // If newReport has no prøver, remove all existing ones
                 context.RemoveRange(existingReport.TrykktestingModel);
             }
 
-            // Save changes to the database after updates
             context.SaveChanges();
         }
 

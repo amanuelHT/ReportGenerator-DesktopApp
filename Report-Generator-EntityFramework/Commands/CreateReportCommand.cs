@@ -18,8 +18,6 @@ namespace Report_Generator_EntityFramework.Commands
             {
                 context.ReportModels.Add(reportModel);
 
-
-                // Save changes to the database
                 await context.SaveChangesAsync();
             }
         }

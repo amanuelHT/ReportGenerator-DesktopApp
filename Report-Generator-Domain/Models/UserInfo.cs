@@ -25,7 +25,6 @@ namespace Report_Generator_Domain.Models
         {
             get
             {
-                // Customize the color based on role
                 return Role switch
                 {
                     "Kunde" => "#ffc0cb",

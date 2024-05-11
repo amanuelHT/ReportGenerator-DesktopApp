@@ -16,7 +16,8 @@ public class DateOnlyToStringConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is string dateStr && DateTime.TryParseExact(dateStr, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result))
+        if (value is string dateStr && DateTime.TryParseExact(dateStr, DateFormat, 
+            CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result))
         {
             return result;
         }

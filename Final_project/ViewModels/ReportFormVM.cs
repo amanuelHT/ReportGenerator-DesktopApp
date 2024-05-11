@@ -75,7 +75,6 @@ namespace Final_project.ViewModels
             CancelCommand = cancelCommand;
             _modalNavigation = modalNavigation;
 
-            //AddReportTableCommand = new OpenAddReportTableCommand(modalNavigation, reportStore);
 
             ImageCollectionViewModel = new ImageCollectionVM(reportStore, reportid);
             ImageVM = new ImageVM(reportid, ImageCollectionViewModel, reportStore);
@@ -125,10 +124,9 @@ namespace Final_project.ViewModels
             if (disposing)
             {
                 _modalNavigation.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
-                // Clean up managed resources (if any)
-
+                
             }
-            // Clean up unmanaged resources (if any)
+            
         }
     }
 }

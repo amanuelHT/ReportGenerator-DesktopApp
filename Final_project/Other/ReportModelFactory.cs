@@ -13,7 +13,7 @@ namespace Final_project.Other
                 throw new ArgumentNullException(nameof(reportForm), "ReportFormVM cannot be null.");
             }
 
-            // If reportId is not provided, generate a new GUID
+            // If reportId is not provided then generate a new GUID
             Guid id = reportId ?? Guid.NewGuid();
 
 

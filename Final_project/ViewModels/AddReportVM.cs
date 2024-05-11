@@ -11,7 +11,6 @@ namespace Final_project.ViewModels
     {
         public ReportFormVM ReportFormVM { get; }
 
-
         public AddReportVM(
             ModalWindow modalWindow,
             ModalNavigation modalNavigation,

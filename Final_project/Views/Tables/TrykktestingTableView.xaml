@@ -15,7 +15,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Header Grid -->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -33,11 +32,8 @@
                     <icon:PackIconMaterial Kind="TableLargePlus" Style="{StaticResource buttonicons}"  />
                 </StackPanel>
             </Button>
-
-                
             </Grid>
-
-            <!-- DataGrid -->
+            
             <DataGrid Grid.Row="1" ItemsSource="{Binding Trykketester}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Trykkflate (mm)" Binding="{Binding TrykkflateMm}" />

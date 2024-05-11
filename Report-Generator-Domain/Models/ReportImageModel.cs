@@ -6,7 +6,6 @@
         public string Name { get; set; }
         public string ImageUrl { get; set; }
 
-        // Property to represent the association with ReportModel
         public Guid ReportModelId { get; set; }
         public ReportModel ReportModel { get; set; }
 
@@ -15,7 +14,7 @@
             Id = id;
             Name = name;
             ImageUrl = imageUrl;
-            ReportModelId = reportModelId; // Set the foreign key property
+            ReportModelId = reportModelId; 
         }
     }
 }

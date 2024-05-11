@@ -45,18 +45,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- User ListBox (Left Half) -->
         <ListBox Grid.Column="0" ItemsSource="{Binding Users}" 
                  ItemTemplate="{StaticResource UserTemplate}"
                  SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
                  BorderThickness="0"
                  Background="Transparent"/>
-            
-            
-            
-            
 
-        <!-- Right Half: MessageView -->
         <components:MessageView DataContext="{Binding MessageVM}"  Grid.Column="1" />
 
     </Grid>

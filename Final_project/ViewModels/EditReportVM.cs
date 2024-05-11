@@ -38,10 +38,6 @@ namespace Final_project.ViewModels
                 MotattDato = reportModel.MotattDato,
                 Kommentarer = reportModel.Kommentarer,
 
-
-
-
-
             };
 
 
@@ -56,7 +52,6 @@ namespace Final_project.ViewModels
             }
 
 
-            // Convert ReportImageModel to ImageVM and add to ImageCollectionViewModel
             foreach (var img in reportModel.Images)
             {
                 var imageVM = new ImageVM(img);

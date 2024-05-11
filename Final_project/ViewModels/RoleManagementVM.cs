@@ -13,7 +13,6 @@ namespace Final_project.ViewModels
 
         public RoleManagementVM(FirebaseAuthProvider firebaseAuthProvider)
         {
-            // Initialize SaveCommand with the RoleManagementCommand
             SaveCommand = new RoleManagementCommand(this, firebaseAuthProvider);
             CancelCommand = new RelayCommand(_ => ClearInputs());
 
@@ -97,30 +96,15 @@ namespace Final_project.ViewModels
                 {
                     _repeatPassword = value;
                     OnPropertyChanged(nameof(RepeatPassword));
-                    // Optionally validate passwords immediately as the user types
-                    //ValidatePasswords();
+                   
                 }
             }
         }
 
-        //private void ValidatePasswords()
-        //{
-        //    if (Password != RepeatPassword)
-        //    {
-        //        SetMessage("Passwords do not match.", false);
-        //    }
-        //    else
-        //    {
-        //        // Optionally clear the message if they match,
-        //        // or leave it as is if you only want to validate on save
-        //        SetMessage(string.Empty, true);
-        //    }
-        //}
-
-
+     
 
         private string _message;
-        private Brush _messageBrush = Brushes.Black; // Default message color
+        private Brush _messageBrush = Brushes.Black; 
 
         public string Message
         {
@@ -190,28 +174,16 @@ namespace Final_project.ViewModels
 
         private void ClearInputs()
         {
-            // Reset all the properties to their default values
             FirstName = string.Empty;
             LastName = string.Empty;
-            BirthDate = null; // Assuming you want to clear the birth date as well
+            BirthDate = null; 
             Email = string.Empty;
             Password = string.Empty;
             RepeatPassword = string.Empty;
             SelectedRole = string.Empty;
-            Message = string.Empty; // Optionally clear any existing message
-            // You do not need to reset MessageBrush because it will be set based on the next operation
+            Message = string.Empty; 
         }
 
 
-        // Repeat for CancelCommand, etc.
-
-        // Implement any additional logic or methods needed for your ViewModel here.
-
-        // Override the Dispose method if needed to clean up resources
-        //public override void Dispose()
-        //{
-        //    // Clean up any resources or subscriptions here if necessary
-        //    base.Dispose();
-        //}
     }
 }

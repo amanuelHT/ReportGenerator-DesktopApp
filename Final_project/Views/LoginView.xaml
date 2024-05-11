@@ -16,10 +16,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Title of the login page -->
         <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,20" Text="Velkommen" />
 
-        <!-- Input fields for username and password -->
         <StackPanel Grid.Row="1" >
             <TextBlock Text="Username" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,5" />
             <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Height="35" FontSize="14" Padding="5" BorderBrush="#D3D3D3" BorderThickness="1" Margin="0,0,0,10"/>
@@ -27,11 +25,9 @@
             <TextBlock Text="Password" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,5" />
             <components:BindablePasswordBox Password="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5" BorderBrush="#D3D3D3" BorderThickness="1" Margin="0,0,0,10"/>
 
-            <!-- Login Button -->
             <Button Content="Login" Command="{Binding LogInCommand}" Background="#007BFF" Foreground="White" Padding="10" Margin="0,20,0,0" FontWeight="Bold" Height="40"/>
         </StackPanel>
 
-        <!-- Bottom section for forgotten password and navigation to reset password -->
         <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,20,0,0">
             <Button Command="{Binding NavigateResetPassword}" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
                 <TextBlock Text="*Forgot Password?" Foreground="#007BFF" TextDecorations="Underline" />

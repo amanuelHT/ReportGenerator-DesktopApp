@@ -33,14 +33,16 @@ namespace Final_project.Commands
             catch (FirebaseAuthException ex)
             {
 
-                Console.WriteLine($"FirebaseAuthException: Error sending password reset email to {_ResetPassword.Email}. Reason: {ex.Reason} Message: {ex.Message}");
+                Console.WriteLine($"FirebaseAuthException: Error sending password reset email to {_ResetPassword.Email}." +
+                    $" Reason: {ex.Reason} Message: {ex.Message}");
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine($"General exception occurred during password reset: {ex.Message}");
             }
-            MessageBox.Show("A password reset link will be sent if the email provided is associated with an account.", "Password Reset", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("A password reset link will be sent if the email provided is associated with an account.",
+                "Password Reset", MessageBoxButton.OK, MessageBoxImage.Information);
           
         }
        

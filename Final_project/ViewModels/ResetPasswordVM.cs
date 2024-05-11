@@ -14,16 +14,7 @@ namespace Final_project.ViewModels
         [ObservableProperty]
         private string _email;
 
-        //public string Email
-        //{
-        //    get => _email;
-        //    set
-        //    {
-        //        _email = value;
-        //        OnPropertyChanged(nameof(Email));
-        //    }
-        //}
-
+      
         public ICommand ResetPasswordCommand { get; }
         public ICommand CancelCommand { get; }
 

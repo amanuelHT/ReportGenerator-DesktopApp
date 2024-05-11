@@ -13,14 +13,12 @@
                     <Grid Background="{TemplateBinding Background}"
                           Visibility="{TemplateBinding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
 
-                        <!-- Main Border with Fixed Width and Height -->
                         <Border
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Width="500" Height="600">
-                            <!-- Adjust to desired size -->
 
                             <Grid>
                                 <Grid.OpacityMask>
@@ -44,7 +42,6 @@
                                             <ContentControl Grid.Row="1" Content="{TemplateBinding Content}" Margin="0,12,0,12" />
 
                                             <Border Grid.Row="2" Background="DarkSlateGray" CornerRadius="0,0,12,12">
-                                                <!-- Optional Footer -->
                                             </Border>
                                         </Grid>
                                     </ScrollViewer>

@@ -15,7 +15,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Inputs Grid -->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -31,7 +30,6 @@
             <components:TextBoxView Grid.Row="3" Text="{Binding TrykkfasthetMPaNSE, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkfasthet NSE (MPa):" FontWeight="Bold" Margin="5" />
         </Grid>
 
-        <!-- Action Buttons -->
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <Button Command="{Binding CancelCommand}" Margin="0 0 140 0">

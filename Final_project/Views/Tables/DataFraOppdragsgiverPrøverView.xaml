@@ -45,7 +45,6 @@
         </Grid>
 
 
-        <!-- Action Buttons -->
     <Grid Grid.Row="1">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
             <Button Command="{Binding CancelCommand}" Margin="0 0 140 0">

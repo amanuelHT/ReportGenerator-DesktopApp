@@ -31,7 +31,7 @@ namespace Final_project.Commands
             {
                 var auth = await _firebaseAuthProvider.SignInWithEmailAndPasswordAsync(_login.Username, _login.Password);
 
-                // Retrieve the role from Firestore
+                // Retrieve role 
                 var userDocument = await FirestoreHelper.Database
                     .Collection("users")
                     .Document(auth.User.LocalId)
@@ -41,7 +41,6 @@ namespace Final_project.Commands
                 {
                     var userInfo = userDocument.ConvertTo<UserInfo>();
 
-                    // Check if the user has the correct role
                     if (userInfo.Role == "Admin" || userInfo.Role == "User")
                     {
                         Account account = new Account
@@ -52,11 +51,12 @@ namespace Final_project.Commands
                         };
 
                         _accountStore.CurrentAccount = account;
-                        _navigationService.Navigate(); // Navigate to the home view after a successful login
+                        _navigationService.Navigate(); 
                     }
                     else
                     {
-                        MessageBox.Show("Access Denied: User does not have the necessary permissions.", "Authorization Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Access Denied: User does not have the necessary permissions.",
+                            "Authorization Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 else

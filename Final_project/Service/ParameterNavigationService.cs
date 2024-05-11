@@ -3,7 +3,6 @@
 namespace Final_project.Service
 {
 
-
     public class ParameterNavigationService<TParameter, TViewModel>
             where TViewModel : ObservableRecipient
     {

@@ -14,7 +14,9 @@ namespace Final_project.Commands
         private readonly ModalNavigation _modalNavigation;
         private readonly ModalNavigation modalNavigation;
 
-        public SubmitDataFraOppgavegiverCommand(DataFraOppdragsgiverPrøverVM viewModel, ReportStore reportStore, Guid reportmodelid, DataFraOppdragsgiverTableVM dataFraOppdragsgiverTableVM, ModalNavigation modalNavigation)
+        public SubmitDataFraOppgavegiverCommand(DataFraOppdragsgiverPrøverVM viewModel, 
+                                             ReportStore reportStore, Guid reportmodelid,
+                                             DataFraOppdragsgiverTableVM dataFraOppdragsgiverTableVM, ModalNavigation modalNavigation)
         {
             _viewModel = viewModel;
             _reportStore = reportStore;
@@ -32,7 +34,7 @@ namespace Final_project.Commands
 
         public void Execute(object? parameter)
         {
-            // Create a new entry model using the current state of the ViewModel
+            //  new entry model using the current state of the ViewModel
             var newEntry = new DataFraOppdragsgiverPrøverModel(
                 Guid.NewGuid(),
                 _viewModel.Datomottatt,
@@ -45,18 +47,14 @@ namespace Final_project.Commands
                 _reportmodelid
             );
 
-            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new DataFraOppdragsgiverPrøverVM(newEntry)
             {
-                // If other properties need to be set directly, set them here
-                // Additional properties set up could be placed here if needed
+                // If other properties need to be set directly if its neededed
             };
 
-            // Add the new Prøve VM to the collection in DataFraOppdragsgiverTableVM
             _dataFraOppdragsgiverTableVM.Prøver.Add(newPrøveVM);
 
-            // Optionally, clear or reset the ViewModel's properties if needed for a new entry
-            _viewModel.Datomottatt = DateTime.MaxValue; // Reset to current time or a default value
+            _viewModel.Datomottatt = DateTime.MaxValue;
             _viewModel.Overdekningoppgitt = "";
             _viewModel.Dmax = "";
             _viewModel.KjerneImax = 0;
@@ -65,9 +63,6 @@ namespace Final_project.Commands
             _viewModel.OverflateUK = "";
 
             _modalNavigation.Close();
-            // Optionally, handle modal navigation or UI feedback
-            // _modalNavigation.CloseCurrent(); // Close the modal if that's part of your application flow
-            // You may want to handle additional UI updates or confirmations here
         }
 
         public void RaiseCanExecuteChanged()

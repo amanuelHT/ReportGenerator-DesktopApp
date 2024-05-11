@@ -11,15 +11,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <!-- Small fixed width for the navigation bar -->
             <ColumnDefinition Width="*"/>
-            <!-- Remaining space for the main content -->
         </Grid.ColumnDefinitions>
 
-
-
-
-        <!-- Navigation bar in the first column, full height -->
         <Border  Grid.Column="0" Opacity="1">
             <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -29,7 +23,6 @@
                 </Border.Background>
                 <local:NavigationBarView DataContext="{Binding NavigationBarVM}" VerticalAlignment="Stretch"/>
             </Border>
-            <!-- Main content area in the second column -->
             <Border CornerRadius="0 10 10 0" Grid.Column="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">

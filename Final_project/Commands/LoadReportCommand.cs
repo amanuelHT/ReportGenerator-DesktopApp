@@ -8,7 +8,6 @@ namespace Final_project.Commands
         private readonly ReportStore _store;
 
 
-
         public LoadReportCommand(ReportStore reportStore)
         {
             _store = reportStore;

@@ -120,18 +120,7 @@ namespace Final_project.Stores
             return await _getReportQuery.Execute(reportId);
         }
 
-
-
-
-
-
-
-
-
     }
-
-
-
 
 }
 

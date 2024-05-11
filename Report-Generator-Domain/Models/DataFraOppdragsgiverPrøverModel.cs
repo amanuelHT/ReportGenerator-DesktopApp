@@ -17,7 +17,7 @@ namespace Report_Generator_Domain.Models
         public string OverflateOK { get; set; }
         public string OverflateUK { get; set; }
         public Guid ReportModelId { get; set; } // Foreign key
-        public ReportModel ReportModel { get; set; } // Navigation property
+        public ReportModel ReportModel { get; set; } 
 
 
 

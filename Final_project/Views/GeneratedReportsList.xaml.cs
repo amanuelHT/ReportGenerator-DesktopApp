@@ -1,4 +1,4 @@
-﻿using Final_project.ViewModels; // Import your view model namespace here
+﻿using Final_project.ViewModels; 
 using Firebase.Storage;
 using System.IO;
 using System.Net;
@@ -47,7 +47,8 @@ namespace Final_project.Views
             }
             else
             {
-                // Clear the pdfViewer if no item is selected
+                // Clear pdfViewer
+                // if there no item selected
 
             }
         }

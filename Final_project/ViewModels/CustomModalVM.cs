@@ -12,7 +12,6 @@ namespace Final_project.ViewModels
             IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(CustomModalVM), new PropertyMetadata(false));
         }
 
-        // Define the IsOpen property
         public bool IsOpen
         {
             get { return (bool)GetValue(IsOpenProperty); }

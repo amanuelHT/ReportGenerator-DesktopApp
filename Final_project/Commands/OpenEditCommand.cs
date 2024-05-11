@@ -25,7 +25,7 @@ public class OpenEditCommand : CommandBase
     public override async void Execute(object parameter)
     {
 
-        // Retrieve the full report data of the report
+        // Retrieve  full report data of the report
         (
              ReportModel reportData, TestUtførtAvModel testUtførtAvModel, KontrollertAvførtAvModel KontrollertAvførtAvModel,
             List<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels,
@@ -60,7 +60,6 @@ public class OpenEditCommand : CommandBase
         reportData.TrykktestingModel = trykktestingModels;
 
 
-        // Create and navigate to the edit report view model
         EditReportVM editReportVM = new EditReportVM(reportData, _reportStore, _modalNavigation, _navigationStore, _modalNavigation);
 
 
