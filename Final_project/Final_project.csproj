@@ -60,6 +60,9 @@
       <Generator>MSDataSetGenerator</Generator>
     </None>
     <None Update="Resources\Report1.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\ym.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Report2.rdlc">

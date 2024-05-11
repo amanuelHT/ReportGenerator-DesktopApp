@@ -142,6 +142,7 @@ namespace Final_project.Other
         public DataTable CreateTrykktestingTable(ObservableCollection<TrykktestingModel> trykktestingModels)
         {
             DataTable trykTable = new DataTable("TrykktestingData");
+            trykTable.Columns.Add("Prøvenr", typeof(int));
             trykTable.Columns.Add("TrykkflateMm", typeof(decimal));
             trykTable.Columns.Add("PalastHastighetMPas", typeof(decimal));
             trykTable.Columns.Add("TrykkfasthetMPa", typeof(decimal));
@@ -150,6 +151,7 @@ namespace Final_project.Other
             foreach (var model in trykktestingModels)
             {
                 DataRow row = trykTable.NewRow();
+                row["Prøvenr"] = model.Prøvenr;
                 row["TrykkflateMm"] = model.TrykkflateMm;
                 row["PalastHastighetMPas"] = model.PalastHastighetMPas;
                 row["TrykkfasthetMPa"] = model.TrykkfasthetMPa;
@@ -164,7 +166,7 @@ namespace Final_project.Other
         public DataTable CreateConcreteDensityDataTable(ObservableCollection<ConcreteDensityModel> densities)
         {
             DataTable densityTable = new DataTable("ConcreteDensityData");
-            densityTable.Columns.Add("Id", typeof(int));
+            densityTable.Columns.Add("Prøvenr", typeof(int));
             densityTable.Columns.Add("Dato", typeof(DateTime));
             densityTable.Columns.Add("MasseILuft", typeof(double));
             densityTable.Columns.Add("MasseIVannbad", typeof(double));
@@ -176,7 +178,7 @@ namespace Final_project.Other
             foreach (var density in densities)
             {
                 DataRow row = densityTable.NewRow();
-                row["Id"] = density.Id;
+                row["Prøvenr"] = density.Prøvenr;
                 row["Dato"] = density.Dato;
                 row["MasseILuft"] = density.MasseILuft;
                 row["MasseIVannbad"] = density.MasseIVannbad;
@@ -193,7 +195,8 @@ namespace Final_project.Other
 
         public DataTable DataEtterKuttingOgSlipingModelDataTable(ObservableCollection<DataEtterKuttingOgSlipingModel> dataEtterKuttingOgSlipingModels)
         {
-            DataTable customTable = new DataTable("CustomData");
+            DataTable customTable = new DataTable("DataEtterKuttingOgSlipingModel");
+            customTable.Columns.Add("Prøvenr", typeof(int));
             customTable.Columns.Add("IvannbadDato", typeof(DateTime));
             customTable.Columns.Add("TestDato", typeof(DateTime));
             customTable.Columns.Add("Overflatetilstand", typeof(string));
@@ -209,6 +212,7 @@ namespace Final_project.Other
             foreach (var model in dataEtterKuttingOgSlipingModels)
             {
                 DataRow row = customTable.NewRow();
+                row["Prøvenr"] = model.Prøvenr;
                 row["IvannbadDato"] = model.IvannbadDato;
                 row["TestDato"] = model.TestDato;
                 row["Overflatetilstand"] = model.Overflatetilstand;
@@ -230,6 +234,7 @@ namespace Final_project.Other
         public DataTable DataFraOppdragsgiverPrøverModelDataTable(ObservableCollection<DataFraOppdragsgiverPrøverModel> dataFraOppdragsgiverPrøverModels)
         {
             DataTable customTable = new DataTable("CustomData");
+            customTable.Columns.Add("Prøvenr", typeof(int));
             customTable.Columns.Add("Datomottatt", typeof(DateTime));
             customTable.Columns.Add("Overdekningoppgitt", typeof(string));
             customTable.Columns.Add("Dmax", typeof(string));
@@ -242,6 +247,7 @@ namespace Final_project.Other
             foreach (var model in dataFraOppdragsgiverPrøverModels)
             {
                 DataRow row = customTable.NewRow();
+                row["Prøvenr"] = model.Prøvenr;
                 row["Datomottatt"] = model.Datomottatt;
                 row["Overdekningoppgitt"] = model.Overdekningoppgitt;
                 row["Dmax"] = model.Dmax;
