@@ -15,6 +15,9 @@ namespace Final_project.ViewModels.TablesVM
 
 
         [ObservableProperty]
+        private int prøvenr;
+
+        [ObservableProperty]
         private DateTime datomottatt;
 
         [ObservableProperty]
@@ -55,6 +58,7 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (model != null)
             {
+                Prøvenr = model.Prøvenr;
                 Datomottatt = model.Datomottatt;
                 Overdekningoppgitt = model.Overdekningoppgitt;
                 Dmax = model.Dmax;
@@ -83,9 +87,9 @@ namespace Final_project.ViewModels.TablesVM
             var _viewModel = this;
             Guid newId = _dataId ?? Guid.NewGuid();
 
-            // Create a new entry model using the current state of the ViewModel
             var newEntry = new DataFraOppdragsgiverPrøverModel(
                      newId,
+                     _viewModel.prøvenr,
                     _viewModel.Datomottatt,
                     _viewModel.Overdekningoppgitt,
                     _viewModel.Dmax,
@@ -97,7 +101,6 @@ namespace Final_project.ViewModels.TablesVM
         );
 
 
-            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new DataFraOppdragsgiverPrøverVM(newEntry)
             {
 

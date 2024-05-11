@@ -80,7 +80,8 @@ namespace Final_project.ViewModels
         [RelayCommand]
         private async void Delete()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this report?",
+                "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {

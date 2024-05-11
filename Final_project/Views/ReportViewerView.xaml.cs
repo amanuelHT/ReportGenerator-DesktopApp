@@ -20,10 +20,7 @@ namespace Final_project.Views
             try
             {
 
-
                 var x = new RowTablesCreatorForReportViewer();
-
-
 
 
                 var ReportViewerViewModel = DataContext as ReportViewerVM;
@@ -33,15 +30,11 @@ namespace Final_project.Views
                 this.reportViewer.DataSources.Clear();
 
 
-                // Handle the report data
+                // raport data
                 if (ReportViewerViewModel.SelectedReportData != null)
                 {
                     DataTable reportDataTable = x.CreateReportDataTable(ReportViewerViewModel.SelectedReportData);
                     this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportModels", Value = reportDataTable });
-
-
-
-
 
 
                     DataTable testutførtav = x.CreateTestUtførtAvTable(ReportViewerViewModel.TestUtførtAvModels);
@@ -74,24 +67,21 @@ namespace Final_project.Views
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "TrykktestingModel", Value = tryktable });
                     }
 
-                    // Handle images data
                     if (ReportViewerViewModel.ReportImages != null && ReportViewerViewModel.ReportImages.Any())
                     {
-                        int splitIndex = (ReportViewerViewModel.ReportImages.Count + 1) / 2; // Calculate the split point
+                        int splitIndex = (ReportViewerViewModel.ReportImages.Count + 1) / 2; // split point
                         DataTable imagesTable3 = x.CreateImagesDataTable(ReportViewerViewModel.ReportImages.Take(splitIndex).ToList());
                         DataTable imagesTable4 = x.CreateImagesDataTable2(ReportViewerViewModel.ReportImages.Skip(splitIndex).ToList());
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportImageModel", Value = imagesTable3 });
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportImageModel2", Value = imagesTable4 });
                     }
 
-                    // Handle ConcreteDensityModels data
                     if (ReportViewerViewModel.ConcreteDensityModels != null && ReportViewerViewModel.ConcreteDensityModels.Any())
                     {
                         DataTable concredensity = x.CreateConcreteDensityDataTable(ReportViewerViewModel.ConcreteDensityModels);
                         this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ConcreteDensityModel", Value = concredensity });
                     }
 
-                    // Handle DataEtterKuttingOgSlipingModels data
                     if (ReportViewerViewModel.DataEtterKuttingOgSlipingModels != null && ReportViewerViewModel.DataEtterKuttingOgSlipingModels.Any())
                     {
                         DataTable dataetterkutting = x.DataEtterKuttingOgSlipingModelDataTable(ReportViewerViewModel.DataEtterKuttingOgSlipingModels);
@@ -99,7 +89,6 @@ namespace Final_project.Views
                     }
 
 
-                    // Handle DataFraOppdragsgiverPrøverModels data
                     if (ReportViewerViewModel.DataFraOppdragsgiverPrøverModels != null && ReportViewerViewModel.DataFraOppdragsgiverPrøverModels.Any())
                     {
                         DataTable datafraoppdrag = x.DataFraOppdragsgiverPrøverModelDataTable(ReportViewerViewModel.DataFraOppdragsgiverPrøverModels);

@@ -30,9 +30,6 @@ namespace Final_project.ViewModels
 
         }
 
-
-
-
         private async Task LoadUsersAsync()
         {
             try
@@ -56,10 +53,6 @@ namespace Final_project.ViewModels
             }
         }
 
-
-
-
-
         [RelayCommand]
         public void Delete(UserInfo userInfo)
         {
@@ -81,9 +74,6 @@ namespace Final_project.ViewModels
                 }
             }
         }
-
-
-
 
     }
 }

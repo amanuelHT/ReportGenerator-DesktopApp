@@ -29,8 +29,8 @@ namespace Report_Generator_EntityFramework
         {
 
             modelBuilder.Entity<ReportModel>()
-                .HasOne(report => report.TestUtførtAvModel)  // Change to TestUtførtAvModel
-                .WithOne(test => test.Report)                // Assuming Report is the navigation property in TestUtførtAvModel pointing back to ReportModel
+                .HasOne(report => report.TestUtførtAvModel)  
+                .WithOne(test => test.Report)                
                 .HasForeignKey<TestUtførtAvModel>(test => test.ReportModelID)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -42,7 +42,8 @@ namespace Report_Generator_EntityFramework
 
 
 
-            // Define foreign key relationship between ReportModel and ReportImageModel
+            //  foreign key relationship
+            // between ReportModel and ReportImageModel
             modelBuilder.Entity<ReportImageModel>()
                     .HasOne(image => image.ReportModel)
                     .WithMany(report => report.Images)
@@ -61,7 +62,8 @@ namespace Report_Generator_EntityFramework
                 .HasForeignKey(verktøy => verktøy.ReportModelId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Define foreign key relationship between DataFraOppdragsgiverPrøverModel and DataFraOppdragsgiverTableModel
+            //  foreign key relationship between
+            //  DataFraOppdragsgiverPrøverModel and DataFraOppdragsgiverTableModel
             modelBuilder.Entity<DataFraOppdragsgiverPrøverModel>()
                 .HasOne(prøver => prøver.ReportModel)
                 .WithMany(table => table.DataFraOppdragsgiverPrøver)

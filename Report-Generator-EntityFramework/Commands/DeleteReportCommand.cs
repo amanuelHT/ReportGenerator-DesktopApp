@@ -16,13 +16,11 @@ namespace Report_Generator_EntityFramework.Commands
         {
             using (var context = _contextFactory.Create())
             {
-                // Find the report model by its ID
                 var reportModel = await context.ReportModels
                     .FirstOrDefaultAsync(report => report.Id == id);
 
                 if (reportModel != null)
                 {
-                    // remove the report model and save changes
                     context.ReportModels.Remove(reportModel);
                     await context.SaveChangesAsync();
                 }

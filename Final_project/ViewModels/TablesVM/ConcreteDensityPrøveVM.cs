@@ -11,7 +11,9 @@ namespace Final_project.ViewModels.TablesVM
 
         private readonly ModalNavigation _modalNavigation;
         private Guid _reportModelId;
+        private Guid Id;
         private readonly ConcreteDensityTableVM _concreteDensityTableVM;
+
         [ObservableProperty]
         private int provnr;
 
@@ -33,7 +35,6 @@ namespace Final_project.ViewModels.TablesVM
         [ObservableProperty]
         private double densitet;
 
-        // Constructor for new entries
         public ConcreteDensityPrøveVM(
             ModalNavigation modalNavigation,
             Guid reportid,
@@ -45,12 +46,12 @@ namespace Final_project.ViewModels.TablesVM
             _concreteDensityTableVM = concreteDensityTableVM;
         }
 
-        // Constructor to populate from an existing model
         public ConcreteDensityPrøveVM(ConcreteDensityModel model)
         {
             if (model != null)
             {
-                Provnr = model.Id;
+                Id = model.Id;
+                Provnr = model.Prøvenr;
                 Dato = model.Dato;
                 MasseILuft = model.MasseILuft;
                 MasseIVannbad = model.MasseIVannbad;
@@ -63,14 +64,14 @@ namespace Final_project.ViewModels.TablesVM
 
         // Commands to handle UI actions
 
-
-
-
         [RelayCommand]
         public void Submit()
         {
-            // Create a new entry model using the current state of the ViewModel
+            // Create a new entry model
+
             var newEntry = new ConcreteDensityModel(
+
+                Id,
                 Provnr,
                 Dato,
                 MasseILuft,
@@ -82,7 +83,6 @@ namespace Final_project.ViewModels.TablesVM
             );
 
 
-            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new ConcreteDensityPrøveVM(newEntry)
             {
             };

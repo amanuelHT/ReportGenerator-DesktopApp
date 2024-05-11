@@ -8,12 +8,10 @@
              xmlns:tableVM="clr-namespace:Final_project.ViewModels.TablesVM" 
              xmlns:tables="clr-namespace:Final_project.Tables" xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM" xmlns:components1="clr-namespace:Final_project.Views.Components">
 
-              <!--xmlns:table="clr-namespace: Final_project.TablesView"--> 
 
 <Application.Resources>
         <ResourceDictionary>
 
-           
            
 
             <DataTemplate DataType="{x:Type tableVM:DataFraOppdragsgiverPrøverVM}">

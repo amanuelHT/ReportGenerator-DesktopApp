@@ -8,6 +8,7 @@ namespace Report_Generator_Domain.Models
     {
 
         public Guid Id { get; set; }
+        public int Prøvenr { get; set; }
 
         public DateTime Datomottatt { get; set; }
         public string Overdekningoppgitt { get; set; }
@@ -17,14 +18,16 @@ namespace Report_Generator_Domain.Models
         public string OverflateOK { get; set; }
         public string OverflateUK { get; set; }
         public Guid ReportModelId { get; set; } // Foreign key
-        public ReportModel ReportModel { get; set; } // Navigation property
+        public ReportModel ReportModel { get; set; }
 
 
 
 
-        public DataFraOppdragsgiverPrøverModel(Guid id, DateTime datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
+        public DataFraOppdragsgiverPrøverModel(Guid id, int prøvenr, DateTime datomottatt, string overdekningoppgitt, string dmax, int kjerneImax, int kjerneImin, string overflateOK, string overflateUK, Guid reportModelId)
         {
             Id = id;
+            Prøvenr = prøvenr;
+
             Datomottatt = datomottatt;
             Overdekningoppgitt = overdekningoppgitt;
             Dmax = dmax;

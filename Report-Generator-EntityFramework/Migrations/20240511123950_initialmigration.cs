@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_Generator_EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class INITIALMIGRATION : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,8 +33,8 @@ namespace Report_Generator_EntityFramework.Migrations
                 name: "concreteDensityModels",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Prøvenr = table.Column<int>(type: "INTEGER", nullable: false),
                     Dato = table.Column<DateTime>(type: "TEXT", nullable: false),
                     MasseILuft = table.Column<double>(type: "REAL", nullable: false),
                     MasseIVannbad = table.Column<double>(type: "REAL", nullable: false),
@@ -59,6 +59,7 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Prøvenr = table.Column<int>(type: "INTEGER", nullable: false),
                     IvannbadDato = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TestDato = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Overflatetilstand = table.Column<string>(type: "TEXT", nullable: false),
@@ -88,6 +89,7 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Prøvenr = table.Column<int>(type: "INTEGER", nullable: false),
                     Datomottatt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Overdekningoppgitt = table.Column<string>(type: "TEXT", nullable: false),
                     Dmax = table.Column<string>(type: "TEXT", nullable: false),
@@ -196,6 +198,7 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Prøvenr = table.Column<int>(type: "INTEGER", nullable: false),
                     TrykkflateMm = table.Column<decimal>(type: "TEXT", nullable: false),
                     PalastHastighetMPas = table.Column<decimal>(type: "TEXT", nullable: false),
                     TrykkfasthetMPa = table.Column<decimal>(type: "TEXT", nullable: false),

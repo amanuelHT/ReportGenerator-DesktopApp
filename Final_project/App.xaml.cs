@@ -41,7 +41,7 @@ namespace Final_project
 
 
 
-                 //Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
+                 //registeration a SQLite database connection for ReportModelDbContext
                  string? connectionString = context.Configuration.GetConnectionString("Sqlite");
                  service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
                  service.AddSingleton<ReportModelDbContextFactory>();
@@ -51,11 +51,9 @@ namespace Final_project
                  (ObservableObject)serviceProvider.GetRequiredService(type));
 
 
-                 //navigation service 
                  service.AddSingleton<INavigation, Navigation>();
 
 
-                 //                //Queries and commands for database services
                  service.AddSingleton<IGetAllReportsQuery, GetAllReportsQuery>();
                  service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
                  service.AddSingleton<IDeleteReportCommand, Report_Generator_EntityFramework.Commands.DeleteReportCommand>();
@@ -66,7 +64,6 @@ namespace Final_project
 
 
 
-                 //                //stores , Single source of truth, defnitly Singlton
                  service.AddSingleton<SelectedReportStore>();
                  service.AddSingleton<ModalNavigation>();
                  service.AddSingleton<AccountStore>();
@@ -93,7 +90,8 @@ namespace Final_project
                  service.AddSingleton<INavigationService>(s => HomeNavigationService(s));
 
                  //the reasion we make them transient is we dispose our viewmodel,
-                 //if we dispose that means we are not going to use it again, we are going to resolve a new instance
+                 //if we dispose that means we are not going to use it again,
+                 //we are going to resolve a new instance
                  //if singlton we are going to get a new instance every time venen though disposed
 
                  service.AddTransient<RoleManagementVM>(s =>
@@ -118,10 +116,6 @@ namespace Final_project
                  service.AddTransient<SettingsVM>(s => new SettingsVM(SettingsNavigarionService(s)));
 
 
-                 //service.AddTransient<UserInfoVM>();
-
-
-                 // Register UserInfoVM with all required dependencies
                  service.AddTransient<UserInfoVM>(s => new UserInfoVM(
                      firebaseAuthProvider,
                      RoleManagementNavigationService(s),
@@ -134,8 +128,6 @@ namespace Final_project
 
 
 
-                 //service.AddTransient<LoginVM>(s => new LoginVM(LoginNavigarionService(s)));
-
                  service.AddTransient<LoginVM>(s => new LoginVM(
                        s.GetRequiredService<AccountStore>(),
                        AccountNavigarionService(s),
@@ -143,9 +135,8 @@ namespace Final_project
                        ResetPasswordNavigarionService(s),
                        HomeNavigationService(s)));
                  service.AddSingleton(s => new LogoutCommand(
-      s.GetRequiredService<AccountStore>(),
-      HomeNavigationService(s) // The navigation service that goes to the home page
-  ));
+                       s.GetRequiredService<AccountStore>(),
+                       HomeNavigationService(s)));
 
                  service.AddTransient<GeneratedReportListVM>(s =>
                   new GeneratedReportListVM(
@@ -154,11 +145,6 @@ namespace Final_project
                  service.AddTransient<ReportViewerVM>(s =>
                         new ReportViewerVM(s.GetRequiredService<ReportStore>(),
                       GeneratedRListNavigationService(s)));
-
-
-
-
-
 
 
 
@@ -193,17 +179,6 @@ namespace Final_project
             initialNavigationService.Navigate();
 
 
-            //ReportModelDbContextFactory reportModelDbContextFactory =
-            //     _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-            //using (
-            //    ReportModelDbContext context = reportModelDbContextFactory.Create())
-
-            //{
-            //    context.Database.Migrate();
-
-            //}
-
-            // Set up the main window
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
@@ -225,9 +200,9 @@ namespace Final_project
                        HomeNavigationService(serviceProvider),
                        RoleManagementNavigationService(serviceProvider),
                        UserInfoNavigationService(serviceProvider),
-                      KundeServiceNavigationService(serviceProvider)
+                      KundeServiceNavigationService(serviceProvider));
 
-                       );
+
         }
 
         private INavigationService RoleManagementNavigationService(IServiceProvider serviceProvider)
@@ -308,16 +283,6 @@ namespace Final_project
         }
 
 
-        //private INavigationService LoginNavigarionService(IServiceProvider serviceProvider)
-        //{
-        //    return new LayoutNavigationService<LoginVM>(
-        //          serviceProvider.GetRequiredService<NavigationStore>(),
-        //           () => new LoginVM(serviceProvider.GetRequiredService<AccountStore>(), 
-        //           serviceProvider.GetRequiredService<FirebaseAuthProvider>(), 
-        //           AccountNavigarionService(serviceProvider)),
-        //           () => CreateNavigationBarViewModel(serviceProvider));
-
-        //}
 
         private INavigationService AccountNavigarionService(IServiceProvider serviceProvider)
         {
@@ -330,147 +295,4 @@ namespace Final_project
         }
     }
 }
-
-
-
-//public partial class App : Application
-//{
-
-//    public IServiceProvider ServiceProvider { get; private set; }
-
-
-//    private readonly IHost _host;
-//    public App()
-//    {
-//        _host = Host.CreateDefaultBuilder()
-//            .ConfigureServices((context, service) =>
-//            {
-
-//                // Configures and registers a SQLite database connection for ReportModelDbContext using dependency injection.
-//                string? connectionString = context.Configuration.GetConnectionString("Sqlite");
-//                service.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
-//                service.AddSingleton<ReportModelDbContextFactory>();
-
-
-
-//                service.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => type =>
-//                (ViewModelBase)serviceProvider.GetRequiredService(type));
-
-
-
-
-//                //navigation service 
-//                //service.AddSingleton<INavigation, Navigation>();
-
-
-//                //Queries and commands for database services
-//                service.AddSingleton<IGetAllReportsQuery, GetAllReportsQuery>();
-//                service.AddSingleton<ICreateReportCommand, CreateReportCommand>();
-//                service.AddSingleton<IDeleteReportCommand, DeleteReportCommand>();
-//                service.AddSingleton<IUpdateReportCommand, UpdateReportCommand>();
-
-
-//                //stores , Single source of truth, defnitly Singlton
-//                service.AddSingleton<ReportStore>();
-//                service.AddSingleton<SelectedReportStore>();
-//                service.AddSingleton<ModalNavigation>();
-
-
-//                //viewmodels 
-//                service.AddSingleton<MainViewModel>();
-//                service.AddTransient<HomeVM>(CreateHomeViewModel);
-//                service.AddSingleton<ReportViewerVM>();
-//                service.AddSingleton<EditReportVM>();
-//                service.AddSingleton<AddReportVM>();
-//                service.AddSingleton<ReportDetailsVM>();
-//                service.AddSingleton<ReportFormVM>();
-//                service.AddSingleton<ReportListingItemVM>();
-//                service.AddSingleton<ReportListVM>();
-//                service.AddSingleton<ViewModelBase>();
-
-
-//                //Views 
-//                service.AddSingleton<AddReportView>();
-//                service.AddSingleton<EditReportView>();
-//                service.AddSingleton<HomeView>();
-//                service.AddSingleton<ReportViewerView>();
-
-
-
-//                //navigation
-//                service.AddSingleton<Func<Type, ViewModelBase>>(service => T => (ViewModelBase)service.GetService(typeof(ViewModelBase)));
-
-
-//                //Components view
-//                service.AddSingleton<ReportDetailsView>();
-//                service.AddSingleton<ReportForm>();
-//                service.AddSingleton<ReportListingItemVM>();
-//                service.AddSingleton<ReportListView>();
-
-//                service.AddSingleton<MainWindow>((services) => new MainWindow()
-//                {
-//                    DataContext = services.GetRequiredService<MainViewModel>()
-//                });
-
-
-
-//                Bold.Licensing.BoldLicenseProvider.RegisterLicense
-//                (
-//                     context.Configuration.GetValue<string>("Licensekey")
-//                 );
-
-
-
-//            })
-//            .Build();
-
-
-
-
-
-
-
-//    }
-
-//    private HomeVM CreateHomeViewModel(IServiceProvider service)
-//    {
-//        return HomeVM.LoadHome(
-//             service.GetRequiredService<ReportStore>(),
-//             service.GetRequiredService<SelectedReportStore>(),
-//             service.GetRequiredService<ModalNavigation>());
-//    }
-
-//    protected override void OnStartup(StartupEventArgs e)
-//    {
-//        _host.Start();
-//        ServiceProvider = _host.Services;
-
-
-//        ReportModelDbContextFactory reportModelDbContextFactory =
-//             _host.Services.GetRequiredService<ReportModelDbContextFactory>();
-//        using (ReportModelDbContext context = reportModelDbContextFactory.Create())
-
-//        {
-//            context.Database.Migrate();
-
-//        }
-
-
-//        MainWindow = _host.Services.GetRequiredService<MainWindow>();
-//        MainWindow.Show();
-//        // MainWindow.Show();
-
-
-
-//        base.OnStartup(e);
-//    }
-
-//    protected override void OnExit(ExitEventArgs e)
-//    {
-//        _host.StopAsync();
-//        _host.Dispose();
-//    }
-//}
-//}
-
 

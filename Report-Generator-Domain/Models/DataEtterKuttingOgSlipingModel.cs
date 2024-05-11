@@ -9,6 +9,7 @@ namespace Report_Generator_Domain.Models
     {
 
         public Guid Id { get; set; }
+        public int Prøvenr { get; set; }
         public DateTime IvannbadDato { get; set; }
         public DateTime TestDato { get; set; }
         public string Overflatetilstand { get; set; }
@@ -22,12 +23,16 @@ namespace Report_Generator_Domain.Models
         public double MmTilTopp { get; set; }
 
         public Guid ReportModelId { get; set; } // Foreign key
-        public ReportModel ReportModel { get; set; } // Navigation property
+        public ReportModel ReportModel { get; set; }
 
 
-        public DataEtterKuttingOgSlipingModel(Guid id, DateTime ivannbadDato, DateTime testDato, string overflatetilstand, double dm, double prøvetykke, double dmPrøvetykkeRatio, double trykkfasthetMPa, string fasthetSammenligning, double førSliping, double etterSliping, double mmTilTopp, Guid reportModelId)
+        public DataEtterKuttingOgSlipingModel(Guid id, int prøvenr, DateTime ivannbadDato, DateTime testDato, string overflatetilstand,
+                                                                         double dm, double prøvetykke, double dmPrøvetykkeRatio,
+                                                                             double trykkfasthetMPa, string fasthetSammenligning,
+                                                                              double førSliping, double etterSliping, double mmTilTopp, Guid reportModelId)
         {
             Id = id;
+            Prøvenr = prøvenr;
             IvannbadDato = ivannbadDato;
             TestDato = testDato;
             Overflatetilstand = overflatetilstand;

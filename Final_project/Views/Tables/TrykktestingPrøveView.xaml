@@ -15,24 +15,23 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Inputs Grid -->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />    
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 
             </Grid.RowDefinitions>
             <components:TextBoxView Grid.Row="0" Text="{Binding Prøvenr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="0" Text="{Binding TrykkflateMm, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkflate (mm):" FontWeight="Bold"  />
-            <components:TextBoxView Grid.Row="1" Text="{Binding PalastHastighetMPas, UpdateSourceTrigger=PropertyChanged}" Watermark="Pålasthastighet (MPas):" FontWeight="Bold" Margin="5" />
-            <components:TextBoxView Grid.Row="2" Text="{Binding TrykkfasthetMPa, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkfasthet (MPa):" FontWeight="Bold" Margin="5" />
-            <components:TextBoxView Grid.Row="3" Text="{Binding TrykkfasthetMPaNSE, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkfasthet NSE (MPa):" FontWeight="Bold" Margin="5" />
+            <components:TextBoxView Grid.Row="1" Text="{Binding TrykkflateMm, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkflate (mm):" FontWeight="Bold"  />
+            <components:TextBoxView Grid.Row="2" Text="{Binding PalastHastighetMPas, UpdateSourceTrigger=PropertyChanged}" Watermark="Pålasthastighet (MPas):" FontWeight="Bold" Margin="5" />
+            <components:TextBoxView Grid.Row="3" Text="{Binding TrykkfasthetMPa, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkfasthet (MPa):" FontWeight="Bold" Margin="5" />
+            <components:TextBoxView Grid.Row="4" Text="{Binding TrykkfasthetMPaNSE, UpdateSourceTrigger=PropertyChanged}" Watermark="Trykkfasthet NSE (MPa):" FontWeight="Bold" Margin="5" />
         </Grid>
 
-        <!-- Action Buttons -->
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <Button Command="{Binding CancelCommand}" Margin="0 0 140 0">

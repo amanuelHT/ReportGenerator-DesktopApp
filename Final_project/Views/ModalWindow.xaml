@@ -43,7 +43,6 @@
                             </LinearGradientBrush>
                         </Border.Background>
                  
-                    <!-- Control buttons panel -->
                             <StackPanel x:Name="panelcontrol"
                        
                                             Orientation="Horizontal"
@@ -63,12 +62,7 @@
                                 </Button>
                             </StackPanel>
             </Border>
-            <!-- Content display area -->
-            
-        
-        
       
-            <!-- Decorative border adjusted to not overlap main content -->
             <Border Opacity="1"
                     CornerRadius="0 0 10 10"
                     Grid.Row="1"

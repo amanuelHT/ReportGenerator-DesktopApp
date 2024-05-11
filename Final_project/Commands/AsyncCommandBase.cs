@@ -10,9 +10,8 @@ namespace Final_project.Commands
             {
                 await ExecuteAsync(parameter);
             }
-            catch (Exception ex) // Catch the exception to handle it
+            catch (Exception ex) 
             {
-                // Log the exception or handle it as needed
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

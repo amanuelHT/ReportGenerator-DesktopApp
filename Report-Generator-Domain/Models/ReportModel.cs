@@ -21,12 +21,7 @@ namespace Domain.Models
         public string Kommentarer { get; set; }
         public int UiaRegnr { get; set; }
 
-
-
-
-
-
-        // Collection of ReportImageModel
+        
         public List<ReportImageModel> Images { get; set; }
         public List<TestModel> Test { get; set; }
         public List<verktøyModel> Verktøy { get; set; }

@@ -73,22 +73,6 @@ namespace Final_project.Other
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Image handling 
         public DataTable CreateImagesDataTable2(List<ReportImageModel> images)
         {

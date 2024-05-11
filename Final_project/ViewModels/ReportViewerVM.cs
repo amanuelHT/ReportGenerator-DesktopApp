@@ -98,12 +98,6 @@ namespace Final_project.ViewModels
                 ConcreteDensityModels = new ObservableCollection<ConcreteDensityModel>(concreteDensityModels);
                 OnPropertyChanged(nameof(ConcreteDensityModels));
 
-
-
-
-
-
-
             }
         }
     }

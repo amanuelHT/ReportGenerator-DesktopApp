@@ -6,8 +6,6 @@
              xmlns:local="clr-namespace:Final_project.Views.Components" xmlns:components="clr-namespace:Final_project.Components" xmlns:reportcomponentsvm="clr-namespace:Final_project.ViewModels.ReportComponentsVM" d:DataContext="{d:DesignInstance Type=reportcomponentsvm:KontrollertAvVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-  
-
 
 
     <Grid>

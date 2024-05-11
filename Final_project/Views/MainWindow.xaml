@@ -16,16 +16,11 @@
         WindowStyle="None"
         AllowsTransparency="True" >
     
-    <!--<Window.Background>
-        <SolidColorBrush Opacity="134" Color="Transparent"></SolidColorBrush>
-    </Window.Background>-->
-
 
     <Border BorderThickness="1"
            Opacity="1"
-           CornerRadius="10"
-         >
-        <!--Set background to Transparent-->
+           CornerRadius="10">
+         
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorColor1}" Offset="0"></GradientStop>
@@ -34,9 +29,6 @@
             </LinearGradientBrush>
         </Border.BorderBrush>
   
-
-
-
         <Grid>
 
         <Grid.RowDefinitions>
@@ -56,8 +48,8 @@
                         <GradientStop Color="{StaticResource SecondarybackgroundC2}" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                
-                    <StackPanel x:Name="panelcontrol"
+
+                <StackPanel x:Name="panelcontrol"
                            
                             Orientation="Horizontal"
                             FlowDirection="RightToLeft"  Background="Transparent"
@@ -75,15 +67,9 @@
 
                     <Button x:Name="minimizeBtn" Style="{StaticResource windowbuttons}" Tag="{StaticResource Cyan100}" Click="minimizeBtn_Click">
                         <icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource windowbuttonsIcon}" Tag="{StaticResource Yellow100}" />
-                    </Button>   
-
-
-
+                    </Button>
                 </StackPanel>
-
             </Border>
-
-
 
 
             <Border Grid.Row="1"
@@ -105,8 +91,7 @@
                                 </DataTemplate>
                             </ContentControl.Resources>
                  </ContentControl>
-                
-                
+               
             </Border>
         </Grid>
     </Border>

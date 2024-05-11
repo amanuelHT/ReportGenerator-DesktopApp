@@ -19,7 +19,6 @@ namespace Final_project.ViewModels
 
         public MessageVM MessageVM { get; private set; }
 
-
         public ObservableCollection<UserInfo> Users { get; }
 
         [ObservableProperty]
@@ -27,9 +26,6 @@ namespace Final_project.ViewModels
 
         [ObservableProperty]
         private UserInfo _selectedUser;
-
-
-
 
 
 
@@ -52,28 +48,19 @@ namespace Final_project.ViewModels
             MessageVM = new MessageVM(this, firebaseStore);
             Users = new ObservableCollection<UserInfo>();
             LoadUsersAsync();
-
-
-
-
         }
-
-
 
 
         private async Task LoadUsersAsync()
         {
             try
             {
-                // Load all users from Firebase
                 var loadedUsers = await _firebaseStore.LoadUsersAsync();
                 Users.Clear();
 
 
-                // Get the Admin user's ID 
                 Admin = loadedUsers.FirstOrDefault(user => user.Role == "Admin")?.UserId;
 
-                // Add only non-admin users to the Users collection
                 foreach (var user in loadedUsers.Where(user => user.Role != "Admin"))
                 {
                     Users.Add(user);

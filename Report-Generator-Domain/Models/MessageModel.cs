@@ -26,7 +26,6 @@ namespace Report_Generator_Domain.Models
         [FirestoreProperty]
         public Google.Cloud.Firestore.Timestamp Timestamp { get; set; }
 
-        // Computed property to return the date in a readable format
         public DateTime Date => Timestamp.ToDateTime();
 
     }

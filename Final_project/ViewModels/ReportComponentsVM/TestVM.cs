@@ -22,9 +22,6 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
         }
 
-
-
-        // Constructor to populate from an existing model
         public TestVM(TestModel model)
         {
             if (model != null)
@@ -35,11 +32,6 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
             }
         }
-
-
-
-
-
 
         [RelayCommand]
         public void Submit()

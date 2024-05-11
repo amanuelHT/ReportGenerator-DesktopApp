@@ -10,8 +10,6 @@ namespace Final_project.ViewModels
     public class HomeVM : ObservableObject
     {
         private readonly NavigationStore _navigationStore;
-        //public ObservableObject CurrentVM => _navigationStore.CurrentView;
-        //public bool IsFormOpen => _navigationStore.IsOpen;
 
         public ReportDetailsVM ReportDetailsVM { get; }
         public ReportListVM ReportListVM { get; }
@@ -32,16 +30,10 @@ namespace Final_project.ViewModels
 
             AddReportCommand = new OpenAddCommand(modalWindow, modalNavigation, reportStore, navigationStore);
 
-
-
         }
 
-
-
-
-
-
-        public static HomeVM LoadHome(ModalWindow modalWindow, ModalNavigation modalNavigation, ReportStore reportStore, SelectedReportStore selectedReportStore, NavigationStore navigationStore, INavigationService navigationService)
+        public static HomeVM LoadHome(ModalWindow modalWindow, ModalNavigation modalNavigation, ReportStore reportStore, 
+                                      SelectedReportStore selectedReportStore, NavigationStore navigationStore, INavigationService navigationService)
         {
             HomeVM viewModel = new HomeVM(modalWindow, modalNavigation, reportStore, selectedReportStore, navigationStore, navigationService);
 

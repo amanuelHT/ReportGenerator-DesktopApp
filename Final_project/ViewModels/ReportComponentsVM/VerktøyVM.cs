@@ -21,13 +21,6 @@ namespace Final_project.ViewModels.ReportComponentsVM
             _reportModelId = reportModelId;
         }
 
-
-
-
-
-
-
-        // Constructor to populate from an existing model
         public VerktøyVM(verktøyModel model)
         {
             if (model != null)

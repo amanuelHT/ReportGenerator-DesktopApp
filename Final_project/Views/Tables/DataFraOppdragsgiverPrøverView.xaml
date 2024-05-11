@@ -27,28 +27,28 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <components:TextBoxView Grid.Row="0" Text="{Binding Prøvenr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr" FontWeight="Bold" Margin="5"/>
 
 
-            <components:TextBoxView Grid.Row="0" Text="{Binding Datomottatt, UpdateSourceTrigger=PropertyChanged}" Watermark="Dato" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="1" Text="{Binding Datomottatt, UpdateSourceTrigger=PropertyChanged}" Watermark="Dato" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="1" Text="{Binding Overdekningoppgitt, UpdateSourceTrigger=PropertyChanged}" Watermark="Overdekning Oppgitt:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="2" Text="{Binding Overdekningoppgitt, UpdateSourceTrigger=PropertyChanged}" Watermark="Overdekning Oppgitt:" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="2" Text="{Binding Dmax, UpdateSourceTrigger=PropertyChanged}" Watermark="Dmax:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="3" Text="{Binding Dmax, UpdateSourceTrigger=PropertyChanged}" Watermark="Dmax:" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="3" Text="{Binding KjerneImax, UpdateSourceTrigger=PropertyChanged}" Watermark="Kjerne I max:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="4" Text="{Binding KjerneImax, UpdateSourceTrigger=PropertyChanged}" Watermark="Kjerne I max:" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="4" Text="{Binding KjerneImin, UpdateSourceTrigger=PropertyChanged}" Watermark="Kjerne I min:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="5" Text="{Binding KjerneImin, UpdateSourceTrigger=PropertyChanged}" Watermark="Kjerne I min:" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="5" Text="{Binding OverflateOK, UpdateSourceTrigger=PropertyChanged}" Watermark="Overflate OK:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="6" Text="{Binding OverflateOK, UpdateSourceTrigger=PropertyChanged}" Watermark="Overflate OK:" FontWeight="Bold" Margin="5"/>
 
-            <components:TextBoxView Grid.Row="6" Text="{Binding OverflateUK, UpdateSourceTrigger=PropertyChanged}" Watermark="Overflate UK:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="7" Text="{Binding OverflateUK, UpdateSourceTrigger=PropertyChanged}" Watermark="Overflate UK:" FontWeight="Bold" Margin="5"/>
         </Grid>
 
 
-        <!-- Action Buttons -->
     <Grid Grid.Row="1">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
             <Button Command="{Binding CancelCommand}" Margin="0 0 140 0">

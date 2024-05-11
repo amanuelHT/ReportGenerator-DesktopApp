@@ -14,9 +14,7 @@ namespace Final_project.ViewModels
         public virtual void Dispose()
         {
 
-
         }
-
 
     }
 }

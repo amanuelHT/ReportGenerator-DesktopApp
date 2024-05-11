@@ -17,12 +17,12 @@ namespace Final_project.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true; // You can add conditions here if needed
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            // Set the current view model to HomeVM
+            //  current view model to HomeVM
 
         }
     }

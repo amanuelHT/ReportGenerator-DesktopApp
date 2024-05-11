@@ -19,7 +19,9 @@ namespace Final_project.Commands
 
 
 
-            var confirmDelete = MessageBox.Show("Are you sure you want to delete this report?", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this report?", 
+                "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
             if (confirmDelete != MessageBoxResult.Yes)
             {
                 return;

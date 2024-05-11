@@ -33,7 +33,7 @@ namespace Final_project.ViewModels
         {
             if (e.PropertyName == nameof(_kundeServiceVM.SelectedUser))
             {
-                OnPropertyChanged(nameof(FilteredMessages)); // Notify the UI to update filtered messages
+                OnPropertyChanged(nameof(FilteredMessages));
             }
         }
         public UserInfo SelectedUser => _kundeServiceVM.SelectedUser;
@@ -45,7 +45,8 @@ namespace Final_project.ViewModels
         {
             get
             {
-                // If no user is selected, return an empty collection initially
+                // If no user is selected
+                // return an empty collection initially
                 if (SelectedUser == null)
                     return new ObservableCollection<MessageModel>();
                 else
@@ -64,13 +65,12 @@ namespace Final_project.ViewModels
 
                 Messages.Clear();
 
-                // Add loaded messages to the Messages collection
                 foreach (var message in loadmessages)
                 {
                     Messages.Add(message);
                 }
 
-                // Update filtered messages
+                
                 OnPropertyChanged(nameof(FilteredMessages));
             }
 
@@ -80,10 +80,6 @@ namespace Final_project.ViewModels
                 Debug.WriteLine($"Error loading messages: {ex.Message}");
             }
         }
-
-
-
-
 
 
 
@@ -108,7 +104,6 @@ namespace Final_project.ViewModels
 
             try
             {
-                // Create the message model
                 var message = new MessageModel
                 {
                     Content = this.Content,
@@ -156,9 +151,6 @@ namespace Final_project.ViewModels
                 await _firebaseStore.UploadReportMessageAsync(stream, filename, SelectedUser.UserId);
 
                 FileName = filenameWithoutExtension;
-
-
-
             }
         }
     }

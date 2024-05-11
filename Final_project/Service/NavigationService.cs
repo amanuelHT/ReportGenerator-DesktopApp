@@ -18,10 +18,6 @@ namespace Final_project.Service
             _navigation.CurrentViewModel = _createViewModel();
         }
 
-
-
-
-
     }
 
 }

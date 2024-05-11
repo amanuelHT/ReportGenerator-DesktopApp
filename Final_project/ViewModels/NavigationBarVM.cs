@@ -67,7 +67,6 @@ namespace Final_project.ViewModels
 
 
         }
-        // In NavigationBarVM
         public Visibility RoleManagementVisibility =>
             _accountStore.CurrentAccount?.Role == "Admin" ? Visibility.Visible : Visibility.Collapsed;
 

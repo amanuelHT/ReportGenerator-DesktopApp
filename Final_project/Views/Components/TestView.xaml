@@ -8,18 +8,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <!-- Set DataContext for bindings -->
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Bind TextBox Text to a ViewModel property -->
         <components:TextBoxView Grid.Column="0" Text="{Binding Name}" Watermark="
 Tester utført ihht:"  Margin="0,0,10,0"/>
 
-        <!-- Bind Button Command to a ViewModel command -->
         <Button Grid.Column="1" Command="{Binding SubmitCommand}" Margin="0,20,10,0">
                    <icon:PackIconMaterial Kind="send" Height="20" Width="20" Foreground="{StaticResource IconColor1}"/>
           

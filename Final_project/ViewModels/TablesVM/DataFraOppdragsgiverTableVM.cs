@@ -29,12 +29,6 @@ namespace Final_project.ViewModels.TablesVM
         }
 
 
-
-
-
-
-
-
         [RelayCommand]
         private void RemovePrøve(DataFraOppdragsgiverPrøverVM prøve)
         {

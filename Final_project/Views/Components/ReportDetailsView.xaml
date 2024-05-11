@@ -13,7 +13,6 @@
 
     <Grid>
 
-        <!--<Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1" CornerRadius="5" Padding="20"  SnapsToDevicePixels="True">-->
 
         <Border CornerRadius="20 20 20 20" Grid.Column="0" Opacity="100">
             <Border.Background>
@@ -26,39 +25,32 @@
             <!-- Main Grid -->
             <Grid>
 
-                <!-- Grid for message when no report is selected -->
                 <Grid>
-                    <!-- Set visibility based on HasReportSelected property -->
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
-                                <!-- Show when HasReportSelected is false -->
                                 <DataTrigger Binding="{Binding HasReportSelected}" Value="False">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
-                    <!-- TextBlock for the message -->
                     <TextBlock Grid.Row="0" FontSize="18" Margin="30 40 0 0" FontFamily="SimSun-ExtB" FontWeight="SemiBold" Text="Select a report to see the details"/>
                 </Grid>
 
-                <!-- Grid for report details -->
                 <Grid Grid.IsSharedSizeScope="True">
-                    <!-- Set visibility based on HasReportSelected property -->
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
-                                <!-- Show when HasReportSelected is true -->
                                 <DataTrigger Binding="{Binding HasReportSelected}" Value="True">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
-                    <!-- Row definitions -->
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -66,10 +58,8 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <!-- Title -->
                     <TextBlock Grid.Row="0" FontSize="20" Text="{Binding Tittle}" Margin="20 20 10 10" FontWeight="Bold" FontFamily="Levenim MT"/>
 
-                    <!-- The client -->
                     <Grid Grid.Row="1" Margin="20 50 10 10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"  SharedSizeGroup="lab"/>
@@ -81,7 +71,6 @@
 
                     </Grid>
 
-                    <!-- Status of the report -->
                     <Grid Grid.Row="2" Margin="20 0 10 10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
@@ -107,13 +96,7 @@
                                 <TextBlock  Style="{StaticResource navtext}" />
                             </StackPanel>
                         </Button>
-                        <!--<RadioButton Style="{StaticResource navbuttons}" Command="{Binding GenerateReport}">
-                            <StackPanel Orientation="Horizontal">
-                                <icon:PackIconMaterial Kind="TableEdit" Style="{StaticResource navicon}"  Tag="{StaticResource DisabledColor}"/>
-                                <TextBlock Text="Home" Style="{StaticResource navtext}" />
-                            </StackPanel>
-                        </RadioButton>-->
-
+                    
                     </StackPanel>
 
 

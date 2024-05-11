@@ -79,9 +79,9 @@ namespace Report_Generator_EntityFramework.Migrations
 
             modelBuilder.Entity("Report_Generator_Domain.Models.ConcreteDensityModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Dato")
                         .HasColumnType("TEXT");
@@ -94,6 +94,9 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.Property<double>("MasseIVannbad")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("Prøvenr")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Pw")
                         .HasColumnType("REAL");
@@ -142,6 +145,9 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<string>("Overflatetilstand")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Prøvenr")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Prøvetykke")
                         .HasColumnType("REAL");
@@ -192,6 +198,9 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<string>("OverflateUK")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Prøvenr")
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("ReportModelId")
                         .HasColumnType("TEXT");
@@ -295,6 +304,9 @@ namespace Report_Generator_EntityFramework.Migrations
 
                     b.Property<decimal>("PalastHastighetMPas")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Prøvenr")
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("ReportModelId")
                         .HasColumnType("TEXT");

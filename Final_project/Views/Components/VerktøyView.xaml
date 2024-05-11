@@ -18,7 +18,6 @@
 
         <components:TextBoxView Grid.Column="0" Text="{Binding Name}" Watermark="Benyttet utstyr:"  Margin="0,0,10,0"/>
         
-        <!-- Bind Button Command to a ViewModel command -->
         <Button Grid.Column="1" Command="{Binding SubmitCommand}" Margin="10 30 0 0">
             <StackPanel Orientation="Horizontal">
                 <icon:PackIconMaterial Kind="send" Height="20" Width="20" Foreground="{StaticResource IconColor1}"/>

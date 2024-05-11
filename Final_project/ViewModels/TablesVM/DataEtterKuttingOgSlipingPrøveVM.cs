@@ -9,22 +9,21 @@ namespace Final_project.ViewModels.TablesVM
 {
     public partial class DataEtterKuttingOgSlipingPrøveVM : ObservableObject
     {
+
+        private Guid id;
+
+
         [ObservableProperty]
-        private Guid prøvenr;
-
         private DateTime _ivannbadDato;
-        public DateTime IvannbadDato
-        {
-            get => _ivannbadDato.Date;
-            set => _ivannbadDato = value.Date;
-        }
 
+
+        [ObservableProperty]
         private DateTime _testDato;
-        public DateTime TestDato
-        {
-            get => _testDato.Date;
-            set => _testDato = value.Date;
-        }
+
+
+
+        [ObservableProperty]
+        private int prøvenr;
 
         [ObservableProperty]
         private string overflatetilstand;
@@ -73,9 +72,7 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (dataEtterKuttingOgSlipingModel != null)
             {
-                SetProperty(ref prøvenr, dataEtterKuttingOgSlipingModel.Id);
-                //SetProperty(ref TVannbadDato, dataEtterKuttingOgSlipingModel.IvannbadDato);
-                //SetProperty(ref TestDato, dataEtterKuttingOgSlipingModel.TestDato);
+                SetProperty(ref prøvenr, dataEtterKuttingOgSlipingModel.Prøvenr);
                 SetProperty(ref overflatetilstand, dataEtterKuttingOgSlipingModel.Overflatetilstand);
                 SetProperty(ref dm, dataEtterKuttingOgSlipingModel.Dm);
                 SetProperty(ref prøvetykke, dataEtterKuttingOgSlipingModel.Prøvetykke);
@@ -94,9 +91,9 @@ namespace Final_project.ViewModels.TablesVM
         public virtual void Submit()
         {
 
-            // Create a new entry model using the current state of the ViewModel
             var newEntry = new DataEtterKuttingOgSlipingModel(
               Guid.NewGuid(),
+              this.prøvenr,
               this.IvannbadDato.Date,
               this.TestDato.Date,
               this.overflatetilstand,
@@ -114,22 +111,15 @@ namespace Final_project.ViewModels.TablesVM
             );
 
 
-            // Create a new instance of DataFraOppdragsgiverPrøverVM for the new entry
             var newPrøveVM = new DataEtterKuttingOgSlipingPrøveVM(newEntry)
             {
-                // If other properties need to be set directly, set them here
-                // Additional properties set up could be placed here if needed
+                // If other properties set here if it needed to be set directly, 
             };
 
-            // Add the new Prøve VM to the collection in DataFraOppdragsgiverTableVM
             _dataEtterSlipingTableVM.Prøver.Add(newPrøveVM);
 
 
-
             _modalNavigation.Close();
-            // Optionally, handle modal navigation or UI feedback
-            // _modalNavigation.CloseCurrent(); // Close the modal if that's part of your application flow
-            // You may want to handle additional UI updates or confirmations here
         }
 
         [RelayCommand]
@@ -139,10 +129,6 @@ namespace Final_project.ViewModels.TablesVM
             _modalNavigation.Close();
 
         }
-
-
-
-
 
     }
 

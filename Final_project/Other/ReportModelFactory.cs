@@ -13,7 +13,7 @@ namespace Final_project.Other
                 throw new ArgumentNullException(nameof(reportForm), "ReportFormVM cannot be null.");
             }
 
-            // If reportId is not provided, generate a new GUID
+            // If reportId is not provided then generate a new GUID
             Guid id = reportId ?? Guid.NewGuid();
 
 
@@ -121,6 +121,7 @@ namespace Final_project.Other
                     {
                         DataFraOppdragsgiverPrøverModel prøverModel = new DataFraOppdragsgiverPrøverModel(
                             Guid.NewGuid(),
+                            prøve.Prøvenr,
                             prøve.Datomottatt,
                             prøve.Overdekningoppgitt,
                             prøve.Dmax,
@@ -143,6 +144,7 @@ namespace Final_project.Other
                     {
                         DataEtterKuttingOgSlipingModel prøverModel = new DataEtterKuttingOgSlipingModel(
                             Guid.NewGuid(),
+                            prøve.Prøvenr,
                             prøve.IvannbadDato,
                             prøve.TestDato,
                             prøve.Overflatetilstand,
@@ -168,6 +170,7 @@ namespace Final_project.Other
                     if (prøve != null)
                     {
                         ConcreteDensityModel concreteDensityModel = new ConcreteDensityModel(
+                            Guid.NewGuid(),
                             prøve.Provnr,
                             prøve.Dato,
                             prøve.MasseILuft,
@@ -190,6 +193,7 @@ namespace Final_project.Other
                     {
                         TrykktestingModel trykktestingModel = new TrykktestingModel(
                             Guid.NewGuid(),
+                            trykktesting.Prøvenr,
                             trykktesting.TrykkflateMm,
                             trykktesting.PalastHastighetMPas,
                             trykktesting.TrykkfasthetMPa,

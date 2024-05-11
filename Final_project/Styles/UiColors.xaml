@@ -3,13 +3,11 @@
 
 
 
-    <!-- window border color -->
     <Color x:Key="winBorColor1">#332604</Color>
     <Color x:Key="winBorColor2">#806c38</Color>
     <Color x:Key="winBorColor3">#e3d8ba</Color>
 
 
-    <!-- background color color -->
     <Color x:Key="primarybackgroundC1">#07486e</Color>
     <Color x:Key="primarybackgroundC2">#041a26</Color>
 
@@ -24,7 +22,6 @@
     <Color x:Key="textcolor5">#ffc0cb</Color>
     <Color x:Key="textcolor6">#ffd700</Color>
 
-    <!-- Text Colors as SolidColorBrush -->
     <SolidColorBrush x:Key="TextColor1" Color="{StaticResource textcolor1}" />
     <SolidColorBrush x:Key="TextColor2" Color="{StaticResource textcolor2}" />
     <SolidColorBrush x:Key="TextColor3" Color="{StaticResource textcolor3}" />
@@ -32,7 +29,6 @@
     <SolidColorBrush x:Key="TextColor5" Color="{StaticResource textcolor5}" />
     <SolidColorBrush x:Key="TextColor6" Color="{StaticResource textcolor6}" />
 
-    <!-- Icon Colors -->
     <Color x:Key="iconcolor1">#71eba8</Color>
     <Color x:Key="iconcolor2">#abdec2</Color>
     <Color x:Key="iconcolor3">#23c3eb</Color>
@@ -40,7 +36,6 @@
     <Color x:Key="iconcolor5">#ffc0cb</Color>
     <Color x:Key="iconcolor6">#ffd700</Color>
 
-    <!-- Icon Colors as SolidColorBrush -->
     <SolidColorBrush x:Key="IconColor1" Color="{StaticResource iconcolor1}" />
     <SolidColorBrush x:Key="IconColor2" Color="{StaticResource iconcolor2}" />
     <SolidColorBrush x:Key="IconColor3" Color="{StaticResource iconcolor3}" />
@@ -60,7 +55,6 @@
 
     </LinearGradientBrush>
 
-    <!-- Gradient for the second TextBox -->
     <LinearGradientBrush x:Key="LinearGradientBrush2" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Color="#14121c" Offset="0"/>
         <GradientStop Color="{StaticResource SecondarybackgroundC1}" Offset="0.4"/>
@@ -76,30 +70,20 @@
         <GradientStop Color="#FF212121" Offset="1"/>
     </LinearGradientBrush>
 
-    <!-- Gradient for the third TextBox/DatePicker -->
     <LinearGradientBrush x:Key="LinearGradientBrush3" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Color="#FCEE21" Offset="0"/>
         <GradientStop Color="#F79D00" Offset="1"/>
     </LinearGradientBrush>
 
-    <!-- Color Definitions -->
     <Color x:Key="PrimaryColor">#FF6200EE</Color>
-    <!-- Example: Deep Purple -->
     <Color x:Key="SecondaryColor">#FF6200EE</Color>
-    <!-- Example: Teal -->
     <Color x:Key="BackgroundColor">#FFF3F4F6</Color>
-    <!-- Example: Light Gray -->
     <Color x:Key="ForegroundColor">#FF212121</Color>
-    <!-- Example: Dark Gray -->
     <Color x:Key="AccentColor">#FFFFC107</Color>
-    <!-- Example: Amber -->
     <Color x:Key="DisabledColor">#FFBDBDBD</Color>
-    <!-- Example: Grey -->
     <Color x:Key="AddActionColor">#FF4CA0</Color>
    
     <Color x:Key="deleteactioncolor">#FF4CA0</Color>
-    <!-- Example: Green -->
-    <!-- Solid Color Brushes -->
     <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}" />
     <SolidColorBrush x:Key="SecondaryColorBrush" Color="{StaticResource SecondaryColor}" />
     <SolidColorBrush x:Key="BackgroundColorBrush" Color="{StaticResource BackgroundColor}" />
@@ -107,98 +91,73 @@
     <SolidColorBrush x:Key="AccentColorBrush" Color="{StaticResource AccentColor}" />
     <SolidColorBrush x:Key="DisabledColorBrush" Color="{StaticResource DisabledColor}" />
 
-    <!-- Button Backgrounds -->
     <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource PrimaryColor}" />
     <SolidColorBrush x:Key="ButtonHoverBackgroundBrush" Color="{StaticResource SecondaryColor}" />
 
-    <!-- Button Foreground (Text) -->
     <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{StaticResource ForegroundColor}" />
 
-    <!-- Application Background -->
     <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource BackgroundColor}" />
 
-
-    <!-- Highlight Brush -->
     <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource AccentColor}" />
 
-    <!-- Disabled State for Controls -->
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="{StaticResource DisabledColor}" />
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="{StaticResource BackgroundColor}" />
 
     <SolidColorBrush x:Key="AddActionButtonBrush" Color="{StaticResource AddActionColor}" />
     <SolidColorBrush x:Key="DeleteActionButtonBrush" Color="{StaticResource deleteactioncolor}" />
 
-    <!-- window border color -->
-
-
-    <!-- Light Blue Shades -->
     <Color x:Key="LightBlue100">#B3E5FC</Color>
     <Color x:Key="LightBlue200">#81D4FA</Color>
     <Color x:Key="LightBlue300">#4FC3F7</Color>
 
-    <!-- Purple Shades -->
     <Color x:Key="Purple100">#CE93D8</Color>
     <Color x:Key="Purple200">#BA68C8</Color>
     <Color x:Key="Purple300">#AB47BC</Color>
 
-    <!-- Green Shades -->
     <Color x:Key="Green100">#A5D6A7</Color>
     <Color x:Key="Green200">#81C784</Color>
     <Color x:Key="Green300">#66BB6A</Color>
 
-    <!-- Yellow Shades -->
     <Color x:Key="Yellow100">#FFF59D</Color>
     <Color x:Key="Yellow200">#FFEE58</Color>
     <Color x:Key="Yellow300">#FFEB3B</Color>
 
-    <!-- Orange Shades -->
     <Color x:Key="Orange100">#FFCC80</Color>
     <Color x:Key="Orange200">#FFB74D</Color>
     <Color x:Key="Orange300">#FFA726</Color>
 
-    <!-- Red Shades -->
     <Color x:Key="Red100">#EF9A9A</Color>
     <Color x:Key="Red200">#E57373</Color>
     <Color x:Key="Red300">#EF5350</Color>
 
-    <!-- Gray Shades -->
     <Color x:Key="Gray100">#E0E0E0</Color>
     <Color x:Key="Gray200">#BDBDBD</Color>
     <Color x:Key="Gray300">#9E9E9E</Color>
 
-    <!-- Cyan Shades -->
     <Color x:Key="Cyan100">#80DEEA</Color>
     <Color x:Key="Cyan200">#4DD0E1</Color>
     <Color x:Key="Cyan300">#26C6DA</Color>
 
-    <!-- Pink Shades -->
     <Color x:Key="Pink100">#F48FB1</Color>
     <Color x:Key="Pink200">#F06292</Color>
     <Color x:Key="Pink300">#EC407A</Color>
 
-    <!-- Deep Blue Shades -->
     <Color x:Key="DeepBlue100">#9FA8DA</Color>
     <Color x:Key="DeepBlue200">#7986CB</Color>
     <Color x:Key="DeepBlue300">#5C6BC0</Color>
 
-
-
-    <!-- Red Shades -->
     <Color x:Key="RedShade100">#FFCDD2</Color>
     <Color x:Key="RedShade200">#EF9A9A</Color>
     <Color x:Key="RedShade300">#E57373</Color>
 
-    <!-- Blue Shades -->
     <Color x:Key="BlueShade100">#BBDEFB</Color>
     <Color x:Key="BlueShade200">#64B5F6</Color>
     <Color x:Key="BlueShade300">#42A5F5</Color>
 
-    <!-- Black Shades -->
     <Color x:Key="BlackShade100">#E0E0E0</Color>
     <Color x:Key="BlackShade200">#BDBDBD</Color>
     <Color x:Key="BlackShade300">#9E9E9E</Color>
 
-    <!-- Green Shades -->
     <Color x:Key="GreenShade100">#C8E6C9</Color>
     <Color x:Key="GreenShade200">#A5D6A7</Color>
     <Color x:Key="GreenShade300">#81C784</Color>

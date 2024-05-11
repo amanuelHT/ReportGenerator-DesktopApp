@@ -13,7 +13,6 @@ namespace Final_project.Converters
                 return boolValue ? Visibility.Visible : Visibility.Collapsed;
             }
 
-            // Handle the case where value is not a boolean
             return DependencyProperty.UnsetValue;
         }
 

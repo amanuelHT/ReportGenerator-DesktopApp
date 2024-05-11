@@ -34,10 +34,8 @@ namespace Final_project.Commands
         {
             try
             {
-                // Create an instance of the AddReportVM
                 AddReportVM addReportVM = new AddReportVM(_modalWindow, _modalNavigation, _reportStore, _navigationStore);
 
-                // Show the window
                 _modalNavigation.ShowReportWindow(new AddReportView { DataContext = addReportVM }, "Add Report");
             }
             catch (Exception ex)

@@ -15,7 +15,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Header Grid -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -37,7 +36,6 @@
             
         </Grid>
 
-        <!-- DataGrid -->
         <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="prøvenr" Binding="{Binding prøvenr}" />

@@ -14,7 +14,7 @@ namespace Report_Generator_Domain.Models
 
         public TestUtførtAvModel()
         {
-            // Parameterless constructor required by Entity Framework
+            
         }
 
         public TestUtførtAvModel(Guid id, string name, string department, DateTime date, string position, Guid reportModelID)
