@@ -32,6 +32,8 @@ namespace Final_project.ViewModels
 
 
         public ObservableCollection<ReportImageModel> ReportImages { get; private set; }
+        public ObservableCollection<TestModel> TestModels { get; private set; }
+        public ObservableCollection<verktøyModel> VerktøyModels { get; private set; }
 
         public ObservableCollection<TrykktestingModel> TrykktestingModels { get; private set; }
         public ObservableCollection<DataEtterKuttingOgSlipingModel> DataEtterKuttingOgSlipingModels { get; private set; }
@@ -67,8 +69,15 @@ namespace Final_project.ViewModels
                 ReportImages = new ObservableCollection<ReportImageModel>(images);
                 OnPropertyChanged(nameof(ReportImages));
 
+                TestModels = new ObservableCollection<TestModel>(tests);
+                OnPropertyChanged(nameof(TestModels));
+
+                VerktøyModels = new ObservableCollection<verktøyModel>(verktøyer);
+                OnPropertyChanged(nameof(VerktøyModels));
+
 
                 KontrollertAvførtAvModels = KontrollertAvførtAvModel;
+                OnPropertyChanged(nameof(KontrollertAvførtAvModels));
 
 
                 TestUtførtAvModels = testUtførtAvModel;

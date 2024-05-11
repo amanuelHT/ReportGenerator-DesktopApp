@@ -182,6 +182,66 @@ namespace Final_project.Resources
 {
 }
 
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
+namespace Final_project.Resources
+{
+}
+
 namespace Final_project.ReportResources
 {
 }

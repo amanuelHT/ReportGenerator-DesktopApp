@@ -20,7 +20,7 @@ namespace Report_Generator_EntityFramework.Migrations
                     Status = table.Column<bool>(type: "INTEGER", nullable: false),
                     Kunde = table.Column<string>(type: "TEXT", nullable: false),
                     AvvikFraStandarder = table.Column<string>(type: "TEXT", nullable: false),
-                    MotattDato = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    MotattDato = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Kommentarer = table.Column<string>(type: "TEXT", nullable: false),
                     UiaRegnr = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -59,8 +59,8 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    IvannbadDato = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    TestDato = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    IvannbadDato = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TestDato = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Overflatetilstand = table.Column<string>(type: "TEXT", nullable: false),
                     Dm = table.Column<double>(type: "REAL", nullable: false),
                     Prøvetykke = table.Column<double>(type: "REAL", nullable: false),
@@ -88,7 +88,7 @@ namespace Report_Generator_EntityFramework.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Datomottatt = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    Datomottatt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Overdekningoppgitt = table.Column<string>(type: "TEXT", nullable: false),
                     Dmax = table.Column<string>(type: "TEXT", nullable: false),
                     KjerneImax = table.Column<int>(type: "INTEGER", nullable: false),

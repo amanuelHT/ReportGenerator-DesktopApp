@@ -56,7 +56,7 @@ namespace Final_project.Commands
             _dataFraOppdragsgiverTableVM.Prøver.Add(newPrøveVM);
 
             // Optionally, clear or reset the ViewModel's properties if needed for a new entry
-            _viewModel.Datomottatt = DateOnly.MaxValue; // Reset to current time or a default value
+            _viewModel.Datomottatt = DateTime.MaxValue; // Reset to current time or a default value
             _viewModel.Overdekningoppgitt = "";
             _viewModel.Dmax = "";
             _viewModel.KjerneImax = 0;

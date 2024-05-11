@@ -56,7 +56,7 @@ namespace Final_project.ViewModels
         private string _avvikFraStandarder;
 
         [ObservableProperty]
-        private DateOnly _motattDato;
+        private DateTime _motattDato;
 
         [ObservableProperty]
         private string _kommentarer;

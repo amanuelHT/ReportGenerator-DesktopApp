@@ -7,7 +7,7 @@ public class DateOnlyToStringConverter : IValueConverter
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is DateOnly dateOnly)
+        if (value is DateTime dateOnly)
         {
             return dateOnly.ToString(DateFormat);
         }
@@ -16,11 +16,11 @@ public class DateOnlyToStringConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is string dateStr && DateOnly.TryParseExact(dateStr, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly result))
+        if (value is string dateStr && DateTime.TryParseExact(dateStr, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result))
         {
             return result;
         }
 
-        return DateOnly.MinValue;
+        return DateTime.MinValue;
     }
 }

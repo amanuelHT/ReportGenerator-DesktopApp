@@ -59,7 +59,7 @@ namespace Report_Generator_EntityFramework.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("MotattDato")
+                    b.Property<DateTime>("MotattDato")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
@@ -133,7 +133,7 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<double>("FørSliping")
                         .HasColumnType("REAL");
 
-                    b.Property<DateOnly>("IvannbadDato")
+                    b.Property<DateTime>("IvannbadDato")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("MmTilTopp")
@@ -149,7 +149,7 @@ namespace Report_Generator_EntityFramework.Migrations
                     b.Property<Guid>("ReportModelId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("TestDato")
+                    b.Property<DateTime>("TestDato")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("TrykkfasthetMPa")
@@ -168,7 +168,7 @@ namespace Report_Generator_EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("Datomottatt")
+                    b.Property<DateTime>("Datomottatt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Dmax")

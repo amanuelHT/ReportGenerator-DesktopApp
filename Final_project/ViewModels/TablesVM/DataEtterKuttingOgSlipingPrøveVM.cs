@@ -12,11 +12,19 @@ namespace Final_project.ViewModels.TablesVM
         [ObservableProperty]
         private Guid prøvenr;
 
-        [ObservableProperty]
-        private DateOnly ivannbadDato;
+        private DateTime _ivannbadDato;
+        public DateTime IvannbadDato
+        {
+            get => _ivannbadDato.Date;
+            set => _ivannbadDato = value.Date;
+        }
 
-        [ObservableProperty]
-        private DateOnly testDato;
+        private DateTime _testDato;
+        public DateTime TestDato
+        {
+            get => _testDato.Date;
+            set => _testDato = value.Date;
+        }
 
         [ObservableProperty]
         private string overflatetilstand;
@@ -46,6 +54,9 @@ namespace Final_project.ViewModels.TablesVM
         private double mmTilTopp;
 
 
+
+
+
         private readonly ModalNavigation _modalNavigation;
         private readonly Guid _reportmodelid;
         private readonly DataEtterKuttingOgSlipingTableVM _dataEtterSlipingTableVM;
@@ -63,8 +74,8 @@ namespace Final_project.ViewModels.TablesVM
             if (dataEtterKuttingOgSlipingModel != null)
             {
                 SetProperty(ref prøvenr, dataEtterKuttingOgSlipingModel.Id);
-                SetProperty(ref ivannbadDato, dataEtterKuttingOgSlipingModel.IvannbadDato);
-                SetProperty(ref testDato, dataEtterKuttingOgSlipingModel.TestDato);
+                //SetProperty(ref TVannbadDato, dataEtterKuttingOgSlipingModel.IvannbadDato);
+                //SetProperty(ref TestDato, dataEtterKuttingOgSlipingModel.TestDato);
                 SetProperty(ref overflatetilstand, dataEtterKuttingOgSlipingModel.Overflatetilstand);
                 SetProperty(ref dm, dataEtterKuttingOgSlipingModel.Dm);
                 SetProperty(ref prøvetykke, dataEtterKuttingOgSlipingModel.Prøvetykke);
@@ -86,8 +97,8 @@ namespace Final_project.ViewModels.TablesVM
             // Create a new entry model using the current state of the ViewModel
             var newEntry = new DataEtterKuttingOgSlipingModel(
               Guid.NewGuid(),
-              this.ivannbadDato,
-              this.testDato,
+              this.IvannbadDato.Date,
+              this.TestDato.Date,
               this.overflatetilstand,
               this.dm,
                this.prøvetykke,
