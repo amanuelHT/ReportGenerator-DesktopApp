@@ -51,6 +51,8 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
             _verktøyCollectionVM.verktøyVMs.Add(newtest);
 
+            Name = "";
+
         }
     }
 }

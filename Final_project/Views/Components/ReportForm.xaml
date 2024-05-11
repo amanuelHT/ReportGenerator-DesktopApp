@@ -95,9 +95,9 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20 10 0 0">
-                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="{StaticResource TextColor1}"/>
-                        <CheckBox Content="Godkjent / ikke Godkjent" Margin="30 0 0 30" IsChecked="{Binding Status}"  Foreground="{StaticResource TextColor3}"/>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="40 10 0 0">
+                        <TextBlock FontWeight="Bold" Text="Status of the report"   Foreground="White"/>
+                        <CheckBox Content="check hvis Godkjent" Margin="60 0 0 0" IsChecked="{Binding Status}"  Foreground="White"/>
                     </StackPanel>
 
 

@@ -24,7 +24,7 @@
                     <GridViewColumn Header="Actions" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Command="{Binding DataContext.RemovePrøve, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                <Button Command="{Binding DataContext.RemovePrøveCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding}">
                                     <icon:PackIconMaterial Kind="Delete" Style="{StaticResource buttonicons}" Foreground="{StaticResource TextColor5}"/>
                                 </Button>
