@@ -23,35 +23,47 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                
+
             </Grid.RowDefinitions>
 
             <!-- Search section -->
-            <StackPanel Orientation="Horizontal" Height="35">
-                <Label Content="Search" FontSize="16" Foreground="{StaticResource IconColor5}"/>
+            <StackPanel Orientation="Horizontal" Height="35" Margin="10,0,10,10">
                 <Rectangle Width="10"/>
-                <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Width="180"/>
+                <Label Content="Search" FontSize="16" Margin="25,0,-10,0" Foreground="{StaticResource IconColor5}" Width="59"/>
+                <TextBox x:Name="SearchTextBox" Margin="9,0,0,0" TextChanged="SearchTextBox_TextChanged" Width="157" Height="34"/>
 
             </StackPanel>
 
             <!-- Upload button -->
-            <Button Style="{StaticResource buttonSecondary}" Grid.Row="1" x:Name="UploadButton" Content="Upload file" Command="{Binding UploadCommand}"  Background="LightSlateGray" Margin="0,10,0,0" />
+            <Button Style="{StaticResource buttonSecondary}" Grid.Row="3" x:Name="UploadButton" Content="Upload file" Command="{Binding UploadCommand}"  Background="LightSlateGray" Margin="0,10,0,0" />
 
             <!-- ListBox -->
-            <ListBox  Style="{StaticResource ListBoxStyle}" Grid.Row="2" x:Name="ReportsListBox" ItemsSource="{Binding Items}" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Margin="0,40,0,0" Height="200" />
-            <ListBox ItemsSource="{Binding Users}" DisplayMemberPath="UserName" Grid.Row="3" Foreground="Black"/>
+            <ListBox  Style="{StaticResource ListBoxStyle}" Grid.Row="2" x:Name="ReportsListBox" ItemsSource="{Binding Items}" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" Margin="0,10,0,0" Height="300" />
+            <ListBox ItemsSource="{Binding Users}" DisplayMemberPath="UserName" Grid.Row="1" Foreground="Black" Margin="0,5,0,0"/>
 
         </Grid>
 
         <!-- Right side -->
-        <Grid Grid.Column="1" Margin="110 0 0 0">
+        <Grid Grid.Column="1" Margin="81 0 0 0" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-3"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- PDF viewer -->
-            <PdfViewer:PdfDocumentView Width="960" x:Name="pdfViewer" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Row="1"/>
+            <PdfViewer:PdfDocumentView x:Name="pdfViewer"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Grid.Row="1"
+                           ShowScrollbar="True"/>
 
             <!-- Buttons underneath the PDF viewer -->
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">

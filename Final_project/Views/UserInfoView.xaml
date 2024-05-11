@@ -27,29 +27,46 @@
           IsReadOnly="True"
           Margin="0"
           BorderThickness="1"
-          FontSize="15"
+          FontSize="16"
           BorderBrush="#FFCCCCCC"
           GridLinesVisibility="Horizontal">
             <DataGrid.Columns>
                 <!-- Your other columns here -->
 
-                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate}" />
-                <DataGridTextColumn Header="Role" Binding="{Binding Role}" />
+                <DataGridTextColumn Header="First Name              " Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name               " Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Birth Date                    " Binding="{Binding BirthDate}" />
+                <DataGridTextColumn Header="Role                    " Binding="{Binding Role}" />
                 <!-- The Actions column with the three-dot menu -->
                 <DataGridTemplateColumn Width="Auto" Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
 
 
-                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                            <!--<Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
         CommandParameter="{Binding}">
                                 <icon:PackIconMaterial Kind="Delete"
                            Style="{StaticResource navicon}"
                            Foreground="{StaticResource DeleteActionButtonBrush}" />
-                            </Button>
+                            </Button>-->
+                            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                                <ToggleButton x:Name="btnOpenMenu" Content="..."/>
+                                <Popup IsOpen="{Binding IsChecked, ElementName=btnOpenMenu, Mode=TwoWay}"
+                               Placement="Bottom" StaysOpen="False">
 
+                                    <StackPanel>
+                                        <!--<Border Background="Blue" Padding="10"   Margin="0,0,0,15"  CornerRadius="5">
+                                            <Button Content="Edit" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>
+                                        </Border>-->
+                                        <Border Background="Red" Padding="5" CornerRadius="5">
+                                            <Button  Content="Delete" Command ="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>
+                                        </Border>
+                                    </StackPanel>
+
+                                </Popup>
+                            </StackPanel>
 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -70,8 +70,12 @@ namespace Final_project.ViewModels
 
                 Items.Clear();
                 Initialize();
+
+  
             }
         }
+
+
 
         [RelayCommand]
         private async void Delete()
