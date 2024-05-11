@@ -62,5 +62,9 @@ namespace Final_project.Views
             ReportsListBox.ItemsSource = filteredItems;
         }
 
+        private void pdfViewer_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+        {
+
+        }
     }
 }
