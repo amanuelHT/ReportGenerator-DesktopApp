@@ -5,6 +5,7 @@ using Report_Generator_Domain.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 
 namespace Final_project.ViewModels
 {
@@ -70,7 +71,7 @@ namespace Final_project.ViewModels
                     Messages.Add(message);
                 }
 
-                
+
                 OnPropertyChanged(nameof(FilteredMessages));
             }
 
@@ -97,10 +98,14 @@ namespace Final_project.ViewModels
         [RelayCommand]
         private async void SendMessage()
         {
+
             if (_kundeServiceVM.SelectedUser == null)
             {
+                MessageBox.Show("Please select a user.");
                 return;
+
             }
+
 
             try
             {

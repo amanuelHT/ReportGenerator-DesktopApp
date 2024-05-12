@@ -31,7 +31,7 @@
 
             <Button Style="{StaticResource buttonsWithIcon}" Command="{Binding AddRecordCommand}"  HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Style="{StaticResource btntext}" Text="Add New Record" Foreground="{StaticResource TextColor2}"/>
+                    <TextBlock Style="{StaticResource btntext}"  Foreground="{StaticResource TextColor2}"/>
                     <icon:PackIconMaterial Kind="TableLargePlus" Style="{StaticResource buttonicons}"  />
                 </StackPanel>
             </Button>

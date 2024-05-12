@@ -23,13 +23,10 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock FontSize="20" FontWeight="Bold" Margin="5" HorizontalAlignment="Center" 
-                           Text="{Binding Username}"/>
-                <TextBlock FontSize="16" Margin="5" HorizontalAlignment="Center" 
-                           Text="{Binding Email}"/>
-                <Button FontSize="18" Content="Go to Settings" Margin="20,10" Padding="10" 
-                        Command="{Binding NavigateSettingsCommand}" 
-                        Background="#007ACC" Foreground="White" BorderBrush="Bisque" 
-                        HorizontalAlignment="Stretch"/>
+                           Text="{Binding Username}" Foreground="Black"/>
+                <!--<TextBlock FontSize="16" Margin="5" HorizontalAlignment="Center" Foreground="Black"
+                           Text="{Binding Email}"/>-->
+          
             </StackPanel>
         </Border>
     </Grid>

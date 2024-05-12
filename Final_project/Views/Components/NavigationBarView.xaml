@@ -35,7 +35,7 @@
 
         <RadioButton Style="{StaticResource navbuttons}"  Command="{Binding NavigateReportViewerCommand}">
             <StackPanel Orientation="Horizontal">
-                    <icon:PackIconMaterial Kind="FileFind" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
+                    <icon:PackIconMaterial Kind="FileCad" Style="{StaticResource navicon}"  Tag="{StaticResource SecondaryColor}"/>
                 <TextBlock Text="Generate report" Style="{StaticResource navtext}" />
             </StackPanel>
         </RadioButton>
