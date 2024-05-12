@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Edit Report"  Style="{StaticResource PageHeader}"/>
+        <TextBlock Grid.Row="0" Text="Edit Report"  Style="{StaticResource PageHeader}" Background="Transparent"/>
 
         <components:ReportForm 
             Grid.Row="1" 

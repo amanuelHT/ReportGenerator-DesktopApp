@@ -105,7 +105,13 @@ namespace Final_project.ViewModels
 
 
             _modalNavigation.CurrentViewChanged += ModalNavigation_CurrentViewChanged;
+
+
+            MotattDato = DateTime.Now;
         }
+
+
+
 
         private void ModalNavigation_CurrentViewChanged()
         {
@@ -124,9 +130,9 @@ namespace Final_project.ViewModels
             if (disposing)
             {
                 _modalNavigation.CurrentViewChanged -= ModalNavigation_CurrentViewChanged;
-                
+
             }
-            
+
         }
     }
 }

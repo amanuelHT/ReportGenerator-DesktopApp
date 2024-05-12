@@ -46,11 +46,13 @@ namespace Final_project.ViewModels.TablesVM
             ModalNavigation modalNavigation,
             Guid reportid,
             DataFraOppdragsgiverTableVM dataFraOppdragsgiverTableVM)
+
         {
 
             _modalNavigation = modalNavigation;
             _reportModelId = reportid;
             _dataFraOppdragsgiverTableVM = dataFraOppdragsgiverTableVM;
+            Datomottatt = DateTime.Now; ;
         }
 
         // Constructor to populate from an existing model
@@ -59,7 +61,7 @@ namespace Final_project.ViewModels.TablesVM
             if (model != null)
             {
                 Prøvenr = model.Prøvenr;
-                Datomottatt = model.Datomottatt;
+                Datomottatt = model.Datomottatt; ;
                 Overdekningoppgitt = model.Overdekningoppgitt;
                 Dmax = model.Dmax;
                 KjerneImax = model.KjerneImax;

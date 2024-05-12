@@ -14,11 +14,11 @@ namespace Final_project.ViewModels.TablesVM
 
 
         [ObservableProperty]
-        private DateTime _ivannbadDato;
+        private DateTime ivannbadDato;
 
 
         [ObservableProperty]
-        private DateTime _testDato;
+        private DateTime testDato;
 
 
 
@@ -65,6 +65,8 @@ namespace Final_project.ViewModels.TablesVM
             _modalNavigation = modalNavigation;
             _reportmodelid = reportmodelid;
             _dataEtterSlipingTableVM = dataEtterKuttingOgSlipingTableVM;
+            testDato = DateTime.Now;
+            ivannbadDato = DateTime.Now;
         }
 
 
@@ -72,6 +74,9 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (dataEtterKuttingOgSlipingModel != null)
             {
+
+                testDato = dataEtterKuttingOgSlipingModel.TestDato;
+                ivannbadDato = dataEtterKuttingOgSlipingModel.IvannbadDato;
                 prøvenr = dataEtterKuttingOgSlipingModel.Prøvenr;
                 overflatetilstand = dataEtterKuttingOgSlipingModel.Overflatetilstand;
                 dm = dataEtterKuttingOgSlipingModel.Dm;

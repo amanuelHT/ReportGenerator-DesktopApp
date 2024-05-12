@@ -149,9 +149,9 @@ namespace Final_project.Other
 
             if (validationErrors.Any())
             {
-                string errorMessage = "Valideringsfeil:" + Environment.NewLine +
+                string errorMessage = "Feil eller mangler:" + Environment.NewLine +
                                       string.Join(Environment.NewLine, validationErrors);
-                MessageBox.Show(errorMessage, "Valideringsfeil", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(errorMessage, "FYLLE UT ALLE FELTER:", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

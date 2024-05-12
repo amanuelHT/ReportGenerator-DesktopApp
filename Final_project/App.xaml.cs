@@ -95,7 +95,8 @@ namespace Final_project
                  //if singlton we are going to get a new instance every time venen though disposed
 
                  service.AddTransient<RoleManagementVM>(s =>
-                       new RoleManagementVM(s.GetRequiredService<FirebaseAuthProvider>()));
+                       new RoleManagementVM(s.GetRequiredService<FirebaseAuthProvider>(),
+                       UserInfoNavigationService(s)));
 
                  service.AddTransient<ResetPasswordVM>(s =>
                        new ResetPasswordVM(s.GetRequiredService<FirebaseAuthProvider>(),

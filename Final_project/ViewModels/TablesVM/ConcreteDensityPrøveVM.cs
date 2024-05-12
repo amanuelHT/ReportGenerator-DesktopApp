@@ -46,6 +46,7 @@ namespace Final_project.ViewModels.TablesVM
             _modalNavigation = modalNavigation;
             _reportModelId = reportid;
             _concreteDensityTableVM = concreteDensityTableVM;
+            Dato = DateTime.Now;
         }
 
         public ConcreteDensityPrøveVM(ConcreteDensityModel model)

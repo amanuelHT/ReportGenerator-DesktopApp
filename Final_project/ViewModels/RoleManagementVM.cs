@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Final_project.Commands;
+using Final_project.Service;
 using Firebase.Auth;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -11,10 +12,12 @@ namespace Final_project.ViewModels
     {
 
 
-        public RoleManagementVM(FirebaseAuthProvider firebaseAuthProvider)
+        public ICommand NavigateUserinfo { get; }
+        public RoleManagementVM(FirebaseAuthProvider firebaseAuthProvider, INavigationService navigationservice)
         {
             SaveCommand = new RoleManagementCommand(this, firebaseAuthProvider);
             CancelCommand = new RelayCommand(_ => ClearInputs());
+            NavigateUserinfo = new NavigateCommand(navigationservice);
 
         }
 
@@ -26,111 +29,29 @@ namespace Final_project.ViewModels
         private string _lastName;
 
 
-
+        [ObservableProperty]
         private DateTime? _birthDate;
-        public DateTime? BirthDate
-        {
-            get => _birthDate;
-            set
-            {
-                if (_birthDate != value)
-                {
-                    _birthDate = value;
-                    OnPropertyChanged(nameof(BirthDate));
-                }
-            }
-        }
 
-
+        [ObservableProperty]
         private string _selectedRole;
-        public string SelectedRole
-        {
-            get => _selectedRole;
-            set
-            {
-                if (_selectedRole != value)
-                {
-                    _selectedRole = value;
-                    OnPropertyChanged(nameof(SelectedRole));
-                }
-            }
-        }
 
+        [ObservableProperty]
         private string _email;
-        public string Email
-        {
-            get => _email;
-            set
-            {
-                if (_email != value)
-                {
-                    _email = value;
-                    OnPropertyChanged(nameof(Email));
-                }
-            }
-        }
 
+        [ObservableProperty]
         private string _password;
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
 
 
 
-
-
+        [ObservableProperty]
         private string _repeatPassword;
 
-        public string RepeatPassword
-        {
-            get => _repeatPassword;
-            set
-            {
-                if (_repeatPassword != value)
-                {
-                    _repeatPassword = value;
-                    OnPropertyChanged(nameof(RepeatPassword));
-                   
-                }
-            }
-        }
 
-     
-
+        [ObservableProperty]
         private string _message;
-        private Brush _messageBrush = Brushes.Black; 
 
-        public string Message
-        {
-            get => _message;
-            set
-            {
-                if (_message != value)
-                {
-                    _message = value;
-                    OnPropertyChanged(nameof(Message));
-                }
-            }
-        }
-
-        public Brush MessageBrush
-        {
-            get => _messageBrush;
-            set
-            {
-                if (_messageBrush != value)
-                {
-                    _messageBrush = value;
-                    OnPropertyChanged(nameof(MessageBrush));
-                }
-            }
-        }
+        [ObservableProperty]
+        public Brush _messageBrush;
 
 
         public void SetMessage(string message, bool isSuccess)
@@ -140,34 +61,12 @@ namespace Final_project.ViewModels
         }
 
 
+        [ObservableProperty]
         private ICommand _saveCommand;
-        public ICommand SaveCommand
-        {
-            get => _saveCommand;
-            set
-            {
-                if (_saveCommand != value)
-                {
-                    _saveCommand = value;
-                    OnPropertyChanged(nameof(SaveCommand));
-                }
-            }
-        }
 
-
+        [ObservableProperty]
         private ICommand _cancelCommand;
-        public ICommand CancelCommand
-        {
-            get => _cancelCommand;
-            set
-            {
-                if (_cancelCommand != value)
-                {
-                    _cancelCommand = value;
-                    OnPropertyChanged(nameof(CancelCommand));
-                }
-            }
-        }
+
 
 
 
@@ -176,13 +75,16 @@ namespace Final_project.ViewModels
         {
             FirstName = string.Empty;
             LastName = string.Empty;
-            BirthDate = null; 
+            BirthDate = null;
             Email = string.Empty;
             Password = string.Empty;
             RepeatPassword = string.Empty;
             SelectedRole = string.Empty;
-            Message = string.Empty; 
+            Message = string.Empty;
         }
+
+
+
 
 
     }

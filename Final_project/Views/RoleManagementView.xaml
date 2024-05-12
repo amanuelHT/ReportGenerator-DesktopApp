@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Final_project.Views"
-             xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM" xmlns:components1="clr-namespace:Final_project.Components"
+             xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM" xmlns:components1="clr-namespace:Final_project.Components" xmlns:viewmodels="clr-namespace:Final_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:RoleManagementVM}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="400">
     <Border Background="White" Padding="20">
@@ -14,6 +14,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
+
+            <Button Command="{Binding NavigateUserinfo}" Content="back" Grid.Row="0" Background="Gray" FontSize="13" Margin="0,0,250,5" Width="53" Height="29"  />
+
+
             <Grid Grid.Row="1" Width="310" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -64,7 +69,7 @@
      
             </Grid>
          
-            <TextBlock Grid.Row="8" Grid.ColumnSpan="2"
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
                       Text="{Binding Message}" 
                       Foreground="{Binding MessageBrush}" 
                       FontWeight="Bold" 

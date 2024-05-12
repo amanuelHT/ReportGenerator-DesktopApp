@@ -11,12 +11,6 @@ namespace Final_project.ViewModels.ReportComponentsVM
         private readonly ReportFormVM _reportFormVM;
         TestUtførtAvVM testUtførtAvVMData { get; set; }
 
-        public TestUtførtAvVM(Guid reportModelid, ReportFormVM reportFormVM)
-        {
-            _reportModelid = reportModelid;
-            reportFormVM = reportFormVM;
-        }
-
         [ObservableProperty]
         private string _name;
 
@@ -28,6 +22,17 @@ namespace Final_project.ViewModels.ReportComponentsVM
 
         [ObservableProperty]
         private string _department;
+
+
+
+
+
+        public TestUtførtAvVM(Guid reportModelid, ReportFormVM reportFormVM)
+        {
+            _reportModelid = reportModelid;
+            _reportFormVM = reportFormVM;
+            _date = DateTime.Now;
+        }
 
         public TestUtførtAvVM(TestUtførtAvModel model)
         {

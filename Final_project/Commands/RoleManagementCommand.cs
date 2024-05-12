@@ -18,7 +18,7 @@ public class RoleManagementCommand : AsyncCommandBase
 
     public override async Task ExecuteAsync(object parameter)
     {
-      
+
 
         if (_viewModel.Password != _viewModel.RepeatPassword)
         {
@@ -35,7 +35,7 @@ public class RoleManagementCommand : AsyncCommandBase
 
         try
         {
-           
+
             var authLink = await _firebaseAuthProvider.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
 
             var additionalUserData = new
@@ -50,6 +50,7 @@ public class RoleManagementCommand : AsyncCommandBase
             await docRef.SetAsync(additionalUserData);
 
             _viewModel.SetMessage("Registration successful.", true);
+
         }
         catch (FirebaseAuthException faex) when (faex.Reason == AuthErrorReason.EmailExists)
         {

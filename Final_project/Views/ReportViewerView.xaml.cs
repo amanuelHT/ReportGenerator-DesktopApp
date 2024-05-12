@@ -12,7 +12,7 @@ namespace Final_project.Views
         public ReportViewerView()
         {
             InitializeComponent();
-            this.Loaded += OnGenerateReportClick;
+
         }
 
         private void OnGenerateReportClick(object sender, RoutedEventArgs e)
@@ -30,9 +30,24 @@ namespace Final_project.Views
                 this.reportViewer.DataSources.Clear();
 
 
+                if (ReportViewerViewModel.SelectedReportData == null)
+                {
+
+                    MessageBox.Show("Vennligst velg en rapport for å vise.", "Rapportvalg kreves", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                    return;
+                }
+
+
                 // raport data
                 if (ReportViewerViewModel.SelectedReportData != null)
                 {
+
+
+
+
+
+
                     DataTable reportDataTable = x.CreateReportDataTable(ReportViewerViewModel.SelectedReportData);
                     this.reportViewer.DataSources.Add(new ReportDataSource { Name = "ReportModels", Value = reportDataTable });
 
