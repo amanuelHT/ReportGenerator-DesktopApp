@@ -28,7 +28,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <components:TextBoxView Grid.Row="0" Text="{Binding Provnr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr:" FontWeight="Bold" Margin="5"/>
+            <components:TextBoxView Grid.Row="0" Text="{Binding Prøvenr, UpdateSourceTrigger=PropertyChanged}" Watermark="Prøvenr" FontWeight="Bold" Margin="5"/>
 
             <components:TextBoxView Grid.Row="1" Text="{Binding Dato, Mode=TwoWay}" Watermark="Dato mottatt:" FontWeight="Bold" Margin="5"/>
 

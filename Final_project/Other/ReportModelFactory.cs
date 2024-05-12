@@ -171,7 +171,7 @@ namespace Final_project.Other
                     {
                         ConcreteDensityModel concreteDensityModel = new ConcreteDensityModel(
                             Guid.NewGuid(),
-                            prøve.Provnr,
+                            prøve.Prøvenr,
                             prøve.Dato,
                             prøve.MasseILuft,
                             prøve.MasseIVannbad,

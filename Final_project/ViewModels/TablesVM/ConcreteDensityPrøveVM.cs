@@ -14,8 +14,10 @@ namespace Final_project.ViewModels.TablesVM
         private Guid Id;
         private readonly ConcreteDensityTableVM _concreteDensityTableVM;
 
+
         [ObservableProperty]
-        private int provnr;
+        private int prøvenr;
+
 
         [ObservableProperty]
         private DateTime dato;
@@ -50,8 +52,8 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (model != null)
             {
-                Id = model.Id;
-                Provnr = model.Prøvenr;
+
+                Prøvenr = model.Prøvenr;
                 Dato = model.Dato;
                 MasseILuft = model.MasseILuft;
                 MasseIVannbad = model.MasseIVannbad;
@@ -71,14 +73,14 @@ namespace Final_project.ViewModels.TablesVM
 
             var newEntry = new ConcreteDensityModel(
 
-                Id,
-                Provnr,
-                Dato,
-                MasseILuft,
-                MasseIVannbad,
-                Pw,
-                V,
-                Densitet,
+                this.Id,
+                this.Prøvenr,
+                this.Dato,
+                this.MasseILuft,
+                this.MasseIVannbad,
+                this.Pw,
+                this.V,
+                this.Densitet,
                _reportModelId
             );
 

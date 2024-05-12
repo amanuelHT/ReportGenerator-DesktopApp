@@ -36,8 +36,8 @@
             
             <DataGrid Grid.Row="1" ItemsSource="{Binding Trykketester}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="prøvenr" Binding="{Binding prøvenr}" />
-                    <DataGridTextColumn Header="Trykkflate (mm)" Binding="{Binding TrykkflateMm}" />
+                <DataGridTextColumn Header="Prøvenr" Binding="{Binding Prøvenr}" />
+                <DataGridTextColumn Header="Trykkflate (mm)" Binding="{Binding TrykkflateMm}" />
                     <DataGridTextColumn Header="Pålasthastighet (MPas)" Binding="{Binding PalastHastighetMPas}" />
                     <DataGridTextColumn Header="Trykkfasthet (MPa)" Binding="{Binding TrykkfasthetMPa}" />
                     <DataGridTextColumn Header="Trykkfasthet NSE (MPa)" Binding="{Binding TrykkfasthetMPaNSE}" />

@@ -48,6 +48,8 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (model != null)
             {
+
+                TrykktestingId = model.Id;
                 prøvenr = model.Prøvenr;
                 TrykkflateMm = model.TrykkflateMm;
                 PalastHastighetMPas = model.PalastHastighetMPas;
