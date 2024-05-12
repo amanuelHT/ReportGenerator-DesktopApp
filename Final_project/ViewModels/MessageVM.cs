@@ -106,6 +106,11 @@ namespace Final_project.ViewModels
 
             }
 
+            if (string.IsNullOrWhiteSpace(this.Content) && string.IsNullOrWhiteSpace(this.FileName))
+            {
+                MessageBox.Show("Empty content Message ", "Empty Message", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             try
             {
@@ -138,49 +143,40 @@ namespace Final_project.ViewModels
         [RelayCommand]
         public async void Upload()
         {
-            // Create an OpenFileDialog for user to select files
-            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
 
-            // Show the OpenFileDialog and capture the response
             bool? response = openFileDialog.ShowDialog();
 
             if (response == true)
             {
                 try
                 {
-                    // Get file path and file names
                     string filepath = openFileDialog.FileName;
                     string filename = Path.GetFileName(filepath);
                     string filenameWithoutExtension = Path.GetFileNameWithoutExtension(filepath);
 
-                    // Open the file stream
                     using (var stream = File.Open(filepath, FileMode.Open))
                     {
-                        // Ensure a user is selected before attempting upload
                         if (SelectedUser == null || string.IsNullOrEmpty(SelectedUser.UserId))
                         {
                             MessageBox.Show("Please select a user before uploading.", "User Not Selected", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
 
-                        // Upload the file to Firebase storage
                         await _firebaseStore.UploadReportMessageAsync(stream, filename, SelectedUser.UserId);
 
-                        // Update the FileName property
                         FileName = filenameWithoutExtension;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Handle exceptions that may occur during file opening, reading or uploading
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                // Inform user that file selection was cancelled
                 MessageBox.Show("No file selected.", "Cancelled Operation", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
