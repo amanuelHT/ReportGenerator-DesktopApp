@@ -21,7 +21,8 @@ namespace Final_project.ViewModels
         public ICommand NavigateRoleManagement { get; }
         public ObservableCollection<UserInfo> Users { get; }
 
-        public UserInfoVM(FirebaseAuthProvider firebaseAuthProvider, INavigationService RoleManagementNavigationService, FirebaseStore firebaseStore)
+        public UserInfoVM(FirebaseAuthProvider firebaseAuthProvider, 
+            INavigationService RoleManagementNavigationService, FirebaseStore firebaseStore)
         {
             _firebaseStore = firebaseStore;
             Users = new ObservableCollection<UserInfo>();
