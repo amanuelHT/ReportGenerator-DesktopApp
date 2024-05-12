@@ -40,8 +40,8 @@
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Prøver}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Provnr" Binding="{Binding Provnr}" />
-                    <DataGridTextColumn Header="Dato" 
+                <DataGridTextColumn Header="Prøvenr" Binding="{Binding Prøvenr}" />
+                <DataGridTextColumn Header="Dato" 
                                     Binding="{Binding Dato, StringFormat={}{0:yyyy-MM-dd}}" />
                     <DataGridTextColumn Header="Masse I Luft" 
                                     Binding="{Binding MasseILuft}" />

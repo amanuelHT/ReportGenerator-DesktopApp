@@ -37,6 +37,7 @@ namespace Final_project.ViewModels
                 AvvikFraStandarder = reportModel.AvvikFraStandarder,
                 MotattDato = reportModel.MotattDato,
                 Kommentarer = reportModel.Kommentarer,
+                UiaRegnr = reportModel.UiaRegnr,
 
             };
 

@@ -72,16 +72,17 @@ namespace Final_project.ViewModels.TablesVM
         {
             if (dataEtterKuttingOgSlipingModel != null)
             {
-                SetProperty(ref prøvenr, dataEtterKuttingOgSlipingModel.Prøvenr);
-                SetProperty(ref overflatetilstand, dataEtterKuttingOgSlipingModel.Overflatetilstand);
-                SetProperty(ref dm, dataEtterKuttingOgSlipingModel.Dm);
-                SetProperty(ref prøvetykke, dataEtterKuttingOgSlipingModel.Prøvetykke);
-                SetProperty(ref dmPrøvetykkeRatio, dataEtterKuttingOgSlipingModel.DmPrøvetykkeRatio);
-                SetProperty(ref trykkfasthetMPa, dataEtterKuttingOgSlipingModel.TrykkfasthetMPa);
-                SetProperty(ref fasthetSammenligning, dataEtterKuttingOgSlipingModel.FasthetSammenligning);
-                SetProperty(ref førSliping, dataEtterKuttingOgSlipingModel.FørSliping);
-                SetProperty(ref etterSliping, dataEtterKuttingOgSlipingModel.EtterSliping);
-                SetProperty(ref mmTilTopp, dataEtterKuttingOgSlipingModel.MmTilTopp);
+                prøvenr = dataEtterKuttingOgSlipingModel.Prøvenr;
+                overflatetilstand = dataEtterKuttingOgSlipingModel.Overflatetilstand;
+                dm = dataEtterKuttingOgSlipingModel.Dm;
+                prøvetykke = dataEtterKuttingOgSlipingModel.Prøvetykke;
+                dmPrøvetykkeRatio = dataEtterKuttingOgSlipingModel.DmPrøvetykkeRatio;
+                trykkfasthetMPa = dataEtterKuttingOgSlipingModel.TrykkfasthetMPa;
+                fasthetSammenligning = dataEtterKuttingOgSlipingModel.FasthetSammenligning;
+                førSliping = dataEtterKuttingOgSlipingModel.FørSliping;
+                etterSliping = dataEtterKuttingOgSlipingModel.EtterSliping;
+                mmTilTopp = dataEtterKuttingOgSlipingModel.MmTilTopp;
+
             }
         }
 
