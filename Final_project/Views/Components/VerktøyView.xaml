@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <components:TextBoxView Grid.Column="0" Text="{Binding Name}" Watermark="Tester utført ihht:"
+        <components:TextBoxView Grid.Column="0" Text="{Binding Name}" Watermark="Benytett utstyr:"
                              Margin="0,0,10,0"/>
 
 
