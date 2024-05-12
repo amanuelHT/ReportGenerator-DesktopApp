@@ -1,7 +1,7 @@
 ﻿using Google.Cloud.Firestore;
 
 namespace Report_Generator_Domain.Models
-   
+
 {
     public class Account
     {
