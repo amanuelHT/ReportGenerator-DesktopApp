@@ -54,27 +54,34 @@ namespace Final_project.ViewModels
             }
         }
 
+     
         [RelayCommand]
-        public void Delete(UserInfo userInfo)
+        public async Task Delete(UserInfo userInfo)
         {
             if (userInfo != null && Users.Contains(userInfo))
             {
-
                 MessageBoxResult result = MessageBox.Show(
-                    $"Are you sure you want to delete the user '{userInfo.FirstName + userInfo.LastName}'?",
+                    $"Are you sure you want to delete the user '{userInfo.FirstName + " " + userInfo.LastName}'?",
                     "Confirm Delete",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning);
 
-
                 if (result == MessageBoxResult.Yes)
                 {
-
-                    _firebaseStore.DeleteUserAsync(userInfo.UserId).Wait();
-                    Users.Remove(userInfo);
+                    try
+                    {
+                        await _firebaseStore.DeleteUserAsync(userInfo.UserId);
+                        Users.Remove(userInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to delete user: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Debug.WriteLine($"Error deleting user: {ex.Message}");
+                    }
                 }
             }
         }
+
 
     }
 }
