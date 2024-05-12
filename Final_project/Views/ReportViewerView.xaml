@@ -19,17 +19,25 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
+            <TextBlock Text="Select Report" 
+            FontFamily="Batang" 
+            FontSize="14" 
+            Grid.Column="0" 
+            Margin="5,0,5,0" 
+            VerticalAlignment="Top"  
+            Style="{StaticResource navtext}" 
+            Foreground="LightGreen"/>
+
             <ComboBox x:Name="reportsComboBox" 
                   ItemsSource="{Binding AvailableReports}" 
                   SelectedItem="{Binding SelectedReport}"
                   FontFamily="Batang"
                   FontSize="14"
                   DisplayMemberPath="Tittle"
-                  Margin="5" 
+                  Margin="5,17,5,13" 
                   Width="150"
-                  Height="30"
                   Grid.Column="0"/>
-            
+
 
             <Button   Click="OnGenerateReportClick" Style="{StaticResource buttonsWithIcon}" Grid.Column="2" Command="{Binding AddReportCommand}">
                 <StackPanel Orientation="Horizontal">
@@ -39,8 +47,8 @@
             </Button>
 
         </Grid>
-        
-       <boldreports:ReportViewer x:Name="reportViewer" 
+
+        <boldreports:ReportViewer x:Name="reportViewer" 
                           Background="Transparent"
                           Grid.Row="1" 
                           Grid.ColumnSpan="2" 
