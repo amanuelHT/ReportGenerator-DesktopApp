@@ -3513,6 +3513,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataEtterKuttingOgSlipingModel</DataSetName>
             <Top>39.95237cm</Top>
             <Left>0.09881cm</Left>
@@ -3832,6 +3833,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>TrykktestingModel</DataSetName>
             <Top>44.79396cm</Top>
             <Left>0.39927cm</Left>
