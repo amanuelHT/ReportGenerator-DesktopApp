@@ -22,7 +22,7 @@ namespace Report_Generator_Domain.Models
         public double EtterSliping { get; set; }
         public double MmTilTopp { get; set; }
 
-        public Guid ReportModelId { get; set; } // Foreign key
+        public Guid ReportModelId { get; set; }
         public ReportModel ReportModel { get; set; }
 
 

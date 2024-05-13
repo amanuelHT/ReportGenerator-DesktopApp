@@ -77,7 +77,7 @@
                             <ColumnDefinition Width="Auto" SharedSizeGroup="lab"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" FontSize="14"  Text="Status" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="0" FontSize="14"  Text="Rapport" FontWeight="SemiBold" />
                         <TextBlock Grid.Column="1" Text="{Binding Status}" FontSize="14"/>
                     </Grid>
 

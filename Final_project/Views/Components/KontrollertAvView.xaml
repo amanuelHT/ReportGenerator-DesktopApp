@@ -19,11 +19,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <components:TextBoxView Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Watermark="Name"/>
-        <components:TextBoxView Grid.Row="0" Grid.Column="1" Text="{Binding Position}" Watermark="Position"/>
+        <components:TextBoxView Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Watermark="Navn"/>
+        <components:TextBoxView Grid.Row="0" Grid.Column="1" Text="{Binding Position}" Watermark="Stilling"/>
 
-        <components:TextBoxView Grid.Row="1" Grid.Column="0" Text="{Binding Department}" Watermark="Department"/>
-        <components:TextBoxView Grid.Row="1" Grid.Column="1" Text="{Binding Date}" Watermark="Date" />
+        <components:TextBoxView Grid.Row="1" Grid.Column="0" Text="{Binding Department}" Watermark="Avdeling"/>
+        <components:TextBoxView Grid.Row="1" Grid.Column="1" Text="{Binding Date}" Watermark="Dato" />
 
     </Grid>
 

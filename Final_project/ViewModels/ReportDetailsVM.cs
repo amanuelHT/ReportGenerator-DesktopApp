@@ -15,9 +15,9 @@ namespace Final_project.ViewModels
 
 
         public bool HasReportSelected => SelectedReport != null;
-        public string Tittle => SelectedReport?.Tittle ?? "Unknown";
-        public string Status => SelectedReport?.Status == true ? "Godkjent" : "Ikke Godkjent";
-        public string Kunde => SelectedReport?.Kunde ?? "No name";
+        public string Tittle => SelectedReport?.Tittle ?? "Ukjent";
+        public string Status => SelectedReport?.Status == true ? "Fullført" : "Ikke Fullført";
+        public string Kunde => SelectedReport?.Kunde ?? "No navn";
 
         public Guid ReportId => SelectedReport?.Id ?? Guid.Empty;
 

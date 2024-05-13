@@ -1216,7 +1216,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=First(Fields!Name.Value, "KontrollertAvførtAvModel")</Value>
+                        <Value>=First(Fields!Name.Value, "TestUtførtAvModel")</Value>
                         <Style>
                           <FontSize>9pt</FontSize>
                         </Style>
@@ -1570,8 +1570,8 @@
             <PageBreak>
               <BreakLocation>End</BreakLocation>
             </PageBreak>
-            <Top>9.93485in</Top>
-            <Left>0.08493in</Left>
+            <Top>9.64318in</Top>
+            <Left>0.0634in</Left>
             <Height>0.74765in</Height>
             <Width>7.10062in</Width>
             <ZIndex>6</ZIndex>
