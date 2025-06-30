@@ -14,13 +14,6 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 - CRUD on users & reports
 
 ---
-### 
-![Home](Final_project/images/home.png)
-![User Info Manage](Final_project/images/userInfoMAnage.png) 
-![Report Generator Logic](Final_project/images/report-generator-logic.png)
-
----
-
 
 ## Tech stack
 - WPF (.NET 8)
@@ -30,3 +23,9 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 ---
 
 
+### 
+![Home](Final_project/images/home.png)
+![User Info Manage](Final_project/images/userInfoMAnage.png) 
+![Report Generator Logic](Final_project/images/report-generator-logic.png)
+
+---
