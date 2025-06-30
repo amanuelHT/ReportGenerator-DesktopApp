@@ -15,7 +15,7 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 
 ---
 
-## Tech stack
+## Built with
 - WPF (.NET 8)
 - SQLite
 - Firebase Auth & Firestore
