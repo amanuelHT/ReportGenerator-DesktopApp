@@ -15,7 +15,6 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 
 ---
 
-
 ## Tech stack
 - WPF (.NET 8)
 - SQLite
@@ -23,12 +22,10 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 - RDLC reports
 ---
 
+
 ### 
 ![Home](Final_project/images/home.png)
 ![User Info Manage](Final_project/images/userInfoMAnage.png) 
 ![Report Generator Logic](Final_project/images/report-generator-logic.png)
 
 ---
-
-
-
