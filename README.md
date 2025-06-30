@@ -14,12 +14,6 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 - CRUD on users & reports
 
 ---
-### 
-![Home](Final_project/images/home.png)
-![User Info Manage](Final_project/images/userInfoMAnage.png) 
-![Report Generator Logic](Final_project/images/report-generator-logic.png)
-
----
 
 
 ## Tech stack
@@ -28,5 +22,13 @@ Built using WPF (.NET), SQLite, and integrates with Firebase for authentication 
 - Firebase Auth & Firestore
 - RDLC reports
 ---
+
+### 
+![Home](Final_project/images/home.png)
+![User Info Manage](Final_project/images/userInfoMAnage.png) 
+![Report Generator Logic](Final_project/images/report-generator-logic.png)
+
+---
+
 
 
